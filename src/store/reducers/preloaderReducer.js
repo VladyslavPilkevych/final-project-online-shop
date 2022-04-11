@@ -1,16 +1,16 @@
-import { TOGGLE_PRELOADER } from "../actions/preloaderActions";
+import { TOGGLE_PRELOADER } from '../actions/preloaderActions';
 
 const initialValues = {
-    isLoading: false,
-}
+  isLoading: false,
+};
 
 const preloaderReducer = (state = initialValues, action) => {
-    switch (action.type) {
-        case TOGGLE_PRELOADER: {
-            return { isLoading: action.payload }
-        }
-        default: return state
+  switch (action.type) {
+    case TOGGLE_PRELOADER: {
+      return { isLoading: action.payload };
     }
-}
+    default: return state;
+  }
+};
 
 export default preloaderReducer;

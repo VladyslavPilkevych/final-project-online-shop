@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import preloaderReducer from "./preloaderReducer";
+import { combineReducers } from 'redux';
+import preloaderReducer from './preloaderReducer';
 
 const reducer = combineReducers({
-    loader: preloaderReducer,
+  loader: preloaderReducer,
 });
 
 export default reducer;

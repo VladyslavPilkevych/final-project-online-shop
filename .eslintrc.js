@@ -3,7 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": ["airbnb", "airbnb/hooks"],
+    "extends": "airbnb",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -12,22 +12,13 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
         "no-var": "error",
-        "editor.formatOnPaste": false,
-        "editor.formatOnSave": true,
-        "[javascript]": {
-            "editor.formatOnSave": true,
-        },
-        "[html]": {
-            "editor.formatOnSave": false,
-        },
-        "[json]": {
-            "editor.formatOnSave": false,
-        },
-        "eslint.autoFixOnSave": true,
-        "eslint.alwaysShowStatus": true,
+        "react/jsx-filename-extension": [1, {
+            "extensions": [".js", ".jsx"]
+        }]
     }
 }

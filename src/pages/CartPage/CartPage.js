@@ -1,11 +1,11 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-const CartPage = () => {
-    return (
-        <section>
-            <h1>Cart Page</h1>
-        </section>
-    )
+function CartPage() {
+  return (
+    <section>
+      <h1>Cart Page</h1>
+    </section>
+  );
 }
 
 export default memo(CartPage);
