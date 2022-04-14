@@ -1,0 +1,23 @@
+$default-fonts: 'Helvetica', 'Roboto', sans-serif;
+$fonts: 'Poppins', sans-serif, $default-fonts;
+
+$color-text-main: #8D81AC;
+$color-light-text: #FFFFFF;
+
+$red: #ff0000;
+$grey: #808080;
+$blue: #1976d2;
+$black: #000000;
+$white: #ffffff;
+$lochinvar: #349a89;
+$white-smoke: #f2f2f2;
+
+:export {
+  red: $red;
+  grey: $grey;
+  blue: $blue;
+  black: $black;
+  white: $white;
+  lochinvar: $lochinvar;
+  whiteSmoke: $white-smoke;
+}

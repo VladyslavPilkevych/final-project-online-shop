@@ -1,10 +1,10 @@
 import React from 'react';
 // import styles from './Footer.module.scss';
 
-function Header() {
+function Footer() {
   return (
     <footer></footer>
   );
 }
 
-export default Header;
+export default Footer;
