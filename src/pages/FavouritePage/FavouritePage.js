@@ -1,11 +1,11 @@
- import React, { memo } from 'react'
+import React, { memo } from 'react';
 
 function FavouritePage() {
   return (
     <section>
       <h1>Favourite Page</h1>
     </section>
-  )
+  );
 }
 
-export default memo(FavouritePage)
+export default memo(FavouritePage);

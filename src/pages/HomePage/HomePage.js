@@ -1,5 +1,5 @@
-import React, { memo } from 'react'
-import MainBaner from '../../components/MainBanner/MainBaner'
+import React, { memo } from 'react';
+import MainBaner from '../../components/MainBanner/MainBaner';
 
 function HomePage() {
   return (
@@ -7,7 +7,7 @@ function HomePage() {
       <h1>Home Page</h1>
       <MainBaner />
     </div>
-  )
+  );
 }
 
-export default memo(HomePage)
+export default memo(HomePage);

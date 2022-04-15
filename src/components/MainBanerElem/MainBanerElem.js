@@ -1,8 +1,10 @@
-import React from 'react'
-import styles from './MainBanerElem.module.scss'
+import React from 'react';
+import styles from './MainBanerElem.module.scss';
 
-const MainBanerElem = (props) => {
-  const { title, id, key, img, model } = props
+function MainBanerElem(props) {
+  const {
+    title, id, key, img, model,
+  } = props;
 
   return (
     <div
@@ -18,7 +20,7 @@ const MainBanerElem = (props) => {
         <p>{title}</p>
         <button
           onClick={() => {
-            console.log(`Click on baner button, id ${id}`)
+            console.log(`Click on baner button, id ${id}`);
           }}
           className={styles.bannerBtn}
         >
@@ -26,7 +28,7 @@ const MainBanerElem = (props) => {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default MainBanerElem
+export default MainBanerElem;

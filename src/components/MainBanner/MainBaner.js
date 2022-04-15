@@ -1,13 +1,13 @@
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import React from 'react'
-import Slider from 'react-slick'
-import MainBanerElem from '../MainBanerElem/MainBanerElem'
-import styles from './MainBaner.module.scss'
+import React from 'react';
+import Slider from 'react-slick';
+import MainBanerElem from '../MainBanerElem/MainBanerElem';
+import styles from './MainBaner.module.scss';
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props
+  const { className, style, onClick } = props;
   return (
     <div
       className={className}
@@ -25,11 +25,11 @@ function SampleNextArrow(props) {
       }}
       onClick={onClick}
     />
-  )
+  );
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props
+  const { className, style, onClick } = props;
   return (
     <div
       className={className}
@@ -47,16 +47,16 @@ function SamplePrevArrow(props) {
       }}
       onClick={onClick}
     />
-  )
+  );
 }
 
 export default function MainBaner() {
-  var settings = {
+  const settings = {
     infinite: true,
     speed: 500,
     swipeToSlide: true,
-    afterChange: function (index) {
-      console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`)
+    afterChange(index) {
+      console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
     },
     autoplay: true,
     speed: 2000,
@@ -66,7 +66,7 @@ export default function MainBaner() {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-  }
+  };
 
   // const productsToSlide = getSlidesForBaner()
   const productsToSlide = [
@@ -142,16 +142,16 @@ export default function MainBaner() {
       date: '2019-10-16T18:56:04.674Z',
       __v: 0,
     },
-  ]
+  ];
 
   return (
     <div className={styles.mainBanerWrapper}>
       <Slider {...settings}>
-        {productsToSlide &&
-          productsToSlide.map((elem) => (
+        {productsToSlide
+          && productsToSlide.map((elem) => (
             <MainBanerElem title={elem.title} id={elem._id} img={elem.imageUrl} key={elem._id} model={elem.product.model} />
           ))}
       </Slider>
     </div>
-  )
+  );
 }
