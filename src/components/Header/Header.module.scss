@@ -1,10 +1,75 @@
-ul {
-    list-style: none;
+@import '../../assets/styles/global.module.scss';
+
+.headerWrapper{
+    background-color: $black;
+}
+.blackBg {
+  background-color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 44px;
+  max-width: 1398px;
+  margin: 0 auto;
+}
+.dateBur {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: $dark-grey-text;
+  //   padding-top: 8px;
+  //   padding-bottom: 9px;
+}
+.timeBur {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: $white;
+}
+.adressBur {
+  color: $grey-text;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+}
+.adressBurLink {
+  color: $white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  padding-left: 4px;
+}
+.phoneNumber {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: $white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 14px;
+  text-decoration: none;
+}
+.phoneBurWrapper{
     display: flex;
-    justify-content: space-evenly;
-    li {
-        a {
-            cursor: pointer;
-        }
+}
+.fbIcon {
+    display: inline-block;
+    margin-top: 13px;
+}
+.instagramIcon {
+    display: inline-block;
+    margin-top: 13px;
+    margin-left: 8px;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  li {
+    a {
+      cursor: pointer;
+
     }
+  }
 }
