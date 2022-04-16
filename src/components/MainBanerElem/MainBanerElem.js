@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './MainBanerElem.module.scss';
 
 function MainBanerElem(props) {
-  const { title, id, key, img, model } = props;
+  const {
+    title, id, key, img, model,
+  } = props;
 
   return (
     <div
