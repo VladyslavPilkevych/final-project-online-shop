@@ -13,6 +13,7 @@ function SampleNextArrow(props) {
     <div
       className={className}
       role="button"
+      tabIndex={0}
       style={{
         ...style,
         display: 'block',
@@ -36,6 +37,7 @@ function SamplePrevArrow(props) {
     <div
       className={className}
       role="button"
+      tabIndex={0}
       style={{
         ...style,
         display: 'block',
@@ -151,8 +153,16 @@ export default function MainBaner() {
     <div className={styles.mainBanerWrapper}>
       <Slider {...settings}>
         {productsToSlide && productsToSlide.map((elem) => (
-            <MainBanerElem title={elem.title} id={elem._id} img={elem.imageUrl} key={elem._id} model={elem.product.model} />
-          ))}
+          <MainBanerElem
+            title={elem.title}
+            // eslint-disable-next-line no-underscore-dangle
+            id={elem._id}
+            img={elem.imageUrl}
+            // eslint-disable-next-line no-underscore-dangle
+            key={elem._id}
+            model={elem.product.model}
+          />
+        ))}
       </Slider>
     </div>
   );
