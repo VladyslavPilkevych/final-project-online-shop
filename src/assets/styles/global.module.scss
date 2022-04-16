@@ -1,0 +1,9 @@
+@import '~reset-css';
+@import './fonts.module.scss';
+@import './variables.scss';
+
+body {
+  color: $black;
+  font-size: 16px;
+  font-family: $fonts;
+}

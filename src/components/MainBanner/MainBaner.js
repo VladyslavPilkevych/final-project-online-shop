@@ -3,6 +3,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import React from 'react';
 import Slider from 'react-slick';
+import PropTypes from 'prop-types';
 import MainBanerElem from '../MainBanerElem/MainBanerElem';
 import styles from './MainBaner.module.scss';
 
@@ -11,6 +12,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
+      role="button"
       style={{
         ...style,
         display: 'block',
@@ -33,6 +35,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
+      role="button"
       style={{
         ...style,
         display: 'block',
@@ -59,7 +62,7 @@ export default function MainBaner() {
       console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
     },
     autoplay: true,
-    speed: 2000,
+    // speed: 2000,
     autoplaySpeed: 5000,
     cssEase: 'ease',
     slidesToShow: 1,
@@ -155,3 +158,26 @@ export default function MainBaner() {
     </div>
   );
 }
+
+SampleNextArrow.PropTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+SampleNextArrow.defaultProps = {
+  className: '',
+  style: '',
+  onClick: () => {},
+};
+SamplePrevArrow.PropTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+SamplePrevArrow.defaultProps = {
+  className: '',
+  style: '',
+  onClick: () => {},
+};
