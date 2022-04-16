@@ -150,8 +150,7 @@ export default function MainBaner() {
   return (
     <div className={styles.mainBanerWrapper}>
       <Slider {...settings}>
-        {productsToSlide
-          && productsToSlide.map((elem) => (
+        {productsToSlide && productsToSlide.map((elem) => (
             <MainBanerElem title={elem.title} id={elem._id} img={elem.imageUrl} key={elem._id} model={elem.product.model} />
           ))}
       </Slider>
@@ -159,7 +158,7 @@ export default function MainBaner() {
   );
 }
 
-SampleNextArrow.PropTypes = {
+SampleNextArrow.propTypes = {
   className: PropTypes.string,
   style: PropTypes.string,
   onClick: PropTypes.func,
@@ -170,7 +169,7 @@ SampleNextArrow.defaultProps = {
   style: '',
   onClick: () => {},
 };
-SamplePrevArrow.PropTypes = {
+SamplePrevArrow.propTypes = {
   className: PropTypes.string,
   style: PropTypes.string,
   onClick: PropTypes.func,

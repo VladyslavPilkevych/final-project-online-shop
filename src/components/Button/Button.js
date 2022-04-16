@@ -7,7 +7,9 @@ function Button(props) {
     children, handleClick, type, style,
   } = props;
   return (
+    /* eslint-disable react/button-has-type */
     <button type={type} onClick={handleClick} className={`${styles.btn} ${style}`}>{children}</button>
+    /* eslint-enable react/button-has-type */
   );
 }
 

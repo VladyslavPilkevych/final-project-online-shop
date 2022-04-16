@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './MainBanerElem.module.scss';
 
 function MainBanerElem(props) {
-  const {
-    title, id, key, img, model,
-  } = props;
+  const { title, id, key, img, model } = props;
 
   return (
     <div
@@ -35,7 +33,7 @@ function MainBanerElem(props) {
 MainBanerElem.propTypes = {
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  key: oneOfType(PropTypes.string, PropTypes.number),
+  key: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
   img: PropTypes.string,
   model: PropTypes.string,
 };
