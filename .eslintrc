@@ -17,8 +17,22 @@
     ],
     "rules": {
         "no-var": "error",
-        "react/jsx-filename-extension": [1, {
-            "extensions": [".js", ".jsx"]
-        }]
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "import/extensions": [
+            1,
+            {
+                "js": "never",
+                "json": "never"
+            }
+        ],
+        "import/prefer-default-export": 0
     }
 }
