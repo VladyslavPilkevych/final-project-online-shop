@@ -5,11 +5,13 @@ import Button from '../Button/Button';
 
 function CardItem(props) {
   const {
-    name, price, id, img, quantity,
+    itemContent: {
+      name, price, id, img, quantity,
+    },
   } = props;
   const [oldPrice, setOldPrice] = useState(null);
   useEffect(() => {
-    // setOldPrice(String(price.slice(1) * 1.25).split('.')[0]);
+    setOldPrice(String(price.slice(1) * 1.25).split('.')[0]);
   }, []);
   return (
     <div id={id} className={styles.productItem}>
@@ -50,21 +52,19 @@ function CardItem(props) {
 
 CardItem.propTypes = {
   /* eslint-disable react/forbid-prop-types */
-  // itemContent: PropTypes.object.isRequired,
+  itemContent: PropTypes.object.isRequired,
   /* eslint-enable react/forbid-prop-types */
   name: PropTypes.string,
-  img: PropTypes.string,
   price: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
-  id: PropTypes.string,
+  id: PropTypes.number,
   quantity: PropTypes.number,
 };
 
 CardItem.defaultProps = {
   name: '',
-  img: '',
   price: 0,
   id: null,
   quantity: 0,
