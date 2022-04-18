@@ -1,11 +1,18 @@
 .mainBanerWrapper {
-  width: 90%;
+  max-width: 1398px;
   height: 328px;
   margin: 0 auto;
 }
 
-@media screen and (max-device-width: 728px) {
+@media screen and (max-device-width: 1398px) {
+  .mainBanerWrapper {
+    height: 173px;
+    margin: 20px;
+  }
+}
+@media screen and (max-device-width: 768px) {
   .mainBanerWrapper {
     height: 128px;
+    margin: 20px;
   }
 }

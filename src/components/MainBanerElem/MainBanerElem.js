@@ -13,12 +13,13 @@ function MainBanerElem(props) {
         backgroundImage: `url(${img})`,
         width: '100%',
       }}
+      className={styles.mainBannerElemWrapper}
       key={key}
       id={id}
     >
       <div className={styles.titleWrapper}>
         <h1 className={styles.banerTitle}>{model}</h1>
-        <p>{title}</p>
+        <p className={styles.banerSubTitle}>{title}</p>
         <button
           type="button"
           onClick={() => {

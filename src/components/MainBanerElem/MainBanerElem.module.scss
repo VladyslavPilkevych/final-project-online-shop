@@ -1,9 +1,23 @@
+@import '../../assets/styles/global.module.scss';
+
+.mainBannerElemWrapper {
+  background: no-repeat;
+}
+
 .titleWrapper {
   padding-top: 124px;
   margin-left: 100px;
 }
 
 .banerTitle {
+  font-size: 62px;
+  color: $white;
+  font-family: $fonts;
+  font-weight: bold;
+}
+
+.banerSubTitle {
+  color: $white;
   font-size: 24px;
 }
 
@@ -12,7 +26,7 @@
   margin-bottom: 50px;
 }
 
-@media screen and (max-device-width: 1280px) {
+@media screen and (max-device-width: 1398px) {
   .titleWrapper {
     padding-top: 84px;
     margin-left: 80px;
@@ -28,7 +42,7 @@
   }
 }
 
-@media screen and (max-device-width: 728px) {
+@media screen and (max-device-width: 768px) {
   .titleWrapper {
     padding-top: 34px;
     margin-left: 50px;
