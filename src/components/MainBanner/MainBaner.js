@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import MainBanerElement from '../MainBanerElem/MainBanerElement';
+import MainBanerElement from '../MainBanerElement/MainBanerElement';
 import styles from './MainBaner.module.scss';
 
 function SampleNextArrow(props) {
