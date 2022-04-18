@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import MainBanerElem from '../MainBanerElem/MainBanerElem';
+import MainBanerElement from '../MainBanerElem/MainBanerElement';
 import styles from './MainBaner.module.scss';
 
 function SampleNextArrow(props) {
@@ -60,11 +60,7 @@ export default function MainBaner() {
     infinite: true,
     speed: 500,
     swipeToSlide: true,
-    afterChange(index) {
-      console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-    },
     autoplay: true,
-    // speed: 2000,
     autoplaySpeed: 5000,
     cssEase: 'ease',
     slidesToShow: 1,
@@ -73,6 +69,8 @@ export default function MainBaner() {
     prevArrow: <SamplePrevArrow />,
   };
 
+  // Must be insert when api function will be ready
+  //  ========================================
   //   const newSlide = {
   //     customId: "baner-slide-phone-001",
   //     imageUrl: "https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg",
@@ -90,7 +88,7 @@ export default function MainBaner() {
   //     });
   // console.log(response);
   //   }
-
+  // or
   //   addSlide(newSlide)
   // axios
   //   .post("/slides", newSlide)
@@ -155,7 +153,7 @@ export default function MainBaner() {
           'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/laptops/apple/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA+Apple+MacBook+Air+13+M1+512GB+2020/Space+Gray/MC13-sg-img5.jpg',
         ],
         quantity: 100,
-        _id: '625312856ad189cceeb8b596',
+        _id: '8888888888888888888888888',
         name: 'Apple',
         model: 'Apple Iphone 13 Max Pro',
         categories: 'laptop',
@@ -175,7 +173,7 @@ export default function MainBaner() {
       date: '2019-10-16T18:56:04.674Z',
       __v: 0,
     }, {
-      _id: '625312856ad189cceeb8b596',
+      _id: '55555555555555555555555555',
       customId: 'promotion-product-563877',
       imageUrl:
           'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg',
@@ -209,21 +207,23 @@ export default function MainBaner() {
   ];
 
   return (
-    <div className={styles.mainBanerWrapper}>
-      <Slider {...settings}>
-        {productsToSlide && productsToSlide.map((elem) => (
-          <MainBanerElem
-            title={elem.title}
+    <div>
+      <div className={styles.mainBanerWrapper}>
+        <Slider {...settings}>
+          {productsToSlide && productsToSlide.map((elem) => (
+            <MainBanerElement
+              title={elem.title}
             // eslint-disable-next-line no-underscore-dangle
-            id={elem._id}
+              id={elem._id}
             // eslint-disable-next-line no-underscore-dangle
-            img={elem.imageUrl}
+              img={elem.imageUrl}
             // eslint-disable-next-line no-underscore-dangle
-            key={elem._id}
-            model={elem.product.model}
-          />
-        ))}
-      </Slider>
+              key={elem._id}
+              model={elem.product.model}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
