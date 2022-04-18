@@ -2,17 +2,33 @@ import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CardItem.module.scss';
 import Button from '../Button/Button';
+import { useDispatch } from 'react-redux';
 
 function CardItem(props) {
   const {
     itemContent: {
-      name, price, id, img, quantity,
+      name, currentPrice, id, img, quantity,
     },
   } = props;
+  const dispatch = useDispatch()
   const [oldPrice, setOldPrice] = useState(null);
+  const [favourite, setFavourite] = useState(false);
+  const [inCart, setInCart] = useState(false);
   useEffect(() => {
-    setOldPrice(String(price.slice(1) * 1.25).split('.')[0]);
+    setOldPrice(String(currentPrice.slice(1) * 1.25).split('.')[0]);
   }, []);
+  const addToFavourite = () => {
+    setFavourite(true);
+    console.log("addToFavourite");
+  }
+  const removeFromFav = () => {
+    setFavourite(false);
+    console.log("removeFromFav");
+  }
+  const addToCart = () => {
+    setInCart(true);
+    console.log("addToCart");
+  }
   return (
     <div id={id} className={styles.productItem}>
       {quantity
@@ -30,8 +46,13 @@ function CardItem(props) {
             check availability
           </p>
         )}
-
-      <img className={styles.iconFav} alt="icon favourite" src="./images/icon.png" />
+      {
+        favourite
+          ?
+          <img onClick={removeFromFav} className={styles.iconFav} alt="icon favourite" src="./images/removeFromFavIcon.png" />
+          :
+          <img onClick={addToFavourite} className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
+      }
       <img className={styles.imgProduct} alt="product" src={img} />
       <h3>{name}</h3>
       <span className={styles.oldPrice}>
@@ -39,13 +60,18 @@ function CardItem(props) {
         {oldPrice}
         .99
       </span>
-      <span className={styles.price}>{price}</span>
-      <Button style={styles.btnCart}>
-        {' '}
-        <img alt="icon cart" src="./images/cart.png" />
-        {' '}
-        Add To Cart
-      </Button>
+      <span className={styles.price}>{currentPrice}</span>
+      {inCart
+        ?
+        <Button style={styles.btnInCart}>
+          <p>Already in cart</p>
+        </Button>
+        :
+        <Button handleClick={addToCart} style={styles.btnCart}>
+          <img alt="icon cart" src="./images/cart.png" />
+          <p>Add To Cart</p>
+        </Button>
+      }
     </div>
   );
 }
@@ -55,7 +81,7 @@ CardItem.propTypes = {
   itemContent: PropTypes.object.isRequired,
   /* eslint-enable react/forbid-prop-types */
   name: PropTypes.string,
-  price: PropTypes.oneOfType([
+  currentPrice: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
@@ -65,7 +91,7 @@ CardItem.propTypes = {
 
 CardItem.defaultProps = {
   name: '',
-  price: 0,
+  currentPrice: 0,
   id: null,
   quantity: 0,
 };
