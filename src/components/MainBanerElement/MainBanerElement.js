@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './MainBanerElem.module.scss';
+import styles from './MainBanerElement.module.scss';
 
-function MainBanerElem(props) {
+function MainBanerElement(props) {
   const {
-    title, id, key, img, model,
+    title, id, img, model,
   } = props;
 
   return (
@@ -13,18 +13,19 @@ function MainBanerElem(props) {
         backgroundImage: `url(${img})`,
         width: '100%',
       }}
-      key={key}
+      className={styles.mainBannerElemWrapper}
+      key={id}
       id={id}
     >
       <div className={styles.titleWrapper}>
         <h1 className={styles.banerTitle}>{model}</h1>
-        <p>{title}</p>
+        <p className={styles.banerSubTitle}>{title}</p>
         <button
           type="button"
           onClick={() => {
             console.log(`Click on baner button, id ${id}`);
           }}
-          className={styles.bannerBtn}
+          className={[styles.bannerBtn, styles.btn, styles.btnWhite, styles.btnAnimate].join(' ')}
         >
           SHOP NOW
         </button>
@@ -32,17 +33,15 @@ function MainBanerElem(props) {
     </div>
   );
 }
-MainBanerElem.propTypes = {
+MainBanerElement.propTypes = {
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  key: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
   img: PropTypes.string,
   model: PropTypes.string,
 };
 
-MainBanerElem.defaultProps = {
-  key: '',
+MainBanerElement.defaultProps = {
   img: '',
   model: '',
 };
-export default MainBanerElem;
+export default MainBanerElement;
