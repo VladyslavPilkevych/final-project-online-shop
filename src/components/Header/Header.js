@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
+import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
+import { ReactComponent as CartIcon } from '../../assets/icons/Cart.svg';
+import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
+import { ReactComponent as Search } from '../../assets/icons/Vector.svg';
 
 function Header() {
   const activeStyle = {
@@ -11,56 +15,87 @@ function Header() {
     pointerEvents: 'none',
   };
   return (
-    <header className={styles.headerWrapper}>
-      <div className={styles.blackBg}>
-        <div>
-          <p className={styles.dateBur}>
-            Mon-Thu:
-            <span className={styles.timeBur}> 9:00 AM - 5:30 PM</span>
-          </p>
-        </div>
-        <div>
-          <p className={styles.adressBur}>
-            Visit our showroom in 1234 Street Adress City Address, 1234
+    <header>
+      <div className={styles.headerWrapper}>
+        <div className={styles.blackBg}>
+          <div>
+            <p className={styles.dateBur}>
+              Mon-Thu:
+              <span className={styles.timeBur}> 9:00 AM - 5:30 PM</span>
+            </p>
+          </div>
+          <div className={styles.adressBurWrapper}>
+            <p className={styles.adressBur}>
+              Visit our showroom in 1234 Street Adress City Address, 1234
+            </p>
             <a className={styles.adressBurLink} href="mailto:address@gmail.com">
               Contact Us
             </a>
-          </p>
-        </div>
-        <div className={styles.phoneBurWrapper}>
-          <div>
-            <a href="tel:0012345678" className={styles.phoneNumber}>
-              Call Us: (00) 1234 5678
-            </a>
           </div>
-          <div>
-            <FbIcon className={styles.fbIcon} />
-            <InstagramIcon className={styles.instagramIcon} />
+          <div className={styles.phoneBurWrapper}>
+            <div>
+              <a href="tel:0012345678" className={styles.phoneNumber}>
+                Call Us: (00) 1234 5678
+              </a>
+            </div>
+            <div>
+              <FbIcon className={styles.fbIcon} />
+              <InstagramIcon className={styles.instagramIcon} />
+            </div>
           </div>
         </div>
       </div>
-      <ul>
-        <li>
-          <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/sign-in">
-            Sign-in
-          </NavLink>
-        </li>
-        <li>
-          <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/cart">
-            Cart
-          </NavLink>
-        </li>
-        <li>
-          <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/favourite">
-            Favourite
-          </NavLink>
-        </li>
-      </ul>
+      <div className={styles.whiteWrapper}>
+        <div className={styles.wrapperContainer}>
+          <div className={styles.wrapperNavBar}>
+            <ul className={styles.navBur}>
+              <li>
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/">
+                  <LogoIcon className={styles.logo} />
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Laptops">
+                  Laptops
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Monitors">
+                  Monitors
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Phones">
+                  Phones
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Headphones">
+                  Headphones
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.navBarRight}>
+            <ul className={styles.navBur}>
+              <div className={styles.searchBox}>
+                <input className={styles.searchInput} type="text" placeholder="Search entiere store here..." />
+                <Search className={styles.searchIcon} />
+              </div>
+              <li className={styles.navBarRightItem}>
+                <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/cart">
+                  <CartIcon className={styles.cartIcon} />
+                </NavLink>
+              </li>
+              <li className={styles.navBarRightItem}>
+                <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/sign-in">
+                  <SignInIcon className={styles.signInIcon} />
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
