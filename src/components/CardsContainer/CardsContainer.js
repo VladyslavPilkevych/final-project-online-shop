@@ -14,6 +14,14 @@ function CardsContainer() {
   return (
     <section className={styles.cardContainer}>
       <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
+      <CardItem itemContent={content} />
     </section>
   );
 }

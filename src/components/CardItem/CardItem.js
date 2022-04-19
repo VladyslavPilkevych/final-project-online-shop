@@ -54,7 +54,7 @@ function CardItem(props) {
           <img onClick={addToFavourite} className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
       }
       <img className={styles.imgProduct} alt="product" src={img} />
-      <h3>{name}</h3>
+      <h3 className={styles.productName}>{name}</h3>
       <span className={styles.oldPrice}>
         $
         {oldPrice}
@@ -63,7 +63,8 @@ function CardItem(props) {
       <span className={styles.price}>{currentPrice}</span>
       {inCart
         ?
-        <Button style={styles.btnInCart}>
+        <Button style={styles.btnCart + ' ' + styles.btnInCart}>
+          <img alt="icon cart" src="./images/inCart.png" />
           <p>Already in cart</p>
         </Button>
         :
