@@ -83,7 +83,7 @@ CardItem.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  id: PropTypes.number,
+  id: PropTypes.string,
   quantity: PropTypes.number,
 };
 
@@ -91,7 +91,7 @@ CardItem.defaultProps = {
   name: '',
   img: '',
   currentPrice: 0,
-  id: null,
+  id: 'null',
   quantity: 0,
 };
 

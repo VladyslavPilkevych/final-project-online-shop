@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import CardItem from '../CardItem/CardItem';
+import { getAllProducts } from '../../api/api';
 
 import styles from './NewProductsContainer.module.scss';
 import 'slick-carousel/slick/slick.css';
@@ -56,6 +57,19 @@ function SamplePrevArrow(props) {
 }
 
 function NewProductsContainer() {
+  const [productsData, setProductsData] = useState([]);
+  // let allProducts = getAllProducts();
+  // console.log('allProducts in NewProductsContainer', allProducts);
+  console.log(productsData);
+  useEffect(() => {
+    console.log('USEEFFECT');
+    // if (localStorage.getItem('token')) {
+    const allProducts = async () => {
+      await getAllProducts();
+    };
+    setProductsData(allProducts);
+    // }
+  }, []);
   const settings = {
     infinite: true,
     swipeToSlide: true,
