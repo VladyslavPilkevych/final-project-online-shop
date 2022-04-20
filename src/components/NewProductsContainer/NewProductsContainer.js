@@ -59,8 +59,10 @@ function SamplePrevArrow(props) {
 
 function NewProductsContainer() {
   const allProducts = useSelector((state) => state.products.payload);
-  const newProducts = allProducts.slice(10, 22);
-
+  console.log(allProducts);
+  const newProducts = allProducts?.slice(10, 22);
+  useEffect(() => {
+  }, [allProducts]);
   const settings = {
     infinite: true,
     swipeToSlide: true,
