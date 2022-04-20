@@ -6,8 +6,10 @@ const initialValues = {
 
 const productsReducer = (action, state = initialValues) => {
   switch (action?.type) {
-    case GET_ALL_PRODUCTS:
-      return { ...state, products: action.payload };
+    case GET_ALL_PRODUCTS: {
+      const tempState = action.payload;
+      return { ...state, products: tempState };
+    }
 
     default: return state;
   }
