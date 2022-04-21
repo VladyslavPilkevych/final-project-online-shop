@@ -27,9 +27,13 @@ function SignUpPage() {
     if (values.password !== values.repeatPassword) {
       alert('Passwords should be equal');
     }
-    const newValues = values;
-    newValues.customerNo = '1';
-    const response = await axios.post('https://skvonlineshop.herokuapp.com/api/customers', newValues)
+    const newCustomer = values;
+    newCustomer.customerNo = '1';
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    console.log(newCustomer);
+    const response = await axios.post('https://skvonlineshop.herokuapp.com/api/customers', newCustomer, { headers })
       .then((user) => user)
       .catch((err) => console.log(err));
 
