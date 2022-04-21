@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import CardItem from '../CardItem/CardItem';
-import { getAllProductsApi } from '../../api/api';
 
 import styles from './NewProductsContainer.module.scss';
 import 'slick-carousel/slick/slick.css';
@@ -58,10 +57,11 @@ function SamplePrevArrow(props) {
 }
 
 function NewProductsContainer() {
-  const allProducts = useSelector((state) => state.products.payload);
+  const allProducts = useSelector((state) => state.products.products);
   console.log(allProducts);
   const newProducts = allProducts && allProducts.slice(10, 22);
-  useEffect(() => {}, [allProducts]);
+  useEffect(() => {
+  }, [allProducts]);
   const settings = {
     infinite: true,
     swipeToSlide: true,

@@ -2,9 +2,10 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import CustomInput from '../../components/CustomInput/CustomInput';
+import { createNewCustomer } from '../../api/api';
 import styles from './SignUpPage.module.scss';
 
 function SignUpPage() {
@@ -27,17 +28,13 @@ function SignUpPage() {
     if (values.password !== values.repeatPassword) {
       alert('Passwords should be equal');
     }
-    const newValues = values;
-    newValues.customerNo = '1';
-    const response = await axios.post('https://skvonlineshop.herokuapp.com/api/customers', newValues)
-      .then((user) => user)
-      .catch((err) => console.log(err));
+    const newCustomer = values;
+    console.log(newCustomer);
+    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.log(err));
 
     if (response && response.status === 200) {
       resetForm();
-      //   localStorage.setItem('user', JSON.stringify(data.user));
-      //   localStorage.setItem('token', JSON.stringify(data.token));
-      navigate({ pathname: '/' });
+      navigate({ pathname: '/sign-in' });
     }
     console.log(response);
   };
@@ -114,7 +111,7 @@ function SignUpPage() {
         <div className={`${styles.signUpBlockWrapper} ${styles.signInBlockWrapper}`}>
           <h2 className={styles.customersBlocksTitle}>Already have registered Account?</h2>
           <p className={styles.customersBlocksSubtitle}>If you are not have an account, you can Login on button below</p>
-          <button type="button" className={styles.createCustomerButton}>Log In Page</button>
+          <Link to="/sign-in"><button type="button" className={styles.createCustomerButton}>Log In Page</button></Link>
         </div>
       </div>
     </div>
