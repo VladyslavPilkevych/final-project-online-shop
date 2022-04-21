@@ -6,7 +6,8 @@ import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
 
 function HomePage() {
-  const allProducts = useSelector((state) => state.products.payload);
+  const allProducts = useSelector((state) => state.products);
+  console.log(allProducts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
