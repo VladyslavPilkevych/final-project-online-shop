@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import MainBanerElem from '../MainBanerElem/MainBanerElem';
+import MainBanerElement from '../MainBanerElement/MainBanerElement';
 import styles from './MainBaner.module.scss';
 
 function SampleNextArrow(props) {
@@ -60,11 +60,7 @@ export default function MainBaner() {
     infinite: true,
     speed: 500,
     swipeToSlide: true,
-    afterChange(index) {
-      console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
-    },
     autoplay: true,
-    // speed: 2000,
     autoplaySpeed: 5000,
     cssEase: 'ease',
     slidesToShow: 1,
@@ -73,13 +69,43 @@ export default function MainBaner() {
     prevArrow: <SamplePrevArrow />,
   };
 
+  // Must be insert when api function will be ready
+  //  ========================================
+  //   const newSlide = {
+  //     customId: "baner-slide-phone-001",
+  //     imageUrl: "https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg",
+  //     title: "50% discount for Apple 13 Pro Max!! ",
+  //     description: "Do not miss our hot offer. Promotion ends 31/05/2022",
+  //     category: "phones"
+  //   };
+  //   const addSlide = async (newSlide)=>{
+  //     const response = await fetch('https://skvonlineshop.herokuapp.com/api/slides', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(newSlide),
+  //     });
+  // console.log(response);
+  //   }
+  // or
+  //   addSlide(newSlide)
+  // axios
+  //   .post("/slides", newSlide)
+  //   .then(newSlide => {
+  //     /*Do something with newSlide*/
+  //   })
+  //   .catch(err => {
+  //     /*Do something with error, e.g. show error to user*/
+  //   });
+
   // const productsToSlide = getSlidesForBaner()
   const productsToSlide = [
     {
       _id: '625312856ad189cceeb8b596',
       customId: 'promotion-product-563877',
       imageUrl:
-        'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/laptops/apple/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA+Apple+MacBook+Air+13+M1+512GB+2020/Space+Gray/MC13-sg-img1.jpg',
+        'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg',
       title: "50% discount for 'test product 5' ",
       product: {
         enabled: true,
@@ -115,7 +141,7 @@ export default function MainBaner() {
       _id: '11111111111111111111111111',
       customId: 'promotion-product-563877',
       imageUrl:
-        'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/laptops/asus/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA+ASUS+TUF+Gaming+F15+FX506HCB-HN161/asus-tuf-img1.jpg',
+        'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg',
       title: "10% discount for 'PRODUCT 1' ",
       product: {
         enabled: true,
@@ -127,10 +153,41 @@ export default function MainBaner() {
           'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/laptops/apple/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA+Apple+MacBook+Air+13+M1+512GB+2020/Space+Gray/MC13-sg-img5.jpg',
         ],
         quantity: 100,
-        _id: '625312856ad189cceeb8b596',
+        _id: '8888888888888888888888888',
         name: 'Apple',
         model: 'Apple Iphone 13 Max Pro',
         categories: 'laptop',
+        color: 'space gray',
+        capacity: '512GB',
+        storage: '8GB',
+        display: '13.3',
+        currency: 'UAH',
+        currentPrice: 42999,
+        previousPrice: null,
+        itemNo: '40000023',
+        size: '',
+        description: ' 13,3 / IPS / 2560x1600 / Apple M1 / RAM: 8 Gb / 7 core GPU / SSD: 512 Gb / 1,29 kg / OS: macOS Big Sur / space gray ',
+        date: '2022-04-10T17:23:17.032Z',
+        __v: 0,
+      },
+      date: '2019-10-16T18:56:04.674Z',
+      __v: 0,
+    }, {
+      _id: '55555555555555555555555555',
+      customId: 'promotion-product-563877',
+      imageUrl:
+          'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg',
+      title: "50% discount for 'test product 5' ",
+      product: {
+        enabled: true,
+        imageUrls: [
+          'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/laptops/apple/%D0%9D%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA+Apple+MacBook+Air+13+M1+512GB+2020/Space+Gray/MC13-sg-img5.jpg',
+        ],
+        quantity: 100,
+        _id: '333333333333333333333',
+        name: 'Huawei',
+        model: 'HUAWEI',
+        categories: 'phones',
         color: 'space gray',
         capacity: '512GB',
         storage: '8GB',
@@ -150,43 +207,46 @@ export default function MainBaner() {
   ];
 
   return (
-    <div className={styles.mainBanerWrapper}>
-      <Slider {...settings}>
-        {productsToSlide && productsToSlide.map((elem) => (
-          <MainBanerElem
-            title={elem.title}
+    <div>
+      <div className={styles.mainBanerWrapper}>
+        <Slider {...settings}>
+          {productsToSlide && productsToSlide.map((elem) => (
+            <MainBanerElement
+              title={elem.title}
             // eslint-disable-next-line no-underscore-dangle
-            id={elem._id}
-            img={elem.imageUrl}
+              id={elem._id}
             // eslint-disable-next-line no-underscore-dangle
-            key={elem._id}
-            model={elem.product.model}
-          />
-        ))}
-      </Slider>
+              img={elem.imageUrl}
+            // eslint-disable-next-line no-underscore-dangle
+              key={elem._id}
+              model={elem.product.model}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
 
 SampleNextArrow.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.string,
+  style: PropTypes.object,
   onClick: PropTypes.func,
 };
 
 SampleNextArrow.defaultProps = {
   className: '',
-  style: '',
+  style: {},
   onClick: () => {},
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
-  style: PropTypes.string,
+  style: PropTypes.object,
   onClick: PropTypes.func,
 };
 
 SamplePrevArrow.defaultProps = {
   className: '',
-  style: '',
+  style: {},
   onClick: () => {},
 };
