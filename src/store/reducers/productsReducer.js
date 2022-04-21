@@ -4,14 +4,16 @@ const initialValues = {
   products: [],
 };
 
-const productsReducer = (action, state = initialValues) => {
-  switch (action?.type) {
+const productsReducer = (state = initialValues, { type, payload } = {}) => {
+  switch (type) {
     case GET_ALL_PRODUCTS: {
-      const tempState = action.payload;
-      return { ...state, products: tempState };
+      // console.log(payload);
+      const tempState = { ...state, products: payload };
+      return tempState;
     }
 
-    default: return state;
+    default:
+      return state;
   }
 };
 

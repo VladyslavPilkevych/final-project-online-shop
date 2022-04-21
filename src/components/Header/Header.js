@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleMenu } from '../../store/actionCreators/menuAC';
 
 import Menu from '../Menu/Menu';
 
@@ -13,30 +15,32 @@ import { ReactComponent as Search } from '../../assets/icons/Vector.svg';
 import styles from './Header.module.scss';
 
 function Header() {
+  const isOpen = useSelector((state) => state.menu.payload);
+  const dispatch = useDispatch();
   const items = [
     {
       value: 'Laptops',
-      to: '/Laptops',
+      to: '/laptops',
       className: '{styles.navLinks}',
-      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+      style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Monitors',
-      to: '/Monitors',
+      to: '/monitors',
       className: '{styles.navLinks}',
-      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Phones',
-      to: '/Phones',
+      to: '/phones',
       className: '{styles.navLinks}',
-      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Headphones',
-      to: '/Headphones',
+      to: '/headphones',
       className: '{styles.navLinks}',
-      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
   ];
 
@@ -56,9 +60,7 @@ function Header() {
             </p>
           </div>
           <div className={styles.adressBurWrapper}>
-            <p className={styles.adressBur}>
-              Visit our showroom in 1234 Street Adress City Address, 1234
-            </p>
+            <p className={styles.adressBur}>Visit our showroom in 1234 Street Adress City A</p>
             <a className={styles.adressBurLink} href="mailto:address@gmail.com">
               Contact Us
             </a>
@@ -81,40 +83,19 @@ function Header() {
           <div className={styles.wrapperNavBar}>
             <nav className={styles.navBur}>
               <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/">
+                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
                   <LogoIcon className={styles.logo} />
                 </NavLink>
               </li>
             </nav>
             <nav className={styles.navBur}>
-              <div className={styles.btnBurger}>
-                <span className={styles.btnSpan}> </span>
-              </div>
-              <Menu header="menasdasdau" items={items} />
-              {/* <li>
-                <NavLink className={styles.navLinks}
-                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Laptops">
-                  Laptops
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.navLinks}
-                 style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Monitors">
-                  Monitors
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.navLinks}
-                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Phones">
-                  Phones
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={styles.navLinks}
-                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Headphones">
-                  Headphones
-                </NavLink>
-              </li> */}
+              {true && (
+                <div className={styles.btnBurger} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))}>
+                  {' '}
+                  <span className={styles.btnSpan}> </span>
+                </div>
+              )}
+              <Menu items={items} />
             </nav>
           </div>
           <div className={styles.navBarRight}>
@@ -124,12 +105,12 @@ function Header() {
                 <Search className={styles.searchIcon} />
               </div>
               <li className={styles.navBarRightItem}>
-                <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/cart">
+                <NavLink style={({ isActive }) => (isActive ? activeStyle : null)} to="/cart">
                   <CartIcon className={styles.cartIcon} />
                 </NavLink>
               </li>
               <li className={styles.navBarRightItem}>
-                <NavLink style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/sign-in">
+                <NavLink style={({ isActive }) => (isActive ? activeStyle : null)} to="/sign-in">
                   <SignInIcon className={styles.signInIcon} />
                 </NavLink>
               </li>

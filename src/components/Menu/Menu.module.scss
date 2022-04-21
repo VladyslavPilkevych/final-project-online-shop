@@ -20,7 +20,7 @@
 .menuLogoIcon {
   display: none;
 }
-.btnClose{
+.btnClose {
   display: none;
 }
 
@@ -29,7 +29,7 @@
     left: 0;
     width: 436px;
     position: fixed;
-    top: 103px;
+    top: 0;
     height: 70vh;
     z-index: 20;
     background-color: white;
@@ -68,8 +68,9 @@
     justify-content: space-between;
     border-bottom: 1px solid $grey-star;
   }
-  .btnClose{
+  .btnClose {
     margin-right: 7px;
     cursor: pointer;
+    display: block;
   }
 }
