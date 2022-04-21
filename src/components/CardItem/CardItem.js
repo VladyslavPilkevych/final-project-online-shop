@@ -53,19 +53,21 @@ function CardItem(props) {
       <h3 className={styles.productName}>{name}</h3>
       {previousPrice && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
-      {inCart
-        ? (
-          <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
-            <img alt="icon cart" src="./images/inCart.png" />
-            <p>Already in cart</p>
-          </Button>
-        )
-        : (
-          <Button handleClick={addToCart} style={styles.btnCart}>
-            <img alt="icon cart" src="./images/cart.png" />
-            <p>Add To Cart</p>
-          </Button>
-        )}
+      <div className={styles.btnCartContainer}>
+        {inCart
+          ? (
+            <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
+              <img alt="icon cart" src="./images/inCart.png" />
+              <p>Already in cart</p>
+            </Button>
+          )
+          : (
+            <Button handleClick={addToCart} style={styles.btnCart}>
+              <img alt="icon cart" src="./images/cart.png" />
+              <p>Add To Cart</p>
+            </Button>
+          )}
+      </div>
     </div>
   );
 }
