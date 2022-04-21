@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Header.module.scss';
+
+import Menu from '../Menu/Menu';
+
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
@@ -8,9 +10,38 @@ import { ReactComponent as CartIcon } from '../../assets/icons/Cart.svg';
 import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
 import { ReactComponent as Search } from '../../assets/icons/Vector.svg';
 
+import styles from './Header.module.scss';
+
 function Header() {
+  const items = [
+    {
+      value: 'Laptops',
+      to: '/Laptops',
+      className: '{styles.navLinks}',
+      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+    },
+    {
+      value: 'Monitors',
+      to: '/Monitors',
+      className: '{styles.navLinks}',
+      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+    },
+    {
+      value: 'Phones',
+      to: '/Phones',
+      className: '{styles.navLinks}',
+      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+    },
+    {
+      value: 'Headphones',
+      to: '/Headphones',
+      className: '{styles.navLinks}',
+      style: '{({ isActive }) => (isActive ? activeStyle : undefined)}',
+    },
+  ];
+
   const activeStyle = {
-    opacity: '0.5',
+    // opacity: '0.5',
     cursor: 'default',
     pointerEvents: 'none',
   };
@@ -48,36 +79,46 @@ function Header() {
       <div className={styles.whiteWrapper}>
         <div className={styles.wrapperContainer}>
           <div className={styles.wrapperNavBar}>
-            <ul className={styles.navBur}>
+            <nav className={styles.navBur}>
               <li>
                 <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/">
                   <LogoIcon className={styles.logo} />
                 </NavLink>
               </li>
-              <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Laptops">
+            </nav>
+            <nav className={styles.navBur}>
+              <div className={styles.btnBurger}>
+                <span className={styles.btnSpan}> </span>
+              </div>
+              <Menu header="menasdasdau" items={items} />
+              {/* <li>
+                <NavLink className={styles.navLinks}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Laptops">
                   Laptops
                 </NavLink>
               </li>
               <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Monitors">
+                <NavLink className={styles.navLinks}
+                 style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Monitors">
                   Monitors
                 </NavLink>
               </li>
               <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Phones">
+                <NavLink className={styles.navLinks}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Phones">
                   Phones
                 </NavLink>
               </li>
               <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Headphones">
+                <NavLink className={styles.navLinks}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)} to="/Headphones">
                   Headphones
                 </NavLink>
-              </li>
-            </ul>
+              </li> */}
+            </nav>
           </div>
           <div className={styles.navBarRight}>
-            <ul className={styles.navBur}>
+            <nav className={styles.navBur}>
               <div className={styles.searchBox}>
                 <input className={styles.searchInput} type="text" placeholder="Search entiere store here..." />
                 <Search className={styles.searchIcon} />
@@ -92,7 +133,7 @@ function Header() {
                   <SignInIcon className={styles.signInIcon} />
                 </NavLink>
               </li>
-            </ul>
+            </nav>
           </div>
         </div>
       </div>
