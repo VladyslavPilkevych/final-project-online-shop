@@ -1,20 +1,20 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import styles from './CardItem.module.scss';
 import Button from '../Button/Button';
 
 function CardItem(props) {
   const {
-    name, currentPrice, id, img, quantity,
+    name, currentPrice, id, img, quantity, previousPrice, elementClassName,
   } = props;
-  const dispatch = useDispatch();
-  const [oldPrice, setOldPrice] = useState(null);
+  // const dispatch = useDispatch();
+  // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
-  useEffect(() => {
-    // setOldPrice(String(currentPrice.slice(1) * 1.25).split('.')[0]);
-  }, []);
+  // useEffect(() => {
+  // setpreviousPrice('$' + String(currentPrice.slice(1) * 1.25).split('.')[0] + '.99');
+  // }, []);
   const addToFavourite = () => {
     setFavourite(true);
     console.log('addToFavourite');
@@ -28,7 +28,7 @@ function CardItem(props) {
     console.log('addToCart');
   };
   return (
-    <div id={id} className={styles.productItem}>
+    <div id={id} className={`${styles.productItem} ${elementClassName}`}>
       {quantity
         ? (
           <p className={styles.available}>
@@ -50,25 +50,24 @@ function CardItem(props) {
           : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
       }
       <img className={styles.imgProduct} alt="product" src={img} />
-      <h3>{name}</h3>
-      <span className={styles.oldPrice}>
-        $
-        {oldPrice}
-        .99
-      </span>
+      <h3 className={styles.productName}>{name}</h3>
+      {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
-      {inCart
-        ? (
-          <Button style={styles.btnInCart}>
-            <p>Already in cart</p>
-          </Button>
-        )
-        : (
-          <Button handleClick={addToCart} style={styles.btnCart}>
-            <img alt="icon cart" src="./images/cart.png" />
-            <p>Add To Cart</p>
-          </Button>
-        )}
+      <div className={styles.btnCartContainer}>
+        {inCart
+          ? (
+            <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
+              <img alt="icon cart" src="./images/inCart.png" />
+              <p>Already in cart</p>
+            </Button>
+          )
+          : (
+            <Button handleClick={addToCart} style={styles.btnCart}>
+              <img alt="icon cart" src="./images/cart.png" />
+              <p>Add To Cart</p>
+            </Button>
+          )}
+      </div>
     </div>
   );
 }
@@ -83,16 +82,19 @@ CardItem.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   quantity: PropTypes.number,
+  previousPrice: PropTypes.number,
+  elementClassName: PropTypes.string,
 };
 
 CardItem.defaultProps = {
   name: '',
   img: '',
   currentPrice: 0,
-  id: 'null',
   quantity: 0,
+  previousPrice: 0,
+  elementClassName: '',
 };
 
 export default memo(CardItem);

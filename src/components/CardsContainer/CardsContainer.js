@@ -14,6 +14,18 @@ function CardsContainer() {
   return (
     <section className={styles.cardContainer}>
       <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
+      <CardItem name={name} currentPrice={currentPrice} id={id} img={img} quantity={quantity} />
     </section>
   );
 }
