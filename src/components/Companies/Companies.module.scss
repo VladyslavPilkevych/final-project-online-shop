@@ -1,25 +1,44 @@
 .companiesLogos {
-    max-width: 1398px;
+    max-width: 1399px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    justify-self: center;
     margin-top: 30px;
     margin-bottom: 42px;
 }
 
-@media screen and (min-device-width: 768px) and (max-device-width: 1365px) {
+.companieImage {
+    max-width: 200px;
+}
+
+@media screen and (min-device-width: 1204px) and (max-device-width: 1397px) {
     .companiesLogos {
-        flex-wrap: wrap;
-        justify-content: space-between;
+       display: grid;
+       justify-items: center;
+       grid-template-columns: repeat(5, 1fr);
     }
 }
 
-@media screen and (min-device-width: 375px) and (max-device-width: 767px) {
+@media screen and (min-device-width: 769px) and (max-device-width: 1203px) {
+    .companiesLogos {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       align-items: center;
+       justify-items: center;
+    }
+}
+
+@media screen and (min-device-width: 325px) and (max-device-width: 768px) {
     .companiesLogos {
        display: grid;
        grid-template-columns: repeat(2, 1fr);
        align-items: center;
        justify-items: center;
+    }
+
+    .companieImage {
+        max-width: 170px;
     }
 }
     
