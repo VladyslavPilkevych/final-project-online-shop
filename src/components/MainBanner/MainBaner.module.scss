@@ -1,0 +1,15 @@
+.mainBanerWrapper {
+  max-width: 1398px;
+  margin: 0 auto 20px auto;
+}
+
+@media screen and (max-device-width: 1398px) {
+  .mainBanerWrapper {
+    margin: 15px;
+  }
+}
+@media screen and (max-device-width: 768px) {
+  .mainBanerWrapper {
+    margin: 10px;
+  }
+}
