@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
+import { toggleSearch } from '../../store/actionCreators/searchAC';
+import { toggleCart } from '../../store/actionCreators/cartAC';
 
 import Menu from '../Menu/Menu';
-
+import Search from '../Search/Search';
+import MiniCart from '../MiniCart/MiniCart';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/Cart.svg';
 import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
-import { ReactComponent as Search } from '../../assets/icons/Vector.svg';
+import { ReactComponent as SearchIcon } from '../../assets/icons/Vector.svg';
 
 import styles from './Header.module.scss';
 
 function Header() {
-  const isOpen = useSelector((state) => state.menu.payload);
+  const isOpen = useSelector((state) => state.menu.isOpen);
+
+  const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
+  const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+
   const dispatch = useDispatch();
+
   const items = [
     {
       value: 'Laptops',
@@ -84,7 +92,7 @@ function Header() {
             <nav className={styles.navBur}>
               <li>
                 <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
-                  <LogoIcon className={styles.logo} />
+                  <LogoIcon className={styles.logo} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))} />
                 </NavLink>
               </li>
             </nav>
@@ -100,14 +108,11 @@ function Header() {
           </div>
           <div className={styles.navBarRight}>
             <nav className={styles.navBur}>
-              <div className={styles.searchBox}>
-                <input className={styles.searchInput} type="text" placeholder="Search entiere store here..." />
-                <Search className={styles.searchIcon} />
-              </div>
+              <Search />
+              <SearchIcon className={styles.searchIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleSearch(!isOpenSearch))} />
               <li className={styles.navBarRightItem}>
-                <NavLink style={({ isActive }) => (isActive ? activeStyle : null)} to="/cart">
-                  <CartIcon className={styles.cartIcon} />
-                </NavLink>
+                <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
+                <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
                 <NavLink style={({ isActive }) => (isActive ? activeStyle : null)} to="/sign-in">

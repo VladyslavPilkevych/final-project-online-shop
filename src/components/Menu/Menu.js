@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable arrow-parens */
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
+import { ReactComponent as ArrowIcon } from '../../assets/icons/arrowMenu.svg';
 
 import styles from './Menu.module.scss';
 
@@ -22,20 +24,24 @@ function Menu({ items }) {
   };
   return (
     <div className={styles.menu} role="button" tabIndex="0" onClick={closeMenu}>
-      <div className={styles.menuContent} role="button" tabIndex="0" onClick={e => e.stopPropagation()}>
-        <div className={styles.menuHeader}>
-          <LogoIcon className={styles.menuLogoIcon} onClick={() => navigate('/')} />
-          <CloseIcon className={styles.btnClose} onClick={closeMenu} />
+      <div className={styles.menuWrapper}>
+        <div className={styles.menuContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
+          <div className={styles.menuHeader}>
+            <LogoIcon className={styles.menuLogoIcon} onClick={() => navigate('/')} />
+            <CloseIcon className={styles.btnClose} onClick={closeMenu} />
+          </div>
+          <ul className={styles.navBur}>
+            {items.map((item) => (
+              <li key={item.value}>
+                <div>
+                  <NavLink className={styles.navLinks} style={style} to={item.to} onClick={closeMenu}>
+                    {item.value}
+                  </NavLink>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className={styles.navBur}>
-          {items.map((item) => (
-            <li key={item.value}>
-              <NavLink className={styles.navLinks} style={style} to={item.to}>
-                {item.value}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
