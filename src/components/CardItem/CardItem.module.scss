@@ -142,6 +142,7 @@
 @media (max-width: 768px) {
     .productItem {
         position: relative;
+        padding-bottom: 10px;
         .btnCartContainer,
         .iconFav {
             display: flex;
@@ -155,17 +156,25 @@
             max-height: 100px;
             max-width: 100px;
         }
+        .productName {
+            font-size: 11px;
+        }
+        .previousPrice {
+            font-size: 12px;
+        }
+        .price {
+            font-size: 14px;
+        }
         .btnCartContainer {
-            // left: 80%;
-            position: absolute;
-            right: 10px;
-            bottom: 7px;
+            position: static;
+            float: right;
             margin: 0;
             box-shadow: none;
             border: none;
-            max-width: 30px;
+            max-width: 27px;
+            margin-right: 5px;
+            padding-bottom: 0;
             .btnCart {
-                // margin-bottom: 10px;
                 padding: 5px;
                 img {
                     margin: 1px 0 0 1px;
@@ -183,5 +192,8 @@
     }
     .productItem:hover {
         transform: none;
+        .btnCartContainer {
+            position: static;
+        }
     }
 }

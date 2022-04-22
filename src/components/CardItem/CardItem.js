@@ -51,7 +51,7 @@ function CardItem(props) {
       }
       <img className={styles.imgProduct} alt="product" src={img} />
       <h3 className={styles.productName}>{name}</h3>
-      {previousPrice && <span className={styles.previousPrice}>{previousPrice}</span>}
+      {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
       <div className={styles.btnCartContainer}>
         {inCart
@@ -82,7 +82,7 @@ CardItem.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  id: PropTypes.number,
+  id: PropTypes.string.isRequired,
   quantity: PropTypes.number,
   previousPrice: PropTypes.number,
   elementClassName: PropTypes.string,
@@ -92,7 +92,6 @@ CardItem.defaultProps = {
   name: '',
   img: '',
   currentPrice: 0,
-  id: null,
   quantity: 0,
   previousPrice: 0,
   elementClassName: '',
