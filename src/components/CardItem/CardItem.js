@@ -49,7 +49,9 @@ function CardItem(props) {
           ? <img onClick={removeFromFav} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/removeFromFavIcon.png" />
           : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
       }
-      <img className={styles.imgProduct} alt="product" src={img} />
+      <div className={styles.imageContainer}>
+        <img className={styles.imgProduct} alt="product" src={img} />
+      </div>
       <h3 className={styles.productName}>{name}</h3>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>

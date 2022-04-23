@@ -67,6 +67,7 @@ function NewProductsContainer() {
     swipeToSlide: true,
     slidesToShow: 6,
     slidesToScroll: 3,
+    overflow: false,
     responsive: [
       {
         breakpoint: 1398,
@@ -106,18 +107,21 @@ function NewProductsContainer() {
     prevArrow: <SamplePrevArrow />,
   };
 
+  const heightCarousel = '500px';
   return (
     <div>
       <div className={styles.newProductsWrapper}>
         <Slider {...settings}>
           {newProducts && newProducts.map((elem) => (
             <CardItem
+              style={{ height: heightCarousel }}
+              className={styles.cardItemWrapper}
               name={elem.name}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               id={elem._id}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               img={elem.imageUrls[0]}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               key={elem._id}
               currentPrice={elem.currentPrice}
               quantity={50}
@@ -141,7 +145,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -152,5 +156,5 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };

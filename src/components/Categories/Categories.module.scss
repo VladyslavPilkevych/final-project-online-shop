@@ -1,10 +1,9 @@
 .categories {
-    position: relative;
-    display: inline;
+    display: flex;
     max-width: 1398px;
     margin: 0 auto;
-    .categorieImg {
-        max-width: 230px;
-        max-height: 350px;
-    }
+    // .categorieImg {
+    //     max-width: 230px;
+    //     max-height: 350px;
+    // }
 }

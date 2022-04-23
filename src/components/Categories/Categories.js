@@ -134,8 +134,12 @@ function CategoryProductsContainer() {
 function Categories() {
   return (
     <section className={styles.categories}>
-      <img className={styles.categorieImg} alt="categorie-img" src="./images/img.png" />
-      <CategoryProductsContainer />
+      <div>
+        <img className={styles.categorieImg} alt="categorie-img" src="./images/img.png" />
+      </div>
+      <div>
+        <CategoryProductsContainer />
+      </div>
     </section>
   );
 }
