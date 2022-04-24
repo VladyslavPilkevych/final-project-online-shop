@@ -2,7 +2,6 @@ import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MainBaner from '../../components/MainBanner/MainBaner';
 import NewProductsContainer from '../../components/NewProductsContainer/NewProductsContainer';
-import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import Companies from '../../components/Companies/Companies';
 import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
@@ -28,7 +27,6 @@ function HomePage() {
     <div className="Page">
       <MainBaner />
       <NewProductsContainer />
-      <CardsContainer />
       <Companies />
       <Posts />
       <Advantages />
