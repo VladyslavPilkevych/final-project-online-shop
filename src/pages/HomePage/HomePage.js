@@ -6,6 +6,7 @@ import CardsContainer from '../../components/CardsContainer/CardsContainer';
 import Companies from '../../components/Companies/Companies';
 import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
+import Advantages from '../../components/Advantages/Advantages';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);
@@ -30,6 +31,7 @@ function HomePage() {
       <CardsContainer />
       <Companies />
       <Posts />
+      <Advantages />
     </div>
   );
 }
