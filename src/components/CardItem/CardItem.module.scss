@@ -7,7 +7,6 @@
     color: $color;
 }
 .productItem {
-    // height: 250px;
     width: 100%;
     height: 100%;
     text-align: left;
@@ -68,6 +67,11 @@
         color: #39404b;
         margin: 0;
         margin-top: 15px;
+    }
+    .productModel {
+        @include fonts("Poppins", 12x, black, 400);
+        color: #39404b;
+        margin: 0;
     }
     .previousPrice {
         @include fonts("Poppins", 14px, #666666, 400);
@@ -140,6 +144,67 @@
         position: absolute;
         .btnCart {
             display: flex;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .productItem {
+        position: relative;
+        padding-bottom: 10px;
+        .btnCartContainer,
+        .iconFav {
+            display: flex;
+            opacity: 1;
+        }
+        .iconFav {
+            right: 25px;
+            top: 10px;
+        }
+        .imgProduct {
+            // width: 100px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+        .productName {
+            font-size: 11px;
+        }
+        .previousPrice {
+            font-size: 12px;
+        }
+        .price {
+            font-size: 14px;
+        }
+        .btnCartContainer {
+            position: static;
+            float: right;
+            margin: 0;
+            margin-top: -40px;
+            box-shadow: none;
+            border: none;
+            max-width: 27px;
+            padding-bottom: 0;
+            margin-right: 21px;
+            .btnCart {
+                padding: 5px;
+                img {
+                    margin: 1px 0 0 1px;
+                }
+                P {
+                    display: none;
+                }
+            }
+            .btnInCart {
+                img {
+                    display: inline;
+                }
+            }
+        }
+    }
+    .productItem:hover {
+        transform: none;
+        .btnCartContainer {
+            position: static;
         }
     }
 }

@@ -126,6 +126,7 @@ function NewProductsContainer() {
               currentPrice={elem.currentPrice}
               quantity={50}
               model={elem.model}
+              elementClassName={styles.cardItems}
             />
           ))}
         </Slider>

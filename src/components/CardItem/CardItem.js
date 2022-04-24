@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 
 function CardItem(props) {
   const {
-    name, currentPrice, id, img, quantity, previousPrice, elementClassName,
+    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model,
   } = props;
   // const dispatch = useDispatch();
   // const [previousPrice, setPreviousPrice] = useState(null);
@@ -53,6 +53,7 @@ function CardItem(props) {
         <img className={styles.imgProduct} alt="product" src={img} />
       </div>
       <h3 className={styles.productName}>{name}</h3>
+      <h2 className={styles.productModel}>{model}</h2>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
       <div className={styles.btnCartContainer}>
@@ -88,6 +89,7 @@ CardItem.propTypes = {
   quantity: PropTypes.number,
   previousPrice: PropTypes.number,
   elementClassName: PropTypes.string,
+  model: PropTypes.string,
 };
 
 CardItem.defaultProps = {
@@ -97,6 +99,7 @@ CardItem.defaultProps = {
   quantity: 0,
   previousPrice: 0,
   elementClassName: '',
+  model: '',
 };
 
 export default memo(CardItem);
