@@ -27,7 +27,7 @@ function HomePage() {
     <div className="Page">
       <MainBaner />
       <NewProductsContainer />
-      <CardsContainer />
+      {/* <CardsContainer /> */}
       <Companies />
       <Posts />
     </div>

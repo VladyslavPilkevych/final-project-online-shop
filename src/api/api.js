@@ -18,6 +18,9 @@ const headers = {
 export function getAllProductsApi() {
   return axios.get(`${BASE_URL}/products`);
 }
+export function getProductApi(itemNo) {
+  return axios.get(`${BASE_URL}/products/${itemNo}`);
+}
 
 export function createNewCustomer(newCustomer) {
   return axios.post(`${BASE_URL}/customers`, newCustomer, { headers });

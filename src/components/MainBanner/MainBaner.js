@@ -207,7 +207,7 @@ export default function MainBaner() {
   ];
 
   return (
-    <div>
+    <div className={styles.mainBanerWrapperMain}>
       <div className={styles.mainBanerWrapper}>
         <Slider {...settings}>
           {productsToSlide && productsToSlide.map((elem) => (
