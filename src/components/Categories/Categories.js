@@ -57,10 +57,17 @@ function SamplePrevArrow(props) {
   );
 }
 
-function CategoryProductsContainer() {
+function CategoryProductsContainer(props) {
   const allProducts = useSelector((state) => state.products.products);
+  const { productsCategories } = props;
   console.log(allProducts);
-  const newProducts = allProducts && allProducts.slice(10, 22);
+  const eachCategory = allProducts.map((product) => {
+    if (product.categories === productsCategories) {
+      return product;
+    }
+    return null;
+  });
+  const resultProducts = eachCategory.filter((element) => element !== null);
   useEffect(() => {
   }, [allProducts]);
   const settings = {
@@ -68,19 +75,20 @@ function CategoryProductsContainer() {
     swipeToSlide: true,
     slidesToShow: 5,
     slidesToScroll: 3,
+    overflow: false,
     responsive: [
-      // {
-      //   breakpoint: 1398,
-      //   settings: {
-      //     slidesToShow: 5,
-      //     slidesToScroll: 0,
-      //     infinite: false,
-      //   },
-      // },
+      {
+        breakpoint: 1398,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          infinite: true,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
         },
@@ -88,7 +96,7 @@ function CategoryProductsContainer() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -107,12 +115,15 @@ function CategoryProductsContainer() {
     prevArrow: <SamplePrevArrow />,
   };
 
+  const heightCarousel = '500px';
   return (
     <div>
       <div className={carouselStyles.categoriesWrapper}>
         <Slider {...settings}>
-          {newProducts && newProducts.map((elem) => (
+          {resultProducts && resultProducts.map((elem) => (
             <CardItem
+              style={{ height: heightCarousel }}
+              className={styles.cardItemWrapper}
               name={elem.name}
               // eslint-disable-next-line no-underscore-dangle
               id={elem._id}
@@ -131,14 +142,15 @@ function CategoryProductsContainer() {
   );
 }
 
-function Categories() {
+function Categories(props) {
+  const { productsCategories } = props;
   return (
     <section className={styles.categories}>
       <div>
         <img className={styles.categorieImg} alt="categorie-img" src="./images/img.png" />
       </div>
       <div>
-        <CategoryProductsContainer />
+        <CategoryProductsContainer productsCategories={productsCategories} />
       </div>
     </section>
   );
@@ -165,6 +177,22 @@ SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
   onClick: () => { },
+};
+
+CategoryProductsContainer.propTypes = {
+  productsCategories: PropTypes.string,
+};
+
+CategoryProductsContainer.defaultProps = {
+  productsCategories: '',
+};
+
+Categories.propTypes = {
+  productsCategories: PropTypes.string,
+};
+
+Categories.defaultProps = {
+  productsCategories: '',
 };
 
 export default memo(Categories);
