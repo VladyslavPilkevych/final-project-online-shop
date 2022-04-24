@@ -113,15 +113,16 @@ function NewProductsContainer() {
           {newProducts && newProducts.map((elem) => (
             <CardItem
               name={elem.name}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               id={elem._id}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               img={elem.imageUrls[0]}
-            // eslint-disable-next-line no-underscore-dangle
+              // eslint-disable-next-line no-underscore-dangle
               key={elem._id}
               currentPrice={elem.currentPrice}
               quantity={50}
               model={elem.model}
+              elementClassName={styles.cardItems}
             />
           ))}
         </Slider>
@@ -141,7 +142,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -152,5 +153,5 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };
