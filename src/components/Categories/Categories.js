@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import CardItem from '../CardItem/CardItem';
 
 import styles from './Categories.module.scss';
-import carouselStyles from './CategoryProductsContainer.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -68,6 +67,7 @@ function CategoryProductsContainer(props) {
     return null;
   });
   const resultProducts = eachCategory.filter((element) => element !== null);
+  console.log(resultProducts);
   useEffect(() => {
   }, [allProducts]);
   const settings = {
@@ -96,13 +96,13 @@ function CategoryProductsContainer(props) {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
           initialSlide: 2,
         },
       },
       {
-        breakpoint: 375,
+        breakpoint: 376,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -111,14 +111,14 @@ function CategoryProductsContainer(props) {
     ],
     // slidesToShow: 1,
     // slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
   };
 
   const heightCarousel = '500px';
   return (
     <div>
-      <div className={carouselStyles.categoriesWrapper}>
+      <div className={styles.categoriesWrapper}>
         <Slider {...settings}>
           {resultProducts && resultProducts.map((elem) => (
             <CardItem
@@ -146,10 +146,12 @@ function Categories(props) {
   const { productsCategories } = props;
   return (
     <section className={styles.categories}>
-      <div>
-        <img className={styles.categorieImg} alt="categorie-img" src="./images/img.png" />
+      <div className={styles.categorieImg}>
+        {/* <img alt="categorie-img" src="./images/img.png" /> */}
+        <h3>{productsCategories}</h3>
+        <p>See All Products</p>
       </div>
-      <div>
+      <div className={styles.categorieSlider}>
         <CategoryProductsContainer productsCategories={productsCategories} />
       </div>
     </section>

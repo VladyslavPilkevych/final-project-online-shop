@@ -27,7 +27,10 @@ function HomePage() {
     <div className="Page">
       <MainBaner />
       <NewProductsContainer />
+      <Categories productsCategories="laptop" />
       <Categories productsCategories="headphones" />
+      <Categories productsCategories="phones" />
+      <Categories productsCategories="monitor" />
       <Companies />
       <Posts />
     </div>

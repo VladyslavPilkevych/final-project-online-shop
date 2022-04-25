@@ -1,4 +1,8 @@
 .slick-track {
-    height: 360px;
-    overflow: visible;
+    // height: 360px;
+    // overflow: visible;
+    padding-bottom: 50px;
+    :nth-child(0) {
+        padding-bottom: 0;
+    }
 }
