@@ -122,6 +122,7 @@ function NewProductsContainer() {
               currentPrice={elem.currentPrice}
               quantity={50}
               model={elem.model}
+              elementClassName={styles.cardItems}
             />
           ))}
         </Slider>
@@ -141,7 +142,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -152,5 +153,5 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => {},
+  onClick: () => { },
 };
