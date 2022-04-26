@@ -14,8 +14,7 @@ function HomePage() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
-  useEffect(() => {
-  }, [allProducts]);
+  useEffect(() => {}, [allProducts]);
   console.log(allProducts);
   // useEffect(() => {
   //   if () {
