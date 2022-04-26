@@ -5,10 +5,7 @@ import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import CartPage from '../pages/CartPage/CartPage';
 import FavouritePage from '../pages/FavouritePage/FavouritePage';
-import LaptopsPage from '../pages/LaptopsPage/LaptopsPage';
-import MonitorsPage from '../pages/MonitorsPage/MonitorsPage';
-import PhonesPage from '../pages/PhonesPage/PhonesPage';
-import HeadphonesPage from '../pages/HeadphonesPage/HeadphonesPage';
+import CatogoryPage from '../pages/CatogoryPage/CatogoryPage';
 
 function AppRoutes() {
   return (
@@ -18,10 +15,8 @@ function AppRoutes() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favourite" element={<FavouritePage />} />
-      <Route path="/laptops" element={<LaptopsPage />} />
-      <Route path="/monitors" element={<MonitorsPage />} />
-      <Route path="/phones" element={<PhonesPage />} />
-      <Route path="/headphones" element={<HeadphonesPage />} />
+      <Route path="/category" element={<CatogoryPage />} />
+      <Route path="/category/:categories" element={<CatogoryPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

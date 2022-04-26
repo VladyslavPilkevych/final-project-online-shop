@@ -28,25 +28,25 @@ function Header() {
   const items = [
     {
       value: 'Laptops',
-      to: '/laptops',
+      to: '/category/laptops',
       className: '{styles.navLinks}',
       style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Monitors',
-      to: '/monitors',
+      to: '/category/monitors',
       className: '{styles.navLinks}',
       // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Phones',
-      to: '/phones',
+      to: '/category/phones',
       className: '{styles.navLinks}',
       // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Headphones',
-      to: '/headphones',
+      to: '/category/headphones',
       className: '{styles.navLinks}',
       // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
@@ -91,19 +91,30 @@ function Header() {
           <div className={styles.wrapperNavBar}>
             <nav className={styles.navBur}>
               <li>
-                <NavLink className={styles.navLinks} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
-                  <LogoIcon className={styles.logo} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))} />
+                <NavLink className={styles.navLinksLogo} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
+                  <LogoIcon className={styles.logo} role="button" tabIndex="0" />
                 </NavLink>
               </li>
             </nav>
             <nav className={styles.navBur}>
-              {true && (
+              {(!isOpen) && (
                 <div className={styles.btnBurger} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))}>
                   {' '}
                   <span className={styles.btnSpan}> </span>
                 </div>
               )}
               <Menu items={items} />
+            </nav>
+            <nav className={styles.navBur}>
+              {items.map((item) => (
+                <li key={item.value}>
+                  <div>
+                    <NavLink className={styles.navLinks} style={items.style} to={item.to}>
+                      {item.value}
+                    </NavLink>
+                  </div>
+                </li>
+              ))}
             </nav>
           </div>
           <div className={styles.navBarRight}>

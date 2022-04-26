@@ -1,6 +1,7 @@
 @import '../../assets/styles/global.module.scss';
 .navBur {
-  display: flex;
+  display: none;
+  // display: flex;
   list-style: none;
   align-items: center;
 }
@@ -25,20 +26,27 @@
 }
 
 @media (max-width: 768px) and (min-width: 376px) {
+  .navBur {
+    display: flex;
+  }
   .menu {
-    left: 0;
+    left: -1px;
     width: 55%;
     position: fixed;
-    top: 0;
-    height: 70vh;
-    z-index: 20;
+    top: -1px;
+    // height: 65vh;
+    z-index: 23;
     background-color: white;
     border: 1px solid black;
     box-sizing: border-box;
   }
   .menuContent {
-    margin: 10px;
-    width: 50vw;
+    // margin: 10px;
+    width: 52vw;
+    z-index: 31;
+    background-color: white;
+    height: auto;
+    padding: 10px;
   }
   .navBur {
     flex-direction: column;
@@ -89,25 +97,31 @@
     height: 100vh;
     position: absolute;
     backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 @media (max-width: 375px) and (min-width: 240px) {
+  .navBur {
+    display: flex;
+  }
   .menu {
     left: 0;
     // width: 375px;
-    width: 100%;
+    // width: 100%;
     position: fixed;
     top: 0;
-    height: 70vh;
+    height: 65vh;
     z-index: 30;
     background-color: white;
     border: 1px solid black;
     box-sizing: border-box;
   }
   .menuContent {
-    margin: 10px;
-    // width: 50vw;
-    z-index: 30;
+    width: 52vw;
+    z-index: 31;
+    background-color: white;
+    height: auto;
+    padding: 10px;
   }
   .navBur {
     flex-direction: column;
@@ -147,6 +161,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    backdrop-filter: blur(2px);
+    // backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

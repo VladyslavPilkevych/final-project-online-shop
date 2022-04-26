@@ -186,7 +186,14 @@ nav {
 .searchIcon {
   cursor: pointer;
   fill: $black;
-  
+}
+.navLinks {
+  margin-right: 30px;
+  color: $black;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-decoration: none;
 }
 @media (max-width: 768px) and (min-width: 376px) {
   .blackBg {
@@ -273,7 +280,7 @@ nav {
   .btnBurger {
     position: relative;
     z-index: 22;
-    // margin-left: 24px;
+    margin-left: 10px;
     cursor: pointer;
     // left: 24px;
     // top: 22px;
@@ -306,8 +313,15 @@ nav {
     color: $white;
     border-bottom: 2px solid $white;
   }
+  .navLinks{
+    display: none; 
+  }
 }
 @media (max-width: 375px) and (min-width: 240px) {
+  .navLinks{
+    display: none;
+  }
+
   .blackBg {
     max-width: 375px;
   }

@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable arrow-parens */
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
-import { ReactComponent as ArrowIcon } from '../../assets/icons/arrowMenu.svg';
 
 import styles from './Menu.module.scss';
 
