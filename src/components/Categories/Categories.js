@@ -143,10 +143,10 @@ function CategoryProductsContainer(props) {
 }
 
 function Categories(props) {
-  const { productsCategories } = props;
+  const { productsCategories, imageSrc } = props;
   return (
     <section className={styles.categories}>
-      <div className={styles.categorieImg}>
+      <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
         {/* <img alt="categorie-img" src="./images/img.png" /> */}
         <h3>{productsCategories}</h3>
         <p>See All Products</p>
@@ -191,10 +191,12 @@ CategoryProductsContainer.defaultProps = {
 
 Categories.propTypes = {
   productsCategories: PropTypes.string,
+  imageSrc: PropTypes.string,
 };
 
 Categories.defaultProps = {
   productsCategories: '',
+  imageSrc: '',
 };
 
 export default memo(Categories);
