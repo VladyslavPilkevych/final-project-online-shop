@@ -126,9 +126,13 @@
             }
             p {
                 @include fonts("Poppins", 14px, #c94d3f, 600);
+                margin-left: 7px;
             }
         }
     }
+}
+.linksToCardPage {
+    text-decoration: none;
 }
 .productItem:hover {
     z-index: 5;

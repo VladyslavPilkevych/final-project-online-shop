@@ -1,6 +1,7 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
 // import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styles from './CardItem.module.scss';
 import Button from '../Button/Button';
 
@@ -50,10 +51,16 @@ function CardItem(props) {
           : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
       }
       <div className={styles.imageContainer}>
-        <img className={styles.imgProduct} alt="product" src={img} />
+        <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+          <img className={styles.imgProduct} alt="product" src={img} />
+        </Link>
       </div>
-      <h3 className={styles.productName}>{name}</h3>
-      <h2 className={styles.productModel}>{model}</h2>
+      <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+        <h3 className={styles.productName}>{name}</h3>
+      </Link>
+      <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+        <h2 className={styles.productModel}>{model}</h2>
+      </Link>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
       <div className={styles.btnCartContainer}>
