@@ -90,7 +90,7 @@ function SignUpPage() {
               {/* <CustomInput
                 name="avatarUrl"
                 type={"url" || "file"}
-                placeholder="Email"
+                placeholder="avatarUrl"
               /> */}
               <CustomInput
                 name="password"
