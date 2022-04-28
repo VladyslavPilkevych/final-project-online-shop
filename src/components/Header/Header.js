@@ -30,7 +30,7 @@ function Header() {
       value: 'Laptops',
       to: '/category/laptops',
       className: '{styles.navLinks}',
-      style: '{({ isActive }) => (isActive ? activeStyle : null)}',
+      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Monitors',
@@ -90,14 +90,12 @@ function Header() {
         <div className={styles.wrapperContainer}>
           <div className={styles.wrapperNavBar}>
             <nav className={styles.navBur}>
-              <li>
-                <NavLink className={styles.navLinksLogo} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
-                  <LogoIcon className={styles.logo} role="button" tabIndex="0" />
-                </NavLink>
-              </li>
+              <NavLink className={styles.navLinksLogo} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
+                <LogoIcon className={styles.logo} role="button" tabIndex="0" />
+              </NavLink>
             </nav>
             <nav className={styles.navBur}>
-              {(!isOpen) && (
+              {!isOpen && (
                 <div className={styles.btnBurger} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))}>
                   {' '}
                   <span className={styles.btnSpan}> </span>
@@ -117,9 +115,9 @@ function Header() {
               ))}
             </nav>
           </div>
+          <Search />
           <div className={styles.navBarRight}>
             <nav className={styles.navBur}>
-              <Search />
               <SearchIcon className={styles.searchIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleSearch(!isOpenSearch))} />
               <li className={styles.navBarRightItem}>
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
