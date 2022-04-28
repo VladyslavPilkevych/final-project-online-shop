@@ -1,0 +1,118 @@
+@import '../../assets/styles/global.module.scss';
+
+.searchBox {
+  position: absolute;
+  top: 27px;
+  left: 0;
+  transform: translate(-100%, 0%);
+  padding: 10px;
+  // position: relative;
+}
+.searchInput {
+  width: 1130px;
+  padding: 20px 22px;
+  border-radius: 40px;
+  background: $bg-white-color;
+  // background-image: url(../../assets/icons/ant-design_instagram-filled.svg;
+  color: $dark-grey-text;
+  position: absolute;
+  right: 30px;
+  top: -10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+  outline: none;
+}
+.searchInput::placeholder {
+  background-image: url(../../../public/images/pcImg.png) no-repeat;
+  fill: black;
+  stroke: black;
+}
+.searchInput::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+  width: 25px;
+  // background-image: url(../../../public/images/pcImg.png) no-repeat;
+  height: 25px;
+  border: 1px solid black;
+  background-size: cover;
+}
+.searchIcon {
+  position: absolute;
+  top: 38px;
+  right: 100px;
+  cursor: pointer;
+}
+@media (max-width: 768px) and (min-width: 376px) {
+  .searchInput {
+    width: 55vw;
+    height: 38px;
+    border: none;
+    outline: none;
+    padding: 6px;
+    background-color: white;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    color: $dark-grey-text;
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+  .searchInput::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    background: url('https://cdn0.iconfinder.com/data/icons/ThemeShock-credit-cards-icons/64/mastercard.png') no-repeat;
+    background-size: cover;
+  }
+  .searchIcon {
+    display: none;
+  }
+}
+@media (max-width: 375px) {
+  .searchBox {
+    position: absolute;
+    top: 27px;
+    left: 0;
+    transform: translate(0, 0%);
+    padding: 10px;
+  }
+  .searchInput {
+    width: 40vw;
+    height: 38px;
+    border: none;
+    outline: none;
+    padding: 6px;
+    background-color: white;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    color: $dark-grey-text;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin-left: 40px;
+  }
+  .searchInput::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    width: 25px;
+    height: 25px;
+    background: url('https://cdn0.iconfinder.com/data/icons/ThemeShock-credit-cards-icons/64/mastercard.png') no-repeat;
+    background-size: cover;
+  }
+}

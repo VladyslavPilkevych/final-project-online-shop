@@ -74,14 +74,14 @@ function CategoryProductsContainer(props) {
     infinite: true,
     swipeToSlide: true,
     slidesToShow: 5,
-    slidesToScroll: 3,
-    overflow: false,
+    slidesToScroll: 1,
+    overflow: true,
     responsive: [
       {
         breakpoint: 1398,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           infinite: true,
         },
       },
@@ -96,15 +96,14 @@ function CategoryProductsContainer(props) {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 2,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 376,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -115,29 +114,25 @@ function CategoryProductsContainer(props) {
     nextArrow: <SampleNextArrow />,
   };
 
-  const heightCarousel = '500px';
   return (
-    <div>
-      <div className={styles.categoriesWrapper}>
-        <Slider {...settings}>
-          {resultProducts && resultProducts.map((elem) => (
-            <CardItem
-              style={{ height: heightCarousel }}
-              className={styles.cardItemWrapper}
-              name={elem.name}
-              // eslint-disable-next-line no-underscore-dangle
-              id={elem._id}
-              // eslint-disable-next-line no-underscore-dangle
-              img={elem.imageUrls[0]}
-              // eslint-disable-next-line no-underscore-dangle
-              key={elem._id}
-              currentPrice={elem.currentPrice}
-              quantity={50}
-              model={elem.model}
-            />
-          ))}
-        </Slider>
-      </div>
+    <div className={styles.categoriesWrapper}>
+      <Slider {...settings}>
+        {resultProducts && resultProducts.map((elem) => (
+          <CardItem
+            className={styles.cardItemWrapper}
+            name={elem.name}
+            // eslint-disable-next-line no-underscore-dangle
+            id={elem._id}
+            // eslint-disable-next-line no-underscore-dangle
+            img={elem.imageUrls[0]}
+            // eslint-disable-next-line no-underscore-dangle
+            key={elem._id}
+            currentPrice={elem.currentPrice}
+            quantity={50}
+            model={elem.model}
+          />
+        ))}
+      </Slider>
     </div>
   );
 }
@@ -147,7 +142,6 @@ function Categories(props) {
   return (
     <section className={styles.categories}>
       <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
-        {/* <img alt="categorie-img" src="./images/img.png" /> */}
         <h3>{productsCategories}</h3>
         <p>See All Products</p>
       </div>

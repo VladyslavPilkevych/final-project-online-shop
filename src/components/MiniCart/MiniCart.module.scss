@@ -1,0 +1,83 @@
+@import '../../assets/styles/global.module.scss';
+.miniCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 25;
+  right: 10px;
+  top: 67px;
+  width: 310px;
+  background-color: $white;
+  border: 1px solid $grey-star;
+  box-shadow: $shadow-1;
+  padding: 25px 15px 25px 25px;
+  box-sizing: border-box;
+}
+.miniCart::after {
+  content: ' ';
+  position: absolute;
+}
+.miniCartHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.miniCartTitle {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  color: $black;
+  //   margin-top: 23px;
+  margin-bottom: 7px;
+}
+.miniCartSubTitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: $dark-grey-text;
+  margin-bottom: 18px;
+}
+.editBtn {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  border: 2px solid #0156ff;
+  box-sizing: border-box;
+  border-radius: 50px;
+  color: $blue;
+  padding: 8px 49px;
+  background-color: $white;
+  margin-bottom: 23px;
+  cursor: pointer;
+}
+.miniCartContentwrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $grey-star;
+  // border-bottom: 1px solid $grey-star;
+  box-sizing: border-box;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  cursor: pointer;
+}
+.miniCartFotter {
+  width: 268px;
+  border-top: 1px solid $grey-star;
+  margin: 0 auto;
+}
+.miniCartTotalPrice {
+  margin-top: 17px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+  color: $dark-grey-text;
+}
+.miniCartTotalValues {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  color: $black;
+}
