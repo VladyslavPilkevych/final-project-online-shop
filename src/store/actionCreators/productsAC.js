@@ -4,7 +4,7 @@ import { getAllProductsApi, getProductApi } from '../../api/api';
 export const getAllProducts = () => async (dispatch) => {
   await getAllProductsApi()
     .then((rsp) => {
-    //   console.log(rsp);
+      //   console.log(rsp);
       if (rsp.status === 200) {
         dispatch({ type: GET_ALL_PRODUCTS, payload: rsp.data });
       }
