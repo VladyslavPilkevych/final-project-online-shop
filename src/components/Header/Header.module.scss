@@ -115,6 +115,7 @@ nav {
   margin-bottom: 4px;
   fill: $blue;
   cursor: pointer;
+  outline: none;
 }
 // .searchBox {
 //   position: absolute;
@@ -178,6 +179,7 @@ nav {
 .cartIcon {
   fill: $black;
   cursor: pointer;
+  outline: none;
 }
 .signInIcon {
   // fill: $black;
@@ -186,6 +188,7 @@ nav {
 .searchIcon {
   cursor: pointer;
   fill: $black;
+  outline: none;
 }
 .navLinks {
   margin-right: 30px;

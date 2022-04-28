@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch } from '../../store/actionCreators/searchAC';
@@ -91,9 +91,9 @@ function Header() {
           <div className={styles.wrapperNavBar}>
             <nav className={styles.navBur}>
               <li>
-                <NavLink className={styles.navLinksLogo} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
+                <Link className={styles.navLinksLogo} to="/">
                   <LogoIcon className={styles.logo} role="button" tabIndex="0" />
-                </NavLink>
+                </Link>
               </li>
             </nav>
             <nav className={styles.navBur}>

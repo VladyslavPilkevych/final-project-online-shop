@@ -55,10 +55,9 @@ function SamplePrevArrow(props) {
     />
   );
 }
-
-function CategoryProductsContainer(props) {
+function Categories(props) {
+  const { productsCategories, imageSrc } = props;
   const allProducts = useSelector((state) => state.products.products);
-  const { productsCategories } = props;
   console.log(allProducts);
   const eachCategory = allProducts.map((product) => {
     if (product.categories === productsCategories) {
@@ -75,14 +74,13 @@ function CategoryProductsContainer(props) {
     swipeToSlide: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    overflow: true,
+    // overflow: true,
     responsive: [
       {
         breakpoint: 1398,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
-          infinite: true,
         },
       },
       {
@@ -90,7 +88,6 @@ function CategoryProductsContainer(props) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
         },
       },
       {
@@ -113,42 +110,35 @@ function CategoryProductsContainer(props) {
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
   };
-
   return (
     <div className={styles.categoriesWrapper}>
-      <Slider {...settings}>
-        {resultProducts && resultProducts.map((elem) => (
-          <CardItem
-            className={styles.cardItemWrapper}
-            name={elem.name}
+      <div className={styles.categories}>
+        <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
+          <h3>{productsCategories}</h3>
+          <p>See All Products</p>
+        </div>
+        {/* <div className={styles.categorieSlider}> */}
+        <div className={styles.categoriesSliderWrapper}>
+          <Slider {...settings}>
+            {resultProducts && resultProducts.map((elem) => (
+              <CardItem
+                className={styles.cardItemWrapper}
+                name={elem.name}
             // eslint-disable-next-line no-underscore-dangle
-            id={elem._id}
+                id={elem._id}
             // eslint-disable-next-line no-underscore-dangle
-            img={elem.imageUrls[0]}
+                img={elem.imageUrls[0]}
             // eslint-disable-next-line no-underscore-dangle
-            key={elem._id}
-            currentPrice={elem.currentPrice}
-            quantity={50}
-            model={elem.model}
-          />
-        ))}
-      </Slider>
+                key={elem._id}
+                currentPrice={elem.currentPrice}
+                quantity={50}
+                model={elem.model}
+              />
+            ))}
+          </Slider>
+        </div>
+      </div>
     </div>
-  );
-}
-
-function Categories(props) {
-  const { productsCategories, imageSrc } = props;
-  return (
-    <section className={styles.categories}>
-      <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
-        <h3>{productsCategories}</h3>
-        <p>See All Products</p>
-      </div>
-      <div className={styles.categorieSlider}>
-        <CategoryProductsContainer productsCategories={productsCategories} />
-      </div>
-    </section>
   );
 }
 
@@ -175,13 +165,13 @@ SamplePrevArrow.defaultProps = {
   onClick: () => { },
 };
 
-CategoryProductsContainer.propTypes = {
-  productsCategories: PropTypes.string,
-};
+// CategoryProductsContainer.propTypes = {
+//   productsCategories: PropTypes.string,
+// };
 
-CategoryProductsContainer.defaultProps = {
-  productsCategories: '',
-};
+// CategoryProductsContainer.defaultProps = {
+//   productsCategories: '',
+// };
 
 Categories.propTypes = {
   productsCategories: PropTypes.string,

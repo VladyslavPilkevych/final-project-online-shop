@@ -5,56 +5,73 @@
     color: $color;
 }
 
-.categories {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    // display: flex;
-    // max-width: 1398px;
-    margin: 15px auto;
-    // position: relative;
-    .categorieImg {
-        // flex-basis: 15%;
-        width: 230px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        text-align: center;
-        h3 {
-            text-transform: capitalize;
-            margin-top: 70%;
-            @include fonts("Poppins", 28px, white, 600);
-        }
-        p {
-            margin-top: 70%;
-            @include fonts("Poppins", 13px, white, 400);
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
-    // .categorieSlider {
-    //     flex-basis: 85%;
-    // }
-}
 .categoriesWrapper {
-    max-width: 1165px;
-}
-.categorieSlider {
-    width: 100%;
+    max-width: 1398px;
+    margin: 0 auto;
 }
 
+.categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.categories{
+    width: 100%;
+}
+.categorieImg {
+    width: 17%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    }
+.categorieImg h3 {
+    text-transform: capitalize;
+    margin-top: 70%;
+    @include fonts("Poppins", 28px, white, 600);
+}
+.categorieImg p {
+    margin-top: 47%;
+    margin-bottom: 30px;
+    @include fonts("Poppins", 13px, white, 400);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.categoriesSliderWrapper {
+    width: 83%;
+}
+// .categorieSlider {
+//     width: 100%;
+// }
+
 @media (max-width: 1024px) {
-    .categories {
-        grid-template-columns: 1fr 3fr;
+    // .categories {
+    //     // grid-template-columns: 1fr 4fr;
+    // }
+    .categorieImg {
+        width: 20%;
+    }
+    .categoriesSliderWrapper {
+        width: 80%;
     }
 }
 @media (max-width: 768px) {
-    .categories {
-        grid-template-columns: 1fr 2fr;
-        // .categorieImg {
-        //     flex-basis: 25%;
-        // }
-        // .categorieSlider {
-        //     flex-basis: 75%;
-        // }
+    // .categories {
+    //     // grid-template-columns: 1fr 3fr;
+    //     // .categorieImg {
+    //     //     flex-basis: 25%;
+    //     // }
+    //     // .categorieSlider {
+    //     //     flex-basis: 75%;
+    //     // }
+    // }
+    .categorieImg {
+        width: 25%;
+    }
+    .categoriesSliderWrapper {
+        width: 75%;
     }
 }
 @media (max-width: 376px) {
