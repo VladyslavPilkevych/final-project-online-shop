@@ -6,6 +6,7 @@ import Companies from '../../components/Companies/Companies';
 import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
 import styles from './HomePage.module.scss';
+import Advantages from '../../components/Advantages/Advantages';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);
@@ -29,6 +30,7 @@ function HomePage() {
       <NewProductsContainer />
       <Companies />
       <Posts />
+      <Advantages />
     </div>
   );
 }

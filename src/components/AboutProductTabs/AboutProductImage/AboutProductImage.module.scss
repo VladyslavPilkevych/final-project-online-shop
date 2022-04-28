@@ -1,7 +1,17 @@
-// .imageWrapper {
-// width: 100%;
-// }
+.imageWrapper {
+width: 250px;
+}
 
-// .imageMain {
-//     width: 100%;
-// }
+.imageMain {
+    width: 100%;
+}
+
+.detailsWrapper {
+    display: flex;
+}
+
+.addToCartIconWrapper{
+    cursor: pointer;
+    margin-right: 53px;
+    margin-left: 23px;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -64,7 +65,7 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
-          <button type="button" className={styles.aboutProductCartBtn}>Add to Cart</button>
+          <button type="button" className={styles.aboutProductCartBtn} onClick={() => console.log('Add to Cart', product._id)}>Add to Cart</button>
         </div>
       </div>
       <hr className={styles.line} />
@@ -73,11 +74,11 @@ function AboutProductPage() {
           {activeTab === 'tab1' ? (
             <AboutProductCommonTabText product={product} />
           ) : (
-            <AboutProductDetailsTabText />
+            <AboutProductDetailsTabText product={product} />
           )}
         </div>
         <div className={styles.aboutProducImageWrapper}>
-          <AboutProductImage urls={product.imageUrls} model={product.model} />
+          <AboutProductImage urls={product.imageUrls} model={product.model} id={product._id} />
         </div>
       </div>
     </>

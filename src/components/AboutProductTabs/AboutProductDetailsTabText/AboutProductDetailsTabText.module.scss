@@ -10,26 +10,19 @@
     line-height: 48px;
 }
 
-.productDescription {
+.listWrapper{
+    list-style-type: disc;
+    display: block;
     margin-top: 55px;
-    font-family: $fonts;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 30px;
-}
-
-.colorsWrapper {
-    margin-top: 30px;
-display: flex;
-}
-
-.colorItem {
-    border: 1px solid $black;
-    height: 30px;
-    width: 30px;
-    margin-right: 20px;
-    border-radius: 50%;
+    
+    & li {
+        color: $black;
+        font-family: $fonts;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+    }
 }
 
 .itemNo {
@@ -39,7 +32,7 @@ display: flex;
 
 .contactUsText {
     font-family: $fonts;
-    font-style: normal;
+    font-style: Bold;
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
