@@ -2,16 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useMatch, useLocation } from 'react-router-dom';
+import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
+
+import Button from '../../components/Button/Button';
 
 import { getProduct } from '../../store/actionCreators/productsAC';
 import styles from './AboutProductPage.module.scss';
 
 function AboutProductPage() {
   const [activeTab, setActiveTab] = useState('tab1');
+  // const navigate = useNavigate();
 
   const handleTab1 = () => {
     setActiveTab('tab1');
@@ -45,6 +48,9 @@ function AboutProductPage() {
         <p>{product.display}</p>
         <p>{product.currentPrice}</p>
         <p>{product.previousPrice}</p>
+      </div> */}
+      {/* <div className={styles.goBackBtn}>
+        <Button style={styles.aboutProductCartBtn} handleClick={() => navigate(-1)}>Go Back</Button>
       </div> */}
       <hr className={styles.line} />
       <div className={`${styles.aboutProductTabMenuWrapper} ${styles.aboutProductWrapper}`}>
