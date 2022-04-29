@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store/actionCreators/cartAC';
-import addToFavIcon from '../../../assets/Images/addToFavIcon.png';
+import addToFavIcon from '../../../assets/images/addToFavIcon.png';
 import styles from './AboutProductImage.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
