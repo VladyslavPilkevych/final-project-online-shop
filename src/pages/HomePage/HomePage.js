@@ -6,6 +6,7 @@ import Categories from '../../components/Categories/Categories';
 import Companies from '../../components/Companies/Companies';
 import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
+import styles from './HomePage.module.scss';
 import Advantages from '../../components/Advantages/Advantages';
 
 function HomePage() {
@@ -24,7 +25,7 @@ function HomePage() {
   // }, [token]);
 
   return (
-    <div className="Page">
+    <div className={styles.homePage}>
       <MainBaner />
       <NewProductsContainer />
       <Categories imageSrc="./images/imgCategory1.png" productsCategories="laptop" />

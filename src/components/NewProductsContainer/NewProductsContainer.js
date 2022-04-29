@@ -111,6 +111,10 @@ function NewProductsContainer() {
   return (
     <div>
       <div className={styles.newProductsWrapper}>
+        <div className={styles.newProductsTitleWrapper}>
+          <h1 className={styles.newProductsTitle}>New Products</h1>
+          <a href="/"><p className={styles.newProductsLink}>See All New Products</p></a>
+        </div>
         <Slider {...settings}>
           {newProducts && newProducts.map((elem) => (
             <CardItem
@@ -127,6 +131,7 @@ function NewProductsContainer() {
               quantity={50}
               model={elem.model}
               elementClassName={styles.cardItems}
+              itemNo={elem.itemNo}
             />
           ))}
         </Slider>
