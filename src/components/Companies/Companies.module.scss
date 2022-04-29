@@ -29,7 +29,7 @@
     }
 }
 
-@media screen and (min-device-width: 325px) and (max-device-width: 768px) {
+@media screen and (min-device-width: 100px) and (max-device-width: 768px) {
     .companiesLogos {
        display: grid;
        grid-template-columns: repeat(2, 1fr);
@@ -39,6 +39,12 @@
 
     .companieImage {
         max-width: 170px;
+    }
+}
+
+@media screen and (min-device-width: 100px) and (max-device-width: 340px) {
+    .companieImage {
+        max-width: 120px;
     }
 }
     

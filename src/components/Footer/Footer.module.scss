@@ -95,7 +95,7 @@
     display: none;
 }
 
-@media screen and (min-device-width: 1px) and (max-device-width: 900px) {
+@media screen and (min-device-width: 240px) and (max-device-width: 900px) {
     .footerTitle {
         font-family: $fonts;
         font-style: normal;
@@ -203,7 +203,7 @@
 
 @media screen and (max-device-width: 598px) {
     .footerList {
-        width: 329px;
+        width: 239px;
     }
 
     .footerListContainer {
