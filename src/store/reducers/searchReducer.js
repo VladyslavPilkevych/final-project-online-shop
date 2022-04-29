@@ -6,8 +6,6 @@ const initialValues = {
 const searchReducer = (state = initialValues, { type, payload } = {}) => {
   switch (type) {
     case TOGGLE_SEARCH: {
-      // const tempState = { ...state, isOpenSearch: payload };
-
       return { ...state, isOpenSearch: payload };
     }
     default:
