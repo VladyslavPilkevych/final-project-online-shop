@@ -1,7 +1,7 @@
 import { TOGGLE_MENU } from '../actions/menuActions';
 
 const initialValues = {
-  isOpen: false,
+  isOpen: true,
 };
 const menuReducer = (state = initialValues, { type, payload } = {}) => {
   switch (type) {

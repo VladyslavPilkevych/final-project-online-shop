@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch } from '../../store/actionCreators/searchAC';
 import { toggleCart } from '../../store/actionCreators/cartAC';
+import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
 import Menu from '../Menu/Menu';
+import MiniMenu from '../MiniMenu/MiniMenu';
 import Search from '../Search/Search';
 import MiniCart from '../MiniCart/MiniCart';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
@@ -19,9 +21,11 @@ import styles from './Header.module.scss';
 
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
+  const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
 
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
 
@@ -90,20 +94,21 @@ function Header() {
         <div className={styles.wrapperContainer}>
           <div className={styles.wrapperNavBar}>
             <nav className={styles.navBur}>
-              <NavLink className={styles.navLinksLogo} style={({ isActive }) => (isActive ? activeStyle : null)} to="/">
+              <NavLink className={styles.navLinksLogo} to="/">
                 <LogoIcon className={styles.logo} role="button" tabIndex="0" />
               </NavLink>
             </nav>
             <nav className={styles.navBur}>
-              {!isOpen && (
-                <div className={styles.btnBurger} role="button" tabIndex="0" onClick={() => dispatch(toggleMenu(!isOpen))}>
+              {!isOpenMiniMenu && (
+                <div className={styles.btnBurger} role="button" tabIndex="0" onClick={() => dispatch(toggleMiniMenu(!isOpenMiniMenu))}>
                   {' '}
                   <span className={styles.btnSpan}> </span>
                 </div>
               )}
               <Menu items={items} />
+              <MiniMenu items={items} />
             </nav>
-            <nav className={styles.navBur}>
+            {/* <nav className={styles.navBur}>
               {items.map((item) => (
                 <li key={item.value}>
                   <div>
@@ -113,18 +118,38 @@ function Header() {
                   </div>
                 </li>
               ))}
-            </nav>
+            </nav> */}
           </div>
           <Search />
+          <div className={styles.searchBox}>
+            <input
+              className={styles.searchInput}
+              type="text"
+              placeholder="Search entiere store here..."
+              value={value}
+              onChange={(e) => {
+                setValue(e.target.value);
+                console.log(value);
+              }}
+            />
+          </div>
           <div className={styles.navBarRight}>
             <nav className={styles.navBur}>
-              <SearchIcon className={styles.searchIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleSearch(!isOpenSearch))} />
+              <SearchIcon
+                className={styles.searchIcon}
+                role="button"
+                tabIndex="0"
+                onClick={() => {
+                  dispatch(toggleSearch(!isOpenSearch));
+                  dispatch(toggleMenu(!isOpen));
+                }}
+              />
               <li className={styles.navBarRightItem}>
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
                 <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
-                <NavLink style={({ isActive }) => (isActive ? activeStyle : null)} to="/sign-in">
+                <NavLink to="/sign-in">
                   <SignInIcon className={styles.signInIcon} />
                 </NavLink>
               </li>

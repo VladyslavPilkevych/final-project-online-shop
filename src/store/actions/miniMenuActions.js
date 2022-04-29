@@ -1,0 +1,1 @@
+export const TOGGLE_MINI_MENU = 'TOGGLE_MINI_MENU';
