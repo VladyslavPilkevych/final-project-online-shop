@@ -1,16 +1,23 @@
 import React from 'react';
 import style from './Companies.module.scss';
+import imageRoccat from '../../assets/icons/companies-images/image-roccat.png';
+import imageMsi from '../../assets/icons/companies-images/image-msi.png';
+import imageRazer from '../../assets/icons/companies-images/image-razer.png';
+import imageThermaltake from '../../assets/icons/companies-images/image-thermaltake.png';
+import imageAdata from '../../assets/icons/companies-images/image-adata.png';
+import imageHp from '../../assets/icons/companies-images/image-hp.png';
+import imageGigabyte from '../../assets/icons/companies-images/image-gigabyte.png';
 
 function Companies() {
   return (
     <div className={style.companiesLogos}>
-      <img src="images/companies-images/image-roccat.png" className={style.companieImage} alt="logo-roccat" />
-      <img src="images/companies-images/image-msi.png" className={style.companieImage} alt="logo-msi" />
-      <img src="images/companies-images/image-razer.png" className={style.companieImage} alt="logo-razer" />
-      <img src="images/companies-images/image-thermaltake.png" className={style.companieImage} alt="logo-thermaltake" />
-      <img src="images/companies-images/image-adata.png" className={style.companieImage} alt="logo-adata" />
-      <img src="images/companies-images/image-hp.png" className={style.companieImage} alt="logo-hp" />
-      <img src="images/companies-images/image-gigabyte.png" className={style.companieImage} alt="logo-gigabyte" />
+      <img src={imageRoccat} className={style.companieImage} alt="logo-roccat" />
+      <img src={imageMsi} className={style.companieImage} alt="logo-msi" />
+      <img src={imageRazer} className={style.companieImage} alt="logo-razer" />
+      <img src={imageThermaltake} className={style.companieImage} alt="logo-thermaltake" />
+      <img src={imageAdata} className={style.companieImage} alt="logo-adata" />
+      <img src={imageHp} className={style.companieImage} alt="logo-hp" />
+      <img src={imageGigabyte} className={style.companieImage} alt="logo-gigabyte" />
     </div>
   );
 }
