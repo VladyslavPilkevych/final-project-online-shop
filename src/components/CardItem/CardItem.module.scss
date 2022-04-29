@@ -14,7 +14,7 @@
     padding: 10px;
     border: 0.6px solid rgb(243, 242, 242);
     background: white;
-    overflow: hidden;
+    // overflow: hidden;
     padding-bottom: 20px;
     position: relative;
     transition: 0.35s ease;
@@ -45,7 +45,7 @@
         right: 10px;
         top: 15px;
         cursor: pointer;
-        z-index: 3;
+        // z-index: 3;
     }
     .imageContainer {
         height: 150px;
@@ -163,6 +163,66 @@
         }
         .iconFav {
             right: 25px;
+            top: 10px;
+        }
+        .imgProduct {
+            // width: 100px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+        .productName {
+            font-size: 11px;
+        }
+        .previousPrice {
+            font-size: 12px;
+        }
+        .price {
+            font-size: 14px;
+        }
+        .btnCartContainer {
+            position: static;
+            float: right;
+            margin: 0;
+            margin-top: -40px;
+            box-shadow: none;
+            border: none;
+            max-width: 27px;
+            padding-bottom: 0;
+            margin-right: 21px;
+            .btnCart {
+                padding: 5px;
+                img {
+                    margin: 1px 0 0 1px;
+                }
+                P {
+                    display: none;
+                }
+            }
+            .btnInCart {
+                img {
+                    display: inline;
+                }
+            }
+        }
+    }
+    .productItem:hover {
+        transform: none;
+        .btnCartContainer {
+            position: static;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .productItem {
+        position: relative;
+        padding-bottom: 10px;
+        .btnCartContainer,
+        .iconFav {
+            display: flex;
+            opacity: 1;
+        }
+        .iconFav {
             top: 10px;
         }
         .imgProduct {

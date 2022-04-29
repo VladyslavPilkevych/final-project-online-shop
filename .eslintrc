@@ -9,7 +9,11 @@
     // "plugin:prettier/recommended",
     // "prettier/react"
   ],
-  "plugins": ["react", "import", "jsx-a11y"],
+  "plugins": [
+    "react",
+    "import",
+    "jsx-a11y"
+  ],
   // "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -33,10 +37,30 @@
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "linebreak-style": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
     "react/jsx-props-no-spreading": 0,
     "react/no-array-index-key": 0,
-    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": [
+      2,
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "eol-last": 0,
+    "import/no-unresolved": [
+      2,
+      {
+        "caseSensitive": false
+      }
+    ]
   },
   "globals": {
     "window": true,
@@ -48,7 +72,6 @@
     "navigator": true
   }
 }
-
 // {
 //     "env": {
 //         "browser": true,
