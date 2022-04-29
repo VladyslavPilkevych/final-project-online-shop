@@ -3,22 +3,22 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenu } from '../../store/actionCreators/menuAC';
+import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
 
-import styles from './Menu.module.scss';
+import styles from './MiniMenu.module.scss';
 
-function Menu({ items }) {
+function MiniMenu({ items }) {
   const { header, className, style } = items;
   const navigate = useNavigate();
   const handleItemSubMenu = (url) => navigate(url);
 
-  const isOpen = useSelector((state) => state.menu.isOpen);
+  const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
   const dispatch = useDispatch();
-  if (!isOpen) return null;
+  if (!isOpenMiniMenu) return null;
   const closeMenu = () => {
-    dispatch(toggleMenu(false));
+    dispatch(toggleMiniMenu(false));
   };
   return (
     <div className={styles.menu} role="button" tabIndex="0" onClick={closeMenu}>
@@ -32,7 +32,7 @@ function Menu({ items }) {
             {items.map((item) => (
               <li key={item.value}>
                 <div>
-                  <NavLink className={styles.navLinks} style={style} to={item.to}>
+                  <NavLink className={styles.navLinks} style={style} to={item.to} onClick={closeMenu}>
                     {item.value}
                   </NavLink>
                 </div>
@@ -45,7 +45,7 @@ function Menu({ items }) {
   );
 }
 
-Menu.propTypes = {
+MiniMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
@@ -53,10 +53,10 @@ Menu.propTypes = {
   // onClick: PropTypes.func,
 };
 
-Menu.defaultProps = {
+MiniMenu.defaultProps = {
   className: '',
   style: {},
   // value: '',
   // onClick: () => {},
 };
-export default Menu;
+export default MiniMenu;
