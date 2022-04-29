@@ -123,6 +123,7 @@ function Categories(props) {
             {resultProducts && resultProducts.map((elem) => (
               <CardItem
                 className={styles.cardItemWrapper}
+                itemNo={elem.itemNo}
                 name={elem.name}
             // eslint-disable-next-line no-underscore-dangle
                 id={elem._id}
