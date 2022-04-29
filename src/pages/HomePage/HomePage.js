@@ -5,6 +5,7 @@ import NewProductsContainer from '../../components/NewProductsContainer/NewProdu
 import Companies from '../../components/Companies/Companies';
 import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
+import styles from './HomePage.module.scss';
 import Advantages from '../../components/Advantages/Advantages';
 
 function HomePage() {
@@ -14,8 +15,7 @@ function HomePage() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
-  useEffect(() => {
-  }, [allProducts]);
+  useEffect(() => {}, [allProducts]);
   console.log(allProducts);
   // useEffect(() => {
   //   if () {
@@ -24,7 +24,7 @@ function HomePage() {
   // }, [token]);
 
   return (
-    <div className="Page">
+    <div className={styles.homePage}>
       <MainBaner />
       <NewProductsContainer />
       <Companies />

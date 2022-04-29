@@ -1,19 +1,20 @@
-// import { PUT_IN_CART, DELETE_FROM_CART, CLEAR_CART } from "../actions/cartItemsActions";
+/* eslint-disable consistent-return */
+import {
+  PUT_IN_CART,
+  DELETE_FROM_CART,
+  CLEAR_CART, TOGGLE_CART,
+} from '../actions/cartActions';
 
-// export const addToCart = (id) => {
-//     return async (dispatch) => {
-//         const data = await fetch('').then(res => res.json());
-//         data.forEach(item => {
-//             if (item.id === id) {
-//                 return dispatch({ type: PUT_IN_CART, payload: item })
-//             }
-//         })
-//     }
-// }
-// export const removeFromCart = (id) => {
-//     return {type: DELETE_FROM_CART, payload: id}
-// }
+export const toggleCart = (value) => ({ type: TOGGLE_CART, payload: value });
 
-// export const clearCart = () => {
-//     return {type: CLEAR_CART, payload: null}
-// }
+export const addToCart = (id) => async (dispatch) => {
+  const data = await fetch('').then((res) => res.json());
+  data.forEach((item) => {
+    if (item.id === id) {
+      return dispatch({ type: PUT_IN_CART, payload: item });
+    }
+  });
+};
+export const removeFromCart = (id) => ({ type: DELETE_FROM_CART, payload: id });
+
+export const clearCart = () => ({ type: CLEAR_CART, payload: null });

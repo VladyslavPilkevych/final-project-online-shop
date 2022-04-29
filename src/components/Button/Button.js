@@ -6,18 +6,18 @@ function Button(props) {
   const {
     children, handleClick, type, style,
   } = props;
+
   return (
     /* eslint-disable react/button-has-type */
-    <button type={type} onClick={handleClick} className={`${styles.btn} ${style}`}>{children}</button>
+    <button type={type} onClick={handleClick} className={`${styles.btn} ${style}`}>
+      {children}
+    </button>
     /* eslint-enable react/button-has-type */
   );
 }
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   type: PropTypes.oneOf(['submit', 'button']),
   handleClick: PropTypes.func,
   style: PropTypes.string,
@@ -25,7 +25,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  handleClick: () => { },
+  handleClick: () => {},
   style: '',
 };
 

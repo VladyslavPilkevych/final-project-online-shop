@@ -1,10 +1,10 @@
-import { GET_ALL_PRODUCTS } from '../actions/productsActions';
-import { getAllProductsApi } from '../../api/api';
+import { GET_ALL_PRODUCTS, GET_PRODUCT } from '../actions/productsActions';
+import { getAllProductsApi, getProductApi } from '../../api/api';
 
 export const getAllProducts = () => async (dispatch) => {
   await getAllProductsApi()
     .then((rsp) => {
-    //   console.log(rsp);
+      //   console.log(rsp);
       if (rsp.status === 200) {
         dispatch({ type: GET_ALL_PRODUCTS, payload: rsp.data });
       }
@@ -12,11 +12,16 @@ export const getAllProducts = () => async (dispatch) => {
     .catch((err) => {
       console.log(err);
     });
-  //   const { data } = await fetch('http://localhost:3001/items', {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((rsp) => rsp.json());
+};
+export const getProduct = (itemNo) => async (dispatch) => {
+  await getProductApi(itemNo)
+    .then((rsp) => {
+      console.log(rsp);
+      if (rsp.status === 200) {
+        dispatch({ type: GET_PRODUCT, payload: rsp.data });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
