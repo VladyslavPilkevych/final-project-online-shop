@@ -123,6 +123,7 @@ function NewProductsContainer() {
               quantity={50}
               model={elem.model}
               elementClassName={styles.cardItems}
+              itemNo={elem.itemNo}
             />
           ))}
         </Slider>

@@ -7,8 +7,9 @@ import Button from '../Button/Button';
 
 function CardItem(props) {
   const {
-    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model,
+    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
   } = props;
+
   // const dispatch = useDispatch();
   // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
@@ -51,14 +52,14 @@ function CardItem(props) {
           : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
       }
       <div className={styles.imageContainer}>
-        <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+        <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
           <img className={styles.imgProduct} alt="product" src={img} />
         </Link>
       </div>
-      <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+      <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
         <h3 className={styles.productName}>{name}</h3>
       </Link>
-      <Link className={styles.linksToCardPage} to={`/products/${id}`}>
+      <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
         <h2 className={styles.productModel}>{model}</h2>
       </Link>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
@@ -86,6 +87,7 @@ CardItem.propTypes = {
   /* eslint-disable react/forbid-prop-types */
   // itemContent: PropTypes.object.isRequired,
   /* eslint-enable react/forbid-prop-types */
+  itemNo: PropTypes.number.isRequired,
   name: PropTypes.string,
   img: PropTypes.string,
   currentPrice: PropTypes.oneOfType([
