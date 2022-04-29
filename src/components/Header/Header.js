@@ -34,33 +34,24 @@ function Header() {
       value: 'Laptops',
       to: '/category/laptops',
       className: '{styles.navLinks}',
-      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Monitors',
       to: '/category/monitors',
       className: '{styles.navLinks}',
-      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Phones',
       to: '/category/phones',
       className: '{styles.navLinks}',
-      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
     {
       value: 'Headphones',
       to: '/category/headphones',
       className: '{styles.navLinks}',
-      // style: '{({ isActive }) => (isActive ? activeStyle : null)}',
     },
   ];
 
-  const activeStyle = {
-    // opacity: '0.5',
-    cursor: 'default',
-    pointerEvents: 'none',
-  };
   return (
     <header>
       <div className={styles.headerWrapper}>
