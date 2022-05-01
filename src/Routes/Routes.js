@@ -5,6 +5,7 @@ import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import CartPage from '../pages/CartPage/CartPage';
 import FavouritePage from '../pages/FavouritePage/FavouritePage';
+import FilterPage from '../pages/FilterPage/FilterPage';
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favourite" element={<FavouritePage />} />
+      <Route path="/filter" element={<FilterPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
