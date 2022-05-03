@@ -87,7 +87,7 @@ CardItem.propTypes = {
   /* eslint-disable react/forbid-prop-types */
   // itemContent: PropTypes.object.isRequired,
   /* eslint-enable react/forbid-prop-types */
-  itemNo: PropTypes.number.isRequired,
+  itemNo: PropTypes.string.isRequired,
   name: PropTypes.string,
   img: PropTypes.string,
   currentPrice: PropTypes.oneOfType([
