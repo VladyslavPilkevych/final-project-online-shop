@@ -2,8 +2,12 @@ import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MainBaner from '../../components/MainBanner/MainBaner';
 import NewProductsContainer from '../../components/NewProductsContainer/NewProductsContainer';
-import CardsContainer from '../../components/CardsContainer/CardsContainer';
+import Categories from '../../components/Categories/Categories';
+import Companies from '../../components/Companies/Companies';
+import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
+import styles from './HomePage.module.scss';
+import Advantages from '../../components/Advantages/Advantages';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);
@@ -12,8 +16,7 @@ function HomePage() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
-  useEffect(() => {
-  }, [allProducts]);
+  useEffect(() => {}, [allProducts]);
   console.log(allProducts);
   // useEffect(() => {
   //   if () {
@@ -22,10 +25,16 @@ function HomePage() {
   // }, [token]);
 
   return (
-    <div className="Page">
+    <div className={styles.homePage}>
       <MainBaner />
       <NewProductsContainer />
-      <CardsContainer />
+      <Categories imageSrc="./images/imgCategory1.png" productsCategories="laptop" />
+      <Categories imageSrc="./images/imgCategory2.png" productsCategories="headphones" />
+      <Categories imageSrc="./images/imgCategory3.png" productsCategories="phones" />
+      <Categories imageSrc="./images/imgCategory4.png" productsCategories="monitor" />
+      <Companies />
+      <Posts />
+      <Advantages />
     </div>
   );
 }

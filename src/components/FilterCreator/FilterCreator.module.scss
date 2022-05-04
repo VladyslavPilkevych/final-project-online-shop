@@ -1,0 +1,68 @@
+@import "../../assets/styles/global.module.scss";
+
+@mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
+
+.filterCreator {
+    width: 100%;
+    background-color: #F5F7FF;
+}
+.filtersTopP {
+    text-align: center;
+    @include fonts("Poppins", 16px, $black, 700);
+}
+.categoryContainers {
+    padding: 7%;
+}
+.clearFilterBtn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px 20%;
+    border-radius: 50px;
+    border: 2px solid $dark-grey-text;
+    @include fonts("Poppins", 14px, $dark-grey-text, 600);
+}
+.twiceItems {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+.categoryName {
+    margin-bottom: 10px;
+    line-height: 21px;
+    @include fonts("Poppins", 14px, $black, 600);
+    cursor: pointer;
+}
+.swiper {
+    width: 8px;
+    height: 6px;
+    margin: 4px;
+    cursor: pointer;
+}
+li {
+    p, span {
+        text-transform: uppercase;
+        line-height: 28px;
+        @include fonts("Poppins", 13px, $black, 400);
+    }
+}
+.colorsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+.colorsItems {
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+    border-radius: 50px;
+}
+
+// @media (max-width: 426px) {
+//     .filterCreator {
+//         display: none;
+//     }
+// }

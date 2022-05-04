@@ -1,0 +1,91 @@
+@import '../../assets/styles/global.module.scss';
+.miniCartWrapper{
+  top: 0;
+  left: 0;
+  z-index: 24;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.miniCart {
+  top: 113px;
+  z-index: 25;
+  right: 45px;
+  width: 310px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  box-shadow: $shadow-1;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: $white;
+  border: 1px solid $grey-star;
+  padding: 25px 15px 25px 25px;
+}
+.miniCart::after {
+  content: ' ';
+  position: absolute;
+}
+.miniCartHeader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.miniCartTitle {
+  color: $black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 7px;
+  //   margin-top: 23px;
+}
+.miniCartSubTitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 18px;
+  color: $dark-grey-text;
+}
+.editBtn {
+  color: $blue;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  padding: 8px 49px;
+  border-radius: 50px;
+  margin-bottom: 23px;
+  box-sizing: border-box;
+  background-color: $white;
+  border: 2px solid #0156ff;
+}
+.miniCartContentwrapper {
+  display: flex;
+  cursor: pointer;
+  padding-top: 17px;
+  align-items: center;
+  padding-bottom: 17px;
+  box-sizing: border-box;
+  justify-content: center;
+  border-top: 1px solid $grey-star;
+}
+.miniCartFotter {
+  width: 268px;
+  margin: 0 auto;
+  border-top: 1px solid $grey-star;
+}
+.miniCartTotalPrice {
+  font-size: 14px;
+  margin-top: 17px;
+  font-weight: 600;
+  line-height: 140%;
+  text-align: center;
+  color: $dark-grey-text;
+}
+.miniCartTotalValues {
+  color: $black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 140%;
+}

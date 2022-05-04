@@ -1,75 +1,369 @@
 @import '../../assets/styles/global.module.scss';
-
-.headerWrapper{
-    background-color: $black;
+header {
+  // position: fixed;
+  // z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.headerWrapper {
+  background-color: $black;
 }
 .blackBg {
-  background-color: $black;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 44px;
-  max-width: 1398px;
   margin: 0 auto;
+  max-width: 1398px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
 .dateBur {
-  font-weight: 600;
   font-size: 12px;
+  font-weight: 600;
   line-height: 18px;
   color: $dark-grey-text;
-  //   padding-top: 8px;
-  //   padding-bottom: 9px;
 }
 .timeBur {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
   color: $white;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.adressBurWrapper {
+  display: flex;
 }
 .adressBur {
-  color: $grey-text;
-  font-weight: 600;
   font-size: 12px;
+  font-weight: 600;
+  color: $grey-text;
   line-height: 18px;
 }
 .adressBurLink {
   color: $white;
-  font-weight: 600;
   font-size: 12px;
+  font-weight: 600;
   line-height: 18px;
   padding-left: 4px;
 }
 .phoneNumber {
-  display: inline-block;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
   color: $white;
+  font-size: 12px;
   margin-top: 15px;
-  margin-bottom: 15px;
+  font-weight: 600;
+  line-height: 18px;
   margin-right: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
   text-decoration: none;
 }
-.phoneBurWrapper{
-    display: flex;
+.phoneBurWrapper {
+  display: flex;
 }
 .fbIcon {
-    display: inline-block;
-    margin-top: 13px;
+  margin-top: 13px;
+  display: inline-block;
 }
 .instagramIcon {
-    display: inline-block;
-    margin-top: 13px;
-    margin-left: 8px;
+  margin-top: 13px;
+  margin-left: 8px;
+  display: inline-block;
 }
-ul {
-  list-style: none;
+.whiteWrapper {
+  background-color: $white;
+  border-bottom: 1px solid $grey-star;
+}
+.wrapperContainer {
   display: flex;
-  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 1398px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapperNavBar {
+  display: flex;
+}
+.navBur {
+  display: flex;
+  margin: 0 auto;
+  flex-basis: 5%;
+  list-style: none;
+  align-items: center;
+}
+nav {
   li {
     a {
       cursor: pointer;
-
+      text-decoration: none;
     }
+  }
+}
+.navLinks {
+  color: $black;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin-right: 30px;
+}
+.navLinks:hover {
+  color: $blue;
+}
+.logo {
+  fill: $blue;
+  outline: none;
+  cursor: pointer;
+  margin-top: 13px;
+  margin-bottom: 4px;
+}
+.navBarRight {
+  display: flex;
+}
+.navBarRightItem {
+  margin-left: 25px;
+}
+.cartIcon {
+  fill: $black;
+  outline: none;
+  cursor: pointer;
+  outline: none;
+}
+.signInIcon {
+  stroke: $black;
+}
+.searchIcon {
+  fill: $black;
+  outline: none;
+  cursor: pointer;
+}
+.searchBox{
+  display: none;
+}
+.navLinks {
+  color: $black;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin-right: 30px;
+  text-decoration: none;
+}
+@media (max-width: 768px) and (min-width: 376px) {
+  .blackBg {
+    max-width: 768px;
+  }
+  .dateBur {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 10px;
+    margin-left: 100px;
+    padding-bottom: 10px;
+  }
+  .timeBur {
+    font-size: 11px;
+    line-height: 16px;
+  }
+  .phoneBurWrapper {
+    display: none;
+  }
+  .whiteWrapper {
+    background-color: $blue;
+  }
+  .logo {
+    top: -6px;
+    left: 19px;
+    width: 46px;
+    height: 41px;
+    fill: $white;
+    position: absolute;
+    background-color: $blue;
+    clip-path: ellipse(50% 59% at 50% 64%);
+    cursor: pointer;
+  }
+  .adressBur {
+    display: none;
+  }
+  .adressBurLink {
+    font-size: 11px;
+    line-height: 16px;
+    margin-right: 28px;
+  }
+  .wrapperContainer {
+    align-items: center;
+  }
+  .navBarRight {
+    padding: 16px 0;
+    margin-right: 23px;
+  }
+  .cartIcon {
+    fill: $white;
+  }
+  .signInIcon {
+    stroke: $white;
+  }
+  .searchBox {
+    display: flex;
+    flex-basis: 70%;
+    margin-left: 30px;
+  }
+  .searchInput {
+    width: 100%;
+    height: 38px;
+    border: none;
+    outline: none;
+    padding: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    border-radius: 25px;
+    transition: 0.5s ease;
+    color: $dark-grey-text;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  .searchIcon {
+    display: none;
+  }
+  .btnBurger {
+    z-index: 22;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+  }
+  .btnBurger::after {
+    top: -6px;
+    z-index: 22;
+    width: 17px;
+    content: ' ';
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
+    height: 2px;
+  }
+  .btnBurger::before {
+    top: 6px;
+    width: 17px;
+    height: 2px;
+    z-index: 22;
+    content: ' ';
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
+  }
+  .btnSpan {
+    width: 17px;
+    height: 2px;
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
+  }
+  .navLinks{
+    display: none; 
+  }
+}
+@media (max-width: 375px) and (min-width: 240px) {
+  .navLinks{
+    display: none;
+  }
+
+  .blackBg {
+    max-width: 375px;
+  }
+  .dateBur {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 10px;
+    margin-left: 70px;
+    padding-bottom: 10px;
+  }
+  .phoneBurWrapper {
+    display: none;
+  }
+  .whiteWrapper {
+    background-color: $blue;
+  }
+  .logo {
+    top: -6px;
+    left: 19px;
+    width: 46px;
+    height: 41px;
+    fill: $white;
+    cursor: pointer;
+    position: absolute;
+    background-color: $blue;
+    clip-path: ellipse(50% 59% at 50% 64%);
+  }
+  .adressBur {
+    display: none;
+  }
+  .adressBurLink {
+    font-size: 11px;
+    line-height: 16px;
+    margin-right: 18px;
+  }
+  .navBarRight {
+    padding: 16px 0;
+    margin-right: 23px;
+  }
+  .cartIcon {
+    fill: $white;
+  }
+  .signInIcon {
+    stroke: $white;
+  }
+  .searchBox {
+    display: flex;
+    flex-basis: 70%;
+    margin-left: 30px;
+  }
+  .searchIcon {
+    display: none;
+  }
+  .searchInput {
+    width: 100%;
+    height: 38px;
+    border: none;
+    outline: none;
+    padding: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    border-radius: 25px;
+    transition: 0.5s ease;
+    color: $dark-grey-text;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  .btnBurger {
+    z-index: 22;
+    cursor: pointer;
+    position: relative;
+  }
+  .btnBurger::after {
+    top: -6px;
+    z-index: 22;
+    width: 17px;
+    height: 2px;
+    content: ' ';
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
+  }
+  .btnBurger::before {
+    top: 6px;
+    width: 17px;
+    height: 2px;
+    z-index: 22;
+    content: ' ';
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
+  }
+  .btnSpan {
+    width: 17px;
+    height: 2px;
+    color: $white;
+    position: absolute;
+    border-bottom: 2px solid $white;
   }
 }
