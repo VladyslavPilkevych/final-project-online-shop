@@ -7,7 +7,7 @@ const token = localStorage.getItem('token') || null;
 const headers = {
   'Content-Type': 'application/json',
   // eslint-disable-next-line quote-props
-  'Authorization': `${token}`,
+  Authorization: `${token}`,
 };
 
 // axios.create({
@@ -30,6 +30,12 @@ export function logInCustomer(loginValues) {
   return axios.post(`${BASE_URL}/customers/login`, loginValues, { headers });
 }
 
-export function getUserData(userId) {
-  return axios.get(`${BASE_URL}/customers/${userId}`, { headers });
+export function getUserData(tokenUser) {
+  return axios.get(`${BASE_URL}/customers/customer`, {
+    headers: {
+      'Content-Type': 'application/json',
+      // eslint-disable-next-line quote-props
+      Authorization: `${tokenUser}`,
+    },
+  });
 }
