@@ -7,10 +7,10 @@ function CartItem() {
     <div>
       <div className={styles.cartWrapper}>
         <div>
-          <div>s</div>
-          <div>s</div>
-          <div>s</div>
-          <div>s</div>
+          <div><p>Item</p></div>
+          <div><p>Price</p></div>
+          <div><p>Qty</p></div>
+          <div><p>Subtotal</p></div>
         </div>
       </div>
     </div>
