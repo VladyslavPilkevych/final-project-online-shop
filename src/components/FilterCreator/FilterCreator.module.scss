@@ -15,10 +15,19 @@
     text-align: center;
     @include fonts("Poppins", 16px, $black, 700);
 }
+.filtersPhoneX {
+    font-size: 20px;
+}
+.filtersTopPhone {
+    display: none;
+}
+.filtersTopPhoneP {
+    @include fonts("Poppins", 16px, $black, 700);
+}
 .categoryContainers {
     padding: 7%;
 }
-.clearFilterBtn {
+.clearFilterBtn, .applyFilterBtn {
     width: 100%;
     margin-top: 20px;
     padding: 5px 20%;
@@ -61,8 +70,24 @@ li {
     border-radius: 50px;
 }
 
-// @media (max-width: 426px) {
-//     .filterCreator {
-//         display: none;
-//     }
-// }
+@media (max-width: 427px) {
+    .filterCreator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // height: 100%;
+        height: 100vh;
+        z-index: 23;
+    }
+    .categoryContainers {
+        padding: 10px 7%;
+    }
+    .filtersTopP, .clearFilterBtn {
+        display: none;
+    }
+    .filtersTopPhone {
+        display: flex;
+        justify-content: space-between;
+    }
+}

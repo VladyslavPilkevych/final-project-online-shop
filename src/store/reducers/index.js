@@ -6,12 +6,14 @@ import userReducer from './userReducer';
 import searchReducer from './searchReducer';
 import cartReducer from './cartReducer';
 import miniMenuReducer from './miniMenuReducer';
+import filtersCategoriesReducer from './filtersCategoriesReducer';
 
 const reducer = combineReducers({
   loader: preloaderReducer,
   products: productsReducer,
   menu: menuReducer,
   miniMenu: miniMenuReducer,
+  filtersCategories: filtersCategoriesReducer,
   user: userReducer,
   search: searchReducer,
   cart: cartReducer,

@@ -1,11 +1,13 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './FilterCreator.module.scss';
 import Button from '../Button/Button';
 import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
+import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 
 function FilterCreator() {
+  const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products.products);
   const colors = allProducts.map((product) => product.color);
   const colorsFiltered = [...new Set(colors)];
@@ -19,6 +21,19 @@ function FilterCreator() {
       {/* <div className={[styles.topItems, styles.categoryContainers].join(' ')}> */}
       <div className={styles.categoryContainers}>
         <p className={styles.filtersTopP}>Filters</p>
+        <div className={styles.filtersTopPhone}>
+          <p className={styles.filtersTopPhoneP}>Filter By</p>
+          <div
+            onClick={() => {
+              dispatch(toggleFiltersCategories(false));
+            }}
+            role="button"
+            tabIndex={0}
+            className={styles.filtersPhoneX}
+          >
+            ✖
+          </div>
+        </div>
         <Button style={styles.clearFilterBtn}>Clear Filter</Button>
       </div>
       <div className={styles.categoryContainers}>
@@ -142,7 +157,7 @@ function FilterCreator() {
           )}
       </div>
       <div className={styles.categoryContainers}>
-        <Button style={styles.clearFilterBtn}>Apply Filters</Button>
+        <Button style={styles.applyFilterBtn}>Apply Filters</Button>
       </div>
       <div className={styles.categoryContainers}>
         <p className={styles.filtersTopP}>Brands</p>
