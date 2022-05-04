@@ -141,9 +141,7 @@ function Header() {
                 <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
-                <NavLink to="/sign-in">
-                  <Avatar />
-                </NavLink>
+                <Avatar />
               </li>
             </nav>
           </div>
