@@ -33,3 +33,7 @@ export function logInCustomer(loginValues) {
 export function getUserData(userId) {
   return axios.get(`${BASE_URL}/customers/${userId}`, { headers });
 }
+
+export function searchProductsApi(searchPhrases) {
+  return axios.post(`${BASE_URL}/products/search`, searchPhrases, { headers });
+}

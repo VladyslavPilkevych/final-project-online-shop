@@ -1,0 +1,32 @@
+@import '../../assets/styles/global.module.scss';
+
+.searchedProductsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1398px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardWrapper {
+    max-width: 232px;
+}
+
+.productName {
+    margin: 0 auto;
+    max-width: 1398px;
+    margin-top: 30px;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+}
+
+@media screen and (min-device-width: 1px) and (max-device-width: 1392px) {
+    .searchedProductsContainer {
+        align-items: center;
+        justify-content: space-between;
+    }
+}
