@@ -12,13 +12,13 @@ import SearchedProductsPage from '../SearchedProductsPage/SearchedProductsPage';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);
-  console.log(allProducts);
+  // console.log(allProducts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
   useEffect(() => {}, [allProducts]);
-  console.log(allProducts);
+  // console.log(allProducts);
   // useEffect(() => {
   //   if () {
   //     dispatch(getDataAC(token));

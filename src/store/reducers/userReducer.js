@@ -1,4 +1,4 @@
-import { SET_USER_TOKEN, GET_USER_DATA } from '../actions/userActions';
+import { SET_USER_TOKEN, GET_USER_DATA, REMOVE_USER_DATA } from '../actions/userActions';
 
 const initialValues = {
   user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
@@ -15,7 +15,13 @@ const userReducer = (state = initialValues, { type, payload } = {}) => {
       localStorage.setItem('user', JSON.stringify(payload));
       return { ...state, user: payload };
     }
-    default: return state;
+    case REMOVE_USER_DATA: {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      return { ...state, user: null, token: null };
+    }
+    default:
+      return state;
   }
 };
 
