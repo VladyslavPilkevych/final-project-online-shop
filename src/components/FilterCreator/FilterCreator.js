@@ -9,9 +9,14 @@ import { toggleFiltersCategories } from '../../store/actionCreators/filtersCateg
 function FilterCreator() {
   const dispatch = useDispatch();
   const allProducts = useSelector((state) => state.products.products);
-  const colors = allProducts.map((product) => product.color);
-  const colorsFiltered = [...new Set(colors)];
-  console.log(colorsFiltered);
+  const filter = useSelector((state) => state.filter.filters);
+  const [filters, setFilters] = useState(null);
+  useEffect(() => {
+    setFilters(filter);
+    // const colors = allProducts.map((product) => product.color);
+    // const colorsFiltered = [...new Set(colors)];
+    // console.log(colorsFiltered);
+  }, []);
   const [filterCategory, setFilterCategory] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [filterColor, setFilterColor] = useState(false);
@@ -39,7 +44,7 @@ function FilterCreator() {
       <div className={styles.categoryContainers}>
         <div
           onClick={() => {
-            setFilterCategory((prevState) => !prevState);
+            setFilters((prevState) => !prevState);
           }}
           role="button"
           tabIndex={0}
@@ -52,20 +57,52 @@ function FilterCreator() {
           && (
             <ul>
               <li className={styles.twiceItems}>
+                {/* <div
+                  onClick={() => {
+                    setFilterCategory((prevState) => prevState.push('laptop'));
+                  }}
+                  role="button"
+                  tabIndex={0}
+                > */}
                 <p>Laptop</p>
                 <span>12</span>
+                {/* </div> */}
               </li>
               <li className={styles.twiceItems}>
+                {/* <div
+                  onClick={() => {
+                    setFilterCategory((prevState) => prevState.push('headphones'));
+                  }}
+                  role="button"
+                  tabIndex={0}
+                > */}
                 <p>Headphones</p>
                 <span>12</span>
+                {/* </div> */}
               </li>
               <li className={styles.twiceItems}>
+                {/* <div
+                  onClick={() => {
+                    setFilterCategory((prevState) => prevState.push('phones'));
+                  }}
+                  role="button"
+                  tabIndex={0}
+                > */}
                 <p>Phones</p>
                 <span>12</span>
+                {/* </div> */}
               </li>
               <li className={styles.twiceItems}>
+                {/* <div
+                  onClick={() => {
+                    setFilterCategory((prevState) => prevState.push('monitor'));
+                  }}
+                  role="button"
+                  tabIndex={0}
+                > */}
                 <p>Monitor</p>
                 <span>12</span>
+                {/* </div> */}
               </li>
             </ul>
           )}
@@ -157,7 +194,8 @@ function FilterCreator() {
           )}
       </div>
       <div className={styles.categoryContainers}>
-        <Button style={styles.applyFilterBtn}>Apply Filters</Button>
+        {filters !== [] ? <Button style={styles.applyFilterBtn}>Apply Filters</Button>
+          : <Button style={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}>Apply Filters</Button>}
       </div>
       <div className={styles.categoryContainers}>
         <p className={styles.filtersTopP}>Brands</p>

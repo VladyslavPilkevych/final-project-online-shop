@@ -35,6 +35,10 @@
     border: 2px solid $dark-grey-text;
     @include fonts("Poppins", 14px, $dark-grey-text, 600);
 }
+.applyFilterBtnActive {
+    color: $white;
+    background-color: $blue;
+}
 .twiceItems {
     display: flex;
     justify-content: space-between;

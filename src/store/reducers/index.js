@@ -7,6 +7,7 @@ import searchReducer from './searchReducer';
 import cartReducer from './cartReducer';
 import miniMenuReducer from './miniMenuReducer';
 import filtersCategoriesReducer from './filtersCategoriesReducer';
+import filterReducer from './filterReducer';
 
 const reducer = combineReducers({
   loader: preloaderReducer,
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   menu: menuReducer,
   miniMenu: miniMenuReducer,
   filtersCategories: filtersCategoriesReducer,
+  filter: filterReducer,
   user: userReducer,
   search: searchReducer,
   cart: cartReducer,
