@@ -44,7 +44,7 @@ function FilterCreator() {
       <div className={styles.categoryContainers}>
         <div
           onClick={() => {
-            setFilters((prevState) => !prevState);
+            setFilterCategory((prevState) => !prevState);
           }}
           role="button"
           tabIndex={0}

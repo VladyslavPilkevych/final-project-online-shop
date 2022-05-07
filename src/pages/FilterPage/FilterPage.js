@@ -3,12 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
 import FilterCreator from '../../components/FilterCreator/FilterCreator';
+import FilterItems from '../../components/FilterItems/FilterItems';
 import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
+import { getAllProducts } from '../../store/actionCreators/productsAC';
 
 function FilterPage() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   // useEffect(() => {
@@ -45,7 +50,7 @@ function FilterPage() {
             </div>
           )}
         <div className={styles.filterItems}>
-          cards
+          <FilterItems />
         </div>
       </div>
     </section>
