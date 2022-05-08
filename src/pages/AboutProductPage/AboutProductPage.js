@@ -6,31 +6,28 @@ import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
-
 import Button from '../../components/Button/Button';
-
 import { getProduct } from '../../store/actionCreators/productsAC';
+
 import styles from './AboutProductPage.module.scss';
 
 function AboutProductPage() {
   const [activeTab, setActiveTab] = useState('tab1');
+  const product = useSelector((state) => state.products.activeProduct);
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
 
-  const handleTab1 = () => {
-    setActiveTab('tab1');
+  const handleToggleTab = (value) => {
+    setActiveTab(value);
   };
 
-  const handleTab2 = () => {
-    setActiveTab('tab2');
-  };
-  const product = useSelector((state) => state.products.activeProduct);
+  // const handleTab2 = () => {
+  //   setActiveTab('tab2');
+  // };
   const location = useLocation();
-  console.log(location.pathname);
   const newLocation = location.pathname.split('/').slice(-1);
+  // console.log(location.pathname);
 
-  console.log(newLocation);
-
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProduct(...newLocation));
   }, []);
@@ -58,19 +55,27 @@ function AboutProductPage() {
           <li
             className={activeTab === 'tab1' ? `${styles.active}` : ''}
             role="menuitem"
-            onClick={handleTab1}
+            onClick={() => handleToggleTab('tab1')}
           >
             About Product
           </li>
           <li
             className={activeTab === 'tab2' ? `${styles.active}` : ''}
             role="menuitem"
-            onClick={handleTab2}
+            onClick={() => handleToggleTab('tab2')}
           >
             Details
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
+          <div className={styles.priceWrapper}>
+            <p className={styles.priceTitle}>Price:</p>
+            <p className={styles.priceAmount}>
+              {product.currency}
+              {' '}
+              {product.currentPrice}
+            </p>
+          </div>
           <button type="button" className={styles.aboutProductCartBtn} onClick={() => console.log('Add to Cart', product._id)}>Add to Cart</button>
         </div>
       </div>

@@ -32,10 +32,7 @@ function AboutProductImage(props) {
       </div>
       <div className={styles.imageWrapper}>
         <Slider {...settings}>
-          {/* <div><img src={urls[0]} alt={model} className={styles.imageMain} /></div> */}
-          {/* <div><img src={urls[1]} alt={model} className={styles.imageMain} /></div> */}
           {urls && urls.map((elem) => <div key={model}><img src={`${elem}`} alt={model} className={styles.imageMain} /></div>)}
-
         </Slider>
       </div>
     </div>
