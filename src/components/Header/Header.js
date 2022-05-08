@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch } from '../../store/actionCreators/searchAC';
 import { toggleCart } from '../../store/actionCreators/cartAC';
@@ -10,14 +11,37 @@ import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
 import Search from '../Search/Search';
 import MiniCart from '../MiniCart/MiniCart';
+import Avatar from '../Avatar/Avatar';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CartIcon } from '../../assets/icons/Cart.svg';
-import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
 import { ReactComponent as SearchIcon } from '../../assets/icons/Vector.svg';
 
 import styles from './Header.module.scss';
+
+const items = [
+  {
+    value: 'Laptops',
+    to: '/category/laptops',
+    className: '{styles.navLinks}',
+  },
+  {
+    value: 'Monitors',
+    to: '/category/monitors',
+    className: '{styles.navLinks}',
+  },
+  {
+    value: 'Phones',
+    to: '/category/phones',
+    className: '{styles.navLinks}',
+  },
+  {
+    value: 'Headphones',
+    to: '/category/headphones',
+    className: '{styles.navLinks}',
+  },
+];
 
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
@@ -28,29 +52,6 @@ function Header() {
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
-
-  const items = [
-    {
-      value: 'Laptops',
-      to: '/category/laptops',
-      className: '{styles.navLinks}',
-    },
-    {
-      value: 'Monitors',
-      to: '/category/monitors',
-      className: '{styles.navLinks}',
-    },
-    {
-      value: 'Phones',
-      to: '/category/phones',
-      className: '{styles.navLinks}',
-    },
-    {
-      value: 'Headphones',
-      to: '/category/headphones',
-      className: '{styles.navLinks}',
-    },
-  ];
 
   return (
     <header>
@@ -140,9 +141,7 @@ function Header() {
                 <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
-                <NavLink to="/sign-in">
-                  <SignInIcon className={styles.signInIcon} />
-                </NavLink>
+                <Avatar />
               </li>
             </nav>
           </div>

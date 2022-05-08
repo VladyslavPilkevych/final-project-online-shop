@@ -67,8 +67,7 @@ function Categories(props) {
   });
   const resultProducts = eachCategory.filter((element) => element !== null);
   console.log(resultProducts);
-  useEffect(() => {
-  }, [allProducts]);
+  useEffect(() => {}, [allProducts]);
   const settings = {
     infinite: true,
     swipeToSlide: true,
@@ -120,21 +119,23 @@ function Categories(props) {
         {/* <div className={styles.categorieSlider}> */}
         <div className={styles.categoriesSliderWrapper}>
           <Slider {...settings}>
-            {resultProducts && resultProducts.map((elem) => (
-              <CardItem
-                className={styles.cardItemWrapper}
-                name={elem.name}
-            // eslint-disable-next-line no-underscore-dangle
-                id={elem._id}
-            // eslint-disable-next-line no-underscore-dangle
-                img={elem.imageUrls[0]}
-            // eslint-disable-next-line no-underscore-dangle
-                key={elem._id}
-                currentPrice={elem.currentPrice}
-                quantity={50}
-                model={elem.model}
-              />
-            ))}
+            {resultProducts
+              && resultProducts.map((elem) => (
+                <CardItem
+                  className={styles.cardItemWrapper}
+                  name={elem.name}
+                  // eslint-disable-next-line no-underscore-dangle
+                  id={elem._id}
+                  // eslint-disable-next-line no-underscore-dangle
+                  img={elem.imageUrls[0]}
+                  // eslint-disable-next-line no-underscore-dangle
+                  key={elem._id}
+                  currentPrice={elem.currentPrice}
+                  quantity={50}
+                  model={elem.model}
+                  itemNo={elem.itemNo}
+                />
+              ))}
           </Slider>
         </div>
       </div>
@@ -151,7 +152,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -162,7 +163,7 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 
 // CategoryProductsContainer.propTypes = {

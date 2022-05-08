@@ -1,0 +1,40 @@
+@import '../../assets/styles/global.module.scss';
+
+.cartWrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1398px;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex-direction: column;
+}
+.cartPageTitle {
+  color: $black;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 68px;
+  line-height: 48px;
+}
+.cartItemHeaders {
+  display: flex;
+  font-size: 14px;
+  max-width: 916px;
+  font-weight: 600;
+  margin-top: 29px;
+  line-height: 21px;
+  padding-bottom: 13px;
+  justify-content: space-between;
+  border-bottom: 1px solid $grey-star;
+}
+.Item{
+  flex-basis: 49%;
+}
+.Price{
+  flex-basis: 15%;
+}
+.Qty{
+  flex-basis: 15%;
+}
+.Subtotal{
+  flex-basis: 21%;
+}

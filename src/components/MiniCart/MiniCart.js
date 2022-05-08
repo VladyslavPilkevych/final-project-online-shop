@@ -1,11 +1,24 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import { toggleCart } from '../../store/actionCreators/cartAC';
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
 import { ReactComponent as EditCartIcon } from '../../assets/icons/editIcon.svg';
 import Image from '../Image/Image';
+
 import styles from './MiniCart.module.scss';
+
+const newCart = {
+  products: [
+    {
+      product: '5da463678cca382250dd7bc7',
+    },
+    {
+      product: '5d73ad04fcad90130470f08b',
+    },
+  ],
+};
 
 function MiniCart() {
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
@@ -15,21 +28,10 @@ function MiniCart() {
 
   const handleItemSubMenu = (url) => navigate(url);
 
-  const newCart = {
-    products: [
-      {
-        product: '5da463678cca382250dd7bc7',
-        date: Date.now(),
-      },
-      {
-        product: '5d73ad04fcad90130470f08b',
-        date: Date.now(),
-      },
-    ],
-  };
   const closeCart = () => {
     dispatch(toggleCart(false));
   };
+
   return (
     <div className={styles.miniCartWrapper} role="button" tabIndex="0" onClick={closeCart}>
       <div className={styles.miniCart} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
