@@ -22,12 +22,13 @@ function AuthorizationPage() {
   const onSubmit = async (values, { resetForm }) => {
     console.log(values);
 
-    const response = await logInCustomer(values).then((user) => user).catch((err) => new Error(err));
-
+    const response = await logInCustomer(values)
+      .then((user) => user)
+      .catch((err) => console.log(err));
     if (response && response.status === 200) {
       resetForm();
       dispatch(setUserTokenAC(response.data.token));
-      dispatch(getUser(response.data.customerNo));
+      dispatch(getUser(response.data.token));
       // localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('token', JSON.stringify(response.data.token));
       navigate({ pathname: '/' });
@@ -50,18 +51,12 @@ function AuthorizationPage() {
           <p className={styles.customersBlocksSubtitle}>If you have an account, sign in with your login or email address</p>
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
-              <CustomInput
-                name="loginOrEmail"
-                type="text"
-                placeholder="Email"
-              />
-              <CustomInput
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <CustomInput name="loginOrEmail" type="text" placeholder="Email" />
+              <CustomInput name="password" type="password" placeholder="Password" />
               <div>
-                <button type="submit" className={styles.signInButton}>Sign In</button>
+                <button type="submit" className={styles.signInButton}>
+                  Sign In
+                </button>
               </div>
             </Form>
           </Formik>
@@ -74,8 +69,11 @@ function AuthorizationPage() {
             <li>Keep more than one address</li>
             <li>Track orders and more</li>
           </ul>
-          <Link to="/sign-up"><button type="button" className={styles.signInButton}>Create an account</button></Link>
-
+          <Link to="/sign-up">
+            <button type="button" className={styles.signInButton}>
+              Create an account
+            </button>
+          </Link>
         </div>
       </div>
     </div>
