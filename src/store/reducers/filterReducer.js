@@ -13,6 +13,7 @@ import {
 
 const initialValues = {
   filters: {},
+  filterCategory: null,
   filterProducts: null,
   priceSliderValues: {
     min: 100,
@@ -26,7 +27,7 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
     case CLEAR_FILTER_PRODUCTS:
       return { ...state, filterProducts: null };
     case FILTER_CATEGORY:
-      return { ...state, filters: { ...state.filters, category: payload } };
+      return { ...state, filterCategory: payload };
     case FILTER_COLOR:
       return { ...state, filters: { ...state.filters, color: payload } };
     case FILTER_NAME:

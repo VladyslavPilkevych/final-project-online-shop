@@ -1,4 +1,4 @@
-.filterItems {
+.filterItem {
     margin-top: 20px;
     display: grid;
     width: 100%;
@@ -16,19 +16,19 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .filterItems {
+    .filterItem {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(5, 346px);
     }
 }
 @media (min-width: 425px) and (max-width: 768px) {
-    .filterItems {
+    .filterItem {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(5, 346px);
     }
 }
 @media (max-width: 425px) {
-    .filterItems {
+    .filterItem {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(6, 346px);
     }

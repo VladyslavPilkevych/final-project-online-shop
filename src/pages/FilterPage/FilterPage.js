@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
 import FilterCreator from '../../components/FilterCreator/FilterCreator';
@@ -8,11 +9,16 @@ import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
+import { filterProducts } from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
+  const filterItems = useSelector((state) => state.filter.filterProducts);
+  const location = useLocation();
   const dispatch = useDispatch();
+  console.log(`?categories=${location.pathname.split('/')[2]}`);
   useEffect(() => {
     dispatch(getAllProducts());
+    dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, []);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
@@ -25,8 +31,12 @@ function FilterPage() {
     <section className={styles.FilterPage}>
       <img alt="img" src={imageFilterPageTop} className={styles.topImg} />
       <ul className={styles.filterPath}>
-        <li className={styles.filterPathItems}>Home</li>
-        <li className={styles.filterPathItems}>Laptops</li>
+        <li className={styles.filterPathItems}>
+          <NavLink to="/">
+            Home
+          </NavLink>
+        </li>
+        <li className={styles.filterPathItems}>{location.pathname.split('/')[2]}</li>
       </ul>
       <h2 className={styles.h2FilterName}>MSI PS Series (20)</h2>
       <div className={styles.filter}>
@@ -49,8 +59,8 @@ function FilterPage() {
               <FilterCreator />
             </div>
           )}
-        <div className={styles.filterItems}>
-          <FilterItems />
+        <div className={styles.filterItem}>
+          <FilterItems filterProducts={filterItems} />
         </div>
       </div>
     </section>

@@ -19,6 +19,7 @@ function AppRoutes() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favourite" element={<FavouritePage />} />
       <Route path="/filter" element={<FilterPage />} />
+      <Route path="/filter/:categories" element={<FilterPage />} />
       <Route path="/category" element={<CatogoryPage />} />
       <Route path="/category/:categories" element={<CatogoryPage />} />
       <Route path="*" element={<Navigate to="/" />} />

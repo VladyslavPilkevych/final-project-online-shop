@@ -21,11 +21,16 @@
 }
 .filterPathItems {
     margin-right: 10px;
+    a {
+        @include fonts("Poppins", 12px, $black, 400);
+        text-transform: uppercase;
+    }
     @include fonts("Poppins", 12px, $black, 400);
+    text-transform: uppercase;
     &:after {
         margin-left: 10px;
         display: inline-block;
-        content: '›';
+        content: "›";
         color: $blue;
     }
     &:last-child {
@@ -44,14 +49,14 @@
     border: 2px solid $grey-text;
     background-color: white;
     @include fonts("Poppins", 11px, $black, 600);
-} 
+}
 .filter {
     display: flex;
 }
 .filterCreator {
     flex-basis: 17%;
 }
-.filterItems {
+.filterItem {
     flex-basis: 83%;
 }
 
@@ -59,7 +64,7 @@
     .filterCreator {
         flex-basis: 20%;
     }
-    .filterItems {
+    .filterItem {
         flex-basis: 80%;
     }
 }
@@ -67,7 +72,7 @@
     .filterCreator {
         flex-basis: 25%;
     }
-    .filterItems {
+    .filterItem {
         flex-basis: 75%;
     }
 }

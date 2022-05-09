@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './FilterCreator.module.scss';
 import Button from '../Button/Button';
+import FilterPriceSlider from '../FilterPriceSlider/FilterPriceSlider';
 import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
@@ -121,24 +122,25 @@ function FilterCreator() {
         </div>
         {filterPrice
           && (
-            <ul>
-              <li className={styles.twiceItems}>
-                <p>$0.00 - $250.00</p>
-                <span>12</span>
-              </li>
-              <li className={styles.twiceItems}>
-                <p>$250.00 - $500.00</p>
-                <span>12</span>
-              </li>
-              <li className={styles.twiceItems}>
-                <p>$500.00 - $750.00</p>
-                <span>12</span>
-              </li>
-              <li className={styles.twiceItems}>
-                <p>$750.00 And Above</p>
-                <span>12</span>
-              </li>
-            </ul>
+            <FilterPriceSlider />
+            // <ul>
+            //   <li className={styles.twiceItems}>
+            //     <p>$0.00 - $250.00</p>
+            //     <span>12</span>
+            //   </li>
+            //   <li className={styles.twiceItems}>
+            //     <p>$250.00 - $500.00</p>
+            //     <span>12</span>
+            //   </li>
+            //   <li className={styles.twiceItems}>
+            //     <p>$500.00 - $750.00</p>
+            //     <span>12</span>
+            //   </li>
+            //   <li className={styles.twiceItems}>
+            //     <p>$750.00 And Above</p>
+            //     <span>12</span>
+            //   </li>
+            // </ul>
           )}
       </div>
       <div className={styles.categoryContainers}>
