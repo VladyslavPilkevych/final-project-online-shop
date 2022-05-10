@@ -18,8 +18,11 @@ function FilterPage() {
   console.log(`?categories=${location.pathname.split('/')[2]}`);
   useEffect(() => {
     dispatch(getAllProducts());
-    dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+    // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, []);
+  useEffect(() => {
+    dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+  }, [filterItems]);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   // useEffect(() => {
@@ -60,7 +63,15 @@ function FilterPage() {
             </div>
           )}
         <div className={styles.filterItem}>
-          <FilterItems filterProducts={filterItems} />
+          {width > 1024
+            && <FilterItems filterProducts={filterItems} itemsPerPage={15} />}
+          {width > 768 && width <= 1024
+            && <FilterItems filterProducts={filterItems} itemsPerPage={12} />}
+          {width > 425 && width <= 768
+            && <FilterItems filterProducts={filterItems} itemsPerPage={9} />}
+          {width <= 425
+            && <FilterItems filterProducts={filterItems} itemsPerPage={8} />}
+
         </div>
       </div>
     </section>
