@@ -28,9 +28,9 @@ function FilterItems(props) {
     <>
       <div className={styles.filterItem}>
         {currentItems && currentItems.map((product) => (
-          <div key={product.id} className={styles.gridItemContainer}>
+          <div key={product.itemNo} className={styles.gridItemContainer}>
             <CardItem
-              key={product.id}
+              // key={product.id}
               name={product.name}
               currentPrice={product.currentPrice}
               id={product._id}

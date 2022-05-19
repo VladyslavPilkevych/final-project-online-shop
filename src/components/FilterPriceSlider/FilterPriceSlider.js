@@ -1,16 +1,22 @@
 /* eslint react/no-multi-comp: 0, no-console: 0 */
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'rc-slider';
 import './FilterPriceSlider.scss';
-// import '../../assets/index.less';
+import { setMinSliderValue, setMaxSliderValue } from '../../store/actionCreators/filterAC';
 
 function FilterPriceSlider() {
+  const dispatch = useDispatch();
+  const minGlobal = useSelector((state) => state.filter.priceSliderValues.min);
+  const maxGlobal = useSelector((state) => state.filter.priceSliderValues.max);
   const [min, setMin] = useState(null);
   const [max, setMax] = useState(null);
   function changePriceFn(value) {
     console.log(value);
     setMin(value[0]);
     setMax(value[1]);
+    dispatch(setMinSliderValue(value[0]));
+    dispatch(setMaxSliderValue(value[1]));
   }
   return (
     <div>

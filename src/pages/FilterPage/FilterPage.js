@@ -9,20 +9,24 @@ import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
-import { filterProducts } from '../../store/actionCreators/filterAC';
+import { filterProducts, filterCategory } from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
   const filterItems = useSelector((state) => state.filter.filterProducts);
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log(`?categories=${location.pathname.split('/')[2]}`);
+  // console.log(`?categories=${location.pathname.split('/')[2]}`);
   useEffect(() => {
     dispatch(getAllProducts());
     // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, []);
   useEffect(() => {
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
-  }, [filterItems]);
+    dispatch(filterCategory(location.pathname.split('/')[2]));
+  }, [location.pathname]);
+  // useEffect(() => {
+  //   dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+  // }, [filterItems]);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   // useEffect(() => {
@@ -54,12 +58,12 @@ function FilterPage() {
           </Button>
         )}
         <div className={styles.filterCreator}>
-          <FilterCreator />
+          <FilterCreator filterProducts={filterItems} />
         </div>
         {width <= 426 && filtersCategoriesOnPhone
           && (
             <div>
-              <FilterCreator />
+              <FilterCreator filterProducts={filterItems} />
             </div>
           )}
         <div className={styles.filterItem}>
@@ -71,7 +75,6 @@ function FilterPage() {
             && <FilterItems filterProducts={filterItems} itemsPerPage={9} />}
           {width <= 425
             && <FilterItems filterProducts={filterItems} itemsPerPage={8} />}
-
         </div>
       </div>
     </section>
