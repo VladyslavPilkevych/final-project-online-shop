@@ -1,1 +1,2 @@
 export const TOGGLE_SEARCH = 'TOGGLE_SEARCH';
+export const PRODUCTS_SEARCH = 'PRODUCTS_SEARCH';

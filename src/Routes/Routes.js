@@ -8,6 +8,7 @@ import CartPage from '../pages/CartPage/CartPage';
 import FavouritePage from '../pages/FavouritePage/FavouritePage';
 import FilterPage from '../pages/FilterPage/FilterPage';
 import CatogoryPage from '../pages/CatogoryPage/CatogoryPage';
+import SearchedProductsPage from '../pages/SearchedProductsPage/SearchedProductsPage';
 
 function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path="/category" element={<CatogoryPage />} />
       <Route path="/category/:categories" element={<CatogoryPage />} />
       <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/products/search" element={<SearchedProductsPage />} />
     </Routes>
   );
 }

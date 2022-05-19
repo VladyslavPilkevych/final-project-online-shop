@@ -42,3 +42,7 @@ export function getUserData(tokenUser) {
     },
   });
 }
+
+export function searchProductsApi(searchPhrases) {
+  return axios.post(`${BASE_URL}/products/search`, searchPhrases, { headers });
+}
