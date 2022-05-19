@@ -6,6 +6,7 @@ import AuthorizationPage from '../pages/AuthorizationPage/AuthorizationPage';
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import CartPage from '../pages/CartPage/CartPage';
 import FavouritePage from '../pages/FavouritePage/FavouritePage';
+import FilterPage from '../pages/FilterPage/FilterPage';
 import CatogoryPage from '../pages/CatogoryPage/CatogoryPage';
 import SearchedProductsPage from '../pages/SearchedProductsPage/SearchedProductsPage';
 
@@ -18,6 +19,8 @@ function AppRoutes() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favourite" element={<FavouritePage />} />
+      <Route path="/filter" element={<FilterPage />} />
+      <Route path="/filter/:categories" element={<FilterPage />} />
       <Route path="/category" element={<CatogoryPage />} />
       <Route path="/category/:categories" element={<CatogoryPage />} />
       <Route path="*" element={<Navigate to="/" />} />

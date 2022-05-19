@@ -17,13 +17,14 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   type: PropTypes.oneOf(['submit', 'button']),
   handleClick: PropTypes.func,
   style: PropTypes.string,
 };
 
 Button.defaultProps = {
+  children: '',
   type: 'button',
   handleClick: () => {},
   style: '',
