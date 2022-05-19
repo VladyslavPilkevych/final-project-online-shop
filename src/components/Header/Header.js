@@ -23,24 +23,29 @@ import styles from './Header.module.scss';
 const items = [
   {
     value: 'Laptops',
-    to: '/category/laptops',
+    to: '/filter/laptop',
     className: '{styles.navLinks}',
   },
   {
     value: 'Monitors',
-    to: '/category/monitors',
+    to: '/filter/monitor',
     className: '{styles.navLinks}',
   },
   {
     value: 'Phones',
-    to: '/category/phones',
+    to: '/filter/phones',
     className: '{styles.navLinks}',
   },
   {
     value: 'Headphones',
-    to: '/category/headphones',
+    to: '/filter/headphones',
     className: '{styles.navLinks}',
   },
+  // {
+  //   value: 'Filter',
+  //   to: '/filter',
+  //   className: '{styles.navLinks}',
+  // },
 ];
 
 function Header() {

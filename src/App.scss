@@ -1,5 +1,13 @@
-// .slick-track {
-//     // height: 360px;
-//     // overflow: visible;
-//     padding-bottom: 50px;
-// }
+@import "./assets//styles/variables";
+.slick-track {
+    padding-bottom: 65px;
+}
+@media (max-width: 768px) {
+    .slick-track {
+        padding-bottom: 0;
+    }
+}
+.activeFilterColor {
+    outline-offset: 2px;
+    outline: 3px solid $blue;
+}
