@@ -1,10 +1,14 @@
 import React, { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import CartItem from '../../components/CartItem/CartItem';
 import Advantages from '../../components/Advantages/Advantages';
 
 import styles from './CartPage.module.scss';
 
 function CartPage() {
+  const navigate = useNavigate();
+
   return (
     <section>
       <div className={styles.cartWrapper}>
@@ -24,6 +28,14 @@ function CartPage() {
           </div>
         </div>
         <CartItem />
+        <div className={styles.CartButtonWrapper}>
+          <button className={styles.CartButtonShopping} type="button" onClick={() => navigate({ pathname: '/' })}>
+            Continue Shopping
+          </button>
+          <button className={styles.CartButtonClearCart} type="button">
+            Clear Shopping Cart
+          </button>
+        </div>
       </div>
       <Advantages />
     </section>

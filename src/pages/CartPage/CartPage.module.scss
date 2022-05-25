@@ -26,15 +26,41 @@
   justify-content: space-between;
   border-bottom: 1px solid $grey-star;
 }
-.Item{
+.Item {
   flex-basis: 49%;
 }
-.Price{
+.Price {
   flex-basis: 15%;
 }
-.Qty{
+.Qty {
   flex-basis: 15%;
 }
-.Subtotal{
+.Subtotal {
   flex-basis: 21%;
+}
+.CartButtonWrapper {
+  margin-top: 25px;
+}
+.CartButtonShopping {
+  border: 2px solid $dark-grey-text;
+  box-sizing: border-box;
+  border-radius: 50px;
+  padding: 8px 30px;
+  margin-right: 7px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $dark-grey-text;
+  cursor: pointer;
+}
+.CartButtonClearCart {
+  background: $black;
+  border-radius: 50px;
+  color: $white;
+  padding: 8px 30px;
+  border: 2px solid black;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
 }

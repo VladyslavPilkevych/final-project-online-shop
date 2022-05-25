@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
 const BASE_URL = 'https://skvonlineshop.herokuapp.com/api';
+// const BASE_URL = 'http://localhost:5001/api';
 
 const token = localStorage.getItem('token') || null;
 
@@ -40,10 +40,27 @@ export function getUserData(tokenUser) {
   });
 }
 export function createNewCart(newCart) {
-  const tokens = localStorage.getItem('token') || null;
+  const tokens = JSON.parse(localStorage.getItem('token')) || null;
   return axios.post(`${BASE_URL}/cart`, newCart, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
 }
+
 export function addToCart(newCart, productId) {
-  const tokens = localStorage.getItem('token') || null;
-  return axios.put(`${BASE_URL}/cart/${productId}`, newCart, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
+  const tokens = JSON.parse(localStorage.getItem('token')) || null;
+  return axios.put(`${BASE_URL}/cart/${productId}`, newCart, { headers: { 'Content-Type': 'application/json', Authentication: tokens } });
+}
+
+export function deleteCart() {
+  const tokens = JSON.parse(localStorage.getItem('token')) || null;
+  return axios.delete(`${BASE_URL}/cart`, { headers: { 'Content-Type': 'application/json', Authentication: tokens } });
+}
+
+export function getCart() {
+  const tokens = JSON.parse(localStorage.getItem('token')) || null;
+  return axios.get(`${BASE_URL}/cart`, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
+}
+
+export function createWishList(newCart) {
+  const tokens = JSON.parse(localStorage.getItem('token')) || null;
+  // eslint-disable-next-line quote-props
+  return axios.post(`${BASE_URL}/wishlist`, newCart, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
 }

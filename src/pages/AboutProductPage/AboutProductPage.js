@@ -6,7 +6,8 @@ import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
-import { createCart, addToCart } from '../../store/actionCreators/cartAC';
+import { createCart, addToCart, getCart } from '../../store/actionCreators/cartAC';
+
 import Button from '../../components/Button/Button';
 
 import { getProduct } from '../../store/actionCreators/productsAC';
@@ -36,15 +37,6 @@ function AboutProductPage() {
   }, []);
 
   const onCreateCart = (productId) => {
-    // const data = {
-    //   products: [
-    //     {
-    //       product: productId,
-    //       cartQuantity: 1,
-    //     },
-    //   ],
-    // };
-
     const newCart = {
       products: [
         {
@@ -55,6 +47,17 @@ function AboutProductPage() {
     };
     dispatch(createCart(newCart));
   };
+  // const onAddToCart = async (dataCart, productId) => {
+  //   const response = await getCart(dataCart)
+  //     .then((cart) => cart)
+  //     .catch((err) => console.log(err));
+  //   console.log('response', response);
+  //   if (response && response.status === 200) {
+  //     dispatch(addToCart(productId));
+  //   } else {
+  //     onCreateCart(productId);
+  //   }
+  // };
 
   return (
     <>
@@ -84,7 +87,14 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
-          <button type="button" className={styles.aboutProductCartBtn} onClick={() => onCreateCart(product._id)}>
+          <button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              onCreateCart(product._id);
+              // onAddToCart(product._id);
+            }}
+          >
             Add to Cart
           </button>
         </div>

@@ -22,6 +22,9 @@ const newCart = {
 
 function MiniCart() {
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart);
+  // const [{ data, ...args }] = dataCart;
+  console.log(dataCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   if (!isOpenCart) return null;

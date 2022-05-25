@@ -1,11 +1,11 @@
 import {
-  TOGGLE_CART, PUT_IN_CART, DELETE_FROM_CART, CLEAR_CART, CREATE_CART,
+  TOGGLE_CART, PUT_IN_CART, DELETE_FROM_CART, CLEAR_CART, CREATE_CART, GET_CART,
 } from '../actions/cartActions';
 
 const initialState = {
   inCart: null,
   isOpenCart: false,
-  newCart: [],
+  dataCart: [],
 };
 
 const cartReducer = (state = initialState, { type, payload } = {}) => {
@@ -14,7 +14,10 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
       return { ...state, isOpenCart: payload };
     }
     case CREATE_CART: {
-      return { ...state, newCart: [...state.newCart, payload] };
+      return { ...state, dataCart: [...state.dataCart, payload] };
+    }
+    case GET_CART: {
+      return { ...state, dataCart: [...state.dataCart, payload] };
     }
     case PUT_IN_CART: {
       if (state.inCart !== null) {

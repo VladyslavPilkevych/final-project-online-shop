@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch } from '../../store/actionCreators/searchAC';
-import { toggleCart } from '../../store/actionCreators/cartAC';
+import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
 import Menu from '../Menu/Menu';
@@ -46,12 +46,16 @@ const items = [
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
+  const user = useSelector((state) => state.user.user);
 
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCart());
+  }, [user]);
 
   return (
     <header>
@@ -100,17 +104,6 @@ function Header() {
               <Menu items={items} />
               <MiniMenu items={items} />
             </nav>
-            {/* <nav className={styles.navBur}>
-              {items.map((item) => (
-                <li key={item.value}>
-                  <div>
-                    <NavLink className={styles.navLinks} style={items.style} to={item.to}>
-                      {item.value}
-                    </NavLink>
-                  </div>
-                </li>
-              ))}
-            </nav> */}
           </div>
           <Search />
           <div className={styles.searchBox}>
