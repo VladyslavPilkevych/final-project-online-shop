@@ -1,19 +1,18 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardItem from '../../components/CardItem/CardItem';
 import styles from './SearchedProductsPage.module.scss';
 import { searchProducts } from '../../store/actionCreators/searchAC';
+import Advantages from '../../components/Advantages/Advantages';
 
 function SearchedProductsPage() {
   const dispatch = useDispatch();
   const searchedProducts = useSelector((state) => state.search.searchedProducts);
 
-  const useLocalStorageSearchedProducts = () => {
+  useEffect(() => {
     dispatch(searchProducts(localStorage.getItem('phrase')));
-  };
-
-  window.addEventListener('load', useLocalStorageSearchedProducts);
+  }, []);
 
   return (
     <div>
@@ -33,6 +32,7 @@ function SearchedProductsPage() {
           </div>
         ))}
       </div>
+      <Advantages />
     </div>
   );
 }
