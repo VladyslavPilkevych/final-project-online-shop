@@ -1,12 +1,12 @@
 @import '../../assets/styles/global.module.scss';
 
 .searchedProductsContainer {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    justify-items: center;
     margin: 0 auto;
     max-width: 1398px;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .cardWrapper {
@@ -24,9 +24,36 @@
     line-height: 48px;
 }
 
-@media screen and (min-device-width: 1px) and (max-device-width: 1392px) {
+@media screen and (min-device-width: 769px) and (max-device-width: 1169px) {
     .searchedProductsContainer {
-        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-device-width: 376px) and (max-device-width: 768px) {
+    .searchedProductsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: stretch;
+    }
+    
+}
+
+@media screen and (min-device-width: 376px) and (max-device-width: 479px) {
+    .searchedProductsContainer {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch;
+    }
+}
+
+@media screen and (max-device-width: 375px) {
+    .searchedProductsContainer {
+        display: flex;
+        flex-direction: column;
         justify-content: space-between;
+        align-items: center;
+    }
+
+    .cardWrapper {
+        width: 232px;
     }
 }

@@ -17,7 +17,7 @@
   background: $bg-white-color;
 }
 
-@media (max-width: 768px) and (min-width: 376px) {
+@media (max-width: 768px) and (min-width: 240px) {
   .searchBox {
     display: none;
   }
@@ -25,11 +25,11 @@
     display: none;
   }
 }
-@media (max-width: 375px) {
-  .searchBox {
-    display: none;
-  }
-  .searchIcon {
-    display: none;
-  }
-}
+// @media (max-width: 375px) {
+//   .searchBox {
+//     display: none;
+//   }
+//   .searchIcon {
+//     display: none;
+//   }
+// }
