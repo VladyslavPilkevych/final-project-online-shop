@@ -75,6 +75,7 @@
 .aboutProducTextAndImageWrapper {
     display: flex;
     justify-content: space-around;
+    max-width: 95%;
 }
 
 .aboutProductTextWrapper {
@@ -104,3 +105,8 @@
     color: $black;
     border-bottom: 2px solid $blue;
 }
+
+.addToCartIconWrapper {
+    cursor: pointer;
+    margin: 150px 10px;
+  }

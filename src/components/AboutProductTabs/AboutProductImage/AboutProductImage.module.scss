@@ -1,17 +1,40 @@
-.imageWrapper {
-width: 250px;
+.imageSideWrapper {
+  width: 80%;
 }
 
 .imageMain {
-    width: 100%;
+  width: 100%;
+  max-height: 350px !important;
 }
 
 .detailsWrapper {
-    display: flex;
+  display: flex;
 }
 
-.addToCartIconWrapper{
-    cursor: pointer;
-    margin: 30px 53px 0 23px;
+.addToCartIconWrapper {
+  cursor: pointer;
+  margin: 30px 53px 0 23px;
+}
 
+.imgmin {
+  width: 30px;
+  // height: 30px;
+}
+
+ul {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul.slick-dots li {
+  height: 50px;
+}
+
+.slick-track {
+  display: flex !important;
+  max-height: 350px !important;
+}
+.slick-list {
+  max-height: 350px !important;
 }
