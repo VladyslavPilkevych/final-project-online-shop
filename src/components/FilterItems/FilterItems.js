@@ -7,11 +7,20 @@ import CardItem from '../CardItem/CardItem';
 
 function FilterItems(props) {
   const { filterProducts, itemsPerPage } = props;
+  const filterByColor = useSelector((state) => state.filter.filterProducts);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const [renderOnPage, setRenderOnPage] = useState(true);
 
+  useEffect(() => {
+    console.log(document.querySelector('a[tabindex="0"]'));
+    setRenderOnPage(false);
+    setTimeout(() => {
+      setRenderOnPage(true);
+    }, 100);
+  }, [filterProducts]);
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     if (filterProducts !== null) {
@@ -44,6 +53,8 @@ function FilterItems(props) {
         ))}
       </div>
       <ReactPaginate
+        forcePage={0} // изначально должно быть равно null (нужно связать с редаксом)
+        // подписать редакс к forcePage и при нажатии на apply filter устанавливать редакс null
         breakLabel="..."
         nextLabel="›"
         previousLabel="‹"

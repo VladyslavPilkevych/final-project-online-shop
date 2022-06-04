@@ -10,12 +10,18 @@ import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import {
-  addFilterColor, removeFilterColor, filterBrand, newFilterProducts,
+  addFilterColor,
+  removeFilterColor,
+  filterBrand,
+  newFilterProducts,
+  setMinSliderValue,
+  setMaxSliderValue,
+  clearFilterColor,
 } from '../../store/actionCreators/filterAC';
 import { getFilteredProductsApi } from '../../api/api';
 
 function FilterCreator(props) {
-  const { filterProducts } = props;
+  const { filterProducts, reloadFilterCreator } = props;
   const dispatch = useDispatch();
   const location = useLocation();
   const filter = useSelector((state) => state.filter);
@@ -27,7 +33,8 @@ function FilterCreator(props) {
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
   const [filterRedColor, setFilterRedColor] = useState(false);
   const [filterBlackColor, setFilterBlackColor] = useState(false);
-  const [filterBrands, setFilterBrands] = useState([]);
+  const [filterGrayColor, setFilterGrayColor] = useState(false);
+  const [filterWhiteColor, setFilterWhiteColor] = useState(false);
   const [applyFilterBtn, setApplyFilterBtn] = useState(false);
   const [productsItems, setProductsItems] = useState([]);
 
@@ -43,13 +50,24 @@ function FilterCreator(props) {
       });
   }
   useEffect(() => {
-    setApplyFilterBtn(true);
     getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`);
+  }, [location.pathname]); // я не понимаю что нужно вставить в [...]
+  useEffect(() => {
+    setApplyFilterBtn(true);
   }, [filter]);
+  useEffect(() => {
+    if (filterByColor.length === 0) {
+      setFilterRedColor(false);
+      setFilterBlackColor(false);
+      setFilterGrayColor(false);
+      setFilterWhiteColor(false);
+    }
+  }, [filterByColor]);
   let brandsFiltered = null;
   if (productsItems) {
     const brands = productsItems.map((i) => i.name);
     brandsFiltered = [...new Set(brands)];
+    brandsFiltered.sort();
   }
   return (
     <div className={styles.filterCreator}>
@@ -69,7 +87,21 @@ function FilterCreator(props) {
             ✖
           </div>
         </div>
-        <Button style={styles.clearFilterBtn}>Clear Filter</Button>
+        <Button
+          style={styles.clearFilterBtn}
+          handleClick={() => {
+            console.log('filter creator must start cleaning');
+            const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
+            dispatch(setMinSliderValue(priceArray[0]));
+            dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+            // reloadFilterCreator(); // чего не работает функция
+            console.log(reloadFilterCreator());
+            dispatch(filterBrand([]));
+            dispatch(clearFilterColor(null));
+          }}
+        >
+          Clear Filter
+        </Button>
       </div>
       <div className={styles.categoryContainers}>
         <div
@@ -94,17 +126,28 @@ function FilterCreator(props) {
                       className={styles.brandsCheckbox}
                       id={`brand_${brand}`}
                       name={`brand_${brand}`}
+                      checked={filterByBrand.includes(brand)}
                       onChange={() => {
-                        setFilterBrands((prevState) => {
-                          if (!prevState.includes(brand)) {
-                            prevState.push(brand);
-                          } else {
-                            const index = prevState.findIndex((item) => item === brand);
-                            prevState.splice(index, 1);
-                          }
-                          return prevState;
-                        });
-                        dispatch(filterBrand(filterBrands));
+                        const selectedBrands = [...filterByBrand];
+                        if (!selectedBrands.includes(brand)) {
+                          selectedBrands.push(brand);
+                        } else {
+                          const index = selectedBrands.findIndex((item) => item === brand);
+                          selectedBrands.splice(index, 1);
+                        }
+                        dispatch(filterBrand(selectedBrands));
+                        // setFilterBrands((prevState) => {
+                        //   if (!prevState.includes(brand)) {
+                        //     prevState.push(brand);
+                        //   } else {
+                        //     const index = prevState.findIndex((item) => item === brand);
+                        //     prevState.splice(index, 1);
+                        //   }
+                        //   console.log(filterByBrand.includes(brand));
+                        //   console.log(filterByBrand);
+                        //   console.log(brand);
+                        //   return prevState;
+                        // });
                       }}
                     />
                     <label htmlFor={`brand_${brand}`}>{brand}</label>
@@ -128,7 +171,7 @@ function FilterCreator(props) {
         </div>
         {filterPrice
           && (
-            <FilterPriceSlider />
+            <FilterPriceSlider productsItems={productsItems} />
           )}
       </div>
       <div className={styles.categoryContainers}>
@@ -176,6 +219,34 @@ function FilterCreator(props) {
                   style={classnames(styles.colorsItems, styles.blackColor, { activeFilterColor: filterBlackColor })}
                 />
               </li>
+              <li>
+                <Button
+                  handleClick={() => {
+                    setFilterGrayColor((prevState) => !prevState);
+                    if (!filterGrayColor) {
+                      dispatch(addFilterColor('gray'));
+                    } else {
+                      dispatch(removeFilterColor('gray'));
+                    }
+                  }}
+                  // eslint-disable-next-line max-len
+                  style={classnames(styles.colorsItems, styles.grayColor, { activeFilterColor: filterGrayColor })}
+                />
+              </li>
+              <li>
+                <Button
+                  handleClick={() => {
+                    setFilterWhiteColor((prevState) => !prevState);
+                    if (!filterWhiteColor) {
+                      dispatch(addFilterColor('white'));
+                    } else {
+                      dispatch(removeFilterColor('white'));
+                    }
+                  }}
+                  // eslint-disable-next-line max-len
+                  style={classnames(styles.colorsItems, styles.whiteColor, { activeFilterColor: filterWhiteColor })}
+                />
+              </li>
               {/* eslint-disable-next-line max-len */}
               {/* {colorsFiltered && colorsFiltered.map((color) => <li key={Math.random()} className={styles.colorsItems} style={{ backgroundColor: color }} />)} */}
             </ul>
@@ -208,10 +279,12 @@ function FilterCreator(props) {
 
 FilterCreator.propTypes = {
   filterProducts: PropTypes.array,
+  reloadFilterCreator: PropTypes.func,
 };
 
 FilterCreator.defaultProps = {
   filterProducts: [],
+  reloadFilterCreator: () => { },
 };
 
 export default memo(FilterCreator);

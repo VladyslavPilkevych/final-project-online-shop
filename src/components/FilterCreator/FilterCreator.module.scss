@@ -35,9 +35,10 @@
     border: 2px solid $dark-grey-text;
     @include fonts("Poppins", 14px, $dark-grey-text, 600);
 }
-.applyFilterBtnActive {
+.applyFilterBtnActive, .clearFilterBtn {
     color: $white;
     background-color: $blue;
+    cursor: pointer;
 }
 .twiceItems {
     display: flex;
@@ -74,6 +75,7 @@ li {
     width: 30px;
     height: 30px;
     margin: 3px;
+    margin-bottom: 7px;
     border-radius: 50px;
     overflow: hidden;
     cursor: pointer;
@@ -84,6 +86,13 @@ li {
 }
 .blackColor {
     background-color: $black;
+}
+.grayColor {
+    background-color: gray;
+}
+.whiteColor {
+    background-color: $white;
+    border: 1px solid black;
 }
 
 @media (max-width: 427px) {

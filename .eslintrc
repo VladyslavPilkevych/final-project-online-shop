@@ -37,6 +37,8 @@
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "linebreak-style": 0,
+    "prefer-rest-params": 0,
+    "no-return-assign": 0,
     "react/jsx-filename-extension": [
       1,
       {

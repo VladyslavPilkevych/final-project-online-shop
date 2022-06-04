@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
@@ -9,18 +9,26 @@ import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
-import { filterProducts, filterCategory } from '../../store/actionCreators/filterAC';
+import {
+  filterProducts,
+  filterCategory,
+  setMinSliderValue,
+  setMaxSliderValue,
+} from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
   const filterItems = useSelector((state) => state.filter.filterProducts);
   const location = useLocation();
   const dispatch = useDispatch();
+  const [showFilterCreator, setShowFilterCreator] = useState(true);
   // console.log(`?categories=${location.pathname.split('/')[2]}`);
   useEffect(() => {
     dispatch(getAllProducts());
     // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, []);
   useEffect(() => {
+    dispatch(setMinSliderValue(null));
+    dispatch(setMaxSliderValue(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(filterCategory(location.pathname.split('/')[2]));
   }, [location.pathname]);
@@ -34,6 +42,14 @@ function FilterPage() {
   //     dispatch(toggleFiltersCategories(true));
   //   }
   // });
+  function reloadFilterCreator() {
+    console.log('reloadFilterCreator');
+    setShowFilterCreator(false);
+    setTimeout(() => {
+      setShowFilterCreator(true);
+    }, 100);
+    console.log('Clear Felter Creator');
+  }
   return (
     <section className={styles.FilterPage}>
       <img alt="img" src={imageFilterPageTop} className={styles.topImg} />
@@ -60,21 +76,44 @@ function FilterPage() {
         <div className={styles.filterCreator}>
           <FilterCreator filterProducts={filterItems} />
         </div>
-        {width <= 426 && filtersCategoriesOnPhone
+        {width <= 426 && filtersCategoriesOnPhone && showFilterCreator
           && (
             <div>
-              <FilterCreator filterProducts={filterItems} />
+              <FilterCreator
+                // reloadFilterCreator={reloadFilterCreator}
+                filterProducts={filterItems}
+              />
             </div>
           )}
         <div className={styles.filterItem}>
           {width > 1024
-            && <FilterItems filterProducts={filterItems} itemsPerPage={15} />}
+            && (
+            <FilterItems
+              filterProducts={filterItems}
+              itemsPerPage={15}
+            />
+            )}
           {width > 768 && width <= 1024
-            && <FilterItems filterProducts={filterItems} itemsPerPage={12} />}
+            && (
+            <FilterItems
+              filterProducts={filterItems}
+              itemsPerPage={12}
+            />
+            )}
           {width > 425 && width <= 768
-            && <FilterItems filterProducts={filterItems} itemsPerPage={9} />}
+            && (
+            <FilterItems
+              filterProducts={filterItems}
+              itemsPerPage={9}
+            />
+            )}
           {width <= 425
-            && <FilterItems filterProducts={filterItems} itemsPerPage={8} />}
+            && (
+            <FilterItems
+              filterProducts={filterItems}
+              itemsPerPage={8}
+            />
+            )}
         </div>
       </div>
     </section>

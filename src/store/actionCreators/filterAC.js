@@ -9,6 +9,7 @@ import {
   SET_MIN_PRICE_SLIDER_VALUE,
   SET_MAX_PRICE_SLIDER_VALUE,
   NEW_FILTER_PRODUCTS,
+  CLEAR_COLOR_FILTER,
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
 
@@ -17,6 +18,7 @@ export const clearFilter = () => ({ type: CLEAR_FILTER });
 export const clearFilterProducts = () => ({ type: CLEAR_FILTER_PRODUCTS });
 export const addFilterColor = (data) => ({ type: ADD_FILTER_COLOR, payload: data });
 export const removeFilterColor = (data) => ({ type: REMOVE_FILTER_COLOR, payload: data });
+export const clearFilterColor = (data) => ({ type: CLEAR_COLOR_FILTER, payload: data });
 export const filterBrand = (data) => ({ type: FILTER_BRAND, payload: data });
 export const setMinSliderValue = (data) => ({ type: SET_MIN_PRICE_SLIDER_VALUE, payload: data });
 export const setMaxSliderValue = (data) => ({ type: SET_MAX_PRICE_SLIDER_VALUE, payload: data });
@@ -47,12 +49,12 @@ export const newFilterProducts = (data) => async (dispatch) => {
   }
   if (data.currentPrice && data.currentPrice.min >= 1 && data.currentPrice.max <= 100000) {
     console.log(data.currentPrice);
-    // const dataMinPrice = `&currentPrice>${data.currentPrice.min}`;
-    // dataFilters.push(dataMinPrice);
-    // const dataMaxPrice = `&currentPrice<${data.currentPrice.max}`;
-    // dataFilters.push(dataMaxPrice);
+    const dataMinPrice = `&minPrice=${data.currentPrice.min}`;
+    dataFilters.push(dataMinPrice);
+    const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;
+    dataFilters.push(dataMaxPrice);
   }
-  console.log(dataFilters);
+  console.log(dataFilters.join(''));
   await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
       if (rsp.status === 200) {
