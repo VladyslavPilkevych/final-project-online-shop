@@ -10,6 +10,7 @@ import {
   SET_MAX_PRICE_SLIDER_VALUE,
   NEW_FILTER_PRODUCTS,
   CLEAR_COLOR_FILTER,
+  SET_PAGINATION_PAGE,
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
 
@@ -22,6 +23,7 @@ export const clearFilterColor = (data) => ({ type: CLEAR_COLOR_FILTER, payload: 
 export const filterBrand = (data) => ({ type: FILTER_BRAND, payload: data });
 export const setMinSliderValue = (data) => ({ type: SET_MIN_PRICE_SLIDER_VALUE, payload: data });
 export const setMaxSliderValue = (data) => ({ type: SET_MAX_PRICE_SLIDER_VALUE, payload: data });
+export const setFilterPaginationPage = (data) => ({ type: SET_PAGINATION_PAGE, payload: data });
 
 export const filterProducts = (data) => async (dispatch) => {
   await getFilteredProductsApi(data)

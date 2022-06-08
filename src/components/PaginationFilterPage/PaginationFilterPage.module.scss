@@ -45,6 +45,11 @@
     border: none !important;
     background-color: $bg-white-color;
 }
+.noItems {
+    @include fonts("Poppins", 26px, $black, 600);
+    text-align: center;
+    margin-top: 10%;
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .filterItem {

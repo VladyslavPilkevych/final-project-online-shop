@@ -71,6 +71,7 @@ li {
 .brandsCheckbox {
     margin: 4px 10px 10px 0;
 }
+// ----------------------colors-----------------------------
 .colorsItems {
     width: 30px;
     height: 30px;
@@ -94,7 +95,7 @@ li {
     background-color: $white;
     border: 1px solid black;
 }
-
+// ----------------------end-colors-----------------------------
 @media (max-width: 427px) {
     .filterCreator {
         position: absolute;

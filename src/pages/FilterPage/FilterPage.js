@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
-import FilterCreator from '../../components/FilterCreator/FilterCreator';
-import FilterItems from '../../components/FilterItems/FilterItems';
+import FilterContainer from '../../components/FilterContainer/FilterContainer';
+import PaginationFilterPage from '../../components/PaginationFilterPage/PaginationFilterPage';
 import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
@@ -14,6 +14,8 @@ import {
   filterCategory,
   setMinSliderValue,
   setMaxSliderValue,
+  clearFilterColor,
+  filterBrand,
 } from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
@@ -29,6 +31,8 @@ function FilterPage() {
   useEffect(() => {
     dispatch(setMinSliderValue(null));
     dispatch(setMaxSliderValue(null));
+    dispatch(filterBrand([]));
+    dispatch(clearFilterColor(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(filterCategory(location.pathname.split('/')[2]));
   }, [location.pathname]);
@@ -42,14 +46,6 @@ function FilterPage() {
   //     dispatch(toggleFiltersCategories(true));
   //   }
   // });
-  function reloadFilterCreator() {
-    console.log('reloadFilterCreator');
-    setShowFilterCreator(false);
-    setTimeout(() => {
-      setShowFilterCreator(true);
-    }, 100);
-    console.log('Clear Felter Creator');
-  }
   return (
     <section className={styles.FilterPage}>
       <img alt="img" src={imageFilterPageTop} className={styles.topImg} />
@@ -68,19 +64,18 @@ function FilterPage() {
             handleClick={() => {
               dispatch(toggleFiltersCategories(true));
             }}
-            style={styles.openFilterOnPhone}
+            className={styles.openFilterOnPhone}
           >
             Filter
           </Button>
         )}
         <div className={styles.filterCreator}>
-          <FilterCreator filterProducts={filterItems} />
+          <FilterContainer filterProducts={filterItems} />
         </div>
         {width <= 426 && filtersCategoriesOnPhone && showFilterCreator
           && (
             <div>
-              <FilterCreator
-                // reloadFilterCreator={reloadFilterCreator}
+              <FilterContainer
                 filterProducts={filterItems}
               />
             </div>
@@ -88,28 +83,28 @@ function FilterPage() {
         <div className={styles.filterItem}>
           {width > 1024
             && (
-            <FilterItems
+            <PaginationFilterPage
               filterProducts={filterItems}
               itemsPerPage={15}
             />
             )}
           {width > 768 && width <= 1024
             && (
-            <FilterItems
+            <PaginationFilterPage
               filterProducts={filterItems}
               itemsPerPage={12}
             />
             )}
           {width > 425 && width <= 768
             && (
-            <FilterItems
+            <PaginationFilterPage
               filterProducts={filterItems}
               itemsPerPage={9}
             />
             )}
           {width <= 425
             && (
-            <FilterItems
+            <PaginationFilterPage
               filterProducts={filterItems}
               itemsPerPage={8}
             />
