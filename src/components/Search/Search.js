@@ -13,10 +13,10 @@ function Search() {
 
   const dispatch = useDispatch();
   if (!isOpenSearch) return null;
-  const closeSearch = () => {
-    dispatch(toggleSearch(true));
-    setValue('');
-  };
+  // const closeSearch = () => {
+  //   dispatch(toggleSearch(true));
+  //   setValue('');
+  // };
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
