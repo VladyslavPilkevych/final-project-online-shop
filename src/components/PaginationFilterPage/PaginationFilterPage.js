@@ -16,28 +16,11 @@ function PaginationFilterPage(props) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const [renderOnPage, setRenderOnPage] = useState(true);
-  // useEffect(() => {
-  //   console.log(currentItems);
-  //   console.log(pageCount);
-  //   console.log(itemOffset);
-  // }, [currentItems, pageCount, itemOffset]);
-  useEffect(() => {
-    console.log(filterPaginationPage);
-    console.log(currentItems);
-  }, [filterPaginationPage]);
-  useEffect(() => {
-    setRenderOnPage(false);
-    setTimeout(() => {
-      setRenderOnPage(true);
-    }, 100);
-  }, [filterProducts]);
   useEffect(() => {
     if (filterPaginationPage === 0) {
       setItemOffset(0);
     }
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     if (filterProducts !== null) {
       setCurrentItems(filterProducts.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(filterProducts.length / itemsPerPage));
@@ -46,7 +29,6 @@ function PaginationFilterPage(props) {
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % filterProducts.length;
     setItemOffset(newOffset);
-    console.log(event.selected);
     dispatch(setFilterPaginationPage(event.selected));
   };
   return (
@@ -56,7 +38,6 @@ function PaginationFilterPage(props) {
         {currentItems && currentItems.map((product) => (
           <div key={product.itemNo} className={styles.gridItemContainer}>
             <CardItem
-              // key={product.id}
               name={product.name}
               currentPrice={product.currentPrice}
               id={product._id}
@@ -72,12 +53,10 @@ function PaginationFilterPage(props) {
       {currentItems?.length === 0 && <h1 className={styles.noItems}>No items</h1>}
       <ReactPaginate
         forcePage={filterPaginationPage}
-        // изначально должно быть равно null (нужно связать с редаксом)
-        // подписать редакс к forcePage и при нажатии на apply filter устанавливать редакс null
         breakLabel="..."
         nextLabel="›"
         previousLabel="‹"
-        onPageChange={handlePageClick}
+        onPageChange={() => { handlePageClick(); }}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
         containerClassName={styles.paginateContainer}

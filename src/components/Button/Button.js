@@ -8,16 +8,14 @@ function Button(props) {
   } = props;
 
   return (
-    /* eslint-disable react/button-has-type */
     <button
-      type={type}
+      type={type ? 'submit' : 'button'}
       onClick={handleClick}
       className={`${styles.btn} ${className}`}
       style={style}
     >
       {children}
     </button>
-    /* eslint-enable react/button-has-type */
   );
 }
 

@@ -12,14 +12,6 @@
 }
 
 .colorsItems {
-    // width: 30px;
-    // height: 30px;
-    // margin: 3px;
-    // margin-bottom: 7px;
-    // border-radius: 50px;
-    // overflow: hidden;
-    // cursor: pointer;
-    // border: 1px solid $black;
     @include circleColors(1px solid $black);
 }
 .activeFilterColor {

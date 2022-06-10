@@ -67,19 +67,3 @@ export const newFilterProducts = (data) => async (dispatch) => {
       console.log(err);
     });
 };
-// export const filterProducts = () => (dispatch, getState) => {
-//   const state = getState();
-//   let products = () => state.products.products;
-//   const { filters } = state;
-//   const {
-//     color, name, brand,
-//   } = filters;
-
-//   //   const { min, max } = priceSliderValues;
-
-//   if (color) products = products.filter((product) => product.color === color);
-//   if (name) products = products.filter((product) => product.name.includes(name));
-//   if (brand) products = products.filter((product) => product.brand === brand);
-
-//   dispatch({ type: FILTER_PRODUCTS, payload: products });
-// };

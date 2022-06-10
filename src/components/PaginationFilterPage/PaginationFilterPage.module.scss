@@ -11,17 +11,11 @@
     margin-top: 20px;
     display: grid;
     width: 100%;
-    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: repeat(5, 1fr);
-    // grid-template-rows: 1fr 1fr 1fr 1fr;
-    // grid-template-rows: repeat(4, 1fr);
-    // grid-template-rows: repeat(4, 346px);
 }
 .gridItemContainer {
     width: 100%;
     height: 100%;
-    // background-color: red;
-    // border: 1px solid black;
 }
 
 .paginateContainer {
@@ -29,14 +23,11 @@
     margin: 55px auto;
     justify-content: center;
     li {
-        // margin: 5px;
         a {
             @include fonts("Poppins", 13px, $dark-grey-text, 600);
             padding: 8px 16px;
             border: 2px solid $dark-grey-text;
             border-radius: 50%;
-            // width: 100%;
-            // height: 100%;
         }
     }
 }
@@ -54,13 +45,11 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .filterItem {
         grid-template-columns: repeat(4, 1fr);
-        // grid-template-rows: repeat(5, 346px);
     }
 }
 @media (min-width: 426px) and (max-width: 768px) {
     .filterItem {
         grid-template-columns: repeat(3, 1fr);
-        // grid-template-rows: repeat(5, 346px);
     }
     .paginateContainer {
         li {
@@ -71,7 +60,6 @@
 @media (max-width: 426px) {
     .filterItem {
         grid-template-columns: repeat(2, 1fr);
-        // grid-template-rows: repeat(6, 346px);
     }
     .paginateContainer {
         li {

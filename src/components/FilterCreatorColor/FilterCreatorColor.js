@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import styles from './FilterCreatorColor.module.scss';
 import Button from '../Button/Button';
 import {
@@ -24,7 +23,6 @@ function FilterCreatorColor(props) {
     }
   }, [filterByColor]);
   const toggleColorFn = () => {
-    // setFilterColor((prevState) => !prevState);
     if (!filterColor) {
       dispatch(addFilterColor(color));
     } else {
@@ -33,8 +31,7 @@ function FilterCreatorColor(props) {
   };
   return (
     <Button
-      handleClick={toggleColorFn}
-      // className={classNames(styles.colorsItems, { activeFilterColor: filterColor })}
+      handleClick={() => { toggleColorFn(); }}
       className={filterColor ? styles.activeFilterColor : styles.colorsItems}
       style={{ backgroundColor: color }}
     />

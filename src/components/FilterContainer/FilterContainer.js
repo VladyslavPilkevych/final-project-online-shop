@@ -34,10 +34,6 @@ function FilterContainer(props) {
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
-  const [filterRedColor, setFilterRedColor] = useState(false);
-  const [filterBlackColor, setFilterBlackColor] = useState(false);
-  const [filterGrayColor, setFilterGrayColor] = useState(false);
-  const [filterWhiteColor, setFilterWhiteColor] = useState(false);
   const [applyFilterBtn, setApplyFilterBtn] = useState(false);
   const [productsItems, setProductsItems] = useState([]);
 
@@ -49,7 +45,7 @@ function FilterContainer(props) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }
   useEffect(() => {
@@ -58,14 +54,6 @@ function FilterContainer(props) {
   useEffect(() => {
     setApplyFilterBtn(true);
   }, [filter]);
-  useEffect(() => {
-    if (filterByColor.length === 0) {
-      setFilterRedColor(false);
-      setFilterBlackColor(false);
-      setFilterGrayColor(false);
-      setFilterWhiteColor(false);
-    }
-  }, [filterByColor]);
   let brandsFiltered = null;
   if (productsItems) {
     const brands = productsItems.map((i) => i.name);
@@ -73,7 +61,6 @@ function FilterContainer(props) {
     brandsFiltered.sort();
   }
   const clearFilterFn = () => {
-    console.log('filter creator must start cleaning');
     const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
     dispatch(setMinSliderValue(priceArray[0]));
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
@@ -91,17 +78,26 @@ function FilterContainer(props) {
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
   };
+  function closeFiltersMenuOnPhone() {
+    dispatch(toggleFiltersCategories(false));
+  }
+  function toggleToShowFilterBrands() {
+    setIsOpenFilterBrands((prevState) => !prevState);
+  }
+  function toggleToShowFilterPrice() {
+    setFilterPrice((prevState) => !prevState);
+  }
+  function toggleToShowFilterColor() {
+    setIsOpenFilterColor((prevState) => !prevState);
+  }
   return (
     <div className={styles.filterCreator}>
-      {/* <div className={[styles.topItems, styles.categoryContainers].join(' ')}> */}
       <div className={styles.categoryContainers}>
         <p className={styles.filtersTopP}>Filters</p>
         <div className={styles.filtersTopPhone}>
           <p className={styles.filtersTopPhoneP}>Filter By</p>
           <div
-            onClick={() => {
-              dispatch(toggleFiltersCategories(false));
-            }}
+            onClick={() => { closeFiltersMenuOnPhone(); }}
             role="button"
             tabIndex={0}
             className={styles.filtersPhoneX}
@@ -118,9 +114,7 @@ function FilterContainer(props) {
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => {
-            setIsOpenFilterBrands((prevState) => !prevState);
-          }}
+          onClick={() => { toggleToShowFilterBrands(); }}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -133,9 +127,7 @@ function FilterContainer(props) {
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => {
-            setFilterPrice((prevState) => !prevState);
-          }}
+          onClick={() => { toggleToShowFilterPrice(); }}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -150,9 +142,7 @@ function FilterContainer(props) {
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => {
-            setIsOpenFilterColor((prevState) => !prevState);
-          }}
+          onClick={() => { toggleToShowFilterColor(); }}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -183,7 +173,7 @@ function FilterContainer(props) {
           ? (
             <Button
               className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
-              handleClick={applyFilterFn}
+              handleClick={() => { applyFilterFn(); }}
             >
               Apply Filters
             </Button>
