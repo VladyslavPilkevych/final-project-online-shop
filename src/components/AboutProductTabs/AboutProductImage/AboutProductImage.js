@@ -6,17 +6,16 @@ import Slider from 'react-slick';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { addToCart } from '../../../store/actionCreators/cartAC';
-import addToFavIcon from '../../../assets/Images/addToFavIcon.png';
 import styles from './AboutProductImage.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const StyledSlider = styled(Slider)`
-  &.slick-thumb {
-    display: flex !important;
-    justify-content: space-between !important;
-  }
-`;
+// const StyledSlider = styled(Slider)`
+//   &.slick-thumb {
+//     display: flex !important;
+//     justify-content: space-between !important;
+//   }
+// `;
 function AboutProductImage(props) {
   const { urls, model, id } = props;
   console.log(urls[0]?.substring(urls[0].length - 4, urls[0].length));
@@ -48,14 +47,15 @@ function AboutProductImage(props) {
   return (
     <div className={styles.imageSideWrapper}>
       <div className={styles.imageWrapper}>
-        <StyledSlider {...settings}>
+        {/* <StyledSlider {...settings}> */}
+        <Slider {...settings}>
           {urls
           && urls.map((elem) => (
             <div key={model}>
               <img src={`${elem}`} alt={model} className={styles.imageMain} />
             </div>
           ))}
-        </StyledSlider>
+        </Slider>
       </div>
     </div>
   );

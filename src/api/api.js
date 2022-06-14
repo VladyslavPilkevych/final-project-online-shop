@@ -21,6 +21,9 @@ export function getAllProductsApi() {
 export function getProductApi(itemNo) {
   return axios.get(`${BASE_URL}/products/${itemNo}`);
 }
+export function getFilteredProductsApi(params) {
+  return axios.get(`${BASE_URL}/products/filter${params}`);
+}
 
 export function createNewCustomer(newCustomer) {
   return axios.post(`${BASE_URL}/customers`, newCustomer, { headers });
@@ -38,4 +41,8 @@ export function getUserData(tokenUser) {
       Authorization: `${tokenUser}`,
     },
   });
+}
+
+export function searchProductsApi(searchPhrases) {
+  return axios.post(`${BASE_URL}/products/search`, searchPhrases, { headers });
 }

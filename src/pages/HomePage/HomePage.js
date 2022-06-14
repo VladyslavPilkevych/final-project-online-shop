@@ -8,6 +8,7 @@ import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
 import styles from './HomePage.module.scss';
 import Advantages from '../../components/Advantages/Advantages';
+import SearchedProductsPage from '../SearchedProductsPage/SearchedProductsPage';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);

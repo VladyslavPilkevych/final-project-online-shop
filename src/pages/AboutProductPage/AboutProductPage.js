@@ -7,7 +7,7 @@ import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
-import addToFavIcon from '../../assets/Images/addToFavIcon.png';
+import addToFavIcon from '../../assets/Images/CardItem/addToFavIcon.png';
 import Button from '../../components/Button/Button';
 import { getProduct } from '../../store/actionCreators/productsAC';
 import Advantages from '../../components/Advantages/Advantages';

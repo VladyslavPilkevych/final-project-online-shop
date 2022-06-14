@@ -31,12 +31,14 @@
     margin-top: 70%;
     @include fonts("Poppins", 28px, white, 600);
 }
-.categorieImg p {
+.categorieImg div {
     margin-top: 47%;
     margin-bottom: 30px;
-    @include fonts("Poppins", 13px, white, 400);
     cursor: pointer;
     text-decoration: underline;
+}
+.categorieImg div a {
+    @include fonts("Poppins", 13px, white, 400);
 }
 
 .categoriesSliderWrapper {
@@ -86,7 +88,7 @@
                 margin: 0;
                 padding-top: 15px;
             }
-            p {
+            div a {
                 margin-top: 10px;
             }
         }
