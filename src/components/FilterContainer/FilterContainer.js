@@ -20,48 +20,41 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   setFilterPaginationPage,
+  getCategorieProducts,
 } from '../../store/actionCreators/filterAC';
-import { getFilteredProductsApi } from '../../api/api';
 
-function FilterContainer(props) {
-  const { filterProducts } = props;
+function FilterContainer() {
   const dispatch = useDispatch();
   const location = useLocation();
   const filter = useSelector((state) => state.filter);
-  const filterByColor = useSelector((state) => state.filter.filterByColor);
-  const filterByBrand = useSelector((state) => state.filter.filterByBrand);
-  const filterPriceSliderValues = useSelector((state) => state.filter.priceSliderValues);
+  const {
+    filterByColor,
+    filterByBrand,
+    filterPriceSliderValues,
+    filterCategoryProducts,
+  } = useSelector((state) => state.filter);
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
   const [applyFilterBtn, setApplyFilterBtn] = useState(false);
-  const [productsItems, setProductsItems] = useState([]);
+  const [brandsFiltered, setBrandsFiltered] = useState(null);
 
-  async function getCategorieProducts(url) {
-    await getFilteredProductsApi(url)
-      .then((rsp) => {
-        if (rsp.status === 200) {
-          setProductsItems(rsp.data.products);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
   useEffect(() => {
-    getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`);
+    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, [location.pathname]);
   useEffect(() => {
     setApplyFilterBtn(true);
   }, [filter]);
-  let brandsFiltered = null;
-  if (productsItems) {
-    const brands = productsItems.map((i) => i.name);
-    brandsFiltered = [...new Set(brands)];
-    brandsFiltered.sort();
-  }
+  useEffect(() => {
+    if (filterCategoryProducts) {
+      const brands = filterCategoryProducts.map((i) => i.name);
+      setBrandsFiltered([...new Set(brands)].sort());
+    }
+  }, [filterCategoryProducts]);
   const clearFilterFn = () => {
-    const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
+    const priceArray = filterCategoryProducts.map(
+      (item) => item.currentPrice,
+    ).sort((a, b) => a - b);
     dispatch(setMinSliderValue(priceArray[0]));
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
@@ -97,7 +90,7 @@ function FilterContainer(props) {
         <div className={styles.filtersTopPhone}>
           <p className={styles.filtersTopPhoneP}>Filter By</p>
           <div
-            onClick={() => { closeFiltersMenuOnPhone(); }}
+            onClick={() => closeFiltersMenuOnPhone()}
             role="button"
             tabIndex={0}
             className={styles.filtersPhoneX}
@@ -114,7 +107,7 @@ function FilterContainer(props) {
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => { toggleToShowFilterBrands(); }}
+          onClick={() => toggleToShowFilterBrands()}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -122,12 +115,12 @@ function FilterContainer(props) {
           <p className={styles.categoryName}>Brands</p>
           <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
         </div>
-        {isOpenFilterBrands
+        {isOpenFilterBrands && brandsFiltered
           && <FilterCreatorBrand brandsFiltered={brandsFiltered} />}
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => { toggleToShowFilterPrice(); }}
+          onClick={() => toggleToShowFilterPrice()}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -137,12 +130,12 @@ function FilterContainer(props) {
         </div>
         {filterPrice
           && (
-            <FilterPriceSlider productsItems={productsItems} />
+            <FilterPriceSlider productsItems={filterCategoryProducts} />
           )}
       </div>
       <div className={styles.categoryContainers}>
         <div
-          onClick={() => { toggleToShowFilterColor(); }}
+          onClick={() => toggleToShowFilterColor()}
           role="button"
           tabIndex={0}
           className={styles.twiceItems}
@@ -183,13 +176,5 @@ function FilterContainer(props) {
     </div>
   );
 }
-
-FilterContainer.propTypes = {
-  filterProducts: PropTypes.array,
-};
-
-FilterContainer.defaultProps = {
-  filterProducts: [],
-};
 
 export default memo(FilterContainer);

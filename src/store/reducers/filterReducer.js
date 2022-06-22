@@ -3,6 +3,7 @@ import {
   CLEAR_FILTER,
   CLEAR_FILTER_PRODUCTS,
   FILTER_CATEGORY,
+  FILTER_CATEGORY_PRODUCTS,
   ADD_FILTER_COLOR,
   REMOVE_FILTER_COLOR,
   CLEAR_COLOR_FILTER,
@@ -17,6 +18,7 @@ const initialValues = {
   filterByColor: [],
   filterByBrand: [],
   filterCategory: null,
+  filterCategoryProducts: [],
   filterProducts: null,
   priceSliderValues: {
     min: null,
@@ -34,6 +36,8 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
       return { ...state, filterProducts: null };
     case FILTER_CATEGORY:
       return { ...state, filterCategory: payload };
+    case FILTER_CATEGORY_PRODUCTS:
+      return { ...state, filterCategoryProducts: payload };
     case ADD_FILTER_COLOR:
       return { ...state, filterByColor: [...state.filterByColor, payload] };
     case REMOVE_FILTER_COLOR: {

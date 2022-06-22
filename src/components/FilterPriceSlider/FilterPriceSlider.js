@@ -12,6 +12,7 @@ function FilterPriceSlider(props) {
   const userMaxGlobal = useSelector((state) => state.filter.priceSliderValues.max);
   const [minPrice, setMinPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+
   useEffect(() => {
     const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
     setMinPrice(priceArray[0]);

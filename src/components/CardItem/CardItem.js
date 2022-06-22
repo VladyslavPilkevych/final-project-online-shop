@@ -25,15 +25,12 @@ function CardItem(props) {
   // }, []);
   const addToFavourite = () => {
     setFavourite(true);
-    console.log('addToFavourite');
   };
   const removeFromFav = () => {
     setFavourite(false);
-    console.log('removeFromFav');
   };
   const addToCart = () => {
     setInCart(true);
-    console.log('addToCart');
   };
   return (
     <div id={id} className={`${styles.productItem} ${elementClassName}`}>

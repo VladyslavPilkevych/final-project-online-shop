@@ -61,7 +61,6 @@ function Categories(props) {
   const { productsCategories, imageSrc } = props;
   const allProducts = useSelector((state) => state.products.products);
   const dispatch = useDispatch();
-  console.log(allProducts);
   const eachCategory = allProducts.map((product) => {
     if (product.categories === productsCategories) {
       return product;
@@ -69,7 +68,6 @@ function Categories(props) {
     return null;
   });
   const resultProducts = eachCategory.filter((element) => element !== null);
-  console.log(resultProducts);
   useEffect(() => {
   }, [allProducts]);
   const settings = {
