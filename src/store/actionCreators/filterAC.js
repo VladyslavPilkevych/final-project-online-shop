@@ -66,6 +66,7 @@ export const newFilterProducts = (data) => async (dispatch) => {
     const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;
     dataFilters.push(dataMaxPrice);
   }
+  console.log(dataFilters);
   await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
       if (rsp.status === 200) {

@@ -32,6 +32,7 @@ function FilterContainer() {
     filterByBrand,
     filterPriceSliderValues,
     filterCategoryProducts,
+    priceSliderValues,
   } = useSelector((state) => state.filter);
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
@@ -66,7 +67,10 @@ function FilterContainer() {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
       name: filterByBrand,
-      currentPrice: filterPriceSliderValues,
+      currentPrice: {
+        min: priceSliderValues.min,
+        max: priceSliderValues.max,
+      },
     };
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
