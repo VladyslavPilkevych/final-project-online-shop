@@ -27,6 +27,7 @@ function PaginationFilterPage(props) {
     }
   }, [itemOffset, itemsPerPage, filterProducts, filterPaginationPage]);
   const handlePageClick = (event) => {
+    window.scrollTo(0, 0);
     const newOffset = (event.selected * itemsPerPage) % filterProducts.length;
     setItemOffset(newOffset);
     dispatch(setFilterPaginationPage(event.selected));

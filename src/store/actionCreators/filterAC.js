@@ -60,7 +60,7 @@ export const newFilterProducts = (data) => async (dispatch) => {
     const dataBrand = `&name=${data.name.join()}`;
     dataFilters.push(dataBrand);
   }
-  if (data.currentPrice && data.currentPrice.min >= 1 && data.currentPrice.max <= 100000) {
+  if (data.currentPrice) {
     const dataMinPrice = `&minPrice=${data.currentPrice.min}`;
     dataFilters.push(dataMinPrice);
     const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;

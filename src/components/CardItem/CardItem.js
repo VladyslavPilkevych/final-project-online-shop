@@ -15,14 +15,8 @@ function CardItem(props) {
   const {
     name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
   } = props;
-
-  // const dispatch = useDispatch();
-  // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
-  // useEffect(() => {
-  // setpreviousPrice('$' + String(currentPrice.slice(1) * 1.25).split('.')[0] + '.99');
-  // }, []);
   const addToFavourite = () => {
     setFavourite(true);
   };
