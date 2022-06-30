@@ -25,7 +25,6 @@ function AboutProductPage() {
   };
   const product = useSelector((state) => state.products.activeProduct);
   const location = useLocation();
-  console.log(location.pathname);
   const newLocation = location.pathname.split('/').slice(-1);
 
   console.log(newLocation);

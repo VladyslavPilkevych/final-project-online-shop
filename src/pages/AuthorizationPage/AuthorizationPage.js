@@ -20,8 +20,6 @@ function AuthorizationPage() {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    console.log(values);
-
     const response = await logInCustomer(values)
       .then((user) => user)
       .catch((err) => console.log(err));

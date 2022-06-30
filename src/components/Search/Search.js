@@ -47,7 +47,6 @@ function Search() {
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
-            console.log(value);
           }}
         />
       </form>

@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import './FilterPriceSlider.scss';
+import { useDebouncedCallback } from 'use-debounce';
 import { setMinSliderValue, setMaxSliderValue } from '../../store/actionCreators/filterAC';
+// import useDebounce from '../../hooks/useDebounce';
+// import useThrottle from '../../hooks/useThrottle';
 
 function FilterPriceSlider(props) {
   const { productsItems } = props;
@@ -12,7 +15,17 @@ function FilterPriceSlider(props) {
   const userMaxGlobal = useSelector((state) => state.filter.priceSliderValues.max);
   const [minPrice, setMinPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+  const [priceValue, setPriceValue] = useState([minPrice, maxPrice]);
+
+  function resetValue() {
+    setPriceValue([minPrice, maxPrice]);
+  }
   useEffect(() => {
+    if (userMinGlobal === minPrice && userMaxGlobal === maxPrice) {
+      resetValue();
+    }
+    console.log('change price slider');
+    console.log(productsItems, userMinGlobal, userMaxGlobal, minPrice, minPrice, maxPrice);
     const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
     setMinPrice(priceArray[0]);
     setMaxPrice(priceArray[priceArray.length - 1]);
@@ -21,9 +34,13 @@ function FilterPriceSlider(props) {
       dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     }
   }, [productsItems, minPrice, maxPrice]);
-  function changePriceFn(value) {
+  const reduxRequest = useDebouncedCallback((value) => {
     dispatch(setMinSliderValue(value[0]));
     dispatch(setMaxSliderValue(value[1]));
+  }, 200);
+  function changePriceFn(value) {
+    setPriceValue([value[0], value[1]]);
+    reduxRequest(value);
   }
   return (
     <div>
@@ -42,11 +59,11 @@ function FilterPriceSlider(props) {
         {userMinGlobal && userMaxGlobal && (
           <Slider
             range
+            value={priceValue}
             allowCross={false}
             min={minPrice}
             max={maxPrice}
-            defaultValue={[userMinGlobal, userMaxGlobal]}
-            onAfterChange={(value) => { changePriceFn(value); }}
+            onChange={(value) => { changePriceFn(value); }}
           />
         )}
       </div>

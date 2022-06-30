@@ -13,14 +13,9 @@ function FilterCreatorColor(props) {
   const dispatch = useDispatch();
   const filterByColor = useSelector((state) => state.filter.filterByColor);
   const [filterColor, setFilterColor] = useState(false);
+
   useEffect(() => {
-    if (filterByColor.length === 0) {
-      setFilterColor(false);
-    } else if (filterByColor.includes(color)) {
-      setFilterColor(true);
-    } else {
-      setFilterColor(false);
-    }
+    setFilterColor(filterByColor.includes(color));
   }, [filterByColor]);
   const toggleColorFn = () => {
     if (!filterColor) {

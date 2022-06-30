@@ -20,7 +20,6 @@ function AboutProductImage(props) {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  console.log(urls);
   return (
     <div className={styles.detailsWrapper}>
       <div role="button" onClick={() => { console.log('Add to Wishlist', id); }} className={styles.addToCartIconWrapper}>
