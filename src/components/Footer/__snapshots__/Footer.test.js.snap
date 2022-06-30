@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot footer should render Snapshot footer is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="footer"
+  >
+    <div
+      class="footerWrapper"
+    >
+      <p
+        class="footerTitle"
+      >
+        Sign Up To Our Newsletter.
+      </p>
+      <p
+        class="footerText"
+      >
+        Be the first to hear about the latest offers.
+      </p>
+      <div
+        class="footerListContainer"
+      >
+        <div
+          class="footerList"
+        >
+          <div
+            class="footerListNameWrapper"
+          >
+            <h3
+              class="footerListName"
+            >
+              Information
+            </h3>
+            <div
+              class="footerArrowWrapper"
+              id="1"
+            >
+              <img
+                alt="arrow-icon"
+                class="footerArrowDown"
+                src="icon-arrow-down.png"
+              />
+            </div>
+          </div>
+          <div
+            class="footerListWrapperClose"
+          >
+            <p
+              class="footerListPart"
+            >
+              About Us
+            </p>
+            <p
+              class="footerListPart"
+            >
+              About Zip
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Privacy Policy
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Search
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Terms
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Orders and Returns
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Contact Us
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Advanced Search
+            </p>
+          </div>
+        </div>
+        <div
+          class="footerList"
+        >
+          <div
+            class="footerListNameWrapper"
+          >
+            <h3
+              class="footerListName"
+            >
+              PC Parts
+            </h3>
+            <div
+              class="footerArrowWrapper"
+              id="2"
+            >
+              <img
+                alt="arrow-icon"
+                class="footerArrowDown"
+                src="icon-arrow-down.png"
+              />
+            </div>
+          </div>
+          <div
+            class="footerListWrapperClose"
+          >
+            <p
+              class="footerListPart"
+            >
+              CPUS
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Add On Cards
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Hard Drives (Internal)
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Graphic Cards
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Keyboards / Mice
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Cases / Power Supplies / Cooling
+            </p>
+            <p
+              class="footerListPart"
+            >
+              RAM (Memory)
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Software
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Speakers / Headsets
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Motherboards
+            </p>
+          </div>
+        </div>
+        <div
+          class="footerList"
+        >
+          <div
+            class="footerListNameWrapper"
+          >
+            <h3
+              class="footerListName"
+            >
+              Desktop PCs
+            </h3>
+            <div
+              class="footerArrowWrapper"
+              id="3"
+            >
+              <img
+                alt="arrow-icon"
+                class="footerArrowDown"
+                src="icon-arrow-down.png"
+              />
+            </div>
+          </div>
+          <div
+            class="footerListWrapperClose"
+          >
+            <p
+              class="footerListPart"
+            >
+              Custom PCs
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Servers
+            </p>
+            <p
+              class="footerListPart"
+            >
+              MSI All-In-One PCs
+            </p>
+            <p
+              class="footerListPart"
+            >
+              HP/Compaq PCs
+            </p>
+            <p
+              class="footerListPart"
+            >
+              ASUS PCs
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Tecs PCs
+            </p>
+          </div>
+        </div>
+        <div
+          class="footerList"
+        >
+          <div
+            class="footerListNameWrapper"
+          >
+            <h3
+              class="footerListName"
+            >
+              Laptops
+            </h3>
+            <div
+              class="footerArrowWrapper"
+              id="4"
+            >
+              <img
+                alt="arrow-icon"
+                class="footerArrowDown"
+                src="icon-arrow-down.png"
+              />
+            </div>
+          </div>
+          <div
+            class="footerListWrapperClose"
+          >
+            <p
+              class="footerListPart"
+            >
+              Everyday Use Notebooks
+            </p>
+            <p
+              class="footerListPart"
+            >
+              MSI Workstation Series
+            </p>
+            <p
+              class="footerListPart"
+            >
+              MSI Prestige Series
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Tablets and Pads
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Netbooks
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Infinity Gaming Notebooks
+            </p>
+          </div>
+        </div>
+        <div
+          class="footerList"
+        >
+          <div
+            class="footerListNameWrapper"
+          >
+            <h3
+              class="footerListName"
+            >
+              Address
+            </h3>
+            <div
+              class="footerArrowWrapper"
+              id="5"
+            >
+              <img
+                alt="arrow-icon"
+                class="footerArrowDown"
+                src="icon-arrow-down.png"
+              />
+            </div>
+          </div>
+          <div
+            class="footerListWrapperClose"
+          >
+            <p
+              class="footerListPart"
+            >
+              Address: 1234 Street Adress City Address, 1234
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Phones: (00) 1234 5678
+            </p>
+            <p
+              class="footerListPart"
+            >
+              We are open: Monday-Thursday: 9:00 AM - 5:30 PM
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Friday: 9:00 AM - 6:00 PM
+            </p>
+            <p
+              class="footerListPart"
+            >
+              Saturday: 11:00 AM - 5:00 PM
+            </p>
+            <p
+              class="footerListPart"
+            >
+              E-mail: shop@email.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="footerBottomWrapper"
+      >
+        <div
+          class="footerIconsWrapper"
+        >
+          <svg
+            class="faceBoookGrey"
+          >
+            facebook-icon-grey.svg
+          </svg>
+          <svg>
+            instagram-icon-grey.svg
+          </svg>
+        </div>
+        <p
+          class="footerBottomText"
+        >
+          Copyright © 2020 Shop Pty. Ltd.
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
