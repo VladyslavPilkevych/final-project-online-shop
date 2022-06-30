@@ -10,7 +10,7 @@ function AboutProductDetailsTabText(props) {
       name, model, capacity, storage, color, display, description, type, size, resolution, matrix, itemNo,
     },
   } = props;
-  console.log(name, model);
+  // console.log(name, model);
   return (
     <div>
       <h1 className={styles.productTitle}>

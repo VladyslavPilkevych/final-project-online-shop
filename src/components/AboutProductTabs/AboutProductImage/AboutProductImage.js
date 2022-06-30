@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
@@ -10,15 +11,15 @@ import styles from './AboutProductImage.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// const StyledSlider = styled(Slider)`
-//   &.slick-thumb {
-//     display: flex !important;
-//     justify-content: space-between !important;
-//   }
-// `;
+const StyledSlider = styled(Slider)`
+  &.slick-dots {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+`;
 function AboutProductImage(props) {
   const { urls, model, id } = props;
-  console.log(urls[0]?.substring(urls[0].length - 4, urls[0].length));
+  // console.log(urls[0]?.substring(urls[0].length - 4, urls[0].length));
   const url = urls[0]?.substring(urls[0].length - 4, urls[0].length) === 'jpeg'
     ? urls[0]?.substring(0, urls[0].length - 6)
     : urls[0]?.substring(0, urls[0].length - 5);
@@ -27,8 +28,7 @@ function AboutProductImage(props) {
     // eslint-disable-next-line react/no-unstable-nested-components
     customPaging(i) {
       return (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a className={styles.imgminWrapper}>
+        <a className={styles.imgminWrapper} href="#">
           <img
             src={urls[0]?.substring(urls[0].length - 4, urls[0].length) === 'jpeg' ? `${url}${i + 1}.jpeg` : `${url}${i + 1}.jpg`}
             alt="model"
@@ -47,15 +47,14 @@ function AboutProductImage(props) {
   return (
     <div className={styles.imageSideWrapper}>
       <div className={styles.imageWrapper}>
-        {/* <StyledSlider {...settings}> */}
-        <Slider {...settings}>
+        <StyledSlider {...settings}>
           {urls
           && urls.map((elem) => (
             <div key={model}>
               <img src={`${elem}`} alt={model} className={styles.imageMain} />
             </div>
           ))}
-        </Slider>
+        </StyledSlider>
       </div>
     </div>
   );

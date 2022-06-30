@@ -1,39 +1,43 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/Images/FilterPage/imageFilterPageTop.png';
-import FilterCreator from '../../components/FilterCreator/FilterCreator';
-import FilterItems from '../../components/FilterItems/FilterItems';
+import FilterContainer from '../../components/FilterContainer/FilterContainer';
+import PaginationFilterPage from '../../components/PaginationFilterPage/PaginationFilterPage';
 import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
-import { filterProducts, filterCategory } from '../../store/actionCreators/filterAC';
+import {
+  filterProducts,
+  filterCategory,
+  setMinSliderValue,
+  setMaxSliderValue,
+  clearFilterColor,
+  filterBrand,
+} from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
   const filterItems = useSelector((state) => state.filter.filterProducts);
   const location = useLocation();
   const dispatch = useDispatch();
-  // console.log(`?categories=${location.pathname.split('/')[2]}`);
   useEffect(() => {
     dispatch(getAllProducts());
-    // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
   }, []);
   useEffect(() => {
+    dispatch(setMinSliderValue(null));
+    dispatch(setMaxSliderValue(null));
+    dispatch(filterBrand([]));
+    dispatch(clearFilterColor(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(filterCategory(location.pathname.split('/')[2]));
   }, [location.pathname]);
-  // useEffect(() => {
-  //   dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
-  // }, [filterItems]);
+  function openFiltersMenuOnPhone() {
+    dispatch(toggleFiltersCategories(true));
+  }
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
-  // useEffect(() => {
-  //   if (width >= 426) {
-  //     dispatch(toggleFiltersCategories(true));
-  //   }
-  // });
   return (
     <section className={styles.FilterPage}>
       <img alt="img" src={imageFilterPageTop} className={styles.topImg} />
@@ -49,32 +53,52 @@ function FilterPage() {
       <div className={styles.filter}>
         {width <= 426 && (
           <Button
-            handleClick={() => {
-              dispatch(toggleFiltersCategories(true));
-            }}
-            style={styles.openFilterOnPhone}
+            handleClick={() => { openFiltersMenuOnPhone(); }}
+            className={styles.openFilterOnPhone}
           >
             Filter
           </Button>
         )}
         <div className={styles.filterCreator}>
-          <FilterCreator filterProducts={filterItems} />
+          <FilterContainer filterProducts={filterItems} />
         </div>
         {width <= 426 && filtersCategoriesOnPhone
           && (
             <div>
-              <FilterCreator filterProducts={filterItems} />
+              <FilterContainer
+                filterProducts={filterItems}
+              />
             </div>
           )}
         <div className={styles.filterItem}>
           {width > 1024
-            && <FilterItems filterProducts={filterItems} itemsPerPage={15} />}
+            && (
+              <PaginationFilterPage
+                filterProducts={filterItems}
+                itemsPerPage={15}
+              />
+            )}
           {width > 768 && width <= 1024
-            && <FilterItems filterProducts={filterItems} itemsPerPage={12} />}
+            && (
+              <PaginationFilterPage
+                filterProducts={filterItems}
+                itemsPerPage={12}
+              />
+            )}
           {width > 425 && width <= 768
-            && <FilterItems filterProducts={filterItems} itemsPerPage={9} />}
+            && (
+              <PaginationFilterPage
+                filterProducts={filterItems}
+                itemsPerPage={9}
+              />
+            )}
           {width <= 425
-            && <FilterItems filterProducts={filterItems} itemsPerPage={8} />}
+            && (
+              <PaginationFilterPage
+                filterProducts={filterItems}
+                itemsPerPage={8}
+              />
+            )}
         </div>
       </div>
     </section>

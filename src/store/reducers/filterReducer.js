@@ -5,10 +5,12 @@ import {
   FILTER_CATEGORY,
   ADD_FILTER_COLOR,
   REMOVE_FILTER_COLOR,
+  CLEAR_COLOR_FILTER,
   FILTER_BRAND,
   SET_MIN_PRICE_SLIDER_VALUE,
   SET_MAX_PRICE_SLIDER_VALUE,
   NEW_FILTER_PRODUCTS,
+  SET_PAGINATION_PAGE,
 } from '../actions/filterActions';
 
 const initialValues = {
@@ -17,9 +19,10 @@ const initialValues = {
   filterCategory: null,
   filterProducts: null,
   priceSliderValues: {
-    min: 1,
-    max: 100000,
+    min: null,
+    max: null,
   },
+  filterPaginationPage: null,
 };
 const filterReducer = (state = initialValues, { type, payload } = {}) => {
   switch (type) {
@@ -39,6 +42,8 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
       newFilterByColor.splice(index, 1);
       return { ...state, filterByColor: newFilterByColor };
     }
+    case CLEAR_COLOR_FILTER:
+      return { ...state, filterByColor: [] };
     case FILTER_BRAND:
       return { ...state, filterByBrand: payload };
     case CLEAR_FILTER:
@@ -47,6 +52,8 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
       return { ...state, priceSliderValues: { ...state.priceSliderValues, min: payload } };
     case SET_MAX_PRICE_SLIDER_VALUE:
       return { ...state, priceSliderValues: { ...state.priceSliderValues, max: payload } };
+    case SET_PAGINATION_PAGE:
+      return { ...state, filterPaginationPage: payload };
     default:
       return state;
   }

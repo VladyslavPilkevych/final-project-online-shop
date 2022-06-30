@@ -73,13 +73,13 @@ function CardItem(props) {
       <div className={styles.btnCartContainer}>
         {inCart
           ? (
-            <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
+            <Button className={`${styles.btnCart} ${styles.btnInCart}`}>
               <img alt="icon cart" src={imageInCart} />
               <p>Already in cart</p>
             </Button>
           )
           : (
-            <Button handleClick={addToCart} style={styles.btnCart}>
+            <Button handleClick={addToCart} className={styles.btnCart}>
               <img alt="icon cart" src={imageCart} />
               <p>Add To Cart</p>
             </Button>

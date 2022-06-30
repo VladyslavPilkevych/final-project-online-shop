@@ -10,9 +10,9 @@
     line-height: 48px;
 }
 
-.listWrapper{
+ul.listWrapper{
     list-style-type: disc;
-    display: block;
+    display: block !important;
     margin-top: 55px;
     
     & li {
