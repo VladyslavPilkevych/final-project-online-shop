@@ -1,53 +1,82 @@
-/* eslint react/no-multi-comp: 0, no-console: 0 */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import './FilterPriceSlider.scss';
+import { useDebouncedCallback } from 'use-debounce';
 import { setMinSliderValue, setMaxSliderValue } from '../../store/actionCreators/filterAC';
+// import useDebounce from '../../hooks/useDebounce';
+// import useThrottle from '../../hooks/useThrottle';
 
-function FilterPriceSlider() {
+function FilterPriceSlider(props) {
+  const { productsItems } = props;
   const dispatch = useDispatch();
-  const minGlobal = useSelector((state) => state.filter.priceSliderValues.min);
-  const maxGlobal = useSelector((state) => state.filter.priceSliderValues.max);
-  const [min, setMin] = useState(null);
-  const [max, setMax] = useState(null);
-  function changePriceFn(value) {
-    console.log(value);
-    setMin(value[0]);
-    setMax(value[1]);
+  const userMinGlobal = useSelector((state) => state.filter.priceSliderValues.min);
+  const userMaxGlobal = useSelector((state) => state.filter.priceSliderValues.max);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [priceValue, setPriceValue] = useState([minPrice, maxPrice]);
+
+  function resetValue() {
+    setPriceValue([minPrice, maxPrice]);
+  }
+  useEffect(() => {
+    if (userMinGlobal === minPrice && userMaxGlobal === maxPrice) {
+      resetValue();
+    }
+    console.log('change price slider');
+    console.log(productsItems, userMinGlobal, userMaxGlobal, minPrice, minPrice, maxPrice);
+    const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
+    setMinPrice(priceArray[0]);
+    setMaxPrice(priceArray[priceArray.length - 1]);
+    if (!userMinGlobal && !userMaxGlobal) {
+      dispatch(setMinSliderValue(priceArray[0]));
+      dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+    }
+  }, [productsItems, minPrice, maxPrice]);
+  const reduxRequest = useDebouncedCallback((value) => {
     dispatch(setMinSliderValue(value[0]));
     dispatch(setMaxSliderValue(value[1]));
+  }, 200);
+  function changePriceFn(value) {
+    setPriceValue([value[0], value[1]]);
+    reduxRequest(value);
   }
   return (
     <div>
       <div>
-        {min && max
-          && (
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-evenly' }}>
-              <p>
-                $
-                {min}
-              </p>
-              <p>-</p>
-              <p>
-                $
-                {max}
-              </p>
-            </div>
-          )}
-        {/* eslint-disable react/jsx-no-bind */}
-        <Slider
-          range
-          allowCross={false}
-          min={1}
-          max={100000}
-          defaultValue={[1, 100000]}
-          onChange={changePriceFn}
-        />
-        {/* eslint-eneble react/jsx-no-bind */}
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-evenly' }}>
+          <p>
+            $
+            {userMinGlobal}
+          </p>
+          <p>-</p>
+          <p>
+            $
+            {userMaxGlobal}
+          </p>
+        </div>
+        {userMinGlobal && userMaxGlobal && (
+          <Slider
+            range
+            value={priceValue}
+            allowCross={false}
+            min={minPrice}
+            max={maxPrice}
+            onChange={(value) => { changePriceFn(value); }}
+          />
+        )}
       </div>
     </div>
   );
 }
+
+FilterPriceSlider.propTypes = {
+  productsItems: PropTypes.array,
+};
+
+FilterPriceSlider.defaultProps = {
+  productsItems: [],
+};
 
 export default FilterPriceSlider;

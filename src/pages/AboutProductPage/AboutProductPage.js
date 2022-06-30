@@ -25,7 +25,6 @@ function AboutProductPage() {
   };
   const product = useSelector((state) => state.products.activeProduct);
   const location = useLocation();
-  console.log(location.pathname);
   const newLocation = location.pathname.split('/').slice(-1);
 
   console.log(newLocation);
@@ -50,7 +49,7 @@ function AboutProductPage() {
         <p>{product.previousPrice}</p>
       </div> */}
       {/* <div className={styles.goBackBtn}>
-        <Button style={styles.aboutProductCartBtn} handleClick={() => navigate(-1)}>Go Back</Button>
+  <Button className={styles.aboutProductCartBtn} handleClick={() => navigate(-1)}>Go Back</Button>
       </div> */}
       <hr className={styles.line} />
       <div className={`${styles.aboutProductTabMenuWrapper} ${styles.aboutProductWrapper}`}>

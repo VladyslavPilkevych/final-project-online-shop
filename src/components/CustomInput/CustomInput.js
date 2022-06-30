@@ -8,7 +8,6 @@ function CustomInput(props) {
 
   const [field, meta, helpers] = useField(props);
   const { error, touched } = meta;
-  //   console.log(field, meta);
   return (
     <>
       <input {...field} type={type} placeholder={placeholder} className={styles.customInput} />

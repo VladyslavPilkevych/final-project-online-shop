@@ -58,7 +58,6 @@ function SamplePrevArrow(props) {
 
 function NewProductsContainer() {
   const allProducts = useSelector((state) => state.products.products);
-  // console.log(allProducts);
   const newProducts = allProducts && allProducts.slice(10, 22);
   useEffect(() => {
   }, [allProducts]);

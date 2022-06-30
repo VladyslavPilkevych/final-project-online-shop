@@ -15,25 +15,16 @@ function CardItem(props) {
   const {
     name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
   } = props;
-
-  // const dispatch = useDispatch();
-  // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
-  // useEffect(() => {
-  // setpreviousPrice('$' + String(currentPrice.slice(1) * 1.25).split('.')[0] + '.99');
-  // }, []);
   const addToFavourite = () => {
     setFavourite(true);
-    console.log('addToFavourite');
   };
   const removeFromFav = () => {
     setFavourite(false);
-    console.log('removeFromFav');
   };
   const addToCart = () => {
     setInCart(true);
-    console.log('addToCart');
   };
   return (
     <div id={id} className={`${styles.productItem} ${elementClassName}`}>
@@ -73,13 +64,13 @@ function CardItem(props) {
       <div className={styles.btnCartContainer}>
         {inCart
           ? (
-            <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
+            <Button className={`${styles.btnCart} ${styles.btnInCart}`}>
               <img alt="icon cart" src={imageInCart} />
               <p>Already in cart</p>
             </Button>
           )
           : (
-            <Button handleClick={addToCart} style={styles.btnCart}>
+            <Button handleClick={addToCart} className={styles.btnCart}>
               <img alt="icon cart" src={imageCart} />
               <p>Add To Cart</p>
             </Button>
