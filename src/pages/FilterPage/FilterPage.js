@@ -16,6 +16,7 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   filterBrand,
+  setFilterPaginationPage,
 } from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
@@ -33,6 +34,7 @@ function FilterPage() {
     dispatch(clearFilterColor(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(filterCategory(location.pathname.split('/')[2]));
+    dispatch(setFilterPaginationPage(0));
   }, [location.pathname]);
   function openFiltersMenuOnPhone() {
     dispatch(toggleFiltersCategories(true));

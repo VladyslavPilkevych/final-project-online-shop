@@ -25,7 +25,8 @@ function FilterPriceSlider(props) {
       resetValue();
     }
     console.log('change price slider');
-    console.log(productsItems, userMinGlobal, userMaxGlobal, minPrice, minPrice, maxPrice);
+    console.log(productsItems);
+    console.log(userMinGlobal, userMaxGlobal, minPrice, maxPrice);
     const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
     setMinPrice(priceArray[0]);
     setMaxPrice(priceArray[priceArray.length - 1]);
@@ -33,7 +34,12 @@ function FilterPriceSlider(props) {
       dispatch(setMinSliderValue(priceArray[0]));
       dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     }
-  }, [productsItems, minPrice, maxPrice]);
+  }, [productsItems, minPrice, maxPrice, userMinGlobal, userMaxGlobal]);
+  useEffect(() => {
+    const priceArray = productsItems.map((item) => item.currentPrice).sort((a, b) => a - b);
+    dispatch(setMinSliderValue(priceArray[0]));
+    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+  }, [productsItems]);
   const reduxRequest = useDebouncedCallback((value) => {
     dispatch(setMinSliderValue(value[0]));
     dispatch(setMaxSliderValue(value[1]));
