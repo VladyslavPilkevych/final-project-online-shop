@@ -24,7 +24,6 @@ export const setMaxSliderValue = (data) => ({ type: SET_MAX_PRICE_SLIDER_VALUE, 
 export const filterProducts = (data) => async (dispatch) => {
   await getFilteredProductsApi(data)
     .then((rsp) => {
-      console.log(rsp);
       if (rsp.status === 200) {
         dispatch({ type: FILTER_PRODUCTS, payload: rsp.data.products });
       }
