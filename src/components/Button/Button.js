@@ -6,7 +6,7 @@ import styles from './Button.module.scss';
 
 function Button(props) {
   const {
-    children, onClick, type, style, className,
+    children, handleClick, type, style, className,
   } = props;
 
   const user = useSelector((state) => state.user.user);
@@ -16,8 +16,9 @@ function Button(props) {
     /* eslint-disable react/button-has-type */
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       className={`${className} ${style}`}
+      style={style}
       // disable={!disable}
     >
       {children}
@@ -28,16 +29,16 @@ function Button(props) {
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   type: PropTypes.oneOf(['submit', 'button']),
-  onClick: PropTypes.func,
-  style: PropTypes.string,
+  handleClick: PropTypes.func,
+  style: PropTypes.object,
   className: PropTypes.string,
 };
 
 Button.defaultProps = {
   children: '',
   type: 'button',
-  onClick: () => {},
-  style: '',
+  handleClick: () => {},
+  style: {},
   className: '',
 };
 

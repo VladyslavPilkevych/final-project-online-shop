@@ -75,7 +75,7 @@ function CardItem(props) {
       </span>
       <div className={styles.btnCartContainer}>
         {!user ? (
-          <Button style={`${styles.btnCart} ${styles.btnInCart}`} onClick={() => alert('You should LogIn')}>
+          <Button className={`${styles.btnCart} ${styles.btnInCart}`} handleClick={() => alert('You should LogIn')}>
             {/* <img alt="icon cart" src={imageInCart} /> */}
             <img alt="icon cart" src={imageCart} />
             {/* <p>Already in cart</p> */}
@@ -85,8 +85,8 @@ function CardItem(props) {
           <Button
             // handleClick={addToCart}
             type="button"
-            style={styles.btnCart}
-            onClick={() => {
+            className={styles.btnCart}
+            handleClick={() => {
               dispatch(onHandleCart(id), addToCart());
             }}
           >
