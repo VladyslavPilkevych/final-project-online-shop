@@ -21,9 +21,6 @@ function CardItem(props) {
   const {
     name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
   } = props;
-
-  // const dispatch = useDispatch();
-  // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
   const user = useSelector((state) => state.user.user);
@@ -35,15 +32,12 @@ function CardItem(props) {
   // }, []);
   const addToFavourite = () => {
     setFavourite(true);
-    console.log('addToFavourite');
   };
   const removeFromFav = () => {
     setFavourite(false);
-    console.log('removeFromFav');
   };
   const addToCart = () => {
     setInCart(true);
-    console.log('addToCart');
   };
   return (
     <div id={id} className={`${styles.productItem} ${elementClassName}`}>

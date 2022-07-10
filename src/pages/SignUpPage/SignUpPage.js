@@ -24,15 +24,11 @@ function SignUpPage() {
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    console.log(values);
     if (values.password !== values.repeatPassword) {
       alert('Passwords should be equal');
     }
     const newCustomer = values;
-    console.log(newCustomer);
-    const response = await createNewCustomer(newCustomer)
-      .then((user) => user)
-      .catch((err) => console.log(err));
+    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.log(err));
 
     if (response && response.status === 200) {
       resetForm();

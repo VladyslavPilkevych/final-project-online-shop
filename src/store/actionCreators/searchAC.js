@@ -8,7 +8,6 @@ export const searchProducts = (searchPhrases) => async (dispatch) => {
     .then((rsp) => {
       if (rsp.status === 200) {
         dispatch({ type: PRODUCTS_SEARCH, payload: rsp.data });
-        console.log(rsp);
       }
     })
     .catch((err) => {

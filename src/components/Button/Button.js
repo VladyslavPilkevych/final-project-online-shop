@@ -22,7 +22,6 @@ function Button(props) {
     >
       {children}
     </button>
-    /* eslint-enable react/button-has-type */
   );
 }
 

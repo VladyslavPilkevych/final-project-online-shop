@@ -128,6 +128,16 @@
         @include fonts('Poppins', 14px, #8a8a8a, 600);
         margin-left: 7px;
       }
+    .available {
+        @include fonts("Poppins", 10px, #78a962, 400);
+        line-height: 21px;
+        margin: 10px 0 0 15px;
+        display: flex;
+        .iconAvailable {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+        }
     }
   }
 }
@@ -158,8 +168,13 @@
     padding-bottom: 10px;
     .btnCartContainer,
     .iconFav {
-      display: flex;
-      opacity: 1;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 26px;
+        top: 15px;
+        cursor: pointer;
+        // z-index: 3;
     }
     .iconFav {
       right: 25px;
@@ -204,9 +219,20 @@
         }
       }
     }
-  }
-  .productItem:hover {
-    transform: none;
+}
+.linksToCardPage {
+    text-decoration: none;
+}
+.productItem:hover {
+    z-index: 5;
+    box-shadow: $shadow-3;
+    transform: scale(1.05);
+    .iconFav,
+    .btnCartContainer {
+        display: flex;
+        opacity: 1;
+        transition: 1s;
+    }
     .btnCartContainer {
       position: static;
     }
@@ -214,13 +240,56 @@
 }
 
 @media (max-width: 768px) {
-  .productItem {
-    position: relative;
-    padding-bottom: 10px;
-    .btnCartContainer,
-    .iconFav {
-      display: flex;
-      opacity: 1;
+    .productItem {
+        position: relative;
+        padding-bottom: 10px;
+        .btnCartContainer,
+        .iconFav {
+            display: flex;
+            opacity: 1;
+        }
+        .iconFav {
+            top: 10px;
+        }
+        .imgProduct {
+            // width: 100px;
+            max-height: 100px;
+            max-width: 100px;
+        }
+        .productName {
+            font-size: 11px;
+        }
+        .previousPrice {
+            font-size: 12px;
+        }
+        .price {
+            font-size: 14px;
+        }
+        .btnCartContainer {
+            position: static;
+            float: right;
+            margin: 0;
+            margin-top: -40px;
+            box-shadow: none;
+            border: none;
+            max-width: 27px;
+            padding-bottom: 0;
+            margin-right: 21px;
+            .btnCart {
+                padding: 5px;
+                img {
+                    margin: 1px 0 0 1px;
+                }
+                P {
+                    display: none;
+                }
+            }
+            .btnInCart {
+                img {
+                    display: inline;
+                }
+            }
+        }
     }
     .iconFav {
       top: 10px;

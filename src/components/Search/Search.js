@@ -13,10 +13,10 @@ function Search() {
 
   const dispatch = useDispatch();
   if (!isOpenSearch) return null;
-  const closeSearch = () => {
-    dispatch(toggleSearch(true));
-    setValue('');
-  };
+  // const closeSearch = () => {
+  //   dispatch(toggleSearch(true));
+  //   setValue('');
+  // };
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
@@ -47,7 +47,6 @@ function Search() {
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
-            console.log(value);
           }}
         />
       </form>
