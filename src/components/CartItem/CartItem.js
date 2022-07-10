@@ -1,68 +1,86 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { deleteFromCart, editCart } from '../../store/actionCreators/cartAC';
 
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
-import { ReactComponent as EditCartIcon } from '../../assets/icons/editIcon.svg';
-import Cartimg from '../../assets/Images/pcImg.png';
+import numberWithSpaces from '../../utils/numberWithSpaces';
 
 import styles from './CartItem.module.scss';
 
-const newCart = {
-  products: [
-    {
-      product: '625312856ad189cceeb8b58a',
-      cartQuantity: 1,
-    },
-    {
-      product: '625312856ad189cceeb8b599',
-      cartQuantity: 1,
-    },
-  ],
-};
 function CartItem() {
+  const dataCart = useSelector((state) => state.cart.dataCart);
+  const cartItem = dataCart || [];
+
+  const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice).reduce((acc, value) => acc + value, 0));
+
+  const dispatch = useDispatch();
+
+  const onDeleteFromCart = (productId) => {
+    if (cartItem.map((item) => item.product._id === productId)) {
+      dispatch(deleteFromCart(productId));
+    }
+  };
+  const handleChange = (e, productId) => {
+    dispatch(editCart(productId, e.target.value));
+  };
+
   return (
     <div>
       <div className={styles.cartItemContainer}>
         <ul>
-          {newCart.products.map((item) => (
-            <li key={item.product}>
+          {cartItem.map((item) => (
+            <li key={item._id}>
               <div className={styles.cartItemWrapper}>
                 <div className={styles.cartItem}>
                   <div>
-                    <img src={Cartimg} alt="Cartimg" className={styles.cartItemImage} />
+                    <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
                   </div>
-                  <div className={styles.cartItemDescription}>
-                    <p>
-                      16.2 Liquid Retina XDR (3456x2234) 120 Hz/ Apple M1 Pro / RAM 16 Gb / SSD 1 Gb / Apple M1 Pro Graphics (16 core) / Wi-Fi /
-                      Bluetooth / webcam / macOS Monterey / 2.1 kg / space gray
-                    </p>
+                  <div>
+                    <p className={styles.cartItemDescription}>{item.product.name + item.product.model}</p>
                   </div>
                 </div>
                 <div className={styles.cartItemRightWrapper}>
-                  <div className={styles.cartItemPrice}>
-                    <p>$3,000</p>
+                  <div className={styles.cartItemContent}>
+                    <div>
+                      <p className={styles.cartItemContentSubPrice}>Price</p>
+                    </div>
+                    <p className={styles.cartItemPrice}>
+                      $
+                      {numberWithSpaces(item.product.currentPrice)}
+                    </p>
                   </div>
                   <div className={styles.cartItemQuantity}>
+                    <div>
+                      <p className={styles.cartItemContentSubPrice}>Qty</p>
+                    </div>
                     <input
                       type="number"
                       className={styles.cartItemQuantityInput}
-                      // pattern="[0-9]{0,5}"
                       min={1}
                       max={99}
-                      // value={1}
+                      value={item.cartQuantity}
                       onKeyPress={(event) => {
                         if (!/[0-9]/.test(event.key)) {
                           event.preventDefault();
                         }
                       }}
+                      onChange={(e) => handleChange(e, item.product._id)}
                     />
                   </div>
-                  <div className={styles.cartItemSubtotal}>
-                    <p>$12,000</p>
+                  <div className={styles.cartItemContent}>
+                    <div>
+                      <p className={styles.cartItemContentSubPrice}>Subtotal</p>
+                    </div>
+                    <p className={styles.cartItemSubtotal}>
+                      $
+                      {numberWithSpaces(item.cartQuantity * item.product.currentPrice)}
+                    </p>
                   </div>
-                  <div>
-                    <CloseCartIcon className={styles.closeCartIcon} />
-                    {/* <EditCartIcon /> */}
+                  <div className={styles.cartItemContent}>
+                    <CloseCartIcon className={styles.closeCartIcon} onClick={() => onDeleteFromCart(item.product._id)} />
                   </div>
                 </div>
               </div>

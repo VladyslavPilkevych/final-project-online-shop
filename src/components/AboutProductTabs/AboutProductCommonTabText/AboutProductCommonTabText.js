@@ -8,7 +8,7 @@ function AboutProductCommonTabText(props) {
       name, model, capacity, storage, color, display, description, itemNo,
     },
   } = props;
-  console.log(name, model);
+  // console.log(name, model);
   return (
     <div>
       <h1 className={styles.productTitle}>

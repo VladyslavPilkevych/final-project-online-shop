@@ -119,6 +119,7 @@ nav {
 }
 .navBarRight {
   display: flex;
+  position: relative;
 }
 .navBarRightItem {
   margin-left: 25px;
@@ -137,7 +138,7 @@ nav {
   outline: none;
   cursor: pointer;
 }
-.searchBox{
+.searchBox {
   display: none;
 }
 .navLinks {
@@ -148,6 +149,21 @@ nav {
   margin-right: 30px;
   text-decoration: none;
 }
+.cartIconIndex {
+  width: 16px;
+  height: 16px;
+  background-color: $blue;
+  border-radius: 50%;
+  color: $white;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 17px;
+  position: absolute;
+  bottom: 24px;
+  right: 46px;
+}
+
 @media (max-width: 768px) and (min-width: 376px) {
   .blackBg {
     max-width: 768px;
@@ -205,6 +221,7 @@ nav {
     display: flex;
     flex-basis: 70%;
     margin-left: 30px;
+    flex-direction: column;
   }
   .searchInput {
     width: 100%;
@@ -257,12 +274,20 @@ nav {
     position: absolute;
     border-bottom: 2px solid $white;
   }
-  .navLinks{
-    display: none; 
+  .navLinks {
+    display: none;
+  }
+  .cartIconIndex {
+    background-color: $white;
+    border-radius: 50%;
+    color:  $blue;
+    position: absolute;
+    bottom: 38px;
+    right: 46px;
   }
 }
 @media (max-width: 375px) and (min-width: 240px) {
-  .navLinks{
+  .navLinks {
     display: none;
   }
 
@@ -365,5 +390,13 @@ nav {
     color: $white;
     position: absolute;
     border-bottom: 2px solid $white;
+  }
+  .cartIconIndex {
+    background-color: $white;
+    border-radius: 50%;
+    color:  $blue;
+    position: absolute;
+    bottom: 38px;
+    right: 46px;
   }
 }

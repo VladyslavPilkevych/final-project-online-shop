@@ -6,7 +6,9 @@ import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
-import { createCart, addToCart, getCart } from '../../store/actionCreators/cartAC';
+import {
+  createCart, addToCart, getCart, onHandleCart,
+} from '../../store/actionCreators/cartAC';
 
 import Button from '../../components/Button/Button';
 
@@ -25,6 +27,8 @@ function AboutProductPage() {
     setActiveTab('tab2');
   };
   const product = useSelector((state) => state.products.activeProduct);
+  const user = useSelector((state) => state.user.user);
+
   const location = useLocation();
   // console.log(location.pathname);
   const newLocation = location.pathname.split('/').slice(-1);
@@ -35,29 +39,6 @@ function AboutProductPage() {
   useEffect(() => {
     dispatch(getProduct(...newLocation));
   }, []);
-
-  const onCreateCart = (productId) => {
-    const newCart = {
-      products: [
-        {
-          product: productId,
-          cartQuantity: 1,
-        },
-      ],
-    };
-    dispatch(createCart(newCart));
-  };
-  // const onAddToCart = async (dataCart, productId) => {
-  //   const response = await getCart(dataCart)
-  //     .then((cart) => cart)
-  //     .catch((err) => console.log(err));
-  //   console.log('response', response);
-  //   if (response && response.status === 200) {
-  //     dispatch(addToCart(productId));
-  //   } else {
-  //     onCreateCart(productId);
-  //   }
-  // };
 
   return (
     <>
@@ -87,16 +68,24 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
-          <button
+          {/* <button
             type="button"
             className={styles.aboutProductCartBtn}
             onClick={() => {
-              onCreateCart(product._id);
-              // onAddToCart(product._id);
+              dispatch(onHandleCart(product._id));
             }}
           >
             Add to Cart
-          </button>
+          </button> */}
+          <Button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              dispatch(onHandleCart(product._id));
+            }}
+          >
+            {' Add to Cart'}
+          </Button>
         </div>
       </div>
       <hr className={styles.line} />

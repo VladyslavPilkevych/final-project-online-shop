@@ -18,7 +18,11 @@ const userReducer = (state = initialValues, { type, payload } = {}) => {
     case REMOVE_USER_DATA: {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      return { ...state, user: null, token: null };
+      return {
+        ...state,
+        user: null,
+        token: null,
+      };
     }
     default:
       return state;

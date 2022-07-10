@@ -1,9 +1,21 @@
+/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './CardItem.module.scss';
 import Button from '../Button/Button';
+
+import { onHandleCart } from '../../store/actionCreators/cartAC';
+import numberWithSpaces from '../../utils/numberWithSpaces';
+
+import imageAddToFavIcon from '../../assets/images/CardItem/addToFavIcon.png';
+import imageCart from '../../assets/images/CardItem/cart.png';
+import imageGreenG from '../../assets/images/CardItem/greenG.png';
+import imageInCart from '../../assets/images/CardItem/inCart.png';
+import imageRedPhone from '../../assets/images/CardItem/redPhone.png';
+import imageRemoveFromFavIcon from '../../assets/images/CardItem/removeFromFavIcon.png';
 
 function CardItem(props) {
   const {
@@ -14,6 +26,10 @@ function CardItem(props) {
   // const [previousPrice, setPreviousPrice] = useState(null);
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
+  const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
+
   // useEffect(() => {
   // setpreviousPrice('$' + String(currentPrice.slice(1) * 1.25).split('.')[0] + '.99');
   // }, []);
@@ -31,26 +47,22 @@ function CardItem(props) {
   };
   return (
     <div id={id} className={`${styles.productItem} ${elementClassName}`}>
-      {quantity
-        ? (
-          <p className={styles.available}>
-            <img className={styles.iconAvailable} alt="icon available" src="./images/greenG.png" />
-            {' '}
-            in stock
-          </p>
-        )
-        : (
-          <p className={`${styles.available} ${styles.notAvaliable}`}>
-            <img className={styles.iconAvailable} alt="icon not available" src="./images/redPhone.png" />
-            {' '}
-            check availability
-          </p>
-        )}
-      {
-        favourite
-          ? <img onClick={removeFromFav} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/removeFromFavIcon.png" />
-          : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src="./images/addToFavIcon.png" />
-      }
+      {quantity ? (
+        <p className={styles.available}>
+          <img className={styles.iconAvailable} alt="icon available" src={imageGreenG} />
+          in stock
+        </p>
+      ) : (
+        <p className={`${styles.available} ${styles.notAvaliable}`}>
+          <img className={styles.iconAvailable} alt="icon not available" src={imageRedPhone} />
+          check availability
+        </p>
+      )}
+      {favourite ? (
+        <img onClick={removeFromFav} role="presentation" className={styles.iconFav} alt="icon favourite" src={imageRemoveFromFavIcon} />
+      ) : (
+        <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src={imageAddToFavIcon} />
+      )}
       <div className={styles.imageContainer}>
         <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
           <img className={styles.imgProduct} alt="product" src={img} />
@@ -63,21 +75,31 @@ function CardItem(props) {
         <h2 className={styles.productModel}>{model}</h2>
       </Link>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
-      <span className={styles.price}>{currentPrice}</span>
+      <span className={styles.price}>
+        $
+        {numberWithSpaces(currentPrice)}
+      </span>
       <div className={styles.btnCartContainer}>
-        {inCart
-          ? (
-            <Button style={`${styles.btnCart} ${styles.btnInCart}`}>
-              <img alt="icon cart" src="./images/inCart.png" />
-              <p>Already in cart</p>
-            </Button>
-          )
-          : (
-            <Button handleClick={addToCart} style={styles.btnCart}>
-              <img alt="icon cart" src="./images/cart.png" />
-              <p>Add To Cart</p>
-            </Button>
-          )}
+        {!user ? (
+          <Button style={`${styles.btnCart} ${styles.btnInCart}`} onClick={() => alert('You should LogIn')}>
+            {/* <img alt="icon cart" src={imageInCart} /> */}
+            <img alt="icon cart" src={imageCart} />
+            {/* <p>Already in cart</p> */}
+            <p>Add To Cart</p>
+          </Button>
+        ) : (
+          <Button
+            // handleClick={addToCart}
+            type="button"
+            style={styles.btnCart}
+            onClick={() => {
+              dispatch(onHandleCart(id), addToCart());
+            }}
+          >
+            <img alt="icon cart" src={imageCart} />
+            <p>Add To Cart</p>
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -90,10 +112,7 @@ CardItem.propTypes = {
   itemNo: PropTypes.string.isRequired,
   name: PropTypes.string,
   img: PropTypes.string,
-  currentPrice: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  currentPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.string.isRequired,
   quantity: PropTypes.number,
   previousPrice: PropTypes.number,

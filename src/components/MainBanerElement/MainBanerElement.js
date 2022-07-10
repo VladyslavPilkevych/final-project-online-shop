@@ -23,7 +23,7 @@ function MainBanerElement(props) {
         <button
           type="button"
           onClick={() => {
-            console.log(`Click on baner button, id ${id}`);
+            // console.log(`Click on baner button, id ${id}`);
           }}
           className={[styles.bannerBtn, styles.btn, styles.btnWhite, styles.btnAnimate].join(' ')}
         >

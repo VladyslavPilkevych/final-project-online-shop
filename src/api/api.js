@@ -1,66 +1,71 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 
 const BASE_URL = 'https://skvonlineshop.herokuapp.com/api';
-// const BASE_URL = 'http://localhost:5001/api';
 
-const token = localStorage.getItem('token') || null;
+const api = axios.create({
+  baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+});
 
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: token,
-};
-
-// axios.create({
-//     baseURL: "https://randomuser.me/api/",
-//     responseType: "json"
-//   });
+api.interceptors.request.use((config) => {
+  config.headers.Authorization = `${JSON.parse(localStorage.getItem('token'))}`;
+  return config;
+});
 
 export function getAllProductsApi() {
-  return axios.get(`${BASE_URL}/products`);
+  return api.get(`${BASE_URL}/products`);
 }
 export function getProductApi(itemNo) {
-  return axios.get(`${BASE_URL}/products/${itemNo}`);
+  return api.get(`${BASE_URL}/products/${itemNo}`);
+}
+export function getFilteredProductsApi(params) {
+  return api.get(`${BASE_URL}/products/filter${params}`);
 }
 
 export function createNewCustomer(newCustomer) {
-  return axios.post(`${BASE_URL}/customers`, newCustomer, { headers });
+  return api.post(`${BASE_URL}/customers`, newCustomer);
 }
 
 export function logInCustomer(loginValues) {
-  return axios.post(`${BASE_URL}/customers/login`, loginValues, { headers });
+  return api.post(`${BASE_URL}/customers/login`, loginValues);
 }
 
 export function getUserData(tokenUser) {
-  return axios.get(`${BASE_URL}/customers/customer`, {
-    headers: {
-      'Content-Type': 'application/json',
-      // eslint-disable-next-line quote-props
-      Authorization: `${tokenUser}`,
-    },
-  });
+  return api.get(`${BASE_URL}/customers/customer`);
 }
 export function createNewCart(newCart) {
-  const tokens = JSON.parse(localStorage.getItem('token')) || null;
-  return axios.post(`${BASE_URL}/cart`, newCart, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
+  return api.post(`${BASE_URL}/cart`, newCart);
 }
 
-export function addToCart(newCart, productId) {
-  const tokens = JSON.parse(localStorage.getItem('token')) || null;
-  return axios.put(`${BASE_URL}/cart/${productId}`, newCart, { headers: { 'Content-Type': 'application/json', Authentication: tokens } });
+export function addToCart(productId, newCart) {
+  return api.put(`${BASE_URL}/cart/${productId}`, newCart);
 }
 
 export function deleteCart() {
-  const tokens = JSON.parse(localStorage.getItem('token')) || null;
-  return axios.delete(`${BASE_URL}/cart`, { headers: { 'Content-Type': 'application/json', Authentication: tokens } });
+  return api.delete(`${BASE_URL}/cart`);
 }
 
 export function getCart() {
-  const tokens = JSON.parse(localStorage.getItem('token')) || null;
-  return axios.get(`${BASE_URL}/cart`, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
+  return api.get(`${BASE_URL}/cart`);
+}
+
+export function deleteFromCart(productId) {
+  return api.delete(`${BASE_URL}/cart/${productId}`);
+}
+
+export function editCart(productId, updatedCart) {
+  return api.put(`${BASE_URL}/cart/${productId}`, updatedCart);
+}
+
+export function decreaseProductQuantity(productId) {
+  return api.delete(`${BASE_URL}/cart/product/${productId}`);
 }
 
 export function createWishList(newCart) {
-  const tokens = JSON.parse(localStorage.getItem('token')) || null;
-  // eslint-disable-next-line quote-props
-  return axios.post(`${BASE_URL}/wishlist`, newCart, { headers: { 'Content-Type': 'application/json', Authorization: tokens } });
+  return api.post(`${BASE_URL}/wishlist`, newCart);
+}
+
+export function searchProductsApi(searchPhrases) {
+  return api.post(`${BASE_URL}/products/search`, searchPhrases);
 }

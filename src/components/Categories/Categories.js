@@ -1,8 +1,10 @@
 import React, { useEffect, memo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import CardItem from '../CardItem/CardItem';
+import { filterCategory } from '../../store/actionCreators/filterAC';
 
 import styles from './Categories.module.scss';
 import 'slick-carousel/slick/slick.css';
@@ -58,7 +60,8 @@ function SamplePrevArrow(props) {
 function Categories(props) {
   const { productsCategories, imageSrc } = props;
   const allProducts = useSelector((state) => state.products.products);
-  console.log(allProducts);
+  const dispatch = useDispatch();
+  // console.log(allProducts);
   const eachCategory = allProducts.map((product) => {
     if (product.categories === productsCategories) {
       return product;
@@ -66,7 +69,7 @@ function Categories(props) {
     return null;
   });
   const resultProducts = eachCategory.filter((element) => element !== null);
-  console.log(resultProducts);
+  // console.log(resultProducts);
   useEffect(() => {}, [allProducts]);
   const settings = {
     infinite: true,
@@ -114,28 +117,38 @@ function Categories(props) {
       <div className={styles.categories}>
         <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
           <h3>{productsCategories}</h3>
-          <p>See All Products</p>
+          <div
+            onClick={() => {
+              dispatch(filterCategory(productsCategories));
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <NavLink to={`/filter/${productsCategories}`}>
+              {/* <NavLink to="/filter"> */}
+              See All Products
+            </NavLink>
+          </div>
         </div>
         {/* <div className={styles.categorieSlider}> */}
         <div className={styles.categoriesSliderWrapper}>
           <Slider {...settings}>
-            {resultProducts
-              && resultProducts.map((elem) => (
-                <CardItem
-                  className={styles.cardItemWrapper}
-                  name={elem.name}
-                  // eslint-disable-next-line no-underscore-dangle
-                  id={elem._id}
-                  // eslint-disable-next-line no-underscore-dangle
-                  img={elem.imageUrls[0]}
-                  // eslint-disable-next-line no-underscore-dangle
-                  key={elem._id}
-                  currentPrice={elem.currentPrice}
-                  quantity={50}
-                  model={elem.model}
-                  itemNo={elem.itemNo}
-                />
-              ))}
+            {resultProducts && resultProducts.map((elem) => (
+              <CardItem
+                className={styles.cardItemWrapper}
+                name={elem.name}
+                // eslint-disable-next-line no-underscore-dangle
+                id={elem._id}
+                // eslint-disable-next-line no-underscore-dangle
+                img={elem.imageUrls[0]}
+                // eslint-disable-next-line no-underscore-dangle
+                key={elem._id}
+                currentPrice={elem.currentPrice}
+                quantity={50}
+                model={elem.model}
+                itemNo={elem.itemNo}
+              />
+            ))}
           </Slider>
         </div>
       </div>

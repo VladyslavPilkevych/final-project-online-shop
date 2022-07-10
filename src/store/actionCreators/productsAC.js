@@ -16,7 +16,7 @@ export const getAllProducts = () => async (dispatch) => {
 export const getProduct = (itemNo) => async (dispatch) => {
   await getProductApi(itemNo)
     .then((rsp) => {
-      console.log(rsp);
+      // console.log(rsp);
       if (rsp.status === 200) {
         dispatch({ type: GET_PRODUCT, payload: rsp.data });
       }

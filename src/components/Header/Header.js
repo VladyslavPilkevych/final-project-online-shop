@@ -1,11 +1,13 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
-import { toggleSearch } from '../../store/actionCreators/searchAC';
+import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
 import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
+import { getUser } from '../../store/actionCreators/userAC';
 
 import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
@@ -23,24 +25,29 @@ import styles from './Header.module.scss';
 const items = [
   {
     value: 'Laptops',
-    to: '/category/laptops',
+    to: '/filter/laptop',
     className: '{styles.navLinks}',
   },
   {
     value: 'Monitors',
-    to: '/category/monitors',
+    to: '/filter/monitor',
     className: '{styles.navLinks}',
   },
   {
     value: 'Phones',
-    to: '/category/phones',
+    to: '/filter/phones',
     className: '{styles.navLinks}',
   },
   {
     value: 'Headphones',
-    to: '/category/headphones',
+    to: '/filter/headphones',
     className: '{styles.navLinks}',
   },
+  // {
+  //   value: 'Filter',
+  //   to: '/filter',
+  //   className: '{styles.navLinks}',
+  // },
 ];
 
 function Header() {
@@ -50,12 +57,27 @@ function Header() {
 
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart);
+  const cartItem = dataCart || [];
+
+  const navigate = useNavigate();
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCart());
   }, [user]);
+
+  const phrase = { query: value };
+  const emptyPhraseWithSpace = { query: ' ' };
+
+  const putSearchedProducts = () => {
+    if (value === '') {
+      dispatch(searchProducts(emptyPhraseWithSpace));
+    } else {
+      dispatch(searchProducts(phrase));
+    }
+  };
 
   return (
     <header>
@@ -107,16 +129,27 @@ function Header() {
           </div>
           <Search />
           <div className={styles.searchBox}>
-            <input
-              className={styles.searchInput}
-              type="text"
-              placeholder="Search entiere store here..."
-              value={value}
-              onChange={(e) => {
-                setValue(e.target.value);
-                console.log(value);
+            <form
+              // className={styles.searchInput}
+              onSubmit={(e) => {
+                e.preventDefault();
+                putSearchedProducts();
+                localStorage.setItem('phrase', JSON.stringify(phrase));
+                navigate({ pathname: '/products/search' });
+                setValue('');
               }}
-            />
+            >
+              <input
+                className={styles.searchInput}
+                type="text"
+                placeholder="Search entiere store here..."
+                value={value}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                  console.log(value);
+                }}
+              />
+            </form>
           </div>
           <div className={styles.navBarRight}>
             <nav className={styles.navBur}>
@@ -131,9 +164,9 @@ function Header() {
               />
               <li className={styles.navBarRightItem}>
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
-                <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
+                {cartItem.length && cartItem.length !== 0 ? <div className={styles.cartIconIndex}>{cartItem.length}</div> : null}
                 <Avatar />
               </li>
             </nav>
