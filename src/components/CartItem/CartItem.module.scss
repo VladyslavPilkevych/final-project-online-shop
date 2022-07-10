@@ -1,0 +1,124 @@
+@import '../../assets/styles/global.module.scss';
+
+.cartItemContainer {
+  max-width: 916px;
+  width: 100%;
+}
+.cartItemWrapper {
+  display: flex;
+  border-bottom: 1px solid $grey-star;
+  padding: 25px 0;
+}
+.cartItem {
+  display: flex;
+  max-width: 420px;
+  width: 100%;
+  margin-right: 29px;
+  align-items: center;
+}
+.cartItemImage {
+  max-width: 120px;
+  max-height: 120px;
+  margin-right: 29px;
+}
+.cartItemDescription {
+  max-width: 271px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: $black;
+}
+.cartItemRightWrapper {
+  display: flex;
+  column-gap: 60px;
+}
+.cartItemContent {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.cartItemPrice {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: $black;
+}
+.cartItemQuantity {
+  width: 70px;
+  height: 50px;
+}
+.cartItemQuantityInput {
+  width: 70px;
+  height: 50px;
+  background: #f5f7ff;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 210%;
+}
+.cartItemSubtotal {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: $black;
+}
+.closeCartIcon {
+  width: 26px;
+  height: 26px;
+}
+.cartItemContentSubPrice {
+  display: none;
+}
+@media (max-width: 768px) and (min-width: 376px) {
+  .cartItemContainer {
+    max-width: 345px;
+  }
+  .cartItemWrapper {
+    flex-wrap: wrap;
+  }
+  .cartItemWrapper {
+    padding: 18px 0;
+  }
+  .cartItem {
+    display: flex;
+    max-width: 345px;
+    margin-right: 35px;
+  }
+  .cartItemImage {
+    max-width: 68px;
+    max-height: 68px;
+    margin-right: 18px;
+  }
+  .cartItemDescription {
+    max-width: 258px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .cartItemContentSubPrice {
+    display: block;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+    text-transform: none;
+    padding-bottom: 7px;
+  }
+  .cartItemPrice {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .cartItemQuantityInput {
+    font-weight: 600;
+    line-height: 18px;
+    font-size: 12px;
+    width: 56px;
+    height: 42px;
+  }
+  .cartItemSubtotal {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

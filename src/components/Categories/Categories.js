@@ -164,7 +164,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -175,7 +175,7 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 
 // CategoryProductsContainer.propTypes = {

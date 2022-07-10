@@ -60,6 +60,7 @@ function FilterContainer() {
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
+    console.log('work');
   };
   const applyFilterFn = () => {
     setApplyFilterBtn(false);
@@ -72,6 +73,7 @@ function FilterContainer() {
         max: priceSliderValues.max,
       },
     };
+    console.log('work');
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
   };

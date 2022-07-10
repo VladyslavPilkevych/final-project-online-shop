@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
 import AvatarIcon from '../../assets/avatar/avatar.png';
 import { removeUserDataAC } from '../../store/actionCreators/userAC';
+
 import styles from './Avatar.module.scss';
 
 function Avatar() {

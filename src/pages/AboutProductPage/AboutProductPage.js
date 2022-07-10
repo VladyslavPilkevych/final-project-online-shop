@@ -6,6 +6,9 @@ import { useMatch, useLocation, useNavigate } from 'react-router-dom';
 import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutProductDetailsTabText/AboutProductDetailsTabText';
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
+import {
+  createCart, addToCart, getCart, onHandleCart,
+} from '../../store/actionCreators/cartAC';
 
 import Button from '../../components/Button/Button';
 
@@ -24,10 +27,12 @@ function AboutProductPage() {
     setActiveTab('tab2');
   };
   const product = useSelector((state) => state.products.activeProduct);
+  const user = useSelector((state) => state.user.user);
+
   const location = useLocation();
   const newLocation = location.pathname.split('/').slice(-1);
 
-  console.log(newLocation);
+  // console.log(newLocation);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,40 +59,44 @@ function AboutProductPage() {
       <hr className={styles.line} />
       <div className={`${styles.aboutProductTabMenuWrapper} ${styles.aboutProductWrapper}`}>
         <ul className={styles.aboutProductTabMenu}>
-          <li
-            className={activeTab === 'tab1' ? `${styles.active}` : ''}
-            role="menuitem"
-            onClick={handleTab1}
-          >
+          <li className={activeTab === 'tab1' ? `${styles.active}` : ''} role="menuitem" onClick={handleTab1}>
             About Product
           </li>
-          <li
-            className={activeTab === 'tab2' ? `${styles.active}` : ''}
-            role="menuitem"
-            onClick={handleTab2}
-          >
+          <li className={activeTab === 'tab2' ? `${styles.active}` : ''} role="menuitem" onClick={handleTab2}>
             Details
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
-          <button type="button" className={styles.aboutProductCartBtn} onClick={() => console.log('Add to Cart', product._id)}>Add to Cart</button>
+          {/* <button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              dispatch(onHandleCart(product._id));
+            }}
+          >
+            Add to Cart
+          </button> */}
+          <Button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              dispatch(onHandleCart(product._id));
+            }}
+          >
+            {' Add to Cart'}
+          </Button>
         </div>
       </div>
       <hr className={styles.line} />
       <div className={`${styles.aboutProducTextAndImageWrapper} ${styles.aboutProductWrapper}`}>
         <div className={styles.aboutProductTextWrapper}>
-          {activeTab === 'tab1' ? (
-            <AboutProductCommonTabText product={product} />
-          ) : (
-            <AboutProductDetailsTabText product={product} />
-          )}
+          {activeTab === 'tab1' ? <AboutProductCommonTabText product={product} /> : <AboutProductDetailsTabText product={product} />}
         </div>
         <div className={styles.aboutProducImageWrapper}>
           <AboutProductImage urls={product.imageUrls} model={product.model} id={product._id} />
         </div>
       </div>
     </>
-
   );
 }
 
