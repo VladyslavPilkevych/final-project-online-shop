@@ -55,29 +55,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
   const dataFilters = [`?categories=${data.categories}`];
   if (data.color.length !== 0) {
     console.log(data.color);
-    // const colors = data.color.map((item) => {
-    //   if (item === 'gray') {
-    //     return 'gray,silver,space gray,grey,pure silver,graphite,phantom silver,moonlight_silver';
-    //   }
-    //   if (item === 'black') {
-    //     return 'black,charcoal black,shale black,shadow black,Black';
-    //   }
-    //   if (item === 'white') {
-    //     return 'white,ceramic white';
-    //   }
-    //   if (item === 'blue') {
-    //     return 'blue,sierraBlue,deep sea blue';
-    //   }
-    //   if (item === '#FFD700') {
-    //     return 'blush gold,gold,prestige gold,sand';
-    //   }
-    //   if (item === 'purple') {
-    //     return 'purple,lilac';
-    //   }
-    //   return item;
-    // });
-    // const dataColor = `&color=${data.color.join()}`;
-    // const dataColor = `&color=${colors.join()}`;
     const dataColor = repackColorsForServer(data.color);
     dataFilters.push(dataColor);
   }

@@ -52,31 +52,7 @@ function FilterContainer() {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
       setBrandsFiltered([...new Set(brands)].sort());
-
-      // const colors = filterCategoryProducts.map((i) => {
-      //   if (i.color === 'silver' || i.color === 'space gray' || i.color === 'grey' || i.color === 'silver' || i.color === 'pure silver' || i.color === 'graphite' || i.color === 'phantom silver' || i.color === 'moonlight_silver') {
-      //     return 'gray';
-      //   }
-      //   if (i.color === 'charcoal black' || i.color === 'shale black' || i.color === 'shadow black' || i.color === 'Black') {
-      //     return 'black';
-      //   }
-      //   if (i.color === 'ceramic white') {
-      //     return 'white';
-      //   }
-      //   if (i.color === 'sierraBlue' || i.color === 'deep sea blue') {
-      //     return 'blue';
-      //   }
-      //   if (i.color === 'blush gold' || i.color === 'gold' || i.color === 'prestige gold' || i.color === 'sand') {
-      //     return '#FFD700';
-      //   }
-      //   if (i.color === 'lilac') {
-      //     return 'purple';
-      //   }
-      //   return i.color;
-      // });
-      // setColorsFiltered([...new Set(colors)].sort());
       setColorsFiltered(repackColorsForPage(filterCategoryProducts));
-      // console.log(colors);
     }
   }, [filterCategoryProducts]);
   const clearFilterFn = () => {
@@ -176,20 +152,6 @@ function FilterContainer() {
         </div>
         {isOpenFilterColor
           && (
-            // <ul className={styles.colorsContainer}>
-            //   <li>
-            //     <FilterCreatorColor color="red" />
-            //   </li>
-            //   <li>
-            //     <FilterCreatorColor color="black" />
-            //   </li>
-            //   <li>
-            //     <FilterCreatorColor color="grey" />
-            //   </li>
-            //   <li>
-            //     <FilterCreatorColor color="white" />
-            //   </li>
-            // </ul>
             <ul>
               {colorsFiltered
                 && colorsFiltered.map((color) => <FilterCreatorColor key={color} color={color} />)}

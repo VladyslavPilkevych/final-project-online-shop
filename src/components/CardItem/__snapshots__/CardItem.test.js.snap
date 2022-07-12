@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot CardItem should render Snapshot CardItem is rendered 1`] = `Object {}`;
