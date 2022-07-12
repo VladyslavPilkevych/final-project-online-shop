@@ -8,7 +8,8 @@ const initialValues = {
 const productsReducer = (state = initialValues, { type, payload } = {}) => {
   switch (type) {
     case GET_ALL_PRODUCTS: {
-      return { ...state, products: payload };
+      const tempState = { ...state, products: payload };
+      return tempState;
     }
     case GET_PRODUCT: {
       const tempState = { ...state, activeProduct: payload };

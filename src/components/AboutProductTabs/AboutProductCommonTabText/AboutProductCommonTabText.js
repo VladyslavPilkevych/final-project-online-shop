@@ -10,12 +10,11 @@ function AboutProductCommonTabText(props) {
       name, model, capacity, storage, color, display, description, itemNo,
     },
   } = props;
-  console.log(name, model, color);
+  // console.log(name, model, color);
 
   const allProducts = useSelector((state) => state.products.products);
   // eslint-disable-next-line max-len
   const analogProducts = allProducts.filter((product) => product.name === name && product.model === model);
-  console.log(analogProducts);
 
   const colors = [
     {

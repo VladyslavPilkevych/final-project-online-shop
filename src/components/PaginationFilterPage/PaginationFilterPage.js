@@ -12,10 +12,10 @@ function PaginationFilterPage(props) {
   const dispatch = useDispatch();
   const { filterProducts, itemsPerPage } = props;
   const filterPaginationPage = useSelector((state) => state.filter.filterPaginationPage);
-
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+
   useEffect(() => {
     if (filterPaginationPage === 0) {
       setItemOffset(0);
@@ -27,6 +27,7 @@ function PaginationFilterPage(props) {
     }
   }, [itemOffset, itemsPerPage, filterProducts, filterPaginationPage]);
   const handlePageClick = (event) => {
+    window.scrollTo(0, 0);
     const newOffset = (event.selected * itemsPerPage) % filterProducts.length;
     setItemOffset(newOffset);
     dispatch(setFilterPaginationPage(event.selected));
@@ -56,7 +57,7 @@ function PaginationFilterPage(props) {
         breakLabel="..."
         nextLabel="›"
         previousLabel="‹"
-        onPageChange={() => { handlePageClick(); }}
+        onPageChange={handlePageClick}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
         containerClassName={styles.paginateContainer}

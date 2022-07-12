@@ -3,6 +3,7 @@ import {
   CLEAR_FILTER,
   CLEAR_FILTER_PRODUCTS,
   FILTER_CATEGORY,
+  FILTER_CATEGORY_PRODUCTS,
   ADD_FILTER_COLOR,
   REMOVE_FILTER_COLOR,
   FILTER_BRAND,
@@ -28,13 +29,24 @@ export const setFilterPaginationPage = (data) => ({ type: SET_PAGINATION_PAGE, p
 export const filterProducts = (data) => async (dispatch) => {
   await getFilteredProductsApi(data)
     .then((rsp) => {
-      console.log(rsp);
       if (rsp.status === 200) {
         dispatch({ type: FILTER_PRODUCTS, payload: rsp.data.products });
       }
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const getCategorieProducts = (url) => async (dispatch) => {
+  await getFilteredProductsApi(url)
+    .then((rsp) => {
+      if (rsp.status === 200) {
+        dispatch({ type: FILTER_CATEGORY_PRODUCTS, payload: rsp.data.products });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
     });
 };
 
@@ -45,18 +57,16 @@ export const newFilterProducts = (data) => async (dispatch) => {
     dataFilters.push(dataColor);
   }
   if (data.name && data.name.length !== 0) {
-    console.log(data.name);
     const dataBrand = `&name=${data.name.join()}`;
     dataFilters.push(dataBrand);
   }
-  if (data.currentPrice && data.currentPrice.min >= 1 && data.currentPrice.max <= 100000) {
-    console.log(data.currentPrice);
+  if (data.currentPrice) {
     const dataMinPrice = `&minPrice=${data.currentPrice.min}`;
     dataFilters.push(dataMinPrice);
     const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;
     dataFilters.push(dataMaxPrice);
   }
-  console.log(dataFilters.join(''));
+  console.log(dataFilters);
   await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
       if (rsp.status === 200) {
