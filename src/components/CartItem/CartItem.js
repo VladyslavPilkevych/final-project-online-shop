@@ -39,7 +39,7 @@ function CartItem() {
                     <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
                   </div>
                   <div>
-                    <p className={styles.cartItemDescription}>{item.product.name + item.product.model}</p>
+                    <p className={styles.cartItemDescription}>{`${item.product.name}  ${item.product.model}`}</p>
                   </div>
                 </div>
                 <div className={styles.cartItemRightWrapper}>

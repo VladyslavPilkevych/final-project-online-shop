@@ -5,15 +5,18 @@
   width: 100%;
 }
 .cartItemWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 3.5fr;
   border-bottom: 1px solid $grey-star;
   padding: 25px 0;
+  column-gap: 10px;
 }
 .cartItem {
-  display: flex;
-  max-width: 420px;
-  width: 100%;
-  margin-right: 29px;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  // max-width: 420px;
+  // width: 100%;
+  // margin-right: 29px;
   align-items: center;
 }
 .cartItemImage {
@@ -29,8 +32,9 @@
   color: $black;
 }
 .cartItemRightWrapper {
-  display: flex;
-  column-gap: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  column-gap: 5px;
 }
 .cartItemContent {
   flex-grow: 1;
@@ -70,20 +74,63 @@
 .cartItemContentSubPrice {
   display: none;
 }
-@media (max-width: 768px) and (min-width: 376px) {
+@media (max-width: 768px) and (min-width: 500px) {
   .cartItemContainer {
-    max-width: 345px;
+    // max-width: 345px;
   }
   .cartItemWrapper {
-    flex-wrap: wrap;
-  }
-  .cartItemWrapper {
-    padding: 18px 0;
+    padding-top: 18px;
+    padding-bottom: 35px;
+    grid-template-columns: 1fr;
   }
   .cartItem {
-    display: flex;
-    max-width: 345px;
-    margin-right: 35px;
+    align-items: start;
+  }
+  .cartItemImage {
+    max-width: 68px;
+    max-height: 68px;
+    margin-right: 18px;
+  }
+  .cartItemDescription {
+    max-width: 258px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .cartItemContentSubPrice {
+    display: block;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+    text-transform: none;
+    padding-bottom: 7px;
+  }
+  .cartItemPrice {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .cartItemQuantityInput {
+    font-weight: 600;
+    line-height: 18px;
+    font-size: 12px;
+    width: 56px;
+    height: 42px;
+  }
+  .cartItemSubtotal {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 500px) and (min-width: 240px){
+  .cartItemWrapper {
+    padding-top: 18px;
+    padding-bottom: 35px;
+    grid-template-columns: 1fr;
+  }
+  .cartItem {
+    align-items: start;
   }
   .cartItemImage {
     max-width: 68px;

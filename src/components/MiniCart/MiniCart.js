@@ -57,7 +57,6 @@ function MiniCart() {
         <div className={styles.miniCartContent}>
           <ul>
             {cartItem.map((item) => (
-              // eslint-disable-next-line no-underscore-dangle
               <li key={item._id}>
                 <div className={styles.miniCartContentwrapper}>
                   <div>
