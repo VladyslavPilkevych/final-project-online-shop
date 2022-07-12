@@ -8,6 +8,10 @@ import AboutProductDetailsTabText from '../../components/AboutProductTabs/AboutP
 import AboutProductCommonTabText from '../../components/AboutProductTabs/AboutProductCommonTabText/AboutProductCommonTabText';
 import AboutProductImage from '../../components/AboutProductTabs/AboutProductImage/AboutProductImage';
 import addToFavIcon from '../../assets/Images/CardItem/addToFavIcon.png';
+import {
+  createCart, addToCart, getCart, onHandleCart,
+} from '../../store/actionCreators/cartAC';
+
 import Button from '../../components/Button/Button';
 import { getProduct } from '../../store/actionCreators/productsAC';
 import Advantages from '../../components/Advantages/Advantages';
@@ -24,12 +28,16 @@ function AboutProductPage() {
     setActiveTab(value);
   };
 
-  // const handleTab2 = () => {
-  //   setActiveTab('tab2');
-  // };
+  const handleTab2 = () => {
+    setActiveTab('tab2');
+  };
+  const user = useSelector((state) => state.user.user);
+
   const location = useLocation();
   const newLocation = location.pathname.split('/').slice(-1);
   // console.log(location.pathname);
+
+  // console.log(newLocation);
 
   useEffect(() => {
     dispatch(getProduct(...newLocation));
@@ -63,31 +71,30 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
-          <div className={styles.priceWrapper}>
-            <p className={styles.priceTitle}>Price:</p>
-            <p className={styles.priceAmount}>
-              {product.currency}
-              {product.currentPrice}
-            </p>
-          </div>
-          <button type="button" className={styles.aboutProductCartBtn} onClick={() => console.log('Add to Cart', product._id)}>
+          {/* <button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              dispatch(onHandleCart(product._id));
+            }}
+          >
             Add to Cart
-          </button>
+          </button> */}
+          <Button
+            type="button"
+            className={styles.aboutProductCartBtn}
+            onClick={() => {
+              dispatch(onHandleCart(product._id));
+            }}
+          >
+            {' Add to Cart'}
+          </Button>
         </div>
       </div>
       <hr className={styles.line} />
       <div className={`${styles.aboutProducTextAndImageWrapper} ${styles.aboutProductWrapper}`}>
         <div className={styles.aboutProductTextWrapper}>
           {activeTab === 'tab1' ? <AboutProductCommonTabText product={product} /> : <AboutProductDetailsTabText product={product} />}
-        </div>
-        <div
-          onClick={() => {
-            console.log('Add to Wishlist', product._id);
-          }}
-          role="button"
-          className={styles.addToCartIconWrapper}
-        >
-          <img src={addToFavIcon} alt="Add to Cart Icon" className={styles.addToCartIcon} />
         </div>
         <div className={styles.aboutProducImageWrapper}>
           <AboutProductImage urls={product.imageUrls} model={product.model} id={product._id} />

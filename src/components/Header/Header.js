@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
-import { toggleCart } from '../../store/actionCreators/cartAC';
+import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
+import { getUser } from '../../store/actionCreators/userAC';
 
 import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
@@ -51,13 +53,20 @@ const items = [
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
+  const user = useSelector((state) => state.user.user);
 
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart);
+  const cartItem = dataCart || [];
+
   const navigate = useNavigate();
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCart());
+  }, [user]);
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
@@ -117,17 +126,6 @@ function Header() {
               <Menu items={items} />
               <MiniMenu items={items} />
             </nav>
-            {/* <nav className={styles.navBur}>
-              {items.map((item) => (
-                <li key={item.value}>
-                  <div>
-                    <NavLink className={styles.navLinks} style={items.style} to={item.to}>
-                      {item.value}
-                    </NavLink>
-                  </div>
-                </li>
-              ))}
-            </nav> */}
           </div>
           <Search />
           <div className={styles.searchBox}>
@@ -141,7 +139,6 @@ function Header() {
                 setValue('');
               }}
             >
-
               <input
                 className={styles.searchInput}
                 type="text"
@@ -166,9 +163,9 @@ function Header() {
               />
               <li className={styles.navBarRightItem}>
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
-                <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
+                {cartItem.length && cartItem.length !== 0 ? <div className={styles.cartIconIndex}>{cartItem.length}</div> : null}
                 <Avatar />
               </li>
             </nav>
