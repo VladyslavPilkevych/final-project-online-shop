@@ -7,12 +7,10 @@ import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
 import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
-import { getUser } from '../../store/actionCreators/userAC';
 
 import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
 import Search from '../Search/Search';
-import MiniCart from '../MiniCart/MiniCart';
 import Avatar from '../Avatar/Avatar';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
