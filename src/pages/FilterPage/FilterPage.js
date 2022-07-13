@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
-import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
+import imageFilterPageTop from '../../assets/Images/FilterPage/imageFilterPageTop.png';
 import FilterContainer from '../../components/FilterContainer/FilterContainer';
 import PaginationFilterPage from '../../components/PaginationFilterPage/PaginationFilterPage';
 import Button from '../../components/Button/Button';

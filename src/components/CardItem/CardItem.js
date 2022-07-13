@@ -10,12 +10,12 @@ import Button from '../Button/Button';
 import { onHandleCart } from '../../store/actionCreators/cartAC';
 import numberWithSpaces from '../../utils/numberWithSpaces';
 
-import imageAddToFavIcon from '../../assets/images/CardItem/addToFavIcon.png';
-import imageCart from '../../assets/images/CardItem/cart.png';
-import imageGreenG from '../../assets/images/CardItem/greenG.png';
-import imageInCart from '../../assets/images/CardItem/inCart.png';
-import imageRedPhone from '../../assets/images/CardItem/redPhone.png';
-import imageRemoveFromFavIcon from '../../assets/images/CardItem/removeFromFavIcon.png';
+import imageAddToFavIcon from '../../assets/Images/CardItem/addToFavIcon.png';
+import imageCart from '../../assets/Images/CardItem/cart.png';
+import imageGreenG from '../../assets/Images/CardItem/greenG.png';
+import imageInCart from '../../assets/Images/CardItem/inCart.png';
+import imageRedPhone from '../../assets/Images/CardItem/redPhone.png';
+import imageRemoveFromFavIcon from '../../assets/Images/CardItem/removeFromFavIcon.png';
 
 function CardItem(props) {
   const {

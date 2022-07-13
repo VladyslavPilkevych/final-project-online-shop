@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './Companies.module.scss';
-import imageRoccat from '../../assets/images/companies-images/image-roccat.png';
-import imageMsi from '../../assets/images/companies-images/image-msi.png';
-import imageRazer from '../../assets/images/companies-images/image-razer.png';
-import imageThermaltake from '../../assets/images/companies-images/image-thermaltake.png';
-import imageAdata from '../../assets/images/companies-images/image-adata.png';
-import imageHp from '../../assets/images/companies-images/image-hp.png';
-import imageGigabyte from '../../assets/images/companies-images/image-gigabyte.png';
+import imageRoccat from '../../assets/Images/companies-images/image-roccat.png';
+import imageMsi from '../../assets/Images/companies-images/image-msi.png';
+import imageRazer from '../../assets/Images/companies-images/image-razer.png';
+import imageThermaltake from '../../assets/Images/companies-images/image-thermaltake.png';
+import imageAdata from '../../assets/Images/companies-images/image-adata.png';
+import imageHp from '../../assets/Images/companies-images/image-hp.png';
+import imageGigabyte from '../../assets/Images/companies-images/image-gigabyte.png';
 
 function Companies() {
   return (
