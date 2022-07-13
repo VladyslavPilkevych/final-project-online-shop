@@ -54,7 +54,6 @@ export const getCategorieProducts = (url) => async (dispatch) => {
 export const newFilterProducts = (data) => async (dispatch) => {
   const dataFilters = [`?categories=${data.categories}`];
   if (data.color.length !== 0) {
-    console.log(data.color);
     const dataColor = repackColorsForServer(data.color);
     dataFilters.push(dataColor);
   }
@@ -68,7 +67,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
     const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;
     dataFilters.push(dataMaxPrice);
   }
-  console.log(dataFilters);
   await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
       if (rsp.status === 200) {
