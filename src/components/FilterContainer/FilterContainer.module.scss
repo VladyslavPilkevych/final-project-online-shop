@@ -96,9 +96,12 @@ li {
     border: 1px solid black;
 }
 // ----------------------end-colors-----------------------------
-@media (max-width: 427px) {
+// @media (max-width: 427px) {
+@media (max-width: 550px) {
     .filterCreator {
-        position: absolute;
+        // position: absolute;
+        position: fixed; 
+        overflow-y: scroll;
         top: 0;
         left: 0;
         width: 100%;
