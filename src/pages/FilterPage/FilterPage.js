@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import styles from './FilterPage.module.scss';
-import imageFilterPageTop from '../../assets/Images/FilterPage/imageFilterPageTop.png';
+import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
 import FilterContainer from '../../components/FilterContainer/FilterContainer';
 import PaginationFilterPage from '../../components/PaginationFilterPage/PaginationFilterPage';
 import Button from '../../components/Button/Button';
@@ -16,24 +16,41 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   filterBrand,
+  setFilterPaginationPage,
+  getCategorieProducts,
 } from '../../store/actionCreators/filterAC';
 
 function FilterPage() {
   const filterItems = useSelector((state) => state.filter.filterProducts);
+  const filtersCategories = useSelector((state) => state.filtersCategories.isOpen);
+  const filterCategoryProducts = useSelector((state) => state.filter.filterCategoryProducts);
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getAllProducts());
-  }, []);
+    // dispatch(getAllProducts());
+  }, [filtersCategories]);
   useEffect(() => {
+    // eslint-disable-next-line max-len
+    // const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
+    // dispatch(setMinSliderValue(priceArray[0]));
+    // dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(setMinSliderValue(null));
     dispatch(setMaxSliderValue(null));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(filterCategory(location.pathname.split('/')[2]));
+    dispatch(setFilterPaginationPage(0));
   }, [location.pathname]);
+  useEffect(() => {
+    console.log('123123132123');
+    // eslint-disable-next-line max-len
+    const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
+    dispatch(setMinSliderValue(priceArray[0]));
+    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+  }, [filterCategoryProducts]);
   function openFiltersMenuOnPhone() {
     dispatch(toggleFiltersCategories(true));
   }
@@ -52,7 +69,8 @@ function FilterPage() {
       </ul>
       <h2 className={styles.h2FilterName}>MSI PS Series (20)</h2>
       <div className={styles.filter}>
-        {width <= 426 && (
+        {/* {width <= 426 && ( */}
+        {width <= 550 && (
           <Button
             handleClick={() => { openFiltersMenuOnPhone(); }}
             className={styles.openFilterOnPhone}
@@ -63,7 +81,8 @@ function FilterPage() {
         <div className={styles.filterCreator}>
           <FilterContainer filterProducts={filterItems} />
         </div>
-        {width <= 426 && filtersCategoriesOnPhone
+        {/* {width <= 426 && filtersCategoriesOnPhone */}
+        {width <= 550 && filtersCategoriesOnPhone
           && (
             <div>
               <FilterContainer

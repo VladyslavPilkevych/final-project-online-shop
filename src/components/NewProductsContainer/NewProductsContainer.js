@@ -106,7 +106,7 @@ function NewProductsContainer() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  const heightCarousel = '500px';
+  // const heightCarousel = '500px';
   return (
     <div>
       <div className={styles.newProductsWrapper}>
@@ -117,7 +117,6 @@ function NewProductsContainer() {
         <Slider {...settings}>
           {newProducts && newProducts.map((elem) => (
             <CardItem
-              style={{ height: heightCarousel }}
               className={styles.cardItemWrapper}
               name={elem.name}
               // eslint-disable-next-line no-underscore-dangle
@@ -131,6 +130,7 @@ function NewProductsContainer() {
               model={elem.model}
               elementClassName={styles.cardItems}
               itemNo={elem.itemNo}
+              styleCardItem={{ right: '40px' }}
             />
           ))}
         </Slider>

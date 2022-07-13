@@ -10,16 +10,25 @@ import Button from '../Button/Button';
 import { onHandleCart } from '../../store/actionCreators/cartAC';
 import numberWithSpaces from '../../utils/numberWithSpaces';
 
-import imageAddToFavIcon from '../../assets/Images/CardItem/addToFavIcon.png';
-import imageCart from '../../assets/Images/CardItem/cart.png';
-import imageGreenG from '../../assets/Images/CardItem/greenG.png';
-import imageInCart from '../../assets/Images/CardItem/inCart.png';
-import imageRedPhone from '../../assets/Images/CardItem/redPhone.png';
-import imageRemoveFromFavIcon from '../../assets/Images/CardItem/removeFromFavIcon.png';
+import imageAddToFavIcon from '../../assets/images/CardItem/addToFavIcon.png';
+import imageCart from '../../assets/images/CardItem/cart.png';
+import imageGreenG from '../../assets/images/CardItem/greenG.png';
+import imageInCart from '../../assets/images/CardItem/inCart.png';
+import imageRedPhone from '../../assets/images/CardItem/redPhone.png';
+import imageRemoveFromFavIcon from '../../assets/images/CardItem/removeFromFavIcon.png';
 
 function CardItem(props) {
   const {
-    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
+    name,
+    currentPrice,
+    id,
+    img,
+    quantity,
+    previousPrice,
+    elementClassName,
+    model,
+    itemNo,
+    styleCardItem,
   } = props;
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
@@ -76,9 +85,8 @@ function CardItem(props) {
       <div className={styles.btnCartContainer}>
         {!user ? (
           <Button className={`${styles.btnCart} ${styles.btnInCart}`} handleClick={() => alert('You should LogIn')}>
-            {/* <img alt="icon cart" src={imageInCart} /> */}
-            <img alt="icon cart" src={imageCart} />
-            {/* <p>Already in cart</p> */}
+            {/* <img alt="icon cart" src={imageInCart} />
+            <img alt="icon cart" src={imageCart} /> */}
             <p>Add To Cart</p>
           </Button>
         ) : (
@@ -112,6 +120,7 @@ CardItem.propTypes = {
   previousPrice: PropTypes.number,
   elementClassName: PropTypes.string,
   model: PropTypes.string,
+  styleCardItem: PropTypes.object,
 };
 
 CardItem.defaultProps = {
@@ -122,6 +131,7 @@ CardItem.defaultProps = {
   previousPrice: 0,
   elementClassName: '',
   model: '',
+  styleCardItem: {},
 };
 
 export default memo(CardItem);

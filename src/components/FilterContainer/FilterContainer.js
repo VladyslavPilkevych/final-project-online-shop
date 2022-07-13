@@ -20,8 +20,8 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   setFilterPaginationPage,
-  getCategorieProducts,
 } from '../../store/actionCreators/filterAC';
+import { repackColorsForPage } from '../../utils/repackColor';
 
 function FilterContainer() {
   const dispatch = useDispatch();
@@ -37,19 +37,14 @@ function FilterContainer() {
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
-  const [applyFilterBtn, setApplyFilterBtn] = useState(false);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
+  const [colorsFiltered, setColorsFiltered] = useState(null);
 
-  useEffect(() => {
-    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-  }, [location.pathname]);
-  useEffect(() => {
-    setApplyFilterBtn(true);
-  }, [filter]);
   useEffect(() => {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
       setBrandsFiltered([...new Set(brands)].sort());
+      setColorsFiltered(repackColorsForPage(filterCategoryProducts));
     }
   }, [filterCategoryProducts]);
   const clearFilterFn = () => {
@@ -63,7 +58,6 @@ function FilterContainer() {
     console.log('work');
   };
   const applyFilterFn = () => {
-    setApplyFilterBtn(false);
     const filterCreators = {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
@@ -73,7 +67,7 @@ function FilterContainer() {
         max: priceSliderValues.max,
       },
     };
-    console.log('work');
+    dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
   };
@@ -151,33 +145,19 @@ function FilterContainer() {
         </div>
         {isOpenFilterColor
           && (
-            <ul className={styles.colorsContainer}>
-              <li>
-                <FilterCreatorColor color="red" />
-              </li>
-              <li>
-                <FilterCreatorColor color="black" />
-              </li>
-              <li>
-                <FilterCreatorColor color="grey" />
-              </li>
-              <li>
-                <FilterCreatorColor color="white" />
-              </li>
+            <ul>
+              {colorsFiltered
+                && colorsFiltered.map((color) => <FilterCreatorColor key={color} color={color} />)}
             </ul>
           )}
       </div>
       <div className={styles.categoryContainers}>
-        {applyFilterBtn
-          ? (
-            <Button
-              className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
-              handleClick={() => { applyFilterFn(); }}
-            >
-              Apply Filters
-            </Button>
-          )
-          : <Button classNames={styles.applyFilterBtn}>Apply Filters</Button>}
+        <Button
+          className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
+          handleClick={() => { applyFilterFn(); }}
+        >
+          Apply Filters
+        </Button>
       </div>
     </div>
   );
