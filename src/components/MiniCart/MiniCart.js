@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { toggleCart, deleteFromCart } from '../../store/actionCreators/cartAC';
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
@@ -66,18 +66,16 @@ function MiniCart() {
                     </p>
                   </div>
                   {cartItem && (
-                    <NavLink
-                      to={`/products/${item.product.itemNo}`}
+                    <div
                       onClick={() => {
-                        // navigate(`/products/${item.product.itemNo}`);
-                        // console.log(item.product.itemNo);
+                        navigate(`/products/${item.product.itemNo}`);
                         dispatch(toggleCart(!isOpenCart));
                       }}
                       role="button"
                       tabIndex="0"
                     >
                       <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
-                    </NavLink>
+                    </div>
                   )}
                   <div>
                     <p className={styles.miniCartDescription}>{item.product.description}</p>
