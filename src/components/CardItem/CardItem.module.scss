@@ -152,82 +152,93 @@
     }
 }
 
-@media (max-width: 768px) {
-    .productItem {
-        position: relative;
-        padding-bottom: 10px;
-        .btnCartContainer,
-        .iconFav {
-            display: flex;
-            opacity: 1;
-        }
-        .iconFav {
-            top: 10px;
-        }
-        .imgProduct {
-            // width: 100px;
-            max-height: 100px;
-            max-width: 100px;
-        }
-        .productName {
-            font-size: 11px;
-        }
-        .previousPrice {
-            font-size: 12px;
-        }
-        .price {
-            font-size: 14px;
-        }
-        .btnCartContainer {
-            position: static;
-            float: right;
-            margin: 0;
-            margin-top: -40px;
-            box-shadow: none;
-            border: none;
-            max-width: 27px;
-            padding-bottom: 0;
-            margin-right: 21px;
-            .btnCart {
-                padding: 5px;
-                img {
-                    margin: 1px 0 0 1px;
-                }
-                P {
-                    display: none;
-                }
-            }
-            .btnInCart {
-                img {
-                    display: inline;
-                }
-            }
-        }
-    }
-    .productItem:hover {
-        transform: none;
-        .btnCartContainer {
-            position: static;
-        }
-    }
-}
+// @media (max-width: 768px) {
+//     .productItem {
+//         position: relative;
+//         padding-bottom: 10px;
+//         .btnCartContainer,
+//         .iconFav {
+//             display: flex;
+//             opacity: 1;
+//         }
+//         .iconFav {
+//             top: 10px;
+//         }
+//         .imgProduct {
+//             // width: 100px;
+//             max-height: 100px;
+//             max-width: 100px;
+//         }
+//         .productName {
+//             font-size: 11px;
+//         }
+//         .previousPrice {
+//             font-size: 12px;
+//         }
+//         .price {
+//             font-size: 14px;
+//         }
+//         .btnCartContainer {
+//             position: static;
+//             float: right;
+//             margin: 0;
+//             // margin-top: -40px;
+//             box-shadow: none;
+//             border: none;
+//             max-width: 27px;
+//             padding-bottom: 0;
+//             margin-right: 21px;
+//             .btnCart {
+//                 padding: 5px;
+//                 img {
+//                     margin: 1px 0 0 1px;
+//                 }
+//                 P {
+//                     display: none;
+//                 }
+//             }
+//             .btnInCart {
+//                 img {
+//                     display: inline;
+//                 }
+//             }
+//         }
+//     }
+//     .productItem:hover {
+//         transform: none;
+//         .btnCartContainer {
+//             position: static;
+//         }
+//     }
+// }
 
 @media (max-width: 768px) {
     .productItem {
+        height: auto;
         position: relative;
         padding-bottom: 10px;
         .btnCartContainer,
         .iconFav {
             display: flex;
             opacity: 1;
+            right: 10px;
         }
         .iconFav {
+            max-width: 32px;
             top: 10px;
+        }
+        .available {
+            margin-left: 0;
         }
         .imgProduct {
             // width: 100px;
             max-height: 100px;
             max-width: 100px;
+        }
+        .productModel {
+            max-height: 30px;
+            max-width: 70%;
+            overflow: hidden;
         }
         .productName {
             font-size: 11px;
@@ -239,16 +250,27 @@
             font-size: 14px;
         }
         .btnCartContainer {
-            position: static;
-            float: right;
-            margin: 0;
-            margin-top: -40px;
+            // position: static;
+            // float: right;
+            // margin-top: -40px;
+            // margin: 0;
+            // box-shadow: none;
+            // border: none;
+            // max-width: 27px;
+            // padding-bottom: 0;
+            // margin-right: 21px;
+            position: absolute;
             box-shadow: none;
             border: none;
+            margin: 0;
             max-width: 27px;
-            padding-bottom: 0;
-            margin-right: 21px;
+            max-height: 43px;
+            left: auto;
+            right: 15px;
+            // bottom: 20px;
             .btnCart {
+                max-width: 34px;
+                margin: 0;
                 padding: 5px;
                 img {
                     margin: 1px 0 0 1px;
@@ -267,7 +289,7 @@
     .productItem:hover {
         transform: none;
         .btnCartContainer {
-            position: static;
+            position: absolute;
         }
     }
 }

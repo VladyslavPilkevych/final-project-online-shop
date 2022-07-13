@@ -20,7 +20,6 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   setFilterPaginationPage,
-  getCategorieProducts,
 } from '../../store/actionCreators/filterAC';
 import { repackColorsForPage } from '../../utils/repackColor';
 
@@ -38,16 +37,9 @@ function FilterContainer() {
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
-  const [applyFilterBtn, setApplyFilterBtn] = useState(false);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
   const [colorsFiltered, setColorsFiltered] = useState(null);
 
-  useEffect(() => {
-    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-  }, [location.pathname]);
-  useEffect(() => {
-    setApplyFilterBtn(true);
-  }, [filter]);
   useEffect(() => {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
@@ -65,7 +57,6 @@ function FilterContainer() {
     dispatch(clearFilterColor(null));
   };
   const applyFilterFn = () => {
-    setApplyFilterBtn(false);
     const filterCreators = {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
@@ -75,6 +66,7 @@ function FilterContainer() {
         max: priceSliderValues.max,
       },
     };
+    dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
   };
@@ -159,16 +151,12 @@ function FilterContainer() {
           )}
       </div>
       <div className={styles.categoryContainers}>
-        {applyFilterBtn
-          ? (
-            <Button
-              className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
-              handleClick={() => { applyFilterFn(); }}
-            >
-              Apply Filters
-            </Button>
-          )
-          : <Button classNames={styles.applyFilterBtn}>Apply Filters</Button>}
+        <Button
+          className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
+          handleClick={() => { applyFilterFn(); }}
+        >
+          Apply Filters
+        </Button>
       </div>
     </div>
   );

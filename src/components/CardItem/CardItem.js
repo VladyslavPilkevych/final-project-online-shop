@@ -13,7 +13,16 @@ import imageRemoveFromFavIcon from '../../assets/images/CardItem/removeFromFavIc
 
 function CardItem(props) {
   const {
-    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo,
+    name,
+    currentPrice,
+    id,
+    img,
+    quantity,
+    previousPrice,
+    elementClassName,
+    model,
+    itemNo,
+    styleCardItem,
   } = props;
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
@@ -45,8 +54,8 @@ function CardItem(props) {
         )}
       {
         favourite
-          ? <img onClick={removeFromFav} role="presentation" className={styles.iconFav} alt="icon favourite" src={imageRemoveFromFavIcon} />
-          : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} alt="icon favourite" src={imageAddToFavIcon} />
+          ? <img onClick={removeFromFav} role="presentation" className={styles.iconFav} style={styleCardItem} alt="icon favourite" src={imageRemoveFromFavIcon} />
+          : <img onClick={addToFavourite} role="presentation" className={styles.iconFav} style={styleCardItem} alt="icon favourite" src={imageAddToFavIcon} />
       }
       <div className={styles.imageContainer}>
         <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
@@ -61,7 +70,7 @@ function CardItem(props) {
       </Link>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>{currentPrice}</span>
-      <div className={styles.btnCartContainer}>
+      <div style={styleCardItem} className={styles.btnCartContainer}>
         {inCart
           ? (
             <Button className={`${styles.btnCart} ${styles.btnInCart}`}>
@@ -96,6 +105,7 @@ CardItem.propTypes = {
   previousPrice: PropTypes.number,
   elementClassName: PropTypes.string,
   model: PropTypes.string,
+  styleCardItem: PropTypes.object,
 };
 
 CardItem.defaultProps = {
@@ -106,6 +116,7 @@ CardItem.defaultProps = {
   previousPrice: 0,
   elementClassName: '',
   model: '',
+  styleCardItem: {},
 };
 
 export default memo(CardItem);
