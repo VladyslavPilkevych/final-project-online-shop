@@ -12,23 +12,21 @@
     display: flex;
   }
   .menu {
+    top: -1px;
     left: -1px;
     width: 55%;
-    position: fixed;
-    top: -1px;
-    // height: 65vh;
     z-index: 23;
+    position: fixed;
+    box-sizing: border-box;
     background-color: white;
     border: 1px solid black;
-    box-sizing: border-box;
   }
   .menuContent {
-    // margin: 10px;
     width: 52vw;
     z-index: 31;
-    background-color: white;
     height: auto;
     padding: 10px;
+    background-color: white;
   }
   .navBur {
     flex-direction: column;
@@ -36,32 +34,23 @@
   }
   .navLinks {
     color: $black;
-    font-weight: 400;
     font-size: 13px;
+    font-weight: 400;
+    transition: 0.5s;
     line-height: 34px;
     padding-left: 24px;
-    transition: 0.5s;
     margin-bottom: 4px;
   }
-  // .navLinks::after {
-  //   content: '';
-  //   position: absolute;
-  //   border-bottom: 1.6px solid #000000;
-  //   border-left: 1.6px solid #000000;
-  //   transform: matrix(-1, 0, 0, 1, 0, 0);
-  //   width: 4px;
-  //   height: 4px;
-  //   transform: rotate(225deg);
-  // }
+  
   .navLinks:hover {
-    padding-left: 34px;
     transition: 0.5s;
+    padding-left: 34px;
   }
   .menuLogoIcon {
-    display: block;
     fill: $blue;
     width: 71px;
     height: 57px;
+    display: block;
     cursor: pointer;
   }
   .menuHeader {
@@ -71,9 +60,9 @@
     border-bottom: 1px solid $grey-star;
   }
   .btnClose {
-    margin-right: 7px;
-    cursor: pointer;
     display: block;
+    cursor: pointer;
+    margin-right: 7px;
   }
   .menuWrapper {
     width: 100vw;
@@ -88,45 +77,43 @@
     display: flex;
   }
   .menu {
-    left: 0;
-    // width: 375px;
-    // width: 100%;
-    position: fixed;
     top: 0;
-    height: 65vh;
+    left: 0;
     z-index: 30;
+    height: 65vh;
+    position: fixed;
+    box-sizing: border-box;
     background-color: white;
     border: 1px solid black;
-    box-sizing: border-box;
   }
   .menuContent {
     width: 52vw;
     z-index: 31;
-    background-color: white;
     height: auto;
     padding: 10px;
+    background-color: white;
   }
   .navBur {
     flex-direction: column;
     align-items: flex-start;
   }
   .navLinks {
-    font-weight: 400;
     font-size: 13px;
+    transition: 0.5s;
+    font-weight: 400;
     line-height: 34px;
     padding-left: 24px;
-    transition: 0.5s;
     margin-bottom: 4px;
   }
   .navLinks:hover {
-    padding-left: 34px;
     transition: 0.5s;
+    padding-left: 34px;
   }
   .menuLogoIcon {
-    display: block;
     fill: $blue;
     width: 71px;
     height: 57px;
+    display: block;
     cursor: pointer;
   }
   .menuHeader {
@@ -136,15 +123,14 @@
     border-bottom: 1px solid $grey-star;
   }
   .btnClose {
-    margin-right: 7px;
-    cursor: pointer;
     display: block;
+    cursor: pointer;
+    margin-right: 7px;
   }
   .menuWrapper {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    // backdrop-filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.5);
   }
 }

@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 import { toggleCart, deleteFromCart } from '../../store/actionCreators/cartAC';
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
@@ -15,19 +15,19 @@ import styles from './MiniCart.module.scss';
 function MiniCart() {
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
   const dataCart = useSelector((state) => state.cart.dataCart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cartItem = dataCart || [];
 
   const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0));
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   if (!isOpenCart) return null;
-
-  const handleItemSubMenu = (url) => navigate(url);
 
   const closeCart = () => {
     dispatch(toggleCart(false));
   };
+
   const onDeleteFromCart = (productId) => {
     if (cartItem.map((item) => item.product._id === productId)) {
       dispatch(deleteFromCart(productId));
@@ -54,7 +54,7 @@ function MiniCart() {
             View or Edit Your Cart
           </button>
         </div>
-        <div className={styles.miniCartContent}>
+        <div className={styles.miniCartContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
           <ul>
             {cartItem.map((item) => (
               <li key={item._id}>
@@ -65,9 +65,20 @@ function MiniCart() {
                       <span>x</span>
                     </p>
                   </div>
-                  <div>
-                    <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
-                  </div>
+                  {cartItem && (
+                    <NavLink
+                      to={`/products/${item.product.itemNo}`}
+                      onClick={() => {
+                        // navigate(`/products/${item.product.itemNo}`);
+                        // console.log(item.product.itemNo);
+                        dispatch(toggleCart(!isOpenCart));
+                      }}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
+                    </NavLink>
+                  )}
                   <div>
                     <p className={styles.miniCartDescription}>{item.product.description}</p>
                   </div>

@@ -278,12 +278,12 @@ nav {
     display: none;
   }
   .cartIconIndex {
-    background-color: $white;
-    border-radius: 50%;
-    color:  $blue;
-    position: absolute;
-    bottom: 38px;
     right: 46px;
+    bottom: 38px;
+    color:  $blue;
+    border-radius: 50%;
+    position: absolute;
+    background-color: $white;
   }
 }
 @media (max-width: 375px) and (min-width: 240px) {
@@ -392,11 +392,11 @@ nav {
     border-bottom: 2px solid $white;
   }
   .cartIconIndex {
-    background-color: $white;
-    border-radius: 50%;
-    color:  $blue;
-    position: absolute;
-    bottom: 38px;
     right: 46px;
+    bottom: 38px;
+    color:  $blue;
+    border-radius: 50%;
+    position: absolute;
+    background-color: $white;
   }
 }

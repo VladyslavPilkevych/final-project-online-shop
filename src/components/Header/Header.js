@@ -126,7 +126,6 @@ function Header() {
           <Search />
           <div className={styles.searchBox}>
             <form
-              // className={styles.searchInput}
               onSubmit={(e) => {
                 e.preventDefault();
                 putSearchedProducts();
