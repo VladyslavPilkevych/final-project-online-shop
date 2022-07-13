@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 
 const BASE_URL = 'https://skvonlineshop.herokuapp.com/api';

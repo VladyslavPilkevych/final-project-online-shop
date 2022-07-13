@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-/* eslint-disable consistent-return */
 import {
   ADD_TO_CART,
   DELETE_FROM_CART,
@@ -8,7 +7,6 @@ import {
   TOGGLE_CART,
   CREATE_CART,
   GET_CART,
-  ON_HANDLE_CART,
   EDIT_CART,
 } from '../actions/cartActions';
 import * as api from '../../api/api';
@@ -71,7 +69,6 @@ export const editCart = (productId, quantity) => async (dispatch, getState) => {
 };
 
 export const deleteFromCart = (productId) => async (dispatch) => {
-  console.log(productId);
   const data = await api.deleteFromCart(productId);
   dispatch({ type: DELETE_FROM_CART, payload: data });
 };

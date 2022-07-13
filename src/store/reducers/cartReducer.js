@@ -1,6 +1,7 @@
 import {
   TOGGLE_CART, ADD_TO_CART, DELETE_FROM_CART, CLEAR_CART, CREATE_CART, GET_CART, EDIT_CART,
 } from '../actions/cartActions';
+import { REMOVE_USER_DATA } from '../actions/userActions';
 
 const initialState = {
   isOpenCart: false,
@@ -21,7 +22,7 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
     case ADD_TO_CART: {
       if (state.dataCart.length === 0) {
         if (state.user) {
-          console.log(state.user);
+          // console.log(state.user);
         }
         return { ...state, dataCart: payload };
       }
@@ -35,6 +36,9 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
     }
     case EDIT_CART: {
       return { ...state, dataCart: payload };
+    }
+    case REMOVE_USER_DATA: {
+      return { ...state, dataCart: [] };
     }
     default:
       return state;

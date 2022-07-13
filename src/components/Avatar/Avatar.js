@@ -19,8 +19,7 @@ function Avatar() {
           <SignInIcon className={styles.signInIcon} />
         </NavLink>
       ) : (
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-        user && <img src={AvatarIcon} alt="AvatarIcon" role="button" tabIndex="0" onClick={() => dispatch(removeUserDataAC())} />
+        user && <img src={AvatarIcon} alt="AvatarIcon" role="presentation" onClick={() => dispatch(removeUserDataAC())} />
       )}
     </div>
   );

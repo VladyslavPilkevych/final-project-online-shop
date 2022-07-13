@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { deleteFromCart, editCart } from '../../store/actionCreators/cartAC';
 
@@ -35,11 +36,13 @@ function CartItem() {
             <li key={item._id}>
               <div className={styles.cartItemWrapper}>
                 <div className={styles.cartItem}>
+                  <NavLink to={`/products/${item.product.itemNo}`}>
+                    <div>
+                      <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
+                    </div>
+                  </NavLink>
                   <div>
-                    <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
-                  </div>
-                  <div>
-                    <p className={styles.cartItemDescription}>{item.product.name + item.product.model}</p>
+                    <p className={styles.cartItemDescription}>{`${item.product.name}  ${item.product.model}`}</p>
                   </div>
                 </div>
                 <div className={styles.cartItemRightWrapper}>
