@@ -2,6 +2,7 @@
 
 .aboutProductWrapper {
     max-width: 1398px;
+    padding: 20px;
 }
 
 .line {
@@ -25,6 +26,28 @@
     line-height: 21px;
     margin-top: 41px;
     margin-bottom: 38px;
+    display: flex;
+}
+
+.priceWrapper {
+    display: flex;
+}
+
+.priceTitle {
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    margin-right: 15px;
+}
+.priceAmount {
+    font-family: $fonts;
+    font-style: bold;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-right: 20px;
 }
 
 .aboutProductCartBtnWrapper {
@@ -53,21 +76,26 @@
 .aboutProducTextAndImageWrapper {
     display: flex;
     justify-content: space-around;
+    max-width: 95%;
 }
 
 .aboutProductTextWrapper {
     background-color: $bg-white-color;
-    flex-basis: 60%;
+    width: 60%;
     padding: 37px 60px 25px 60px;
 }
 
 .aboutProducImageWrapper {
-    flex-basis: 35%;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-ul li {
+.aboutProductTabMenuWrapper ul li {
     cursor: pointer;
-    margin-right: 30px;
+    // margin-right: 30px;
     font-family: $fonts;
     font-style: normal;
     font-weight: 600;
@@ -75,7 +103,12 @@ ul li {
     line-height: 21px;
     color: $grey;
 }
-ul li.active {
+.aboutProductTabMenuWrapper ul li.active {
     color: $black;
     border-bottom: 2px solid $blue;
 }
+
+.addToCartIconWrapper {
+    cursor: pointer;
+    margin: 150px 10px;
+  }

@@ -38,9 +38,18 @@ function SignUpPage() {
   };
 
   const validationSchema = yup.object().shape({
-    firstName: yup.string().required('Поле обязательно').matches(/[A-Za-z ]/gi, 'Только латинские'),
-    lastName: yup.string().required('Поле обязательно').matches(/[A-Za-z ]/gi, 'Только латинские'),
-    login: yup.string().required('Поле обязательно').matches(/[A-Za-z ]/gi, 'Только латинские'),
+    firstName: yup
+      .string()
+      .required('Поле обязательно')
+      .matches(/[A-Za-z ]/gi, 'Только латинские'),
+    lastName: yup
+      .string()
+      .required('Поле обязательно')
+      .matches(/[A-Za-z ]/gi, 'Только латинские'),
+    login: yup
+      .string()
+      .required('Поле обязательно')
+      .matches(/[A-Za-z ]/gi, 'Только латинские'),
     // email: yup.string().email('Неверный email').required('Поле обязательно'),
     // password: yup.string().required('Поле обязательно'),
     // repeatPassword: yup.string().required('Поле обязательно'),
@@ -55,61 +64,34 @@ function SignUpPage() {
           <p className={styles.customersBlocksSubtitle}>If you are not have an account, fill information below</p>
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
-              <CustomInput
-                name="firstName"
-                type="text"
-                placeholder="FirstName"
-              />
-              <CustomInput
-                name="lastName"
-                type="text"
-                placeholder="LastName"
-              />
-              <CustomInput
-                name="login"
-                type="text"
-                placeholder="Login"
-              />
-              <CustomInput
-                name="email"
-                type="text"
-                placeholder="Email"
-              />
-              <CustomInput
-                name="telephone"
-                type="tel"
-                placeholder="Telephone"
-              />
-              <CustomInput
-                name="gender"
-                type="text"
-                placeholder="Gender"
-              />
+              <CustomInput name="firstName" type="text" placeholder="FirstName" />
+              <CustomInput name="lastName" type="text" placeholder="LastName" />
+              <CustomInput name="login" type="text" placeholder="Login" />
+              <CustomInput name="email" type="text" placeholder="Email" />
+              <CustomInput name="telephone" type="tel" placeholder="Telephone" />
+              <CustomInput name="gender" type="text" placeholder="Gender" />
               {/* <CustomInput
                 name="avatarUrl"
                 type={"url" || "file"}
                 placeholder="avatarUrl"
               /> */}
-              <CustomInput
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-              <CustomInput
-                name="repeatPassword"
-                type="password"
-                placeholder="Repeat password"
-              />
+              <CustomInput name="password" type="password" placeholder="Password" />
+              <CustomInput name="repeatPassword" type="password" placeholder="Repeat password" />
 
-              <button type="submit" className={styles.createCustomerButton}>Create account</button>
-
+              <button type="submit" className={styles.createCustomerButton}>
+                Create account
+              </button>
             </Form>
           </Formik>
         </div>
         <div className={`${styles.signUpBlockWrapper} ${styles.signInBlockWrapper}`}>
           <h2 className={styles.customersBlocksTitle}>Already have registered Account?</h2>
           <p className={styles.customersBlocksSubtitle}>If you are not have an account, you can Login on button below</p>
-          <Link to="/sign-in"><button type="button" className={styles.createCustomerButton}>Log In Page</button></Link>
+          <Link to="/sign-in">
+            <button type="button" className={styles.createCustomerButton}>
+              Log In Page
+            </button>
+          </Link>
         </div>
       </div>
     </div>

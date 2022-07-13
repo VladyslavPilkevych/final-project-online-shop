@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import styles from './MainBanerElement.module.scss';
 
 function MainBanerElement(props) {
   const {
-    title, id, img, model,
+    title, id, img, model, itemNo,
   } = props;
-
   return (
     <div
       style={{
@@ -20,15 +21,14 @@ function MainBanerElement(props) {
       <div className={styles.titleWrapper}>
         <h1 className={styles.banerTitle}>{model}</h1>
         <p className={styles.banerSubTitle}>{title}</p>
-        <button
-          type="button"
-          onClick={() => {
-            console.log(`Click on baner button, id ${id}`);
-          }}
-          className={[styles.bannerBtn, styles.btn, styles.btnWhite, styles.btnAnimate].join(' ')}
-        >
-          SHOP NOW
-        </button>
+        <Link to={`/products/${itemNo}`}>
+          <button
+            type="button"
+            className={[styles.bannerBtn, styles.btn, styles.btnWhite, styles.btnAnimate].join(' ')}
+          >
+            SHOP NOW
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -38,10 +38,12 @@ MainBanerElement.propTypes = {
   id: PropTypes.string.isRequired,
   img: PropTypes.string,
   model: PropTypes.string,
+  itemNo: PropTypes.string,
 };
 
 MainBanerElement.defaultProps = {
   img: '',
   model: '',
+  itemNo: '',
 };
 export default MainBanerElement;

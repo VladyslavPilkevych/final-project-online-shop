@@ -31,7 +31,7 @@ function AuthorizationPage() {
       localStorage.setItem('token', JSON.stringify(response.data.token));
       navigate({ pathname: '/' });
     }
-    console.log(response);
+    // console.log(response);
   };
 
   const validationSchema = yup.object().shape({

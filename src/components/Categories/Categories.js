@@ -135,6 +135,7 @@ function Categories(props) {
             {resultProducts && resultProducts.map((elem) => (
               <CardItem
                 className={styles.cardItemWrapper}
+                itemNo={elem.itemNo}
                 name={elem.name}
                 // eslint-disable-next-line no-underscore-dangle
                 id={elem._id}
@@ -145,7 +146,6 @@ function Categories(props) {
                 currentPrice={elem.currentPrice}
                 quantity={50}
                 model={elem.model}
-                itemNo={elem.itemNo}
               />
             ))}
           </Slider>
@@ -164,7 +164,7 @@ SampleNextArrow.propTypes = {
 SampleNextArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 SamplePrevArrow.propTypes = {
   className: PropTypes.string,
@@ -175,7 +175,7 @@ SamplePrevArrow.propTypes = {
 SamplePrevArrow.defaultProps = {
   className: '',
   style: {},
-  onClick: () => { },
+  onClick: () => {},
 };
 
 // CategoryProductsContainer.propTypes = {

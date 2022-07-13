@@ -14,6 +14,7 @@ import {
   SET_PAGINATION_PAGE,
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
+import { repackColorsForServer } from '../../utils/repackColor';
 
 export const filterCategory = (data) => ({ type: FILTER_CATEGORY, payload: data });
 export const clearFilter = () => ({ type: CLEAR_FILTER });
@@ -53,14 +54,15 @@ export const getCategorieProducts = (url) => async (dispatch) => {
 export const newFilterProducts = (data) => async (dispatch) => {
   const dataFilters = [`?categories=${data.categories}`];
   if (data.color.length !== 0) {
-    const dataColor = `&color=${data.color.join()}`;
+    console.log(data.color);
+    const dataColor = repackColorsForServer(data.color);
     dataFilters.push(dataColor);
   }
   if (data.name && data.name.length !== 0) {
     const dataBrand = `&name=${data.name.join()}`;
     dataFilters.push(dataBrand);
   }
-  if (data.currentPrice) {
+  if (data.currentPrice.min || data.currentPrice.max) {
     const dataMinPrice = `&minPrice=${data.currentPrice.min}`;
     dataFilters.push(dataMinPrice);
     const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;

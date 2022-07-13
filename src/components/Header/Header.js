@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
-import { toggleCart } from '../../store/actionCreators/cartAC';
+import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
 import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
 import Search from '../Search/Search';
-import MiniCart from '../MiniCart/MiniCart';
 import Avatar from '../Avatar/Avatar';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
@@ -41,23 +41,26 @@ const items = [
     to: '/filter/headphones',
     className: '{styles.navLinks}',
   },
-  // {
-  //   value: 'Filter',
-  //   to: '/filter',
-  //   className: '{styles.navLinks}',
-  // },
 ];
 
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
-
+  const token = useSelector((state) => state.user.token);
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart);
+  const cartItem = dataCart || [];
+
   const navigate = useNavigate();
   const [value, setValue] = useState('');
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (token) {
+      dispatch(getCart());
+    }
+  }, [token]);
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
@@ -117,22 +120,10 @@ function Header() {
               <Menu items={items} />
               <MiniMenu items={items} />
             </nav>
-            {/* <nav className={styles.navBur}>
-              {items.map((item) => (
-                <li key={item.value}>
-                  <div>
-                    <NavLink className={styles.navLinks} style={items.style} to={item.to}>
-                      {item.value}
-                    </NavLink>
-                  </div>
-                </li>
-              ))}
-            </nav> */}
           </div>
           <Search />
           <div className={styles.searchBox}>
             <form
-              // className={styles.searchInput}
               onSubmit={(e) => {
                 e.preventDefault();
                 putSearchedProducts();
@@ -141,7 +132,6 @@ function Header() {
                 setValue('');
               }}
             >
-
               <input
                 className={styles.searchInput}
                 type="text"
@@ -166,9 +156,9 @@ function Header() {
               />
               <li className={styles.navBarRightItem}>
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
-                <MiniCart />
               </li>
               <li className={styles.navBarRightItem}>
+                {cartItem.length && cartItem.length !== 0 ? <div className={styles.cartIconIndex}>{cartItem.length}</div> : null}
                 <Avatar />
               </li>
             </nav>

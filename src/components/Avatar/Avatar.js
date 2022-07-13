@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
 import AvatarIcon from '../../assets/avatar/avatar.png';
 import { removeUserDataAC } from '../../store/actionCreators/userAC';
+
 import styles from './Avatar.module.scss';
 
 function Avatar() {
@@ -18,8 +19,7 @@ function Avatar() {
           <SignInIcon className={styles.signInIcon} />
         </NavLink>
       ) : (
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-        user && <img src={AvatarIcon} alt="AvatarIcon" role="button" tabIndex="0" onClick={() => dispatch(removeUserDataAC())} />
+        user && <img src={AvatarIcon} alt="AvatarIcon" role="presentation" onClick={() => dispatch(removeUserDataAC())} />
       )}
     </div>
   );
