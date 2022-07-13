@@ -15,19 +15,19 @@ import styles from './MiniCart.module.scss';
 function MiniCart() {
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
   const dataCart = useSelector((state) => state.cart.dataCart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cartItem = dataCart || [];
 
   const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0));
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   if (!isOpenCart) return null;
-
-  const handleItemSubMenu = (url) => navigate(url);
 
   const closeCart = () => {
     dispatch(toggleCart(false));
   };
+
   const onDeleteFromCart = (productId) => {
     if (cartItem.map((item) => item.product._id === productId)) {
       dispatch(deleteFromCart(productId));
@@ -54,10 +54,9 @@ function MiniCart() {
             View or Edit Your Cart
           </button>
         </div>
-        <div className={styles.miniCartContent}>
+        <div className={styles.miniCartContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
           <ul>
             {cartItem.map((item) => (
-              // eslint-disable-next-line no-underscore-dangle
               <li key={item._id}>
                 <div className={styles.miniCartContentwrapper}>
                   <div>
@@ -66,9 +65,18 @@ function MiniCart() {
                       <span>x</span>
                     </p>
                   </div>
-                  <div>
-                    <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
-                  </div>
+                  {cartItem && (
+                    <div
+                      onClick={() => {
+                        navigate(`/products/${item.product.itemNo}`);
+                        dispatch(toggleCart(!isOpenCart));
+                      }}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
+                    </div>
+                  )}
                   <div>
                     <p className={styles.miniCartDescription}>{item.product.description}</p>
                   </div>

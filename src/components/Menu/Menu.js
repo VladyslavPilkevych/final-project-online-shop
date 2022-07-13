@@ -14,11 +14,9 @@ import styles from './Menu.module.scss';
 function Menu({ items }) {
   const { header, className, style } = items;
   const navigate = useNavigate();
-  const handleItemSubMenu = (url) => navigate(url);
 
   const isOpen = useSelector((state) => state.menu.isOpen);
   const dispatch = useDispatch();
-  // if (!isOpen) return null;
 
   const closeMenu = () => {
     dispatch(toggleMenu(false));

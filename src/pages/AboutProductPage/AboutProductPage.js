@@ -35,13 +35,10 @@ function AboutProductPage() {
 
   const location = useLocation();
   const newLocation = location.pathname.split('/').slice(-1);
-  // console.log(location.pathname);
-
-  // console.log(newLocation);
 
   useEffect(() => {
-    dispatch(getProduct(...newLocation));
-  }, []);
+    dispatch(getProduct(newLocation));
+  }, [newLocation]);
 
   return (
     <>

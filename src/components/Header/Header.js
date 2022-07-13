@@ -7,12 +7,10 @@ import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
 import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
-import { getUser } from '../../store/actionCreators/userAC';
 
 import Menu from '../Menu/Menu';
 import MiniMenu from '../MiniMenu/MiniMenu';
 import Search from '../Search/Search';
-import MiniCart from '../MiniCart/MiniCart';
 import Avatar from '../Avatar/Avatar';
 import { ReactComponent as FbIcon } from '../../assets/icons/ant-design_facebook-filled.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/icons/ant-design_instagram-filled.svg';
@@ -43,18 +41,12 @@ const items = [
     to: '/filter/headphones',
     className: '{styles.navLinks}',
   },
-  // {
-  //   value: 'Filter',
-  //   to: '/filter',
-  //   className: '{styles.navLinks}',
-  // },
 ];
 
 function Header() {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
-  const user = useSelector((state) => state.user.user);
-
+  const token = useSelector((state) => state.user.token);
   const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
   const isOpenCart = useSelector((state) => state.cart.isOpenCart);
   const dataCart = useSelector((state) => state.cart.dataCart);
@@ -65,8 +57,10 @@ function Header() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCart());
-  }, [user]);
+    if (token) {
+      dispatch(getCart());
+    }
+  }, [token]);
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
@@ -130,7 +124,6 @@ function Header() {
           <Search />
           <div className={styles.searchBox}>
             <form
-              // className={styles.searchInput}
               onSubmit={(e) => {
                 e.preventDefault();
                 putSearchedProducts();
