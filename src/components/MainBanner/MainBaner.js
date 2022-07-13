@@ -106,7 +106,7 @@ export default function MainBaner() {
       customId: 'promotion-product-563877',
       imageUrl:
         'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg',
-      title: "50% discount for 'test product 5' ",
+      title: '50% discount for Apple MacBook',
       product: {
         enabled: true,
         imageUrls: [
@@ -119,7 +119,7 @@ export default function MainBaner() {
         quantity: 100,
         _id: '22222222222222222222222',
         name: 'Apple',
-        model: 'Samsung MacBook Air 13',
+        model: 'Apple MacBook Air 13',
         categories: 'laptop',
         color: 'space gray',
         capacity: '512GB',
@@ -142,7 +142,7 @@ export default function MainBaner() {
       customId: 'promotion-product-563877',
       imageUrl:
         'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg',
-      title: "10% discount for 'PRODUCT 1' ",
+      title: '10% discount for Apple Iphone 13 Max Pro',
       product: {
         enabled: true,
         imageUrls: [
@@ -164,7 +164,7 @@ export default function MainBaner() {
         currency: 'UAH',
         currentPrice: 42999,
         previousPrice: null,
-        itemNo: '40000023',
+        itemNo: '20000002',
         size: '',
         description: ' 13,3 / IPS / 2560x1600 / Apple M1 / RAM: 8 Gb / 7 core GPU / SSD: 512 Gb / 1,29 kg / OS: macOS Big Sur / space gray ',
         date: '2022-04-10T17:23:17.032Z',
@@ -177,7 +177,7 @@ export default function MainBaner() {
       customId: 'promotion-product-563877',
       imageUrl:
           'https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg',
-      title: "50% discount for 'test product 5' ",
+      title: '50% discount for SamsungGalaxy S22 Ultra',
       product: {
         enabled: true,
         imageUrls: [
@@ -185,8 +185,8 @@ export default function MainBaner() {
         ],
         quantity: 100,
         _id: '333333333333333333333',
-        name: 'Huawei',
-        model: 'HUAWEI',
+        name: 'Samsung',
+        model: 'Galaxy S22 Ultra',
         categories: 'phones',
         color: 'space gray',
         capacity: '512GB',
@@ -195,7 +195,7 @@ export default function MainBaner() {
         currency: 'UAH',
         currentPrice: 42999,
         previousPrice: null,
-        itemNo: '40000023',
+        itemNo: '20000006',
         size: '',
         description: ' 13,3 / IPS / 2560x1600 / Apple M1 / RAM: 8 Gb / 7 core GPU / SSD: 512 Gb / 1,29 kg / OS: macOS Big Sur / space gray ',
         date: '2022-04-10T17:23:17.032Z',
@@ -219,6 +219,7 @@ export default function MainBaner() {
               img={elem.imageUrl}
             // eslint-disable-next-line no-underscore-dangle
               key={elem._id}
+              itemNo={elem.product.itemNo}
               model={elem.product.model}
             />
           ))}
