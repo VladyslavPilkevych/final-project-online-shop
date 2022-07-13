@@ -3,11 +3,13 @@ import './App.scss';
 import AppRoutes from './Routes/Routes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import MiniCart from './components/MiniCart/MiniCart';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <MiniCart />
       <AppRoutes />
       <Footer />
     </div>

@@ -126,7 +126,7 @@
             }
             p {
                 @include fonts("Poppins", 14px, #c94d3f, 600);
-                margin-left: 7px;
+                margin: 2px auto;
             }
         }
     }
@@ -279,11 +279,11 @@
                     display: none;
                 }
             }
-            .btnInCart {
-                img {
-                    display: inline;
-                }
-            }
+            // .btnInCart {
+                // img {
+                //     display: inline;
+                // }
+            // }
         }
     }
     .productItem:hover {
