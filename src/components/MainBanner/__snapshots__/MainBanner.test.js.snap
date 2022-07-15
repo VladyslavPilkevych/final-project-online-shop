@@ -42,19 +42,23 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <h1
                       class="banerTitle"
                     >
-                      HUAWEI
+                      Galaxy S22 Ultra
                     </h1>
                     <p
                       class="banerSubTitle"
                     >
-                      50% discount for 'test product 5' 
+                      50% discount for SamsungGalaxy S22 Ultra
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/20000006"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -78,19 +82,23 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <h1
                       class="banerTitle"
                     >
-                      Samsung MacBook Air 13
+                      Apple MacBook Air 13
                     </h1>
                     <p
                       class="banerSubTitle"
                     >
-                      50% discount for 'test product 5' 
+                      50% discount for Apple MacBook
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/40000023"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -119,14 +127,18 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <p
                       class="banerSubTitle"
                     >
-                      10% discount for 'PRODUCT 1' 
+                      10% discount for Apple Iphone 13 Max Pro
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/20000002"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -150,19 +162,23 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <h1
                       class="banerTitle"
                     >
-                      HUAWEI
+                      Galaxy S22 Ultra
                     </h1>
                     <p
                       class="banerSubTitle"
                     >
-                      50% discount for 'test product 5' 
+                      50% discount for SamsungGalaxy S22 Ultra
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/20000006"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -186,19 +202,23 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <h1
                       class="banerTitle"
                     >
-                      Samsung MacBook Air 13
+                      Apple MacBook Air 13
                     </h1>
                     <p
                       class="banerSubTitle"
                     >
-                      50% discount for 'test product 5' 
+                      50% discount for Apple MacBook
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/40000023"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -227,14 +247,18 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <p
                       class="banerSubTitle"
                     >
-                      10% discount for 'PRODUCT 1' 
+                      10% discount for Apple Iphone 13 Max Pro
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/20000002"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -258,19 +282,23 @@ exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] =
                     <h1
                       class="banerTitle"
                     >
-                      HUAWEI
+                      Galaxy S22 Ultra
                     </h1>
                     <p
                       class="banerSubTitle"
                     >
-                      50% discount for 'test product 5' 
+                      50% discount for SamsungGalaxy S22 Ultra
                     </p>
-                    <button
-                      class="bannerBtn btn btnWhite btnAnimate"
-                      type="button"
+                    <a
+                      href="/products/20000006"
                     >
-                      SHOP NOW
-                    </button>
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
