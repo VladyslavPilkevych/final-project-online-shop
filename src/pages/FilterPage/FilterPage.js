@@ -1,8 +1,6 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  useLocation, NavLink, useNavigate, createSearchParams,
-} from 'react-router-dom';
+import { useLocation, NavLink, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
@@ -10,7 +8,6 @@ import FilterContainer from '../../components/FilterContainer/FilterContainer';
 import PaginationFilterPage from '../../components/PaginationFilterPage/PaginationFilterPage';
 import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
-// import updateURL from '../../utils/updateURL';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
 import {
@@ -22,107 +19,79 @@ import {
   filterBrand,
   setFilterPaginationPage,
   getCategorieProducts,
-  newFilterProducts,
   addFilterColor,
+  setURL,
+  newFilterProducts,
 } from '../../store/actionCreators/filterAC';
-import { repackColorsForPage, repackColorsForServer } from '../../utils/repackColor';
+import { repackColorsForPage } from '../../utils/repackColor';
 
+/* eslint-disable */
 function FilterPage() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const filterItems = useSelector((state) => state.filter.filterProducts);
   const filtersCategories = useSelector((state) => state.filtersCategories.isOpen);
+  const filterItems = useSelector((state) => state.filter.filterProducts);
   const {
     filterByColor,
     filterByBrand,
     filterPriceSliderValues,
     filterCategoryProducts,
     priceSliderValues,
+    pageURL,
   } = useSelector((state) => state.filter);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [filtersCategories]);
   useEffect(() => {
-    console.log('relllllllllloaaaaaaaaaaaaaaaaaad       location.pathname, location.search');
-    // eslint-disable-next-line max-len
-    // const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
-    // dispatch(setMinSliderValue(priceArray[0]));
-    // dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
-    // dispatch(setMinSliderValue(null));
-    // dispatch(setMaxSliderValue(null));
-    // dispatch(filterBrand([]));
-    // dispatch(clearFilterColor(null));
-    // dispatch(setFilterPaginationPage(0));
-    // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
-    // console.log(location.pathname);
-    // console.log(location.pathname.split('/'));
-    // console.log(location.pathname.split('/')[2]);
-    // dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-    // dispatch(filterCategory(location.pathname.split('/')[2]));
-    /* eslint-disable */
-    // if (location.search && queryString.parse(location.search).categories === location.pathname.split('/')[2]) {
-    //   dispatch(newFilterProducts(location.search));
-    //   const paramsLocationSearch = queryString.parse(location.search);
-    //   if (paramsLocationSearch.minPrice || paramsLocationSearch.maxPrice) {
-    //     dispatch(setMinSliderValue(paramsLocationSearch.minPrice));
-    //     dispatch(setMaxSliderValue(paramsLocationSearch.maxPrice));
-    //   }
-    //   paramsLocationSearch.name ? dispatch(filterBrand(paramsLocationSearch.name)) : null;
-    //   paramsLocationSearch.color ? dispatch(clearFilterColor(paramsLocationSearch.color)) : null;
-    //   // console.log(location.search);
-    // } else {
-    //   navigate({
-    //     search: createSearchParams({
-    //       categories: location.pathname.split('/')[2],
-    //     }).toString(),
-    //   });
-    // }
-    // updateURL();
-    console.log(location.pathname.split('/')[2]);
-    dispatch(filterCategory(location.pathname.split('/')[2]));
+    if (pageURL) {
+      console.log(pageURL);
+      navigate({
+        search: pageURL,
+      });
+    }
+  }, [pageURL]);
+  useEffect(() => {
+    // if (!location.search || !queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
+    dispatch(setMinSliderValue(null));
+    dispatch(setMaxSliderValue(null));
+    dispatch(filterBrand([]));
+    dispatch(clearFilterColor(null));
     dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
     dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
+    dispatch(filterCategory(location.pathname.split('/')[2]));
     dispatch(setFilterPaginationPage(0));
-    if (location.search && queryString.parse(location.search).categories === location.pathname.split('/')[2]) {
+    // }
+  }, [location.pathname]);
+  useEffect(() => {
+    // eslint-disable-next-line max-len
+    if (!location.search && !queryString.parse(location.search).minPrice && !queryString.parse(location.search).maxPrice) {
+      const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
+      dispatch(setMinSliderValue(priceArray[0]));
+      dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+    }
+  }, [filterCategoryProducts]);
+  function openFiltersMenuOnPhone() {
+    dispatch(toggleFiltersCategories(true));
+  }
+  useEffect(() => {
+    if (location.search) {
+      dispatch(filterCategory(location.pathname.split('/')[2]));
+      dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(setFilterPaginationPage(0));
       const paramsLocationSearch = queryString.parse(location.search);
       if (paramsLocationSearch.minPrice || paramsLocationSearch.maxPrice) {
         dispatch(setMinSliderValue(paramsLocationSearch.minPrice));
         dispatch(setMaxSliderValue(paramsLocationSearch.maxPrice));
       }
-      paramsLocationSearch.name ? dispatch(filterBrand(paramsLocationSearch.name)) : null;
+      console.log(paramsLocationSearch.name);
+      paramsLocationSearch.name ? dispatch(filterBrand(paramsLocationSearch.name.split(','))) : null;
       dispatch(clearFilterColor(null));
-      console.log(paramsLocationSearch.color);
       paramsLocationSearch.color ? dispatch(addFilterColor(repackColorsForPage(paramsLocationSearch.color))) : null;
-    } else {
-      dispatch(setMinSliderValue(null));
-      dispatch(setMaxSliderValue(null));
-      dispatch(filterBrand([]));
-      dispatch(clearFilterColor(null));
-      navigate({
-        search: createSearchParams({
-          categories: location.pathname.split('/')[2],
-        }).toString(),
-      });
+      dispatch(newFilterProducts(paramsLocationSearch));
     }
-    dispatch(newFilterProducts(location.search));
-  }, [location.pathname, location.search]);
-  // useEffect(() => {
-  //   if (location.search) {
-  //     console.log(location.search);
-  //     // dispatch(newFilterProducts(location.search));
-  //     // updateURL();
-  //   }
-  // }, [location.search]);
-  useEffect(() => {
-    // eslint-disable-next-line max-len
-    const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
-    dispatch(setMinSliderValue(priceArray[0]));
-    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
-  }, [filterCategoryProducts]);
-  function openFiltersMenuOnPhone() {
-    dispatch(toggleFiltersCategories(true));
-  }
+  }, []);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   return (

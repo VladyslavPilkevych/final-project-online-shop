@@ -12,6 +12,7 @@ import {
   SET_MAX_PRICE_SLIDER_VALUE,
   NEW_FILTER_PRODUCTS,
   SET_PAGINATION_PAGE,
+  URL_STRING,
 } from '../actions/filterActions';
 
 const initialValues = {
@@ -25,6 +26,7 @@ const initialValues = {
     max: null,
   },
   filterPaginationPage: null,
+  pageURL: null,
 };
 const filterReducer = (state = initialValues, { type, payload } = {}) => {
   switch (type) {
@@ -39,6 +41,9 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
     case FILTER_CATEGORY_PRODUCTS:
       return { ...state, filterCategoryProducts: payload };
     case ADD_FILTER_COLOR:
+      if (Array.isArray(payload)) {
+        return { ...state, filterByColor: payload };
+      }
       return { ...state, filterByColor: [...state.filterByColor, payload] };
     case REMOVE_FILTER_COLOR: {
       const index = state.filterByColor.findIndex((item) => item === payload);
@@ -58,6 +63,8 @@ const filterReducer = (state = initialValues, { type, payload } = {}) => {
       return { ...state, priceSliderValues: { ...state.priceSliderValues, max: payload } };
     case SET_PAGINATION_PAGE:
       return { ...state, filterPaginationPage: payload };
+    case URL_STRING:
+      return { ...state, pageURL: payload };
     default:
       return state;
   }

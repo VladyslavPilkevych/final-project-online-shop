@@ -12,11 +12,10 @@ import {
   NEW_FILTER_PRODUCTS,
   CLEAR_COLOR_FILTER,
   SET_PAGINATION_PAGE,
+  URL_STRING,
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
 import { repackColorsForServer } from '../../utils/repackColor';
-
-const queryString = require('query-string');
 
 export const filterCategory = (data) => ({ type: FILTER_CATEGORY, payload: data });
 export const clearFilter = () => ({ type: CLEAR_FILTER });
@@ -28,9 +27,10 @@ export const filterBrand = (data) => ({ type: FILTER_BRAND, payload: data });
 export const setMinSliderValue = (data) => ({ type: SET_MIN_PRICE_SLIDER_VALUE, payload: data });
 export const setMaxSliderValue = (data) => ({ type: SET_MAX_PRICE_SLIDER_VALUE, payload: data });
 export const setFilterPaginationPage = (data) => ({ type: SET_PAGINATION_PAGE, payload: data });
+export const setURL = (data) => ({ type: URL_STRING, payload: data });
 
-export const filterProducts = (url) => async (dispatch) => {
-  await getFilteredProductsApi(url)
+export const filterProducts = (data) => async (dispatch) => {
+  await getFilteredProductsApi(data)
     .then((rsp) => {
       if (rsp.status === 200) {
         dispatch({ type: FILTER_PRODUCTS, payload: rsp.data.products });
@@ -54,27 +54,39 @@ export const getCategorieProducts = (url) => async (dispatch) => {
 };
 
 export const newFilterProducts = (data) => async (dispatch) => {
-  // const dataFilters = [`?categories=${data.categories}`];
+  const dataFilters = [`?categories=${data.categories}`];
+  if (data.color && data.color.length !== 0) {
   // if (data.color.length !== 0) {
-  //   const dataColor = repackColorsForServer(data.color);
-  //   dataFilters.push(dataColor);
-  // }
-  // if (data.name && data.name.length !== 0) {
-  //   const dataBrand = `&name=${data.name.join()}`;
-  //   dataFilters.push(dataBrand);
-  // }
-  // if (data.currentPrice.min || data.currentPrice.max) {
-  //   const dataMinPrice = `&minPrice=${data.currentPrice.min}`;
-  //   dataFilters.push(dataMinPrice);
-  //   const dataMaxPrice = `&maxPrice=${data.currentPrice.max}`;
-  //   dataFilters.push(dataMaxPrice);
-  // }
-  // console.log(dataFilters.join(''));
-  // console.log(queryString.stringify(data));
-  // console.log(queryString.parse(dataFilters.join('')));
-  // await getFilteredProductsApi(dataFilters.join(''))
-  console.log(data);
-  await getFilteredProductsApi(data)
+    // console.log(data.color);
+    if (!Array.isArray(data.color)) {
+      const dataColor = `&color=${data.color}`;
+      dataFilters.push(dataColor);
+    } else {
+      const dataColor = repackColorsForServer(data.color);
+      dataFilters.push(dataColor);
+    }
+  }
+  if (data.name && data.name.length !== 0) {
+    if (!Array.isArray(data.name)) {
+      const dataBrand = `&name=${data.name}`;
+      dataFilters.push(dataBrand);
+    } else {
+      console.log(data.name);
+      console.log(data.name.join());
+      const dataBrand = `&name=${data.name.join()}`;
+      dataFilters.push(dataBrand);
+    }
+  }
+  if (data.minPrice || data.maxPrice) {
+    const dataMinPrice = `&minPrice=${data.minPrice}`;
+    dataFilters.push(dataMinPrice);
+    const dataMaxPrice = `&maxPrice=${data.maxPrice}`;
+    dataFilters.push(dataMaxPrice);
+  }
+  console.log(dataFilters);
+  console.log(dataFilters.join(''));
+  dispatch(setURL(dataFilters.join('')));
+  await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
       if (rsp.status === 200) {
         dispatch({ type: NEW_FILTER_PRODUCTS, payload: rsp.data.products });

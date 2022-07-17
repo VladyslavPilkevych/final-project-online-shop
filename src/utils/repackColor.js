@@ -51,9 +51,6 @@ export function repackColorsForPage(array) {
 }
 
 export function repackColorsForServer(array) {
-  if (array.length === 0) {
-    return [];
-  }
   const colors = array.map((item) => {
     if (item === 'gray') {
       return 'gray,silver,space gray,grey,pure silver,graphite,phantom silver,moonlight_silver';
@@ -75,7 +72,5 @@ export function repackColorsForServer(array) {
     }
     return item;
   });
-  // return `&color=${colors.join()}`;
-  console.log(colors.join());
-  return colors.join();
+  return `&color=${colors.join()}`;
 }
