@@ -113,9 +113,23 @@
                 width: 19px;
                 margin: 2px 10px 2px 0;
             }
+            svg {
+                width: 19px;
+                margin: 1px 10px 2px 0;
+            }
             p {
                 @include fonts("Poppins", 14px, #0156ff, 600);
                 margin-top: 3px;
+            }
+        }
+        .btnCart:active {
+            background-color: #0156ff;
+            // transition: 0.2s linear;
+            svg path {
+                fill: white;
+            }
+            p {
+                color: white;
             }
         }
         .btnInCart {
