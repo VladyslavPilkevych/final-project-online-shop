@@ -54,6 +54,7 @@ export const getCategorieProducts = (url) => async (dispatch) => {
 };
 
 export const newFilterProducts = (data) => async (dispatch) => {
+  console.log('search new products');
   const dataFilters = [`?categories=${data.categories}`];
   if (data.color && data.color.length !== 0) {
   // if (data.color.length !== 0) {

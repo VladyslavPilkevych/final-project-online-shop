@@ -52,16 +52,16 @@ function FilterPage() {
     }
   }, [pageURL]);
   useEffect(() => {
-    // if (!location.search || !queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
-    dispatch(setMinSliderValue(null));
-    dispatch(setMaxSliderValue(null));
-    dispatch(filterBrand([]));
-    dispatch(clearFilterColor(null));
-    dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
-    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-    dispatch(filterCategory(location.pathname.split('/')[2]));
-    dispatch(setFilterPaginationPage(0));
-    // }
+    if (!location.search || !queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
+      dispatch(setMinSliderValue(null));
+      dispatch(setMaxSliderValue(null));
+      dispatch(filterBrand([]));
+      dispatch(clearFilterColor(null));
+      dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(filterCategory(location.pathname.split('/')[2]));
+      dispatch(setFilterPaginationPage(0));
+    }
   }, [location.pathname]);
   useEffect(() => {
     // eslint-disable-next-line max-len
@@ -77,7 +77,7 @@ function FilterPage() {
   useEffect(() => {
     if (location.search) {
       dispatch(filterCategory(location.pathname.split('/')[2]));
-      dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+      // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
       dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
       dispatch(setFilterPaginationPage(0));
       const paramsLocationSearch = queryString.parse(location.search);
@@ -92,6 +92,12 @@ function FilterPage() {
       dispatch(newFilterProducts(paramsLocationSearch));
     }
   }, []);
+  useEffect(() => {
+    if (location.search) {
+      const paramsLocationSearch = queryString.parse(location.search);
+      dispatch(newFilterProducts(paramsLocationSearch));
+    }
+  }, [location.search]);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   return (
