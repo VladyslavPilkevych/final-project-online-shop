@@ -1,4 +1,5 @@
 import {
+  URL_STRING,
   FILTER_PRODUCTS,
   CLEAR_FILTER,
   CLEAR_FILTER_PRODUCTS,
@@ -12,7 +13,6 @@ import {
   SET_MAX_PRICE_SLIDER_VALUE,
   NEW_FILTER_PRODUCTS,
   SET_PAGINATION_PAGE,
-  URL_STRING,
 } from '../actions/filterActions';
 
 const initialValues = {
