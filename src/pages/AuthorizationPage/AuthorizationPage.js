@@ -23,11 +23,7 @@ function AuthorizationPage() {
   const onSubmit = async (values, { resetForm }) => {
     const response = await logInCustomer(values)
       .then((user) => user)
-<<<<<<< HEAD
-      .catch((err) => console.error(err));
-=======
       .catch(() => toast.error('Enter correct email or password'));
->>>>>>> b78ed9d15bd0c59c44e0beb969e29bec4b25c0a5
     if (response && response.status === 200) {
       resetForm();
       dispatch(setUserTokenAC(response.data.token));

@@ -33,13 +33,9 @@ function SignUpPage() {
       return;
     }
     const newCustomer = values;
-<<<<<<< HEAD
-    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.error(err));
-=======
     const response = await createNewCustomer(newCustomer)
       .then((user) => user)
       .catch(() => toast.error('Enter correct data'));
->>>>>>> b78ed9d15bd0c59c44e0beb969e29bec4b25c0a5
 
     if (response && response.status === 200) {
       resetForm();
