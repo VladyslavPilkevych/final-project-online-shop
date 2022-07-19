@@ -11,6 +11,7 @@ import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import FilterCreatorColor from '../FilterCreatorColor/FilterCreatorColor';
+/* eslint-disable */
 import {
   addFilterColor,
   removeFilterColor,
@@ -55,17 +56,14 @@ function FilterContainer() {
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
-    console.log('work');
   };
   const applyFilterFn = () => {
     const filterCreators = {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
       name: filterByBrand,
-      currentPrice: {
-        min: priceSliderValues.min,
-        max: priceSliderValues.max,
-      },
+      minPrice: priceSliderValues.min,
+      maxPrice: priceSliderValues.max,
     };
     dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));

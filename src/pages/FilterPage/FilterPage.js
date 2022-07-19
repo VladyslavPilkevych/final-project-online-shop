@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import styles from './FilterPage.module.scss';
 import imageFilterPageTop from '../../assets/images/FilterPage/imageFilterPageTop.png';
 import FilterContainer from '../../components/FilterContainer/FilterContainer';
@@ -18,42 +19,85 @@ import {
   filterBrand,
   setFilterPaginationPage,
   getCategorieProducts,
+  addFilterColor,
+  setURL,
+  newFilterProducts,
 } from '../../store/actionCreators/filterAC';
+import { repackColorsForPage } from '../../utils/repackColor';
 
+/* eslint-disable */
 function FilterPage() {
-  const filterItems = useSelector((state) => state.filter.filterProducts);
   const filtersCategories = useSelector((state) => state.filtersCategories.isOpen);
-  const filterCategoryProducts = useSelector((state) => state.filter.filterCategoryProducts);
+  const filterItems = useSelector((state) => state.filter.filterProducts);
+  const {
+    filterByColor,
+    filterByBrand,
+    filterPriceSliderValues,
+    filterCategoryProducts,
+    priceSliderValues,
+    pageURL,
+  } = useSelector((state) => state.filter);
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
-    // dispatch(getAllProducts());
   }, [filtersCategories]);
   useEffect(() => {
-    // eslint-disable-next-line max-len
-    // const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
-    // dispatch(setMinSliderValue(priceArray[0]));
-    // dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
-    dispatch(setMinSliderValue(null));
-    dispatch(setMaxSliderValue(null));
-    dispatch(filterBrand([]));
-    dispatch(clearFilterColor(null));
-    dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
-    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-    dispatch(filterCategory(location.pathname.split('/')[2]));
-    dispatch(setFilterPaginationPage(0));
+    if (pageURL) {
+      console.log(pageURL);
+      navigate({
+        search: pageURL,
+      });
+    }
+  }, [pageURL]);
+  useEffect(() => {
+    if (!location.search || !queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
+      dispatch(setMinSliderValue(null));
+      dispatch(setMaxSliderValue(null));
+      dispatch(filterBrand([]));
+      dispatch(clearFilterColor(null));
+      dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(filterCategory(location.pathname.split('/')[2]));
+      dispatch(setFilterPaginationPage(0));
+    }
   }, [location.pathname]);
   useEffect(() => {
-    console.log('123123132123');
     // eslint-disable-next-line max-len
-    const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
-    dispatch(setMinSliderValue(priceArray[0]));
-    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+    if (!location.search && !queryString.parse(location.search).minPrice && !queryString.parse(location.search).maxPrice) {
+      const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
+      dispatch(setMinSliderValue(priceArray[0]));
+      dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+    }
   }, [filterCategoryProducts]);
   function openFiltersMenuOnPhone() {
     dispatch(toggleFiltersCategories(true));
   }
+  useEffect(() => {
+    if (location.search) {
+      dispatch(filterCategory(location.pathname.split('/')[2]));
+      // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
+      dispatch(setFilterPaginationPage(0));
+      const paramsLocationSearch = queryString.parse(location.search);
+      if (paramsLocationSearch.minPrice || paramsLocationSearch.maxPrice) {
+        dispatch(setMinSliderValue(paramsLocationSearch.minPrice));
+        dispatch(setMaxSliderValue(paramsLocationSearch.maxPrice));
+      }
+      console.log(paramsLocationSearch.name);
+      paramsLocationSearch.name ? dispatch(filterBrand(paramsLocationSearch.name.split(','))) : null;
+      dispatch(clearFilterColor(null));
+      paramsLocationSearch.color ? dispatch(addFilterColor(repackColorsForPage(paramsLocationSearch.color))) : null;
+      dispatch(newFilterProducts(paramsLocationSearch));
+    }
+  }, []);
+  useEffect(() => {
+    if (location.search) {
+      const paramsLocationSearch = queryString.parse(location.search);
+      dispatch(newFilterProducts(paramsLocationSearch));
+    }
+  }, [location.search]);
   const width = useWidth();
   const filtersCategoriesOnPhone = useSelector((state) => state.filtersCategories.isOpen);
   return (
