@@ -3,6 +3,7 @@
 .signUpPageWrapper {
     max-width: 1398px;
     margin: 0 auto;
+    padding: 15px;
 }
 
 .mainTitle {
@@ -39,6 +40,15 @@
     line-height: 30px;
 }
 
+.inputLabel {
+    font-size: 12px;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
 .createCustomerButton {
     margin-top: 30px;
     background-color: #2e58ff;
@@ -49,7 +59,6 @@
 	display: inline-block;
     transition: 0.5s;
     border: none;
-    // border: 5px solid $bg-white-color;
 }
 .createCustomerButton:hover {
 	background-color: darken(#1d4aff, 5%);
