@@ -12,7 +12,6 @@ import styles from './MiniMenu.module.scss';
 function MiniMenu({ items }) {
   const { header, className, style } = items;
   const navigate = useNavigate();
-  const handleItemSubMenu = (url) => navigate(url);
 
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
   const dispatch = useDispatch();
@@ -49,14 +48,10 @@ MiniMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   style: PropTypes.object,
-  // value: PropTypes.string,
-  // onClick: PropTypes.func,
 };
 
 MiniMenu.defaultProps = {
   className: '',
   style: {},
-  // value: '',
-  // onClick: () => {},
 };
 export default MiniMenu;

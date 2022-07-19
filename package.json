@@ -13,6 +13,7 @@
     "formik": "^2.2.9",
     "lint-staged": "^12.3.7",
     "prop-types": "^15.8.1",
+    "query-string": "^7.1.1",
     "rc-slider": "^10.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -36,7 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --coverage --passWithNoTests",
+    "test": "react-scripts test --watchAll=false --coverage --passWithNoTests --updateSnapshot",
     "eject": "react-scripts eject",
     "eslint": "node_modules/.bin/eslint src/",
     "prepare": "husky install"

@@ -17,11 +17,6 @@ function HomePage() {
     dispatch(getAllProducts());
   }, []);
   useEffect(() => {}, [allProducts]);
-  // useEffect(() => {
-  //   if () {
-  //     dispatch(getDataAC(token));
-  //   }
-  // }, [token]);
 
   return (
     <div className={styles.homePage}>

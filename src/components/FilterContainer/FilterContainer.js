@@ -11,6 +11,7 @@ import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import FilterCreatorColor from '../FilterCreatorColor/FilterCreatorColor';
+/* eslint-disable */
 import {
   addFilterColor,
   removeFilterColor,
@@ -20,8 +21,8 @@ import {
   setMaxSliderValue,
   clearFilterColor,
   setFilterPaginationPage,
-  getCategorieProducts,
 } from '../../store/actionCreators/filterAC';
+import { repackColorsForPage } from '../../utils/repackColor';
 
 function FilterContainer() {
   const dispatch = useDispatch();
@@ -37,19 +38,14 @@ function FilterContainer() {
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
-  const [applyFilterBtn, setApplyFilterBtn] = useState(false);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
+  const [colorsFiltered, setColorsFiltered] = useState(null);
 
-  useEffect(() => {
-    dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
-  }, [location.pathname]);
-  useEffect(() => {
-    setApplyFilterBtn(true);
-  }, [filter]);
   useEffect(() => {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
       setBrandsFiltered([...new Set(brands)].sort());
+      setColorsFiltered(repackColorsForPage(filterCategoryProducts));
     }
   }, [filterCategoryProducts]);
   const clearFilterFn = () => {
@@ -60,20 +56,16 @@ function FilterContainer() {
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
-    console.log('work');
   };
   const applyFilterFn = () => {
-    setApplyFilterBtn(false);
     const filterCreators = {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
       name: filterByBrand,
-      currentPrice: {
-        min: priceSliderValues.min,
-        max: priceSliderValues.max,
-      },
+      minPrice: priceSliderValues.min,
+      maxPrice: priceSliderValues.max,
     };
-    console.log('work');
+    dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));
     dispatch(setFilterPaginationPage(0));
   };
@@ -151,33 +143,19 @@ function FilterContainer() {
         </div>
         {isOpenFilterColor
           && (
-            <ul className={styles.colorsContainer}>
-              <li>
-                <FilterCreatorColor color="red" />
-              </li>
-              <li>
-                <FilterCreatorColor color="black" />
-              </li>
-              <li>
-                <FilterCreatorColor color="grey" />
-              </li>
-              <li>
-                <FilterCreatorColor color="white" />
-              </li>
+            <ul>
+              {colorsFiltered
+                && colorsFiltered.map((color) => <FilterCreatorColor key={color} color={color} />)}
             </ul>
           )}
       </div>
       <div className={styles.categoryContainers}>
-        {applyFilterBtn
-          ? (
-            <Button
-              className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
-              handleClick={() => { applyFilterFn(); }}
-            >
-              Apply Filters
-            </Button>
-          )
-          : <Button classNames={styles.applyFilterBtn}>Apply Filters</Button>}
+        <Button
+          className={[styles.applyFilterBtn, styles.applyFilterBtnActive].join(' ')}
+          handleClick={() => { applyFilterFn(); }}
+        >
+          Apply Filters
+        </Button>
       </div>
     </div>
   );

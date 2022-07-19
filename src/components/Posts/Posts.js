@@ -1,15 +1,15 @@
 /* eslint-disable max-len */
 import React from 'react';
 import styles from './Posts.module.scss';
-import instagramImage1 from '../../assets/Images/instagram-images/instagram-image1.png';
-import instagramImage2 from '../../assets/Images/instagram-images/instagram-image2.png';
-import instagramImage3 from '../../assets/Images/instagram-images/instagram-image3.png';
-import instagramImage4 from '../../assets/Images/instagram-images/instagram-image4.png';
-import instagramImage5 from '../../assets/Images/instagram-images/instagram-image5.png';
-import instagramImage6 from '../../assets/Images/instagram-images/instagram-image6.png';
-import instagramImage7 from '../../assets/Images/instagram-images/instagram-image7.png';
-import instagramImage8 from '../../assets/Images/instagram-images/instagram-image8.png';
-import instagramImage9 from '../../assets/Images/instagram-images/instagram-image9.png';
+import instagramImage1 from '../../assets/images/instagram-images/instagram-image1.png';
+import instagramImage2 from '../../assets/images/instagram-images/instagram-image2.png';
+import instagramImage3 from '../../assets/images/instagram-images/instagram-image3.png';
+import instagramImage4 from '../../assets/images/instagram-images/instagram-image4.png';
+import instagramImage5 from '../../assets/images/instagram-images/instagram-image5.png';
+import instagramImage6 from '../../assets/images/instagram-images/instagram-image6.png';
+import instagramImage7 from '../../assets/images/instagram-images/instagram-image7.png';
+import instagramImage8 from '../../assets/images/instagram-images/instagram-image8.png';
+import instagramImage9 from '../../assets/images/instagram-images/instagram-image9.png';
 
 function Posts() {
   return (
