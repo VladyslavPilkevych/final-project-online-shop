@@ -69,36 +69,6 @@ export default function MainBaner() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  // Must be insert when api function will be ready
-  //  ========================================
-  //   const newSlide = {
-  //     customId: "baner-slide-phone-001",
-  //     imageUrl: "https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg",
-  //     title: "50% discount for Apple 13 Pro Max!! ",
-  //     description: "Do not miss our hot offer. Promotion ends 31/05/2022",
-  //     category: "phones"
-  //   };
-  //   const addSlide = async (newSlide)=>{
-  //     const response = await fetch('https://skvonlineshop.herokuapp.com/api/slides', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(newSlide),
-  //     });
-  //   }
-  // or
-  //   addSlide(newSlide)
-  // axios
-  //   .post("/slides", newSlide)
-  //   .then(newSlide => {
-  //     /*Do something with newSlide*/
-  //   })
-  //   .catch(err => {
-  //     /*Do something with error, e.g. show error to user*/
-  //   });
-
-  // const productsToSlide = getSlidesForBaner()
   const productsToSlide = [
     {
       _id: '625312856ad189cceeb8b596',

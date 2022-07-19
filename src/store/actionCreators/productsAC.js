@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import { GET_ALL_PRODUCTS, GET_PRODUCT } from '../actions/productsActions';
 import { getAllProductsApi, getProductApi } from '../../api/api';
 
@@ -8,8 +10,8 @@ export const getAllProducts = () => async (dispatch) => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: rsp.data });
       }
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(() => {
+      toast.error('Something went wrong');
     });
 };
 export const getProduct = (itemNo) => async (dispatch) => {
@@ -19,7 +21,7 @@ export const getProduct = (itemNo) => async (dispatch) => {
         dispatch({ type: GET_PRODUCT, payload: rsp.data });
       }
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(() => {
+      toast.error('Something went wrong');
     });
 };

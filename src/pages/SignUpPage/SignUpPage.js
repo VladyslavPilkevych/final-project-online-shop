@@ -1,11 +1,15 @@
 /* eslint-disable max-len */
 import React from 'react';
+
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
+
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { createNewCustomer } from '../../api/api';
+import { ToastNotification } from '../../utils/toastify';
 import styles from './SignUpPage.module.scss';
 
 function SignUpPage() {
@@ -25,10 +29,17 @@ function SignUpPage() {
 
   const onSubmit = async (values, { resetForm }) => {
     if (values.password !== values.repeatPassword) {
-      alert('Passwords should be equal');
+      toast('Passwords should be equal');
+      return;
     }
     const newCustomer = values;
+<<<<<<< HEAD
     const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.error(err));
+=======
+    const response = await createNewCustomer(newCustomer)
+      .then((user) => user)
+      .catch(() => toast.error('Enter correct data'));
+>>>>>>> b78ed9d15bd0c59c44e0beb969e29bec4b25c0a5
 
     if (response && response.status === 200) {
       resetForm();
@@ -36,22 +47,24 @@ function SignUpPage() {
     }
   };
 
+  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const validationSchema = yup.object().shape({
     firstName: yup
       .string()
-      .required('Поле обязательно')
-      .matches(/[A-Za-z ]/gi, 'Только латинские'),
+      .required('Required data')
+      .matches(/[A-Za-z ]/gi, 'Use only latin letters'),
     lastName: yup
       .string()
-      .required('Поле обязательно')
-      .matches(/[A-Za-z ]/gi, 'Только латинские'),
+      .required('Required data')
+      .matches(/[A-Za-z ]/gi, 'Use only latin letters'),
     login: yup
       .string()
-      .required('Поле обязательно')
-      .matches(/[A-Za-z ]/gi, 'Только латинские'),
-    // email: yup.string().email('Неверный email').required('Поле обязательно'),
-    // password: yup.string().required('Поле обязательно'),
-    // repeatPassword: yup.string().required('Поле обязательно'),
+      .required('Required data')
+      .matches(/[A-Za-z ]/gi, 'Use only latin letters'),
+    telephone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+    email: yup.string().email('Enter correct email').required('Required data'),
+    password: yup.string().required('Enter password').min(7, 'Password shouldn`t be less than 7 symbols'),
+    repeatPassword: yup.string().required('Repeat password').min(7, 'Password shouldn`t be less than 7 symbols'),
   });
 
   return (
@@ -63,18 +76,21 @@ function SignUpPage() {
           <p className={styles.customersBlocksSubtitle}>If you are not have an account, fill information below</p>
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
+              <p className={styles.inputLabel}>FirstName*</p>
               <CustomInput name="firstName" type="text" placeholder="FirstName" />
+              <p className={styles.inputLabel}>LastName*</p>
               <CustomInput name="lastName" type="text" placeholder="LastName" />
+              <p className={styles.inputLabel}>Login*</p>
               <CustomInput name="login" type="text" placeholder="Login" />
+              <p className={styles.inputLabel}>Email*</p>
               <CustomInput name="email" type="text" placeholder="Email" />
-              <CustomInput name="telephone" type="tel" placeholder="Telephone" />
+              <p className={styles.inputLabel}>Phone*</p>
+              <CustomInput name="telephone" type="tel" placeholder="Phone" />
+              <p className={styles.inputLabel}>Gender</p>
               <CustomInput name="gender" type="text" placeholder="Gender" />
-              {/* <CustomInput
-                name="avatarUrl"
-                type={"url" || "file"}
-                placeholder="avatarUrl"
-              /> */}
+              <p className={styles.inputLabel}>Password*</p>
               <CustomInput name="password" type="password" placeholder="Password" />
+              <p className={styles.inputLabel}>Repeat password*</p>
               <CustomInput name="repeatPassword" type="password" placeholder="Repeat password" />
 
               <button type="submit" className={styles.createCustomerButton}>
@@ -93,6 +109,7 @@ function SignUpPage() {
           </Link>
         </div>
       </div>
+      <ToastNotification position="top-right" hideBar close={false} theme="light" width="inherit" className="toast-container" />
     </div>
   );
 }

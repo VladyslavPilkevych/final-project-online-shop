@@ -4,10 +4,11 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { toast } from 'react-toastify';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { logInCustomer } from '../../api/api';
 import { setUserTokenAC, getUser } from '../../store/actionCreators/userAC';
+import { ToastNotification } from '../../utils/toastify';
 import styles from './AuthorizationPage.module.scss';
 
 function AuthorizationPage() {
@@ -22,21 +23,23 @@ function AuthorizationPage() {
   const onSubmit = async (values, { resetForm }) => {
     const response = await logInCustomer(values)
       .then((user) => user)
+<<<<<<< HEAD
       .catch((err) => console.error(err));
+=======
+      .catch(() => toast.error('Enter correct email or password'));
+>>>>>>> b78ed9d15bd0c59c44e0beb969e29bec4b25c0a5
     if (response && response.status === 200) {
       resetForm();
       dispatch(setUserTokenAC(response.data.token));
       dispatch(getUser(response.data.token));
-      // localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('token', JSON.stringify(response.data.token));
       navigate({ pathname: '/' });
     }
   };
 
   const validationSchema = yup.object().shape({
-    // login: yup.string().required('Поле обязательно').matches(/[A-Za-z ]/gi, 'Только латинские'),
-    // email: yup.string().email('Неверный email').required('Поле обязательно'),
-    password: yup.string().required('Поле обязательно'),
+    email: yup.string().email('It`s not looks like email').required('Required data'),
+    password: yup.string().required('Required data').min(7, 'Password should be at least 7 characters'),
   });
 
   return (
@@ -48,7 +51,9 @@ function AuthorizationPage() {
           <p className={styles.customersBlocksSubtitle}>If you have an account, sign in with your login or email address</p>
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
-              <CustomInput name="loginOrEmail" type="text" placeholder="Email" />
+              <p className={styles.inputLabel}>Email*</p>
+              <CustomInput name="email" type="text" placeholder="Email" />
+              <p className={styles.inputLabel}>Password*</p>
               <CustomInput name="password" type="password" placeholder="Password" />
               <div>
                 <button type="submit" className={styles.signInButton}>
@@ -73,6 +78,7 @@ function AuthorizationPage() {
           </Link>
         </div>
       </div>
+      <ToastNotification position="top-right" hideBar close={false} theme="light" width="inherit" className="toast-container" />
     </div>
   );
 }
