@@ -75,7 +75,6 @@ function Categories(props) {
     swipeToSlide: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    // overflow: true,
     responsive: [
       {
         breakpoint: 1398,
@@ -106,8 +105,6 @@ function Categories(props) {
         },
       },
     ],
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
   };
@@ -124,12 +121,10 @@ function Categories(props) {
             tabIndex={0}
           >
             <NavLink to={`/filter/${productsCategories}`}>
-              {/* <NavLink to="/filter"> */}
               See All Products
             </NavLink>
           </div>
         </div>
-        {/* <div className={styles.categorieSlider}> */}
         <div className={styles.categoriesSliderWrapper}>
           <Slider {...settings}>
             {resultProducts && resultProducts.map((elem) => (
@@ -137,12 +132,11 @@ function Categories(props) {
                 className={styles.cardItemWrapper}
                 itemNo={elem.itemNo}
                 name={elem.name}
-                // eslint-disable-next-line no-underscore-dangle
+                /* eslint-disable */
                 id={elem._id}
-                // eslint-disable-next-line no-underscore-dangle
                 img={elem.imageUrls[0]}
-                // eslint-disable-next-line no-underscore-dangle
                 key={elem._id}
+                /* eslint-enable */
                 currentPrice={elem.currentPrice}
                 quantity={50}
                 model={elem.model}
@@ -177,14 +171,6 @@ SamplePrevArrow.defaultProps = {
   style: {},
   onClick: () => {},
 };
-
-// CategoryProductsContainer.propTypes = {
-//   productsCategories: PropTypes.string,
-// };
-
-// CategoryProductsContainer.defaultProps = {
-//   productsCategories: '',
-// };
 
 Categories.propTypes = {
   productsCategories: PropTypes.string,

@@ -21,9 +21,6 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
     }
     case ADD_TO_CART: {
       if (state.dataCart.length === 0) {
-        if (state.user) {
-          // console.log(state.user);
-        }
         return { ...state, dataCart: payload };
       }
       return { ...state, dataCart: payload };

@@ -28,13 +28,12 @@ function SignUpPage() {
       alert('Passwords should be equal');
     }
     const newCustomer = values;
-    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.log(err));
+    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.error(err));
 
     if (response && response.status === 200) {
       resetForm();
       navigate({ pathname: '/sign-in' });
     }
-    console.log(response);
   };
 
   const validationSchema = yup.object().shape({

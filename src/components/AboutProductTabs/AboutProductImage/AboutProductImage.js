@@ -19,7 +19,6 @@ const StyledSlider = styled(Slider)`
 `;
 function AboutProductImage(props) {
   const { urls, model, id } = props;
-  // console.log(urls[0]?.substring(urls[0].length - 4, urls[0].length));
   const url = urls[0]?.substring(urls[0].length - 4, urls[0].length) === 'jpeg'
     ? urls[0]?.substring(0, urls[0].length - 6)
     : urls[0]?.substring(0, urls[0].length - 5);

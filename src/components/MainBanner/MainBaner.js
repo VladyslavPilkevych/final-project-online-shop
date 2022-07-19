@@ -86,7 +86,6 @@ export default function MainBaner() {
   //       },
   //       body: JSON.stringify(newSlide),
   //     });
-  // console.log(response);
   //   }
   // or
   //   addSlide(newSlide)

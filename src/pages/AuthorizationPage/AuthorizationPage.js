@@ -22,7 +22,7 @@ function AuthorizationPage() {
   const onSubmit = async (values, { resetForm }) => {
     const response = await logInCustomer(values)
       .then((user) => user)
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
     if (response && response.status === 200) {
       resetForm();
       dispatch(setUserTokenAC(response.data.token));
@@ -31,7 +31,6 @@ function AuthorizationPage() {
       localStorage.setItem('token', JSON.stringify(response.data.token));
       navigate({ pathname: '/' });
     }
-    // console.log(response);
   };
 
   const validationSchema = yup.object().shape({

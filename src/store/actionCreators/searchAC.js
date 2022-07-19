@@ -11,7 +11,6 @@ export const searchProducts = (searchPhrases) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
-      // console.log(searchPhrases);
+      console.error(err);
     });
 };

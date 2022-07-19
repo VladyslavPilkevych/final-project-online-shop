@@ -9,7 +9,7 @@ export const getAllProducts = () => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 };
 export const getProduct = (itemNo) => async (dispatch) => {
@@ -20,6 +20,6 @@ export const getProduct = (itemNo) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 };
