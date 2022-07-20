@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -12,15 +12,12 @@ import numberWithSpaces from '../../utils/numberWithSpaces';
 import styles from './CartItem.module.scss';
 
 function CartItem() {
-  const dataCart = useSelector((state) => state.cart.dataCart);
-  const cartItem = dataCart || [];
-
-  const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice).reduce((acc, value) => acc + value, 0));
-
   const dispatch = useDispatch();
 
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
+
   const onDeleteFromCart = (productId) => {
-    if (cartItem.map((item) => item.product._id === productId)) {
+    if (dataCart.map((item) => item.product._id === productId)) {
       dispatch(deleteFromCart(productId));
     }
   };
@@ -32,8 +29,8 @@ function CartItem() {
     <div>
       <div className={styles.cartItemContainer}>
         <ul>
-          {cartItem.map((item) => (
-            <li key={item._id}>
+          {dataCart.map((item) => (
+            <li key={item.product.itemNo}>
               <div className={styles.cartItemWrapper}>
                 <div className={styles.cartItem}>
                   <NavLink to={`/products/${item.product.itemNo}`}>
@@ -95,4 +92,4 @@ function CartItem() {
   );
 }
 
-export default CartItem;
+export default memo(CartItem);

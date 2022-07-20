@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,23 +14,22 @@ import Image from '../Image/Image';
 import styles from './MiniCart.module.scss';
 
 function MiniCart() {
-  const isOpenCart = useSelector((state) => state.cart.isOpenCart);
-  const dataCart = useSelector((state) => state.cart.dataCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const cartItem = dataCart || [];
-
-  const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0));
+  const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
 
   if (!isOpenCart) return null;
+
+  const totalPrice = numberWithSpaces(dataCart.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0));
 
   const closeCart = () => {
     dispatch(toggleCart(false));
   };
 
   const onDeleteFromCart = (productId) => {
-    if (cartItem.map((item) => item.product._id === productId)) {
+    if (dataCart.map((item) => item.product._id === productId)) {
       dispatch(deleteFromCart(productId));
     }
   };
@@ -41,7 +40,7 @@ function MiniCart() {
         <div className={styles.miniCartHeader}>
           <h3 className={styles.miniCartTitle}>My Cart</h3>
           <p className={styles.miniCartSubTitle}>
-            {cartItem.length}
+            {dataCart.length}
             -items
           </p>
           <button
@@ -57,8 +56,8 @@ function MiniCart() {
         </div>
         <div className={styles.miniCartContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
           <ul>
-            {cartItem.map((item) => (
-              <li key={item.itemNo}>
+            {dataCart.map((item) => (
+              <li key={item.product.itemNo}>
                 <div className={styles.miniCartContentwrapper}>
                   <div>
                     <p className={styles.miniCartQuantity}>
@@ -66,7 +65,7 @@ function MiniCart() {
                       <span>x</span>
                     </p>
                   </div>
-                  {cartItem && (
+                  {dataCart && (
                     <div
                       onClick={() => {
                         navigate(`/products/${item.product.itemNo}`);
@@ -84,7 +83,7 @@ function MiniCart() {
                   )}
                   <div>
                     <p className={styles.miniCartDescription}>
-                      {item.product.model}
+                      {`${item.product.name} ${item.product.model}`}
                     </p>
                   </div>
                   <div>
@@ -109,4 +108,4 @@ function MiniCart() {
   );
 }
 
-export default MiniCart;
+export default memo(MiniCart);

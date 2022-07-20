@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -154,8 +154,8 @@ function Header() {
                 role="button"
                 tabIndex="0"
                 onClick={() => {
-                  dispatch(toggleSearch(!isOpenSearch));
                   dispatch(toggleMenu(!isOpen));
+                  dispatch(toggleSearch(!isOpenSearch));
                 }}
               />
               <li className={styles.navBarRightItem}>
@@ -173,4 +173,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

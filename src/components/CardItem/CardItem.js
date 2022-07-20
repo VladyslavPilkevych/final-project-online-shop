@@ -23,6 +23,7 @@ function CardItem(props) {
   const {
     name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo, styleCardItem,
   } = props;
+
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
   const user = useSelector((state) => state.user.user);
