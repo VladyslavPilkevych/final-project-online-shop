@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
 import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
+import { GET_CART } from '../../store/actions/cartActions';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
 import Menu from '../Menu/Menu';
@@ -44,21 +45,24 @@ const items = [
 ];
 
 function Header() {
-  const isOpen = useSelector((state) => state.menu.isOpen);
-  const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
-  const token = useSelector((state) => state.user.token);
-  const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
-  const isOpenCart = useSelector((state) => state.cart.isOpenCart);
-  const dataCart = useSelector((state) => state.cart.dataCart);
-  const cartItem = dataCart || [];
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [value, setValue] = useState('');
 
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.user.token);
+  const isOpen = useSelector((state) => state.menu.isOpen);
+  const isOpenCart = useSelector((state) => state.cart.isOpenCart);
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
+  const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
+  const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
+
   useEffect(() => {
     if (token) {
       dispatch(getCart());
+    } else {
+      const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+      dispatch({ type: GET_CART, payload: cartData });
     }
   }, [token]);
 
@@ -158,7 +162,7 @@ function Header() {
                 <CartIcon className={styles.cartIcon} role="button" tabIndex="0" onClick={() => dispatch(toggleCart(!isOpenCart))} />
               </li>
               <li className={styles.navBarRightItem}>
-                {cartItem.length && cartItem.length !== 0 ? <div className={styles.cartIconIndex}>{cartItem.length}</div> : null}
+                {dataCart.length !== 0 && <div className={styles.cartIconIndex}>{dataCart.length}</div>}
                 <Avatar />
               </li>
             </nav>

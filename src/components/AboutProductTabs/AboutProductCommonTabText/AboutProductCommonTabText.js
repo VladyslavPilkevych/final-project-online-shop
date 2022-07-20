@@ -37,7 +37,7 @@ function AboutProductCommonTabText(props) {
 
   const currentColor = colors.filter((colorObj) => colorObj.name === color);
   const colorsOfAnalogProducts = analogProducts.map((product) => product.color);
-  console.log('colorsOfAnalogProducts', colorsOfAnalogProducts);
+  // console.log('colorsOfAnalogProducts', colorsOfAnalogProducts);
   return (
     <div>
       <h1 className={styles.productTitle}>

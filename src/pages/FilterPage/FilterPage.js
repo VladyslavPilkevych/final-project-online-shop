@@ -45,7 +45,6 @@ function FilterPage() {
     dispatch(setFilterPaginationPage(0));
   }, [location.pathname]);
   useEffect(() => {
-    console.log('123123132123');
     // eslint-disable-next-line max-len
     const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
     dispatch(setMinSliderValue(priceArray[0]));

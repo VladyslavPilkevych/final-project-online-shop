@@ -38,7 +38,7 @@ function CartItem() {
                 <div className={styles.cartItem}>
                   <NavLink to={`/products/${item.product.itemNo}`}>
                     <div>
-                      <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
+                      <img src={Array.isArray(item.product.imageUrls) ? item.product.imageUrls[0] : item.product.img} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
                     </div>
                   </NavLink>
                   <div>
@@ -70,7 +70,7 @@ function CartItem() {
                           event.preventDefault();
                         }
                       }}
-                      onChange={(e) => handleChange(e, item.product._id)}
+                      onChange={(e) => handleChange(e, item.product?._id || item.product.id)}
                     />
                   </div>
                   <div className={styles.cartItemContent}>
@@ -83,7 +83,7 @@ function CartItem() {
                     </p>
                   </div>
                   <div className={styles.cartItemContent}>
-                    <CloseCartIcon className={styles.closeCartIcon} onClick={() => onDeleteFromCart(item.product._id)} />
+                    <CloseCartIcon className={styles.closeCartIcon} onClick={() => onDeleteFromCart(item.product?._id || item.product.id)} />
                   </div>
                 </div>
               </div>

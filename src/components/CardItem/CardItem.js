@@ -19,16 +19,7 @@ import imageRemoveFromFavIcon from '../../assets/images/CardItem/removeFromFavIc
 
 function CardItem(props) {
   const {
-    name,
-    currentPrice,
-    id,
-    img,
-    quantity,
-    previousPrice,
-    elementClassName,
-    model,
-    itemNo,
-    styleCardItem,
+    name, currentPrice, id, img, quantity, previousPrice, elementClassName, model, itemNo, styleCardItem,
   } = props;
   const [favourite, setFavourite] = useState(false);
   const [inCart, setInCart] = useState(false);
@@ -84,7 +75,14 @@ function CardItem(props) {
       </span>
       <div className={styles.btnCartContainer}>
         {!user ? (
-          <Button className={`${styles.btnCart} ${styles.btnInCart}`} handleClick={() => alert('You should LogIn')}>
+          <Button
+            className={`${styles.btnCart} ${styles.btnInCart}`}
+            handleClick={() => {
+              dispatch(onHandleCart(id, {
+                name, currentPrice, id, img, quantity, previousPrice, model, itemNo,
+              }), addToCart());
+            }}
+          >
             {/* <img alt="icon cart" src={imageInCart} />
             <img alt="icon cart" src={imageCart} /> */}
             <p>Add To Cart</p>

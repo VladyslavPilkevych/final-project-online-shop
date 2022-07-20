@@ -38,7 +38,7 @@ function AboutProductPage() {
 
   useEffect(() => {
     dispatch(getProduct(newLocation));
-  }, [newLocation]);
+  }, [newLocation[0]]);
 
   return (
     <>

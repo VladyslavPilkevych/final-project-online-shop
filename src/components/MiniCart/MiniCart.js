@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+// eslint-disable-next-line import/namespace
 import { toggleCart, deleteFromCart } from '../../store/actionCreators/cartAC';
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
 import numberWithSpaces from '../../utils/numberWithSpaces';
@@ -57,7 +58,7 @@ function MiniCart() {
         <div className={styles.miniCartContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
           <ul>
             {cartItem.map((item) => (
-              <li key={item._id}>
+              <li key={item.itemNo}>
                 <div className={styles.miniCartContentwrapper}>
                   <div>
                     <p className={styles.miniCartQuantity}>
@@ -74,14 +75,20 @@ function MiniCart() {
                       role="button"
                       tabIndex="0"
                     >
-                      <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
+                      <Image
+                        className={styles.imageInCart}
+                        src={Array.isArray(item.product.imageUrls) ? item.product.imageUrls[0] : item.product.img}
+                        alt={item.product.model}
+                      />
                     </div>
                   )}
                   <div>
-                    <p className={styles.miniCartDescription}>{item.product.description}</p>
+                    <p className={styles.miniCartDescription}>
+                      {item.product.model}
+                    </p>
                   </div>
                   <div>
-                    <CloseCartIcon onClick={() => onDeleteFromCart(item.product._id)} />
+                    <CloseCartIcon onClick={() => onDeleteFromCart(item.product?._id || item.product.id)} />
                   </div>
                 </div>
               </li>
