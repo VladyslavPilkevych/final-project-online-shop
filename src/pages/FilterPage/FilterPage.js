@@ -9,7 +9,6 @@ import PaginationFilterPage from '../../components/PaginationFilterPage/Paginati
 import Button from '../../components/Button/Button';
 import useWidth from '../../hooks/useWidth';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
-import { getAllProducts } from '../../store/actionCreators/productsAC';
 import {
   filterProducts,
   filterCategory,
@@ -20,21 +19,15 @@ import {
   setFilterPaginationPage,
   getCategorieProducts,
   addFilterColor,
-  setURL,
   newFilterProducts,
 } from '../../store/actionCreators/filterAC';
 import { repackColorsForPage } from '../../utils/repackColor';
 
-/* eslint-disable */
 function FilterPage() {
   const filtersCategories = useSelector((state) => state.filtersCategories.isOpen);
   const filterItems = useSelector((state) => state.filter.filterProducts);
   const {
-    filterByColor,
-    filterByBrand,
-    filterPriceSliderValues,
     filterCategoryProducts,
-    priceSliderValues,
     pageURL,
   } = useSelector((state) => state.filter);
   const location = useLocation();
@@ -45,14 +38,13 @@ function FilterPage() {
   }, [filtersCategories]);
   useEffect(() => {
     if (pageURL) {
-      console.log(pageURL);
       navigate({
         search: pageURL,
       });
     }
   }, [pageURL]);
   useEffect(() => {
-    if (!location.search || !queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
+    if (!location.search || queryString.parse(location.search).categories !== location.pathname.split('/')[2]) {
       dispatch(setMinSliderValue(null));
       dispatch(setMaxSliderValue(null));
       dispatch(filterBrand([]));
@@ -64,9 +56,10 @@ function FilterPage() {
     }
   }, [location.pathname]);
   useEffect(() => {
-    // eslint-disable-next-line max-len
-    if (!location.search && !queryString.parse(location.search).minPrice && !queryString.parse(location.search).maxPrice) {
-      const priceArray = filterCategoryProducts.map((item) => item.currentPrice).sort((a, b) => a - b);
+    if (!location.search
+      && !queryString.parse(location.search).minPrice
+      && !queryString.parse(location.search).maxPrice) {
+      const priceArray = filterCategoryProducts.map((i) => i.currentPrice).sort((a, b) => a - b);
       dispatch(setMinSliderValue(priceArray[0]));
       dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     }
@@ -77,7 +70,6 @@ function FilterPage() {
   useEffect(() => {
     if (location.search) {
       dispatch(filterCategory(location.pathname.split('/')[2]));
-      // dispatch(filterProducts(`?categories=${location.pathname.split('/')[2]}`));
       dispatch(getCategorieProducts(`?categories=${location.pathname.split('/')[2]}`));
       dispatch(setFilterPaginationPage(0));
       const paramsLocationSearch = queryString.parse(location.search);
@@ -85,10 +77,13 @@ function FilterPage() {
         dispatch(setMinSliderValue(paramsLocationSearch.minPrice));
         dispatch(setMaxSliderValue(paramsLocationSearch.maxPrice));
       }
-      console.log(paramsLocationSearch.name);
-      paramsLocationSearch.name ? dispatch(filterBrand(paramsLocationSearch.name.split(','))) : null;
+      if (paramsLocationSearch.name) {
+        dispatch(filterBrand(paramsLocationSearch.name.split(',')));
+      }
       dispatch(clearFilterColor(null));
-      paramsLocationSearch.color ? dispatch(addFilterColor(repackColorsForPage(paramsLocationSearch.color))) : null;
+      if (paramsLocationSearch.color) {
+        dispatch(addFilterColor(repackColorsForPage(paramsLocationSearch.color)));
+      }
       dispatch(newFilterProducts(paramsLocationSearch));
     }
   }, []);
@@ -113,7 +108,6 @@ function FilterPage() {
       </ul>
       <h2 className={styles.h2FilterName}>MSI PS Series (20)</h2>
       <div className={styles.filter}>
-        {/* {width <= 426 && ( */}
         {width <= 550 && (
           <Button
             handleClick={() => { openFiltersMenuOnPhone(); }}
@@ -125,7 +119,6 @@ function FilterPage() {
         <div className={styles.filterCreator}>
           <FilterContainer filterProducts={filterItems} />
         </div>
-        {/* {width <= 426 && filtersCategoriesOnPhone */}
         {width <= 550 && filtersCategoriesOnPhone
           && (
             <div>

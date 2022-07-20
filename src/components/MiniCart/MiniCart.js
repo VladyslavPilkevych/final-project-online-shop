@@ -4,7 +4,6 @@ import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-// eslint-disable-next-line import/namespace
 import { toggleCart, deleteFromCart } from '../../store/actionCreators/cartAC';
 import { ReactComponent as CloseCartIcon } from '../../assets/icons/closeCartIcon.svg';
 import numberWithSpaces from '../../utils/numberWithSpaces';

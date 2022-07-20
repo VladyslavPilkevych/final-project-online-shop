@@ -1,4 +1,3 @@
-/* eslint-disablt react/no-return-assign */
 const useThrottle = function (func, timeout) {
   let isDebounce = false;
   return function () {
@@ -8,6 +7,5 @@ const useThrottle = function (func, timeout) {
     setTimeout(() => isDebounce = false, timeout);
   };
 };
-/* eslint-eneble react/no-return-assign */
 
 export default useThrottle;
