@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import FilterPriceSlider from '../FilterPriceSlider/FilterPriceSlider';
 import FilterCreatorBrand from '../FilterCreatorBrand/FilterCreatorBrand';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
+import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import FilterCreatorColor from '../FilterCreatorColor/FilterCreatorColor';
 import {
@@ -27,12 +28,17 @@ function FilterContainer() {
     filterCategoryProducts,
     priceSliderValues,
   } = useSelector((state) => state.filter);
-  const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
-  const [filterPrice, setFilterPrice] = useState(false);
-  const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
+  const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(true);
+  const [filterPrice, setFilterPrice] = useState(true);
+  const [isOpenFilterColor, setIsOpenFilterColor] = useState(true);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
   const [colorsFiltered, setColorsFiltered] = useState(null);
 
+  useEffect(() => {
+    setIsOpenFilterBrands(true);
+    setFilterPrice(true);
+    setIsOpenFilterColor(true);
+  }, [location.pathname.split('/')[2]]);
   useEffect(() => {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
@@ -40,15 +46,6 @@ function FilterContainer() {
       setColorsFiltered(repackColorsForPage(filterCategoryProducts));
     }
   }, [filterCategoryProducts]);
-  const clearFilterFn = () => {
-    const priceArray = filterCategoryProducts.map(
-      (item) => item.currentPrice,
-    ).sort((a, b) => a - b);
-    dispatch(setMinSliderValue(priceArray[0]));
-    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
-    dispatch(filterBrand([]));
-    dispatch(clearFilterColor(null));
-  };
   const applyFilterFn = () => {
     const filterCreators = {
       categories: location.pathname.split('/')[2],
@@ -59,6 +56,25 @@ function FilterContainer() {
     };
     dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));
+    dispatch(setFilterPaginationPage(0));
+  };
+  const clearFilterFn = () => {
+    const priceArray = filterCategoryProducts.map(
+      (item) => item.currentPrice,
+    ).sort((a, b) => a - b);
+    dispatch(setMinSliderValue(priceArray[0]));
+    dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
+    dispatch(filterBrand([]));
+    dispatch(clearFilterColor(null));
+    const clearFilterCreators = {
+      categories: location.pathname.split('/')[2],
+      color: [],
+      name: [],
+      minPrice: priceArray[0],
+      maxPrice: priceArray[priceArray.length - 1],
+    };
+    dispatch(toggleFiltersCategories(false));
+    dispatch(newFilterProducts(clearFilterCreators));
     dispatch(setFilterPaginationPage(0));
   };
   function closeFiltersMenuOnPhone() {
@@ -103,7 +119,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Brands</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {isOpenFilterBrands
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {isOpenFilterBrands && brandsFiltered
           && <FilterCreatorBrand brandsFiltered={brandsFiltered} />}
@@ -116,7 +134,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Price</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {filterPrice
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {filterPrice
           && (
@@ -131,7 +151,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Color</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {isOpenFilterColor
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {isOpenFilterColor
           && (

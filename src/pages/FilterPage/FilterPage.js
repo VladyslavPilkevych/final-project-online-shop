@@ -106,7 +106,11 @@ function FilterPage() {
         </li>
         <li className={styles.filterPathItems}>{location.pathname.split('/')[2]}</li>
       </ul>
-      <h2 className={styles.h2FilterName}>MSI PS Series (20)</h2>
+      <h2 className={styles.h2FilterName}>
+        {location.pathname.split('/')[2].toUpperCase()}
+        {' '}
+        {filterItems && `(${filterItems.length})`}
+      </h2>
       <div className={styles.filter}>
         {width <= 550 && (
           <Button
