@@ -62,11 +62,11 @@ function CartItem() {
                       min={1}
                       max={99}
                       value={item.cartQuantity}
-                      onKeyPress={(event) => {
-                        if (!/[0-9]/.test(event.key)) {
-                          event.preventDefault();
-                        }
-                      }}
+                      // onKeyPress={(event) => {
+                      //   if (!/[0-9]/.test(event.key)) {
+                      //     event.preventDefault();
+                      //   }
+                      // }}
                       onChange={(e) => handleChange(e, item.product?._id || item.product.id)}
                     />
                   </div>
