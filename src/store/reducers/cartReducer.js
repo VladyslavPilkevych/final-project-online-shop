@@ -20,7 +20,7 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
       return { ...state, dataCart: payload };
     }
     case ADD_TO_CART: {
-      if (state.dataCart.length === 0) {
+      if (state.dataCart?.length === 0) {
         return { ...state, dataCart: payload };
       }
       return { ...state, dataCart: payload };

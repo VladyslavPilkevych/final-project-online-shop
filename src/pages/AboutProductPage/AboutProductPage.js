@@ -17,15 +17,15 @@ import Advantages from '../../components/Advantages/Advantages';
 import styles from './AboutProductPage.module.scss';
 
 function AboutProductPage() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
   const [activeTab, setActiveTab] = useState('tab1');
   const product = useSelector((state) => state.products.activeProduct);
-  const dispatch = useDispatch();
-
   const handleToggleTab = (value) => {
     setActiveTab(value);
   };
 
-  const location = useLocation();
   const newLocation = location.pathname.split('/').slice(-1);
 
   useEffect(() => {
@@ -47,8 +47,8 @@ function AboutProductPage() {
           <Button
             type="button"
             className={styles.aboutProductCartBtn}
-            onClick={() => {
-              dispatch(onHandleCart(product._id));
+            handleClick={() => {
+              dispatch(onHandleCart(product._id, { ...product, id: product._id }));
             }}
           >
             {' Add to Cart'}
