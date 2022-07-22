@@ -1,19 +1,14 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import styles from './FilterContainer.module.scss';
 import Button from '../Button/Button';
 import FilterPriceSlider from '../FilterPriceSlider/FilterPriceSlider';
 import FilterCreatorBrand from '../FilterCreatorBrand/FilterCreatorBrand';
-import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import FilterCreatorColor from '../FilterCreatorColor/FilterCreatorColor';
 import {
-  addFilterColor,
-  removeFilterColor,
   filterBrand,
   newFilterProducts,
   setMinSliderValue,
@@ -26,11 +21,9 @@ import { repackColorsForPage } from '../../utils/repackColor';
 function FilterContainer() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const filter = useSelector((state) => state.filter);
   const {
     filterByColor,
     filterByBrand,
-    filterPriceSliderValues,
     filterCategoryProducts,
     priceSliderValues,
   } = useSelector((state) => state.filter);
@@ -55,17 +48,14 @@ function FilterContainer() {
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
-    console.log('work');
   };
   const applyFilterFn = () => {
     const filterCreators = {
       categories: location.pathname.split('/')[2],
       color: filterByColor,
       name: filterByBrand,
-      currentPrice: {
-        min: priceSliderValues.min,
-        max: priceSliderValues.max,
-      },
+      minPrice: priceSliderValues.min,
+      maxPrice: priceSliderValues.max,
     };
     dispatch(toggleFiltersCategories(false));
     dispatch(newFilterProducts(filterCreators));

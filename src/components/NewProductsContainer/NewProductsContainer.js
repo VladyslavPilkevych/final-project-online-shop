@@ -100,8 +100,6 @@ function NewProductsContainer() {
         },
       },
     ],
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
@@ -128,9 +126,9 @@ function NewProductsContainer() {
               currentPrice={elem.currentPrice}
               quantity={50}
               model={elem.model}
-              elementClassName={styles.cardItems}
+              // elementClassName={styles.cardItems}
               itemNo={elem.itemNo}
-              styleCardItem={{ right: '40px' }}
+              // styleCardItem={{ right: '40px' }}
             />
           ))}
         </Slider>

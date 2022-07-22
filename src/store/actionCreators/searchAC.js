@@ -13,7 +13,5 @@ export const searchProducts = (searchPhrases) => async (dispatch) => {
     })
     .catch((err) => {
       dispatch(addNewError(err));
-      // console.log(err);
-      // console.log(searchPhrases);
     });
 };

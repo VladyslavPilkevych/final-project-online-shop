@@ -6,7 +6,7 @@ import styles from './CustomInput.module.scss';
 function CustomInput(props) {
   const { type, placeholder } = props;
 
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
   const { error, touched } = meta;
   return (
     <>

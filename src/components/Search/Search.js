@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
-import { ReactComponent as SearchIcon } from '../../assets/icons/Vector.svg';
+import { searchProducts } from '../../store/actionCreators/searchAC';
 
 import styles from './Search.module.scss';
 
 function Search() {
-  const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
-  const [value, setValue] = useState('');
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  const [value, setValue] = useState('');
+  const isOpenSearch = useSelector((state) => state.search.isOpenSearch);
+
   if (!isOpenSearch) return null;
-  // const closeSearch = () => {
-  //   dispatch(toggleSearch(true));
-  //   setValue('');
-  // };
 
   const phrase = { query: value };
   const emptyPhraseWithSpace = { query: ' ' };
@@ -54,4 +50,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default memo(Search);

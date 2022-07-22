@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -12,15 +12,12 @@ import numberWithSpaces from '../../utils/numberWithSpaces';
 import styles from './CartItem.module.scss';
 
 function CartItem() {
-  const dataCart = useSelector((state) => state.cart.dataCart);
-  const cartItem = dataCart || [];
-
-  const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice).reduce((acc, value) => acc + value, 0));
-
   const dispatch = useDispatch();
 
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
+
   const onDeleteFromCart = (productId) => {
-    if (cartItem.map((item) => item.product._id === productId)) {
+    if (dataCart.map((item) => item.product._id === productId)) {
       dispatch(deleteFromCart(productId));
     }
   };
@@ -32,13 +29,13 @@ function CartItem() {
     <div>
       <div className={styles.cartItemContainer}>
         <ul>
-          {cartItem.map((item) => (
-            <li key={item._id}>
+          {dataCart.map((item) => (
+            <li key={item.product.itemNo}>
               <div className={styles.cartItemWrapper}>
                 <div className={styles.cartItem}>
                   <NavLink to={`/products/${item.product.itemNo}`}>
                     <div>
-                      <img src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
+                      <img src={Array.isArray(item.product.imageUrls) ? item.product.imageUrls[0] : item.product.img} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
                     </div>
                   </NavLink>
                   <div>
@@ -70,7 +67,7 @@ function CartItem() {
                           event.preventDefault();
                         }
                       }}
-                      onChange={(e) => handleChange(e, item.product._id)}
+                      onChange={(e) => handleChange(e, item.product?._id || item.product.id)}
                     />
                   </div>
                   <div className={styles.cartItemContent}>
@@ -83,7 +80,7 @@ function CartItem() {
                     </p>
                   </div>
                   <div className={styles.cartItemContent}>
-                    <CloseCartIcon className={styles.closeCartIcon} onClick={() => onDeleteFromCart(item.product._id)} />
+                    <CloseCartIcon className={styles.closeCartIcon} onClick={() => onDeleteFromCart(item.product?._id || item.product.id)} />
                   </div>
                 </div>
               </div>
@@ -95,4 +92,4 @@ function CartItem() {
   );
 }
 
-export default CartItem;
+export default memo(CartItem);

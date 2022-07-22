@@ -3,6 +3,7 @@
 .authorizationPageWrapper {
     max-width: 1398px;
     margin: 0 auto;
+    padding: 15px;
 }
 
 .mainTitle {
@@ -37,6 +38,15 @@
     font-style: normal;
     font-weight: 300;
     line-height: 30px;
+}
+
+.inputLabel {
+    font-size: 12px;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 2px;
 }
 
 .signInButton {
