@@ -2,14 +2,17 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { createNewCustomer } from '../../api/api';
 import styles from './SignUpPage.module.scss';
+import { addNewError } from '../../store/actionCreators/productsAC';
 
 function SignUpPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const initialValues = {
     firstName: '',
@@ -28,7 +31,7 @@ function SignUpPage() {
       alert('Passwords should be equal');
     }
     const newCustomer = values;
-    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => console.log(err));
+    const response = await createNewCustomer(newCustomer).then((user) => user).catch((err) => dispatch(addNewError(err)));
 
     if (response && response.status === 200) {
       resetForm();

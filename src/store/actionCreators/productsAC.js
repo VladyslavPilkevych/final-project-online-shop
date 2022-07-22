@@ -1,6 +1,7 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCT } from '../actions/productsActions';
+import { GET_ALL_PRODUCTS, GET_PRODUCT, NEW_ERROR } from '../actions/productsActions';
 import { getAllProductsApi, getProductApi } from '../../api/api';
 
+export const addNewError = (data) => ({ type: NEW_ERROR, payload: data });
 export const getAllProducts = () => async (dispatch) => {
   await getAllProductsApi()
     .then((rsp) => {
@@ -9,7 +10,9 @@ export const getAllProducts = () => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
+      // throw new Error(err.name);
+      dispatch(addNewError(err));
     });
 };
 export const getProduct = (itemNo) => async (dispatch) => {
@@ -20,6 +23,8 @@ export const getProduct = (itemNo) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
+      // throw err;
+      dispatch(addNewError(err));
     });
 };

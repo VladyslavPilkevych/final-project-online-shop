@@ -9,6 +9,7 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import { logInCustomer } from '../../api/api';
 import { setUserTokenAC, getUser } from '../../store/actionCreators/userAC';
 import styles from './AuthorizationPage.module.scss';
+import { addNewError } from '../../store/actionCreators/productsAC';
 
 function AuthorizationPage() {
   const navigate = useNavigate();
@@ -22,7 +23,10 @@ function AuthorizationPage() {
   const onSubmit = async (values, { resetForm }) => {
     const response = await logInCustomer(values)
       .then((user) => user)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // console.log(err);
+        dispatch(addNewError(err));
+      });
     if (response && response.status === 200) {
       resetForm();
       dispatch(setUserTokenAC(response.data.token));
