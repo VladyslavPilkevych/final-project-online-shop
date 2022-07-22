@@ -15,29 +15,32 @@ function ErrorBoundary() {
       setShowError(true);
     }
   }, [newErrorFromRedux]);
-  const reloadPage = () => window.location.reload();
+  const reloadPage = () => {
+    window.location.reload();
+    setShowError(false);
+  };
   const goToHomePage = () => {
     navigate({
       pathname: '/',
     });
     reloadPage();
+    setShowError(false);
   };
   return (
     <div>
       {showError
         && (
           <div className={styles.errorWrapper}>
-            <h1 className={styles.errorMainText}>Sorry, there are some problems with server.</h1>
+            <h1 className={styles.errorMainText}>
+              Sorry, there are some problems with our server.
+            </h1>
             <h2 className={styles.errorMessage}>
               Error message:
               {' '}
               {newErrorFromRedux.message}
             </h2>
-            <img className={styles.errorImage} src={serverErrImg} alt="crying-emoji" />
+            <img className={styles.errorImage} src={serverErrImg} alt="serverErrImg" />
             <div className={styles.errorBtns}>
-              {/* <NavLink className={styles.navLinksLogo} to="/">
-                <LogoIcon className={styles.logo} role="button" tabIndex="0" />
-              </NavLink> */}
               <Button className={styles.errorBtn} handleClick={goToHomePage}>
                 Return to Home page
               </Button>
