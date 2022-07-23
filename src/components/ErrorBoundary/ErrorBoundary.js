@@ -45,7 +45,7 @@ function ErrorBoundary() {
                 Return to Home page
               </Button>
               <Button className={styles.errorBtn} handleClick={reloadPage}>
-                Reload page
+                Reload this page
               </Button>
             </div>
           </div>
