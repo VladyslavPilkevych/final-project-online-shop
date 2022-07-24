@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
-import { toggleCart, getCart, editCart } from '../../store/actionCreators/cartAC';
+import { toggleCart, editCart } from '../../store/actionCreators/cartAC';
 import { GET_CART } from '../../store/actions/cartActions';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
