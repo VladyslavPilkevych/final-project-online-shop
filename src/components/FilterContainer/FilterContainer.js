@@ -29,7 +29,7 @@ function FilterContainer() {
     priceSliderValues,
   } = useSelector((state) => state.filter);
   const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(true);
-  const [filterPrice, setFilterPrice] = useState(true);
+  const [filterPrice, setFilterPrice] = useState(false);
   const [isOpenFilterColor, setIsOpenFilterColor] = useState(true);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
   const [colorsFiltered, setColorsFiltered] = useState(null);

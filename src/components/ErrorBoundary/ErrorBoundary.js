@@ -9,7 +9,6 @@ function ErrorBoundary() {
   const navigate = useNavigate();
   const [showError, setShowError] = useState(false);
   const newErrorFromRedux = useSelector((state) => state.products.errorBoundaryString);
-  console.log(newErrorFromRedux);
   useEffect(() => {
     if (newErrorFromRedux) {
       setShowError(true);

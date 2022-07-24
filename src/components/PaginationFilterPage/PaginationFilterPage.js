@@ -33,7 +33,6 @@ function PaginationFilterPage(props) {
     dispatch(setFilterPaginationPage(event.selected));
   };
   return (
-    /* eslint-disable no-underscore-dangle */
     <>
       <div className={styles.filterItem}>
         {currentItems && currentItems.map((product) => (
@@ -64,7 +63,6 @@ function PaginationFilterPage(props) {
         activeLinkClassName={styles.activeLinkClassName}
       />
     </>
-    /* eslint-eneble no-underscore-dangle */
   );
 }
 

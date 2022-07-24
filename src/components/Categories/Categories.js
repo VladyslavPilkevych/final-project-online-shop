@@ -111,7 +111,7 @@ function Categories(props) {
   return (
     <div className={styles.categoriesWrapper}>
       <div className={styles.categories}>
-        <div className={styles.categorieImg} style={{ 'background-image': `url(${imageSrc})` }}>
+        <div className={styles.categorieImg} style={{ backgroundImage: `url(${imageSrc})` }}>
           <h3>{productsCategories}</h3>
           <div
             onClick={() => {
@@ -132,11 +132,9 @@ function Categories(props) {
                 className={styles.cardItemWrapper}
                 itemNo={elem.itemNo}
                 name={elem.name}
-                /* eslint-disable */
                 id={elem._id}
                 img={elem.imageUrls[0]}
                 key={elem._id}
-                /* eslint-enable */
                 currentPrice={elem.currentPrice}
                 quantity={50}
                 model={elem.model}
