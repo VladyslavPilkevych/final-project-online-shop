@@ -13,6 +13,7 @@ import { onHandleCart } from '../../store/actionCreators/cartAC';
 import Button from '../../components/Button/Button';
 import { getProduct } from '../../store/actionCreators/productsAC';
 import Advantages from '../../components/Advantages/Advantages';
+import numberWithSpaces from '../../utils/numberWithSpaces';
 
 import styles from './AboutProductPage.module.scss';
 
@@ -30,6 +31,10 @@ function AboutProductPage() {
 
   useEffect(() => {
     dispatch(getProduct(newLocation));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [newLocation[0]]);
 
   return (
@@ -44,6 +49,10 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
+          <p className={styles.costWrapper}>
+            Cost: $
+            {numberWithSpaces(product.currentPrice)}
+          </p>
           <Button
             type="button"
             className={styles.aboutProductCartBtn}
