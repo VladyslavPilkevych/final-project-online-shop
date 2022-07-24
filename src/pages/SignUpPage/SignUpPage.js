@@ -3,20 +3,16 @@ import React from 'react';
 
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { createNewCustomer } from '../../api/api';
 import { ToastNotification } from '../../utils/toastify';
 import styles from './SignUpPage.module.scss';
-import { addNewError } from '../../store/actionCreators/productsAC';
 
 function SignUpPage() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const initialValues = {
     firstName: '',

@@ -10,7 +10,6 @@ import { logInCustomer } from '../../api/api';
 import { setUserTokenAC, getUser } from '../../store/actionCreators/userAC';
 import { ToastNotification } from '../../utils/toastify';
 import styles from './AuthorizationPage.module.scss';
-import { addNewError } from '../../store/actionCreators/productsAC';
 
 function AuthorizationPage() {
   const navigate = useNavigate();
