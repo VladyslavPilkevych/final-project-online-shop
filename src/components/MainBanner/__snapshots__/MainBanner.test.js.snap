@@ -1,0 +1,318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot main baner should render Snapshot main baner is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="mainBanerWrapper"
+    >
+      <div
+        class="slick-slider slick-initialized"
+        dir="ltr"
+      >
+        <div
+          class="slick-arrow slick-prev"
+          role="button"
+          style="display: block; background: rgb(37, 41, 49); opacity: 0.5; border-radius: 0px 30px 30px 0px; left: 0px; z-index: 10; width: 32px; height: 32px; padding-top: 12px;"
+          tabindex="0"
+        />
+        <div
+          class="slick-list"
+        >
+          <div
+            class="slick-track"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+          >
+            <div
+              aria-hidden="true"
+              class="slick-slide slick-cloned"
+              data-index="-1"
+              style="width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="55555555555555555555555555"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Galaxy S22 Ultra
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      50% discount for SamsungGalaxy S22 Ultra
+                    </p>
+                    <a
+                      href="/products/20000006"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="false"
+              class="slick-slide slick-active slick-current"
+              data-index="0"
+              style="outline: none; width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="625312856ad189cceeb8b596"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Apple MacBook Air 13
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      50% discount for Apple MacBook
+                    </p>
+                    <a
+                      href="/products/40000023"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="slick-slide"
+              data-index="1"
+              style="outline: none; width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="11111111111111111111111111"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Apple Iphone 13 Max Pro
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      10% discount for Apple Iphone 13 Max Pro
+                    </p>
+                    <a
+                      href="/products/20000002"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="slick-slide"
+              data-index="2"
+              style="outline: none; width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="55555555555555555555555555"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Galaxy S22 Ultra
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      50% discount for SamsungGalaxy S22 Ultra
+                    </p>
+                    <a
+                      href="/products/20000006"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="slick-slide slick-cloned"
+              data-index="3"
+              style="width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="625312856ad189cceeb8b596"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Apple MacBook Air 13
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      50% discount for Apple MacBook
+                    </p>
+                    <a
+                      href="/products/40000023"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="slick-slide slick-cloned"
+              data-index="4"
+              style="width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="11111111111111111111111111"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Apple Iphone 13 Max Pro
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      10% discount for Apple Iphone 13 Max Pro
+                    </p>
+                    <a
+                      href="/products/20000002"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="slick-slide slick-cloned"
+              data-index="5"
+              style="width: 0px;"
+              tabindex="-1"
+            >
+              <div>
+                <div
+                  class="mainBannerElemWrapper"
+                  id="55555555555555555555555555"
+                  style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                >
+                  <div
+                    class="titleWrapper"
+                  >
+                    <h1
+                      class="banerTitle"
+                    >
+                      Galaxy S22 Ultra
+                    </h1>
+                    <p
+                      class="banerSubTitle"
+                    >
+                      50% discount for SamsungGalaxy S22 Ultra
+                    </p>
+                    <a
+                      href="/products/20000006"
+                    >
+                      <button
+                        class="bannerBtn btn btnWhite btnAnimate"
+                        type="button"
+                      >
+                        SHOP NOW
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="slick-arrow slick-next"
+          role="button"
+          style="display: block; background: rgb(37, 41, 49); opacity: 0.5; border-radius: 30px 0px 0px 30px; right: 0px; z-index: 10; width: 20px; height: 32px; padding: 13px 0px 1px 11px;"
+          tabindex="0"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

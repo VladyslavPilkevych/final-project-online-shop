@@ -1,11 +1,13 @@
 @import '../../assets/styles/global.module.scss';
 
+
+
 .advantagesWrapper {
     max-width: 1055px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    margin-top: 100px;
+    padding-top: 50px;
     column-gap: 5px;
 }
 
