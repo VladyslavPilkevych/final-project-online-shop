@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import styles from './CardItem.module.scss';
 import Button from '../Button/Button';
 
+// import { onHandleCart } from '../../store/actionCreators/cartAC';
+/* eslint-disable */
 import { onHandleCart } from '../../store/actionCreators/cartAC';
+/* eslint-enable */
 import numberWithSpaces from '../../utils/numberWithSpaces';
 
 import imageAddToFavIcon from '../../assets/images/CardItem/addToFavIcon.png';
