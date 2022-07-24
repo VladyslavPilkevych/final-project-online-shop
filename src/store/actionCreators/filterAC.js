@@ -51,7 +51,6 @@ export const getCategorieProducts = (url) => async (dispatch) => {
     })
     .catch((err) => {
       dispatch(addNewError(err));
-      // console.error(err);
     });
 };
 
