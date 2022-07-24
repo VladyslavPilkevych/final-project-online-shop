@@ -7,10 +7,9 @@ function AboutProductDetailsTabText(props) {
   const {
     product: {
       // eslint-disable-next-line max-len
-      name, model, capacity, storage, color, display, description, type, size, resolution, matrix, itemNo,
+      name, model, capacity, storage, display, description, type, size, resolution, matrix, itemNo,
     },
   } = props;
-  // console.log(name, model);
   return (
     <div>
       <h1 className={styles.productTitle}>
@@ -51,7 +50,6 @@ AboutProductDetailsTabText.propTypes = {
   model: PropTypes.string,
   capacity: PropTypes.string,
   storage: PropTypes.string,
-  color: PropTypes.string,
   display: PropTypes.string,
   description: PropTypes.string,
   itemNo: PropTypes.string,
@@ -63,7 +61,6 @@ AboutProductDetailsTabText.defaultProps = {
   model: '',
   capacity: '',
   storage: '',
-  color: '',
   display: '',
   description: '',
   itemNo: '',

@@ -1,4 +1,29 @@
 export function repackColorsForPage(array) {
+  if (!Array.isArray(array)) {
+    const newArr = array.split(',');
+    const colors = newArr.map((i) => {
+      if (i === 'silver' || i === 'space gray' || i === 'grey' || i === 'silver' || i === 'pure silver' || i === 'graphite' || i === 'phantom silver' || i === 'moonlight_silver') {
+        return 'gray';
+      }
+      if (i === 'charcoal black' || i === 'shale black' || i === 'shadow black' || i === 'Black') {
+        return 'black';
+      }
+      if (i === 'ceramic white') {
+        return 'white';
+      }
+      if (i === 'sierraBlue' || i === 'deep sea blue') {
+        return 'blue';
+      }
+      if (i === 'blush gold' || i === 'gold' || i === 'prestige gold' || i === 'sand') {
+        return '#FFD700';
+      }
+      if (i === 'lilac') {
+        return 'purple';
+      }
+      return i;
+    });
+    return [...new Set(colors)].sort();
+  }
   const colors = array.map((i) => {
     if (i.color === 'silver' || i.color === 'space gray' || i.color === 'grey' || i.color === 'silver' || i.color === 'pure silver' || i.color === 'graphite' || i.color === 'phantom silver' || i.color === 'moonlight_silver') {
       return 'gray';

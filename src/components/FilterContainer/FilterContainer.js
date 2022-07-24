@@ -1,19 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import styles from './FilterContainer.module.scss';
 import Button from '../Button/Button';
 import FilterPriceSlider from '../FilterPriceSlider/FilterPriceSlider';
 import FilterCreatorBrand from '../FilterCreatorBrand/FilterCreatorBrand';
-import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import swipeDown from '../../assets/icons/filterPage/swipeDown.png';
+import swipeUp from '../../assets/icons/filterPage/swipeUp.png';
 import { toggleFiltersCategories } from '../../store/actionCreators/filtersCategoriesAC';
 import FilterCreatorColor from '../FilterCreatorColor/FilterCreatorColor';
 import {
-  addFilterColor,
-  removeFilterColor,
   filterBrand,
   newFilterProducts,
   setMinSliderValue,
@@ -26,20 +22,23 @@ import { repackColorsForPage } from '../../utils/repackColor';
 function FilterContainer() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const filter = useSelector((state) => state.filter);
   const {
     filterByColor,
     filterByBrand,
-    filterPriceSliderValues,
     filterCategoryProducts,
     priceSliderValues,
   } = useSelector((state) => state.filter);
-  const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(false);
-  const [filterPrice, setFilterPrice] = useState(false);
-  const [isOpenFilterColor, setIsOpenFilterColor] = useState(false);
+  const [isOpenFilterBrands, setIsOpenFilterBrands] = useState(true);
+  const [filterPrice, setFilterPrice] = useState(true);
+  const [isOpenFilterColor, setIsOpenFilterColor] = useState(true);
   const [brandsFiltered, setBrandsFiltered] = useState(null);
   const [colorsFiltered, setColorsFiltered] = useState(null);
 
+  useEffect(() => {
+    setIsOpenFilterBrands(true);
+    setFilterPrice(true);
+    setIsOpenFilterColor(true);
+  }, [location.pathname.split('/')[2]]);
   useEffect(() => {
     if (filterCategoryProducts) {
       const brands = filterCategoryProducts.map((i) => i.name);
@@ -47,6 +46,18 @@ function FilterContainer() {
       setColorsFiltered(repackColorsForPage(filterCategoryProducts));
     }
   }, [filterCategoryProducts]);
+  const applyFilterFn = () => {
+    const filterCreators = {
+      categories: location.pathname.split('/')[2],
+      color: filterByColor,
+      name: filterByBrand,
+      minPrice: priceSliderValues.min,
+      maxPrice: priceSliderValues.max,
+    };
+    dispatch(toggleFiltersCategories(false));
+    dispatch(newFilterProducts(filterCreators));
+    dispatch(setFilterPaginationPage(0));
+  };
   const clearFilterFn = () => {
     const priceArray = filterCategoryProducts.map(
       (item) => item.currentPrice,
@@ -55,20 +66,15 @@ function FilterContainer() {
     dispatch(setMaxSliderValue(priceArray[priceArray.length - 1]));
     dispatch(filterBrand([]));
     dispatch(clearFilterColor(null));
-    console.log('work');
-  };
-  const applyFilterFn = () => {
-    const filterCreators = {
+    const clearFilterCreators = {
       categories: location.pathname.split('/')[2],
-      color: filterByColor,
-      name: filterByBrand,
-      currentPrice: {
-        min: priceSliderValues.min,
-        max: priceSliderValues.max,
-      },
+      color: [],
+      name: [],
+      minPrice: priceArray[0],
+      maxPrice: priceArray[priceArray.length - 1],
     };
     dispatch(toggleFiltersCategories(false));
-    dispatch(newFilterProducts(filterCreators));
+    dispatch(newFilterProducts(clearFilterCreators));
     dispatch(setFilterPaginationPage(0));
   };
   function closeFiltersMenuOnPhone() {
@@ -113,7 +119,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Brands</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {isOpenFilterBrands
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {isOpenFilterBrands && brandsFiltered
           && <FilterCreatorBrand brandsFiltered={brandsFiltered} />}
@@ -126,7 +134,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Price</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {filterPrice
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {filterPrice
           && (
@@ -141,7 +151,9 @@ function FilterContainer() {
           className={styles.twiceItems}
         >
           <p className={styles.categoryName}>Color</p>
-          <img src={swipeDown} className={styles.swiper} alt="swipeDown" />
+          {isOpenFilterColor
+            ? <img src={swipeUp} className={styles.swiper} alt="swipeUp" />
+            : <img src={swipeDown} className={styles.swiper} alt="swipeDown" />}
         </div>
         {isOpenFilterColor
           && (

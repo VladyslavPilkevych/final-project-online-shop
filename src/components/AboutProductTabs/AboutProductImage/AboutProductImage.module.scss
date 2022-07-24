@@ -18,13 +18,25 @@
 
 .imgmin {
   width: 30px;
-  // height: 30px;
 }
 
-ul {
-  // display: flex !important;
-  // justify-content: space-between !important;
-  align-items: center;
+.imageWrapper ul {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+@media screen and (max-width: 768px) {
+  .imgWrapper {
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .imageWrapper ul {
+  display: none !important;
+  }
 }
 
 .ftSlickDots {
@@ -33,6 +45,12 @@ ul {
 
 ul.slick-dots li {
   height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  ul.slick-dots.slick-thumb {
+    display: none !important;
+  }
 }
 
 .slick-track {

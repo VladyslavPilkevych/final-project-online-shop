@@ -1,6 +1,6 @@
 @import "../../assets/styles/global.module.scss";
 
-@mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
+@mixin fonts($font-family, $color, $bold: 700, $size: 16px) {
     font-family: $font-family, sans-serif;
     font-weight: $bold;
     font-size: $size;
@@ -23,11 +23,14 @@
     margin: 55px auto;
     justify-content: center;
     li {
+        cursor: pointer;
+        margin: 0 5px;
         a {
-            @include fonts("Poppins", 13px, $dark-grey-text, 600);
-            padding: 8px 16px;
+            @include fonts("Poppins", $dark-grey-text, 600);
+            padding: 8px 14px;
             border: 2px solid $dark-grey-text;
             border-radius: 50%;
+            width: 15px;
         }
     }
 }
@@ -37,7 +40,7 @@
     background-color: $bg-white-color;
 }
 .noItems {
-    @include fonts("Poppins", 26px, $black, 600);
+    @include fonts("Poppins", $black, 600, 26px);
     text-align: center;
     margin-top: 10%;
 }

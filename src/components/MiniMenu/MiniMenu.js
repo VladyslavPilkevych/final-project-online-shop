@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 import { ReactComponent as LogoIcon } from '../../assets/icons/Logo.svg';
 import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
@@ -10,12 +11,15 @@ import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
 import styles from './MiniMenu.module.scss';
 
 function MiniMenu({ items }) {
-  const { header, className, style } = items;
+  const { style } = items;
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const isOpenMiniMenu = useSelector((state) => state.miniMenu.isOpenMiniMenu);
-  const dispatch = useDispatch();
+
   if (!isOpenMiniMenu) return null;
+
   const closeMenu = () => {
     dispatch(toggleMiniMenu(false));
   };
@@ -46,12 +50,10 @@ function MiniMenu({ items }) {
 
 MiniMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  className: PropTypes.string,
   style: PropTypes.object,
 };
 
 MiniMenu.defaultProps = {
-  className: '',
   style: {},
 };
 export default MiniMenu;

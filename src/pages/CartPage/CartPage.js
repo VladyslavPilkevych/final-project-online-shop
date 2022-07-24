@@ -16,10 +16,9 @@ function CartPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const dataCart = useSelector((state) => state.cart.dataCart);
-  const cartItem = dataCart || [];
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
 
-  const totalPrice = (parseInt(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0), 10));
+  const totalPrice = (parseInt(dataCart.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0), 10));
   const orderPrice = numberWithSpaces(totalPrice + (totalPrice * 0.1) + 21);
   return (
     <section>

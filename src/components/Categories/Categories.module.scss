@@ -55,31 +55,33 @@
     .categorieImg {
         width: 20%;
     }
+    .categorieImg h3 {
+        font-size: 24px;
+    }
     .categoriesSliderWrapper {
         width: 80%;
     }
 }
 @media (max-width: 768px) {
-    // .categories {
-    //     // grid-template-columns: 1fr 3fr;
-    //     // .categorieImg {
-    //     //     flex-basis: 25%;
-    //     // }
-    //     // .categorieSlider {
-    //     //     flex-basis: 75%;
-    //     // }
-    // }
     .categorieImg {
         width: 25%;
+    }
+    .categorieImg h3 {
+        font-size: 20px;
     }
     .categoriesSliderWrapper {
         width: 75%;
     }
 }
-@media (max-width: 376px) {
+@media (max-width: 550px) {
+    .categorieImg h3 {
+        font-size: 16px;
+    }
+}
+@media (max-width: 425px) {
     .categories {
         display: block;
-        margin: 0 10px;
+        // margin: 0 10px;
         .categorieImg {
             width: 100%;
             height: 82px;

@@ -30,7 +30,7 @@ export function logInCustomer(loginValues) {
   return api.post(`${BASE_URL}/customers/login`, loginValues);
 }
 
-export function getUserData(tokenUser) {
+export function getUserData() {
   return api.get(`${BASE_URL}/customers/customer`);
 }
 export function createNewCart(newCart) {
