@@ -30,6 +30,10 @@ function AboutProductPage() {
 
   useEffect(() => {
     dispatch(getProduct(newLocation));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [newLocation[0]]);
 
   return (

@@ -20,7 +20,7 @@ function MiniCart() {
 
   const cartItem = dataCart || [];
 
-  const totalPrice = numberWithSpaces(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0));
+  const totalPrice = numberWithSpaces(cartItem?.map((item) => item?.product?.currentPrice * item?.cartQuantity).reduce((acc, value) => acc + value, 0));
 
   if (!isOpenCart) return null;
 
@@ -29,7 +29,7 @@ function MiniCart() {
   };
 
   const onDeleteFromCart = (productId) => {
-    if (cartItem.map((item) => item.product._id === productId)) {
+    if (cartItem?.map((item) => item?.product._id === productId)) {
       dispatch(deleteFromCart(productId));
     }
   };
@@ -56,32 +56,32 @@ function MiniCart() {
         </div>
         <div className={styles.miniCartContent} role="button" tabIndex="0" onClick={(e) => e.stopPropagation()}>
           <ul>
-            {cartItem.map((item) => (
-              <li key={item._id}>
+            {cartItem?.map((item) => (
+              <li key={item?._id}>
                 <div className={styles.miniCartContentwrapper}>
                   <div>
                     <p className={styles.miniCartQuantity}>
-                      {item.cartQuantity}
+                      {item?.cartQuantity}
                       <span>x</span>
                     </p>
                   </div>
                   {cartItem && (
                     <div
                       onClick={() => {
-                        navigate(`/products/${item.product.itemNo}`);
+                        navigate(`/products/${item?.product?.itemNo}`);
                         dispatch(toggleCart(!isOpenCart));
                       }}
                       role="button"
                       tabIndex="0"
                     >
-                      <Image className={styles.imageInCart} src={item.product.imageUrls[0]} alt={item.product.name + item.product.model} />
+                      <Image className={styles.imageInCart} src={item?.product?.imageUrls[0]} alt={item?.product?.name + item?.product?.model} />
                     </div>
                   )}
                   <div>
-                    <p className={styles.miniCartDescription}>{item.product.description}</p>
+                    <p className={styles.miniCartDescription}>{item?.product?.description}</p>
                   </div>
                   <div>
-                    <CloseCartIcon onClick={() => onDeleteFromCart(item.product._id)} />
+                    <CloseCartIcon onClick={() => onDeleteFromCart(item?.product?._id)} />
                   </div>
                 </div>
               </li>

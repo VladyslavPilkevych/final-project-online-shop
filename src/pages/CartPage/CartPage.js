@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,13 +14,21 @@ import styles from './CartPage.module.scss';
 
 function CartPage() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const dataCart = useSelector((state) => state.cart.dataCart);
+
+  const dispatch = useDispatch();
+
   const cartItem = dataCart || [];
 
-  const totalPrice = (parseInt(cartItem.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0), 10));
-  const orderPrice = numberWithSpaces(totalPrice + (totalPrice * 0.1) + 21);
+  const totalPrice = parseInt(
+    cartItem?.map((item) => item?.product?.currentPrice * item?.cartQuantity).reduce((acc, value) => acc + value, 0),
+    10,
+  );
+
+  useEffect(() => {}, [dataCart]);
+
+  const orderPrice = numberWithSpaces(totalPrice + totalPrice * 0.1 + 21);
   return (
     <section>
       <div className={styles.cartWrapper}>
@@ -41,12 +49,24 @@ function CartPage() {
                 <p>Subtotal</p>
               </div>
             </div>
-            <CartItem />
+            {dataCart.map((item, index) => (
+              <ul key={item?.model || item?.model}>
+                <CartItem data={item} key={item?._id || item?.id} />
+              </ul>
+            ))}
+            ;
             <div className={styles.CartButtonWrapper}>
               <button className={styles.CartButtonShopping} type="button" onClick={() => navigate({ pathname: '/' })}>
                 Continue Shopping
               </button>
-              <button className={styles.CartButtonClearCart} type="button" onClick={() => { dispatch(deleteAllCart()); window.scrollTo(0, 0); }}>
+              <button
+                className={styles.CartButtonClearCart}
+                type="button"
+                onClick={() => {
+                  dispatch(deleteAllCart());
+                  window.scrollTo(0, 0);
+                }}
+              >
                 Clear Shopping Cart
               </button>
             </div>
