@@ -32,12 +32,7 @@ const cartReducer = (state = initialState, { type, payload } = {}) => {
       return { ...state, dataCart: [] };
     }
     case EDIT_CART: {
-      const newState = [...state.dataCart];
-      const index = newState.findIndex((item) => item.product._id === payload.product._id);
-      console.log('index', index);
-      newState[index].cartQuantity = payload.cartQuantity;
-      console.log('newState', newState);
-      return { ...state, dataCart: newState };
+      return { ...state, dataCart: payload };
     }
     case REMOVE_USER_DATA: {
       return { ...state, dataCart: [] };
