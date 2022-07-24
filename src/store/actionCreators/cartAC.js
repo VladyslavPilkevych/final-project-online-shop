@@ -60,25 +60,26 @@ export const addToCart = (productId) => async (dispatch) => {
 };
 export const editCart = (productId, quantity) => async (dispatch, getState) => {
   const state = getState();
-  if (state.user.user !== null) {
-    const tempState = state.cart.dataCart.find((item) => item.product._id === productId).cartQuantity;
-    if (quantity > tempState) {
-      const cartData = await api.editCart(productId);
-      const updatedCart = {
-        products: [
-          {
-            product: productId,
-            cartQuantity: quantity,
-          },
-        ],
+  if (state.user.token !== null) {
+    const products = state.cart.dataCart.map((elem) => {
+      if (elem.product._id === productId) {
+        return {
+          product: elem.product?._id || elem.product?.id,
+          cartQuantity: Number(quantity),
+        };
+      }
+      return {
+        product: elem.product?._id || elem.product?.id,
+        cartQuantity: elem.cartQuantity,
       };
-      dispatch({ type: EDIT_CART, payload: cartData.data.products });
-    } else {
-      const cartData = await api.decreaseProductQuantity(productId);
-      dispatch({ type: EDIT_CART, payload: cartData.data.products });
-    }
+    });
+    const updatedCart = {
+      products,
+    };
+    const cartData = await api.editCart(updatedCart);
+    dispatch({ type: EDIT_CART, payload: cartData.data.products });
   } else {
-    const tempState = state.cart.dataCart.find((item) => item.product.id === productId).cartQuantity;
+    const tempState = state.cart.dataCart.find((item) => item.product.id === productId)?.cartQuantity;
     const index = state.cart.dataCart.findIndex((elem) => elem.product.id === productId);
     if (quantity > tempState) {
       const newLocalData = [...state.cart.dataCart];

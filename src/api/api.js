@@ -53,8 +53,8 @@ export function deleteFromCart(productId) {
   return api.delete(`${BASE_URL}/cart/${productId}`);
 }
 
-export function editCart(productId, updatedCart) {
-  return api.put(`${BASE_URL}/cart/${productId}`, updatedCart);
+export function editCart(updatedCart) {
+  return api.put(`${BASE_URL}/cart`, updatedCart);
 }
 
 export function decreaseProductQuantity(productId) {

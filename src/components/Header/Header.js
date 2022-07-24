@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleMenu } from '../../store/actionCreators/menuAC';
 import { toggleSearch, searchProducts } from '../../store/actionCreators/searchAC';
-import { toggleCart, getCart } from '../../store/actionCreators/cartAC';
+import { toggleCart, getCart, editCart } from '../../store/actionCreators/cartAC';
 import { GET_CART } from '../../store/actions/cartActions';
 import { toggleMiniMenu } from '../../store/actionCreators/miniMenuAC';
 
@@ -59,7 +59,17 @@ function Header() {
 
   useEffect(() => {
     if (token) {
-      dispatch(getCart());
+      const cartDataFromLS = JSON.parse(localStorage?.getItem('cart')) || [];
+      const products = cartDataFromLS.map((elem) => {
+        return {
+          product: elem.product.id,
+          cartQuantity: elem.cartQuantity,
+        };
+      });
+      const updatedCart = {
+        products,
+      };
+      dispatch(editCart(updatedCart));
     } else {
       const cartData = JSON.parse(localStorage.getItem('cart')) || [];
       dispatch({ type: GET_CART, payload: cartData });

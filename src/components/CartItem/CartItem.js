@@ -3,6 +3,7 @@
 import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useDebouncedCallback } from 'use-debounce';
 
 import { deleteFromCart, editCart } from '../../store/actionCreators/cartAC';
 
@@ -35,7 +36,11 @@ function CartItem() {
                 <div className={styles.cartItem}>
                   <NavLink to={`/products/${item.product.itemNo}`}>
                     <div>
-                      <img src={Array.isArray(item.product.imageUrls) ? item.product.imageUrls[0] : item.product.img} alt={item.product.name + item.product.model} className={styles.cartItemImage} />
+                      <img
+                        src={Array.isArray(item.product.imageUrls) ? item.product.imageUrls[0] : item.product.img}
+                        alt={item.product.name + item.product.model}
+                        className={styles.cartItemImage}
+                      />
                     </div>
                   </NavLink>
                   <div>
@@ -62,12 +67,14 @@ function CartItem() {
                       min={1}
                       max={99}
                       value={item.cartQuantity}
-                      // onKeyPress={(event) => {
-                      //   if (!/[0-9]/.test(event.key)) {
-                      //     event.preventDefault();
-                      //   }
-                      // }}
-                      onChange={(e) => handleChange(e, item.product?._id || item.product.id)}
+                      onKeyPress={(event) => {
+                        if (!/[0-9]/.test(event.key)) {
+                          event.preventDefault();
+                        }
+                      }}
+                      onChange={(e) => {
+                        handleChange(e, item.product?._id || item.product.id);
+                      }}
                     />
                   </div>
                   <div className={styles.cartItemContent}>
