@@ -34,7 +34,7 @@ function AuthorizationPage() {
   };
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email('It`s not looks like email').required('Required data'),
+    loginOrEmail: yup.string().email('It`s not looks like email').required('Required data'),
     password: yup.string().required('Required data').min(7, 'Password should be at least 7 characters'),
   });
 
@@ -48,7 +48,7 @@ function AuthorizationPage() {
           <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
               <p className={styles.inputLabel}>Email*</p>
-              <CustomInput name="email" type="text" placeholder="Email" />
+              <CustomInput name="loginOrEmail" type="text" placeholder="Email" />
               <p className={styles.inputLabel}>Password*</p>
               <CustomInput name="password" type="password" placeholder="Password" />
               <div>
