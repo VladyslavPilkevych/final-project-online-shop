@@ -16,6 +16,5 @@ describe('More information should open, after click on arrow', () => {
     configure({ testIdAttribute: 'id' });
     userEvent.click(screen.getByTestId(1));
     expect(screen.getByText('Information')).toBeInTheDocument();
-    screen.debug();
   });
 });
