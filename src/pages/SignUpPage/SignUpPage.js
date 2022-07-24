@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { createNewCustomer } from '../../api/api';

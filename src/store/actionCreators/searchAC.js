@@ -1,5 +1,6 @@
 import { TOGGLE_SEARCH, PRODUCTS_SEARCH } from '../actions/searchActions';
 import { searchProductsApi } from '../../api/api';
+import { addNewError } from './productsAC';
 
 export const toggleSearch = (value) => ({ type: TOGGLE_SEARCH, payload: value });
 
@@ -11,6 +12,6 @@ export const searchProducts = (searchPhrases) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.error(err);
+      dispatch(addNewError(err));
     });
 };
