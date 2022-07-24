@@ -1,5 +1,4 @@
 export function repackColorsForPage(array) {
-  console.log(array);
   if (!Array.isArray(array)) {
     const newArr = array.split(',');
     const colors = newArr.map((i) => {
@@ -23,7 +22,6 @@ export function repackColorsForPage(array) {
       }
       return i;
     });
-    console.log([...new Set(colors)]);
     return [...new Set(colors)].sort();
   }
   const colors = array.map((i) => {

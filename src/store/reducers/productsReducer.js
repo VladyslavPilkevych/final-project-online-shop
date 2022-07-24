@@ -1,8 +1,11 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCT, GET_PRODUCT_FAILED } from '../actions/productsActions';
+import {
+  GET_ALL_PRODUCTS, GET_PRODUCT, NEW_ERROR, GET_PRODUCT_FAILED,
+} from '../actions/productsActions';
 
 const initialValues = {
   products: [],
   activeProduct: '',
+  errorBoundaryString: null,
   error: '',
 };
 
@@ -14,6 +17,10 @@ const productsReducer = (state = initialValues, { type, payload } = {}) => {
     }
     case GET_PRODUCT: {
       const tempState = { ...state, activeProduct: payload };
+      return tempState;
+    }
+    case NEW_ERROR: {
+      const tempState = { ...state, errorBoundaryString: payload };
       return tempState;
     }
     case GET_PRODUCT_FAILED: {

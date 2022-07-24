@@ -13,19 +13,20 @@ import { onHandleCart } from '../../store/actionCreators/cartAC';
 import Button from '../../components/Button/Button';
 import { getProduct } from '../../store/actionCreators/productsAC';
 import Advantages from '../../components/Advantages/Advantages';
+import numberWithSpaces from '../../utils/numberWithSpaces';
 
 import styles from './AboutProductPage.module.scss';
 
 function AboutProductPage() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
   const [activeTab, setActiveTab] = useState('tab1');
   const product = useSelector((state) => state.products.activeProduct);
-  const dispatch = useDispatch();
-
   const handleToggleTab = (value) => {
     setActiveTab(value);
   };
 
-  const location = useLocation();
   const newLocation = location.pathname.split('/').slice(-1);
 
   useEffect(() => {
@@ -48,11 +49,15 @@ function AboutProductPage() {
           </li>
         </ul>
         <div className={styles.aboutProductCartBtnWrapper}>
+          <p className={styles.costWrapper}>
+            Cost: $
+            {numberWithSpaces(product.currentPrice)}
+          </p>
           <Button
             type="button"
             className={styles.aboutProductCartBtn}
-            onClick={() => {
-              dispatch(onHandleCart(product._id));
+            handleClick={() => {
+              dispatch(onHandleCart(product._id, { ...product, id: product._id }));
             }}
           >
             {' Add to Cart'}

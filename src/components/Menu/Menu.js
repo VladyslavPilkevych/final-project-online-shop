@@ -12,11 +12,12 @@ import { ReactComponent as CloseIcon } from '../../assets/icons/closeIcon.svg';
 import styles from './Menu.module.scss';
 
 function Menu({ items }) {
-  const { header, className, style } = items;
+  const { style } = items;
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const isOpen = useSelector((state) => state.menu.isOpen);
-  const dispatch = useDispatch();
 
   const closeMenu = () => {
     dispatch(toggleMenu(false));
@@ -52,12 +53,10 @@ function Menu({ items }) {
 
 Menu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  className: PropTypes.string,
   style: PropTypes.object,
 };
 
 Menu.defaultProps = {
-  className: '',
   style: {},
 };
 export default Menu;

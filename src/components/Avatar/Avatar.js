@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -9,8 +9,9 @@ import { removeUserDataAC } from '../../store/actionCreators/userAC';
 import styles from './Avatar.module.scss';
 
 function Avatar() {
-  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.user);
 
   return (
     <div>
@@ -25,4 +26,4 @@ function Avatar() {
   );
 }
 
-export default Avatar;
+export default memo(Avatar);

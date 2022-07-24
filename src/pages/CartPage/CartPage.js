@@ -15,20 +15,10 @@ import styles from './CartPage.module.scss';
 function CartPage() {
   const navigate = useNavigate();
 
-  const dataCart = useSelector((state) => state.cart.dataCart);
+  const dataCart = useSelector((state) => state.cart.dataCart) || [];
 
-  const dispatch = useDispatch();
-
-  const cartItem = dataCart || [];
-
-  const totalPrice = parseInt(
-    cartItem?.map((item) => item?.product?.currentPrice * item?.cartQuantity).reduce((acc, value) => acc + value, 0),
-    10,
-  );
-
-  useEffect(() => {}, [dataCart]);
-
-  const orderPrice = numberWithSpaces(totalPrice + totalPrice * 0.1 + 21);
+  const totalPrice = (parseInt(dataCart.map((item) => item.product.currentPrice * item.cartQuantity).reduce((acc, value) => acc + value, 0), 10));
+  const orderPrice = numberWithSpaces(totalPrice + (totalPrice * 0.1) + 21);
   return (
     <section>
       <div className={styles.cartWrapper}>

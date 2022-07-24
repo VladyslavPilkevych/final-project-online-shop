@@ -16,6 +16,7 @@ import {
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
 import { repackColorsForServer } from '../../utils/repackColor';
+import { addNewError } from './productsAC';
 
 export const filterCategory = (data) => ({ type: FILTER_CATEGORY, payload: data });
 export const clearFilter = () => ({ type: CLEAR_FILTER });
@@ -37,7 +38,7 @@ export const filterProducts = (data) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addNewError(err));
     });
 };
 
@@ -49,16 +50,14 @@ export const getCategorieProducts = (url) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.error(err);
+      dispatch(addNewError(err));
+      // console.error(err);
     });
 };
 
 export const newFilterProducts = (data) => async (dispatch) => {
-  console.log('search new products');
   const dataFilters = [`?categories=${data.categories}`];
   if (data.color && data.color.length !== 0) {
-  // if (data.color.length !== 0) {
-    // console.log(data.color);
     if (!Array.isArray(data.color)) {
       const dataColor = `&color=${data.color}`;
       dataFilters.push(dataColor);
@@ -72,8 +71,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
       const dataBrand = `&name=${data.name}`;
       dataFilters.push(dataBrand);
     } else {
-      console.log(data.name);
-      console.log(data.name.join());
       const dataBrand = `&name=${data.name.join()}`;
       dataFilters.push(dataBrand);
     }
@@ -84,8 +81,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
     const dataMaxPrice = `&maxPrice=${data.maxPrice}`;
     dataFilters.push(dataMaxPrice);
   }
-  console.log(dataFilters);
-  console.log(dataFilters.join(''));
   dispatch(setURL(dataFilters.join('')));
   await getFilteredProductsApi(dataFilters.join(''))
     .then((rsp) => {
@@ -94,6 +89,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addNewError(err));
     });
 };

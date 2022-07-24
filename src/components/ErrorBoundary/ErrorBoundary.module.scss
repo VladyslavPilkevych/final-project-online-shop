@@ -1,0 +1,49 @@
+@import '../../assets/styles/global.module.scss';
+
+.errorWrapper {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  z-index: 999;
+  background-color: white;
+  margin: 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.errorMainText {
+  font-family: $fonts;
+  font-weight: 600;
+  font-size: 38px;
+  margin: 20px 0;
+}
+
+.errorMessage {
+  font-family: $fonts;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.errorImage {
+  margin: 20px 0;
+  max-width: 70%;
+  max-height: 60%;
+}
+
+.errorBtns {
+  display: block;
+  margin: 0 auto;
+}
+
+.errorBtn {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 50px;
+  background-color: $blue;
+  color: white;
+  font-family: $fonts;
+  font-weight: 400;
+  font-size: 18px;
+  cursor: pointer;
+}
