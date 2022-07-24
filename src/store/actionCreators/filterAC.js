@@ -16,6 +16,7 @@ import {
 } from '../actions/filterActions';
 import { getFilteredProductsApi } from '../../api/api';
 import { repackColorsForServer } from '../../utils/repackColor';
+import { addNewError } from './productsAC';
 
 export const filterCategory = (data) => ({ type: FILTER_CATEGORY, payload: data });
 export const clearFilter = () => ({ type: CLEAR_FILTER });
@@ -37,7 +38,7 @@ export const filterProducts = (data) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.error(err);
+      dispatch(addNewError(err));
     });
 };
 
@@ -49,7 +50,7 @@ export const getCategorieProducts = (url) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.error(err);
+      dispatch(addNewError(err));
     });
 };
 
@@ -87,6 +88,6 @@ export const newFilterProducts = (data) => async (dispatch) => {
       }
     })
     .catch((err) => {
-      console.error(err);
+      dispatch(addNewError(err));
     });
 };

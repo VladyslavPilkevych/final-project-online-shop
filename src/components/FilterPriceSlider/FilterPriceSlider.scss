@@ -24,7 +24,6 @@
 .rc-slider-track {
     position: absolute;
     height: 4px;
-    /* background-color: tint(#2db7f5,60%); */
     background-color: $blue;
     border-radius: 6px;
 }
@@ -34,7 +33,6 @@
     height: 14px;
     margin-top: -5px;
     background-color: $blue;
-    // border: solid 2px tint(#2db7f5,50%);
     border: solid 2px $blue;
     border-radius: 50%;
     cursor: pointer;

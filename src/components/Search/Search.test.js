@@ -2,9 +2,7 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/react-in-jsx-scope */
-import {
-  getByDisplayValue, getByPlaceholderText, render, screen,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider, useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -31,9 +29,7 @@ const OpenButton = () => {
     dispatch(toggleSearch(true));
   };
 
-  return (
-    <button onClick={toggleOpen}>Open</button>
-  );
+  return <button onClick={toggleOpen}>Open</button>;
 };
 
 const CloseButton = () => {
@@ -42,9 +38,7 @@ const CloseButton = () => {
     dispatch(toggleSearch(false));
   };
 
-  return (
-    <button onClick={toggleClose}>Close</button>
-  );
+  return <button onClick={toggleClose}>Close</button>;
 };
 
 const SearchButton = () => {
@@ -52,9 +46,7 @@ const SearchButton = () => {
   const searchForProduct = () => {
     dispatch(searchProducts('Apple'));
   };
-  return (
-    <button onClick={searchForProduct}>Search</button>
-  );
+  return <button onClick={searchForProduct}>Search</button>;
 };
 
 describe('Snapshot search with button', () => {
