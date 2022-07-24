@@ -23,6 +23,7 @@
     margin: 55px auto;
     justify-content: center;
     li {
+        cursor: pointer;
         margin: 0 5px;
         a {
             @include fonts("Poppins", $dark-grey-text, 600);
