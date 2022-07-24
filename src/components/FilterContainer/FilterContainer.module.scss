@@ -72,7 +72,6 @@ li {
 .brandsCheckbox {
     margin: 4px 10px 10px 0;
 }
-// ----------------------colors-----------------------------
 .colorsItems {
     width: 30px;
     height: 30px;
@@ -83,30 +82,13 @@ li {
     cursor: pointer;
     border: none;
 }
-.redColor {
-    background-color: red;
-}
-.blackColor {
-    background-color: $black;
-}
-.grayColor {
-    background-color: gray;
-}
-.whiteColor {
-    background-color: $white;
-    border: 1px solid black;
-}
-// ----------------------end-colors-----------------------------
-// @media (max-width: 427px) {
 @media (max-width: 550px) {
     .filterCreator {
-        // position: absolute;
         position: fixed; 
         overflow-y: scroll;
         top: 0;
         left: 0;
         width: 100%;
-        // height: 100%;
         height: 100vh;
         z-index: 23;
         margin: 0;

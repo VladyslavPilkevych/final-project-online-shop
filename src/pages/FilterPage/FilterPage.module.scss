@@ -68,7 +68,6 @@
         flex-basis: 80%;
     }
 }
-// @media (min-width: 426px) and (max-width: 768px) {
 @media (min-width: 550px) and (max-width: 768px) {
     .filterCreator {
         flex-basis: 25%;
@@ -77,7 +76,6 @@
         flex-basis: 75%;
     }
 }
-// @media (max-width: 427px) {
 @media (max-width: 550px) {
     .topImg {
         display: none;

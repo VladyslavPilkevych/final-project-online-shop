@@ -44,14 +44,8 @@
 .categoriesSliderWrapper {
     width: 83%;
 }
-// .categorieSlider {
-//     width: 100%;
-// }
 
 @media (max-width: 1024px) {
-    // .categories {
-    //     // grid-template-columns: 1fr 4fr;
-    // }
     .categorieImg {
         width: 20%;
     }
@@ -81,7 +75,6 @@
 @media (max-width: 425px) {
     .categories {
         display: block;
-        // margin: 0 10px;
         .categorieImg {
             width: 100%;
             height: 82px;

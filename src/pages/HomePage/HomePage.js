@@ -8,7 +8,11 @@ import Posts from '../../components/Posts/Posts';
 import { getAllProducts } from '../../store/actionCreators/productsAC';
 import styles from './HomePage.module.scss';
 import Advantages from '../../components/Advantages/Advantages';
-import SearchedProductsPage from '../SearchedProductsPage/SearchedProductsPage';
+
+import imgCategoryLaptop from '../../assets/images/Categories/imgCategory1.png';
+import imgCategoryHeadphones from '../../assets/images/Categories/imgCategory2.png';
+import imgCategoryPhones from '../../assets/images/Categories/imgCategory3.png';
+import imgCategoryMonitor from '../../assets/images/Categories/imgCategory4.png';
 
 function HomePage() {
   const allProducts = useSelector((state) => state.products);
@@ -26,10 +30,10 @@ function HomePage() {
     <div className={styles.homePage}>
       <MainBaner />
       <NewProductsContainer />
-      <Categories imageSrc="./images/imgCategory1.png" productsCategories="laptop" />
-      <Categories imageSrc="./images/imgCategory2.png" productsCategories="headphones" />
-      <Categories imageSrc="./images/imgCategory3.png" productsCategories="phones" />
-      <Categories imageSrc="./images/imgCategory4.png" productsCategories="monitor" />
+      <Categories imageSrc={imgCategoryLaptop} productsCategories="laptop" />
+      <Categories imageSrc={imgCategoryHeadphones} productsCategories="headphones" />
+      <Categories imageSrc={imgCategoryPhones} productsCategories="phones" />
+      <Categories imageSrc={imgCategoryMonitor} productsCategories="monitor" />
       <Companies />
       <Posts />
       <Advantages />
