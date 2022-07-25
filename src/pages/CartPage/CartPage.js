@@ -40,12 +40,7 @@ function CartPage() {
                 <p>Subtotal</p>
               </div>
             </div>
-            {dataCart.map((item) => (
-              <ul key={item?.model || item?.model}>
-                <CartItem data={item} key={item?._id || item?.id} />
-              </ul>
-            ))}
-            ;
+            <CartItem />
             <div className={styles.CartButtonWrapper}>
               <button className={styles.CartButtonShopping} type="button" onClick={() => navigate({ pathname: '/' })}>
                 Continue Shopping
