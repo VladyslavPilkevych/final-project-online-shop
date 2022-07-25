@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
