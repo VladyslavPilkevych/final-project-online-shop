@@ -63,6 +63,9 @@ function CardItem(props) {
       </Link>
       <Link className={styles.linksToCardPage} to={`/products/${itemNo}`}>
         <h2 className={styles.productModel}>{model}</h2>
+        {/*eslint-disable*/}
+        {/* <h2 className={styles.productModel}>Apple Apple Pro Display XDR - Nano-texture Glass Apple Apple Pro Display XDR - Nano-texture Glass</h2> */}
+        {/* <h2 className={styles.productModel}>qweqweio ioe qiehqiu eyqiuqey qoegqouqwi eytqoe qouwetq oqygwqt qgwuitq qyfy</h2> */}
       </Link>
       {previousPrice !== 0 && <span className={styles.previousPrice}>{previousPrice}</span>}
       <span className={styles.price}>
