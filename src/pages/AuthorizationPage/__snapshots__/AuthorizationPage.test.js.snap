@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot AuthorizationPage should render Snapshot AuthorizationPage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="authorizationPageWrapper"
+  >
+    <h1
+      class="mainTitle"
+    >
+      Customer login
+    </h1>
+    <div
+      class="authorizationPageBlocksPageWrapper"
+    >
+      <div
+        class="authorizationBlockWrapper"
+      >
+        <h2
+          class="customersBlocksTitle"
+        >
+          Registered Customers
+        </h2>
+        <p
+          class="customersBlocksSubtitle"
+        >
+          If you have an account, sign in with your login or email address
+        </p>
+        <form
+          action="#"
+        >
+          <p
+            class="inputLabel"
+          >
+            Email*
+          </p>
+          <input
+            class="customInput"
+            name="loginOrEmail"
+            placeholder="Email"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Password*
+          </p>
+          <input
+            class="customInput"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div>
+            <button
+              class="signInButton"
+              type="submit"
+            >
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        class="authorizationBlockWrapper signUpBlockWrapper"
+      >
+        <h2
+          class="customersBlocksTitle"
+        >
+          New Customer?
+        </h2>
+        <p
+          class="customersBlocksSubtitle"
+        >
+          Creating an account has many benefits.
+        </p>
+        <ul
+          class="signUpBlockList"
+        >
+          <li>
+            Check out faster
+          </li>
+          <li>
+            Keep more than one address
+          </li>
+          <li>
+            Track orders and more
+          </li>
+        </ul>
+        <a
+          href="/sign-up"
+        >
+          <button
+            class="signInButton"
+            type="button"
+          >
+            Create an account
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;

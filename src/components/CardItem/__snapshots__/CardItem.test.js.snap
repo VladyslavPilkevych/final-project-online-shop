@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot CardItem should render Snapshot CardItem is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="productItem "
+  >
+    <p
+      class="available notAvaliable"
+    >
+      <img
+        alt="icon not available"
+        class="iconAvailable"
+        src="redPhone.png"
+      />
+      check availability
+    </p>
+    <img
+      alt="icon favourite"
+      class="iconFav"
+      role="presentation"
+      src="addToFavIcon.png"
+    />
+    <div
+      class="imageContainer"
+    >
+      <a
+        class="linksToCardPage"
+        href="/products/undefined"
+      >
+        <img
+          alt="product"
+          class="imgProduct"
+          src=""
+        />
+      </a>
+    </div>
+    <a
+      class="linksToCardPage"
+      href="/products/undefined"
+    >
+      <h3
+        class="productName"
+      />
+    </a>
+    <a
+      class="linksToCardPage"
+      href="/products/undefined"
+    >
+      <h2
+        class="productModel"
+      />
+    </a>
+    <span
+      class="price"
+    >
+      $0.00
+    </span>
+    <div
+      class="btnCartContainer"
+    >
+      <button
+        class="btnCart [object Object]"
+        type="button"
+      >
+        <svg>
+          cart.svg
+        </svg>
+        <p>
+          Add To Cart
+        </p>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

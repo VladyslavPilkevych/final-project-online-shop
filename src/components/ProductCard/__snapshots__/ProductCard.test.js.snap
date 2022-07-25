@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot ProductCard should render Snapshot ProductCard is rendered 1`] = `
+<DocumentFragment>
+  <section>
+    <h1>
+      Product Card
+    </h1>
+  </section>
+</DocumentFragment>
+`;
