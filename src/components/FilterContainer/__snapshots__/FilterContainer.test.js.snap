@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot FilterContainer should render Snapshot FilterContainer is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="filterCreator"
+  >
+    <div
+      class="categoryContainers"
+    >
+      <p
+        class="filtersTopP"
+      >
+        Filters
+      </p>
+      <div
+        class="filtersTopPhone"
+      >
+        <p
+          class="filtersTopPhoneP"
+        >
+          Filter By
+        </p>
+        <div
+          class="filtersPhoneX"
+          role="button"
+          tabindex="0"
+        >
+          ✖
+        </div>
+      </div>
+      <button
+        class="clearFilterBtn [object Object]"
+        type="button"
+      >
+        Clear Filter
+      </button>
+    </div>
+    <div
+      class="categoryContainers"
+    >
+      <div
+        class="twiceItems"
+        role="button"
+        tabindex="0"
+      >
+        <p
+          class="categoryName"
+        >
+          Brands
+        </p>
+        <img
+          alt="swipeUp"
+          class="swiper"
+          src="swipeUp.png"
+        />
+      </div>
+      <ul
+        class="brandsContainer"
+      />
+    </div>
+    <div
+      class="categoryContainers"
+    >
+      <div
+        class="twiceItems"
+        role="button"
+        tabindex="0"
+      >
+        <p
+          class="categoryName"
+        >
+          Price
+        </p>
+        <img
+          alt="swipeUp"
+          class="swiper"
+          src="swipeUp.png"
+        />
+      </div>
+      <div>
+        <div>
+          <div
+            style="display: flex; width: 100%; justify-content: space-evenly;"
+          >
+            <p>
+              $
+            </p>
+            <p>
+              -
+            </p>
+            <p>
+              $
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="categoryContainers"
+    >
+      <div
+        class="twiceItems"
+        role="button"
+        tabindex="0"
+      >
+        <p
+          class="categoryName"
+        >
+          Color
+        </p>
+        <img
+          alt="swipeUp"
+          class="swiper"
+          src="swipeUp.png"
+        />
+      </div>
+      <ul />
+    </div>
+    <div
+      class="categoryContainers"
+    >
+      <button
+        class="applyFilterBtn applyFilterBtnActive [object Object]"
+        type="button"
+      >
+        Apply Filters
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

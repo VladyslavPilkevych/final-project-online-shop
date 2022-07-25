@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot AboutProductImage should render Snapshot AboutProductImage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="imageSideWrapper"
+  >
+    <div
+      class="imageWrapper"
+    >
+      <div
+        class="slick-slider slick-initialized"
+      >
+        <div
+          class="slick-list"
+        >
+          <div
+            class="slick-track"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

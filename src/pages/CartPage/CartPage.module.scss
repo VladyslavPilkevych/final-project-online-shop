@@ -1,13 +1,13 @@
 @import '../../assets/styles/global.module.scss';
 
 .cartWrapper {
+  width: 100%;
   display: flex;
   margin: 0 auto;
   max-width: 1398px;
-  width: 100%;
-  box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
+  box-sizing: border-box;
   flex-direction: column;
 }
 .cartPageTitle {
@@ -19,7 +19,6 @@
 }
 .cartItemHeaders {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
   font-size: 14px;
   font-weight: 600;
   margin-top: 29px;
@@ -27,111 +26,108 @@
   padding-bottom: 13px;
   justify-content: space-between;
   border-bottom: 1px solid $grey-star;
+  grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
 }
 .cartPageColumn {
   display: grid;
-  grid-template-columns: 2fr 1fr;
   column-gap: 20px;
+  grid-template-columns: 2fr 1fr;
 }
 
 .CartButtonWrapper {
   margin-top: 25px;
 }
 .CartButtonShopping {
-  border: 2px solid $dark-grey-text;
-  box-sizing: border-box;
-  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 21px;
   padding: 8px 30px;
   margin-right: 7px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  border-radius: 50px;
+  box-sizing: border-box;
   color: $dark-grey-text;
-  cursor: pointer;
+  border: 2px solid $dark-grey-text;
 }
 .CartButtonClearCart {
+  color: $white;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 30px;
+  line-height: 21px;
   background: $black;
   border-radius: 50px;
-  color: $white;
-  padding: 8px 30px;
   border: 2px solid black;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  cursor: pointer;
 }
 .advantagesBackGround {
   background-color: $bg-white-color;
 }
 .summaryContainer {
-  background-color: $bg-white-color;
-  max-width: 430px;
   width: 100%;
+  max-width: 430px;
+  background-color: $bg-white-color;
 }
 .summaryWrapper {
   padding: 17px 30px;
 }
 .titleSummary {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
   color: $black;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
   margin-bottom: 19px;
-  border-bottom: 1px solid $grey-star;
   padding-bottom: 10px;
+  border-bottom: 1px solid $grey-star;
 }
 .summaryContent {
   display: flex;
-  justify-content: space-between;
   margin: 15px 0;
+  justify-content: space-between;
 }
 .summarytext {
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 210%;
   color: $black;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 210%;
 }
 .summaryButtonWrapper {
+  gap: 7px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
 }
 .buttonProceed {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  background-color: $blue;
-  color: $white;
-  border-radius: 50px;
   border: none;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
   padding: 8px 0px;
+  line-height: 21px;
   text-align: center;
+  border-radius: 50px;
+  background-color: $blue;
 }
 .buttonCheck {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  background-color: $orange;
-  color: #232c65;
-  border-radius: 50px;
   border: none;
+  font-size: 14px;
+  color: #232c65;
+  font-weight: 600;
   padding: 8px 0px;
+  line-height: 21px;
   text-align: center;
+  border-radius: 50px;
+  background-color: $orange;
 }
 
 @media (max-width: 768px) and (min-width: 500px) {
   .cartPageColumn {
-    grid-template-columns: 1fr 1fr;
     column-gap: 20px;
-  }
-  .summaryContainer {
-    // width: 345px;
+    grid-template-columns: 1fr 1fr;
   }
   .summaryWrapper {
     padding: 20px;
   }
   .cartPageTitle {
-    // font-weight: 600;
     font-size: 18px;
     line-height: 27px;
   }
@@ -149,25 +145,21 @@
   .buttonProceed {
     font-size: 13px;
     line-height: 20px;
-    // padding: 8px 50px;
   }
   .buttonCheck {
     font-size: 13px;
     line-height: 20px;
-    // padding: 8px 50px;
   }
   .CartButtonShopping {
     font-size: 13px;
     font-weight: 600;
     line-height: 20px;
-    // padding: 8px 90px;
     margin-bottom: 10px;
   }
   .CartButtonClearCart {
-    font-weight: 600;
     font-size: 13px;
+    font-weight: 600;
     line-height: 20px;
-    // padding: 8px 87px;
   }
   .CartButtonWrapper {
     display: flex;
@@ -176,15 +168,14 @@
 }
 @media (max-width: 500px) and (min-width: 240px) {
   .cartPageColumn {
-    grid-template-columns: 1fr;
     column-gap: 20px;
+    grid-template-columns: 1fr;
   }
 
   .summaryWrapper {
     padding: 20px;
   }
   .cartPageTitle {
-    // font-weight: 600;
     font-size: 18px;
     line-height: 27px;
   }
@@ -208,15 +199,15 @@
     line-height: 20px;
   }
   .CartButtonShopping {
+    margin-right: 0;
     font-size: 13px;
     font-weight: 600;
     line-height: 20px;
     margin-bottom: 10px;
-    margin-right: 0;
   }
   .CartButtonClearCart {
-    font-weight: 600;
     font-size: 13px;
+    font-weight: 600;
     line-height: 20px;
   }
   .CartButtonWrapper {

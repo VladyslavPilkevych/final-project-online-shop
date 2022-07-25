@@ -1,9 +1,9 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
 import { toast } from 'react-toastify';
+
 import {
   ADD_TO_CART, DELETE_FROM_CART, CLEAR_CART, TOGGLE_CART, CREATE_CART, GET_CART, EDIT_CART,
 } from '../actions/cartActions';
+
 import * as api from '../../api/api';
 
 export const toggleCart = (value) => ({ type: TOGGLE_CART, payload: value });
@@ -92,19 +92,11 @@ export const editCart = (productId, quantity) => async (dispatch, getState) => {
       const cartData = await api.editCart(updatedCart);
       dispatch({ type: EDIT_CART, payload: cartData.data.products });
     } else {
-      const tempState = state.cart.dataCart.find((item) => item.product.id === productId)?.cartQuantity;
       const index = state.cart.dataCart.findIndex((elem) => elem.product.id === productId);
-      if (quantity > tempState) {
-        const newLocalData = [...state.cart.dataCart];
-        newLocalData[index].cartQuantity += 1;
-        dispatch({ type: EDIT_CART, payload: newLocalData });
-        localStorage.setItem('cart', JSON.stringify(newLocalData));
-      } else {
-        const newLocalData = [...state.cart.dataCart];
-        newLocalData[index].cartQuantity -= 1;
-        dispatch({ type: EDIT_CART, payload: newLocalData });
-        localStorage.setItem('cart', JSON.stringify(newLocalData));
-      }
+      const newLocalData = [...state.cart.dataCart];
+      newLocalData[index].cartQuantity = quantity;
+      dispatch({ type: EDIT_CART, payload: newLocalData });
+      localStorage.setItem('cart', JSON.stringify(newLocalData));
     }
   } catch (e) {
     toast.error(e.message);

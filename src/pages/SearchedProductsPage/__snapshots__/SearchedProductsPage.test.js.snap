@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot SearchedProductsPage should render Snapshot SearchedProductsPage is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <h2
+      class="productName"
+    >
+      Products (0)
+    </h2>
+    <div
+      class="searchedProductsContainer"
+    />
+    <div
+      class="advantagesWrapper"
+    >
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="account-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Product Support
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          Up to 3 years on-site warranty available for your peace of mind.
+        </p>
+      </div>
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="support-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Personal Account
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          With big discounts, free delivery and a dedicated support specialist.
+        </p>
+      </div>
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="saving-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Amazing Savings
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          Up to 70% off new Products, you can be sure of the best price.
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
