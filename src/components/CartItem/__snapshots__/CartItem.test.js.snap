@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot CartItem should render Snapshot CartItem is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="cartItemContainer"
+    >
+      <ul />
+    </div>
+  </div>
+</DocumentFragment>
+`;

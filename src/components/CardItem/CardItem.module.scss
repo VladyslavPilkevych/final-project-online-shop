@@ -189,7 +189,28 @@
       overflow: hidden;
     }
     .productName {
-      font-size: 11px;
+        @include fonts("Poppins", 13px, black, 400);
+        color: #39404b;
+        margin: 15px 0 10px 0;
+    }
+    .productModel {
+        @include fonts("Poppins", 12x, black, 400);
+        color: #39404b;
+        line-height: 22px;
+        margin: 0 0 10px 0;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 2;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        display: -webkit-box;
+        word-wrap: break-word;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        min-height: 44px;
     }
     .previousPrice {
       font-size: 12px;

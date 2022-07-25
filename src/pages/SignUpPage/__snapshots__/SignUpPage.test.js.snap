@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot SignUpPage should render Snapshot SignUpPage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="signUpPageWrapper"
+  >
+    <h1
+      class="mainTitle"
+    >
+      Customer registration
+    </h1>
+    <div
+      class="signUpBlocksPageWrapper"
+    >
+      <div
+        class="signUpBlockWrapper"
+      >
+        <h2
+          class="customersBlocksTitle"
+        >
+          Customers information
+        </h2>
+        <p
+          class="customersBlocksSubtitle"
+        >
+          If you are not have an account, fill information below
+        </p>
+        <form
+          action="#"
+        >
+          <p
+            class="inputLabel"
+          >
+            FirstName*
+          </p>
+          <input
+            class="customInput"
+            name="firstName"
+            placeholder="FirstName"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            LastName*
+          </p>
+          <input
+            class="customInput"
+            name="lastName"
+            placeholder="LastName"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Login*
+          </p>
+          <input
+            class="customInput"
+            name="login"
+            placeholder="Login"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Email*
+          </p>
+          <input
+            class="customInput"
+            name="email"
+            placeholder="Email"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Phone*
+          </p>
+          <input
+            class="customInput"
+            name="telephone"
+            placeholder="Phone"
+            type="tel"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Gender
+          </p>
+          <input
+            class="customInput"
+            name="gender"
+            placeholder="Gender"
+            type="text"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Password*
+          </p>
+          <input
+            class="customInput"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <p
+            class="inputLabel"
+          >
+            Repeat password*
+          </p>
+          <input
+            class="customInput"
+            name="repeatPassword"
+            placeholder="Repeat password"
+            type="password"
+            value=""
+          />
+          <button
+            class="createCustomerButton"
+            type="submit"
+          >
+            Create account
+          </button>
+        </form>
+      </div>
+      <div
+        class="signUpBlockWrapper signInBlockWrapper"
+      >
+        <h2
+          class="customersBlocksTitle"
+        >
+          Already have registered Account?
+        </h2>
+        <p
+          class="customersBlocksSubtitle"
+        >
+          If you are not have an account, you can Login on button below
+        </p>
+        <a
+          href="/sign-in"
+        >
+          <button
+            class="createCustomerButton"
+            type="button"
+          >
+            Log In Page
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;

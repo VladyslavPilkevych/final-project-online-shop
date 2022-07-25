@@ -1,0 +1,814 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot HomePage should render Snapshot HomePage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="homePage"
+  >
+    <div>
+      <div
+        class="mainBanerWrapper"
+      >
+        <div
+          class="slick-slider slick-initialized"
+          dir="ltr"
+        >
+          <div
+            class="slick-arrow slick-prev"
+            role="button"
+            style="display: block; background: rgb(37, 41, 49); opacity: 0.5; border-radius: 0px 30px 30px 0px; left: 0px; z-index: 10; width: 32px; height: 32px; padding-top: 12px;"
+            tabindex="0"
+          />
+          <div
+            class="slick-list"
+          >
+            <div
+              class="slick-track"
+              style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+            >
+              <div
+                aria-hidden="true"
+                class="slick-slide slick-cloned"
+                data-index="-1"
+                style="width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="55555555555555555555555555"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Galaxy S22 Ultra
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        50% discount for SamsungGalaxy S22 Ultra
+                      </p>
+                      <a
+                        href="/products/20000006"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="false"
+                class="slick-slide slick-active slick-current"
+                data-index="0"
+                style="outline: none; width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="625312856ad189cceeb8b596"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Apple MacBook Air 13
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        50% discount for Apple MacBook
+                      </p>
+                      <a
+                        href="/products/40000023"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="slick-slide"
+                data-index="1"
+                style="outline: none; width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="11111111111111111111111111"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Apple Iphone 13 Max Pro
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        10% discount for Apple Iphone 13 Max Pro
+                      </p>
+                      <a
+                        href="/products/20000002"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="slick-slide"
+                data-index="2"
+                style="outline: none; width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="55555555555555555555555555"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Galaxy S22 Ultra
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        50% discount for SamsungGalaxy S22 Ultra
+                      </p>
+                      <a
+                        href="/products/20000006"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="slick-slide slick-cloned"
+                data-index="3"
+                style="width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="625312856ad189cceeb8b596"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_002.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Apple MacBook Air 13
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        50% discount for Apple MacBook
+                      </p>
+                      <a
+                        href="/products/40000023"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="slick-slide slick-cloned"
+                data-index="4"
+                style="width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="11111111111111111111111111"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_001.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Apple Iphone 13 Max Pro
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        10% discount for Apple Iphone 13 Max Pro
+                      </p>
+                      <a
+                        href="/products/20000002"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-hidden="true"
+                class="slick-slide slick-cloned"
+                data-index="5"
+                style="width: 0px;"
+                tabindex="-1"
+              >
+                <div>
+                  <div
+                    class="mainBannerElemWrapper"
+                    id="55555555555555555555555555"
+                    style="background-image: url(https://final-project-ecommerce-images.s3.eu-west-3.amazonaws.com/images/slides/smartphone_banner_003.jpg); width: 100%;"
+                  >
+                    <div
+                      class="titleWrapper"
+                    >
+                      <h1
+                        class="banerTitle"
+                      >
+                        Galaxy S22 Ultra
+                      </h1>
+                      <p
+                        class="banerSubTitle"
+                      >
+                        50% discount for SamsungGalaxy S22 Ultra
+                      </p>
+                      <a
+                        href="/products/20000006"
+                      >
+                        <button
+                          class="bannerBtn btn btnWhite btnAnimate"
+                          type="button"
+                        >
+                          SHOP NOW
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="slick-arrow slick-next"
+            role="button"
+            style="display: block; background: rgb(37, 41, 49); opacity: 0.5; border-radius: 30px 0px 0px 30px; right: 0px; z-index: 10; width: 20px; height: 32px; padding: 13px 0px 1px 11px;"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="newProductsWrapper"
+      >
+        <div
+          class="newProductsTitleWrapper"
+        >
+          <h1
+            class="newProductsTitle"
+          >
+            New Products
+          </h1>
+          <a
+            href="/"
+          >
+            <p
+              class="newProductsLink"
+            >
+              See All New Products
+            </p>
+          </a>
+        </div>
+        <div
+          class="slick-slider slick-initialized"
+        >
+          <div
+            class="slick-list"
+          >
+            <div
+              class="slick-track"
+              style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="categoriesWrapper"
+    >
+      <div
+        class="categories"
+      >
+        <div
+          class="categorieImg"
+          style="background-image: url(imgCategory1.png);"
+        >
+          <h3>
+            laptop
+          </h3>
+          <div
+            role="button"
+            tabindex="0"
+          >
+            <a
+              class=""
+              href="/filter/laptop"
+            >
+              See All Products
+            </a>
+          </div>
+        </div>
+        <div
+          class="categoriesSliderWrapper"
+        >
+          <div
+            class="slick-slider slick-initialized"
+          >
+            <div
+              class="slick-list"
+            >
+              <div
+                class="slick-track"
+                style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="categoriesWrapper"
+    >
+      <div
+        class="categories"
+      >
+        <div
+          class="categorieImg"
+          style="background-image: url(imgCategory2.png);"
+        >
+          <h3>
+            headphones
+          </h3>
+          <div
+            role="button"
+            tabindex="0"
+          >
+            <a
+              class=""
+              href="/filter/headphones"
+            >
+              See All Products
+            </a>
+          </div>
+        </div>
+        <div
+          class="categoriesSliderWrapper"
+        >
+          <div
+            class="slick-slider slick-initialized"
+          >
+            <div
+              class="slick-list"
+            >
+              <div
+                class="slick-track"
+                style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="categoriesWrapper"
+    >
+      <div
+        class="categories"
+      >
+        <div
+          class="categorieImg"
+          style="background-image: url(imgCategory3.png);"
+        >
+          <h3>
+            phones
+          </h3>
+          <div
+            role="button"
+            tabindex="0"
+          >
+            <a
+              class=""
+              href="/filter/phones"
+            >
+              See All Products
+            </a>
+          </div>
+        </div>
+        <div
+          class="categoriesSliderWrapper"
+        >
+          <div
+            class="slick-slider slick-initialized"
+          >
+            <div
+              class="slick-list"
+            >
+              <div
+                class="slick-track"
+                style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="categoriesWrapper"
+    >
+      <div
+        class="categories"
+      >
+        <div
+          class="categorieImg"
+          style="background-image: url(imgCategory4.png);"
+        >
+          <h3>
+            monitor
+          </h3>
+          <div
+            role="button"
+            tabindex="0"
+          >
+            <a
+              class=""
+              href="/filter/monitor"
+            >
+              See All Products
+            </a>
+          </div>
+        </div>
+        <div
+          class="categoriesSliderWrapper"
+        >
+          <div
+            class="slick-slider slick-initialized"
+          >
+            <div
+              class="slick-list"
+            >
+              <div
+                class="slick-track"
+                style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="companiesLogos"
+    >
+      <img
+        alt="logo-roccat"
+        class="companieImage"
+        src="image-roccat.png"
+      />
+      <img
+        alt="logo-msi"
+        class="companieImage"
+        src="image-msi.png"
+      />
+      <img
+        alt="logo-razer"
+        class="companieImage"
+        src="image-razer.png"
+      />
+      <img
+        alt="logo-thermaltake"
+        class="companieImage"
+        src="image-thermaltake.png"
+      />
+      <img
+        alt="logo-adata"
+        class="companieImage"
+        src="image-adata.png"
+      />
+      <img
+        alt="logo-hp"
+        class="companieImage"
+        src="image-hp.png"
+      />
+      <img
+        alt="logo-gigabyte"
+        class="companieImage"
+        src="image-gigabyte.png"
+      />
+    </div>
+    <div
+      class="posts"
+    >
+      <h1
+        class="postsArticle"
+      >
+        Follow us on Instagram for News, Offers & More
+      </h1>
+      <div
+        class="postsWrapper"
+      >
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image1.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image2.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image3.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image4.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image5.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image6.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image7.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image8.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+        <div
+          class="postItem"
+        >
+          <img
+            alt="post-img"
+            class="post-image"
+            src="instagram-image9.png"
+          />
+          <p
+            class="postText"
+          >
+            If you’ve recently made a desktop PC or laptop purchase, you might want to consider adding peripherals to enhance your home office setup, your gaming rig, or your business workspace...
+          </p>
+          <p
+            class="postDate"
+          >
+            01.09.2020
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="advantagesWrapper"
+    >
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="account-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Product Support
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          Up to 3 years on-site warranty available for your peace of mind.
+        </p>
+      </div>
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="support-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Personal Account
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          With big discounts, free delivery and a dedicated support specialist.
+        </p>
+      </div>
+      <div
+        class="advantagesCard"
+      >
+        <img
+          alt="advantages-icon"
+          class="advantagesIcon"
+          src="saving-icon.png"
+        />
+        <h3
+          class="advantagesTitle"
+        >
+          Amazing Savings
+        </h3>
+        <p
+          class="advantagesText"
+        >
+          Up to 70% off new Products, you can be sure of the best price.
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

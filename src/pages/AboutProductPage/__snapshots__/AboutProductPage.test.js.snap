@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot AboutProductPage should render Snapshot AboutProductPage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="aboutProductWrapper"
+  >
+    <div
+      class="aboutProductTabMenuWrapper aboutProductWrapper"
+    >
+      <ul
+        class="aboutProductTabMenu"
+      >
+        <li
+          class="active"
+          role="menuitem"
+        >
+          About Product
+        </li>
+        <li
+          class=""
+          role="menuitem"
+        >
+          Details
+        </li>
+      </ul>
+      <div
+        class="aboutProductCartBtnWrapper"
+      >
+        <p
+          class="costWrapper"
+        >
+          Cost: $NaN
+        </p>
+        <button
+          class="aboutProductCartBtn [object Object]"
+          type="button"
+        >
+           Add to Cart
+        </button>
+      </div>
+    </div>
+    <hr
+      class="line"
+    />
+    <div
+      class="aboutProducTextAndImageWrapper aboutProductWrapper"
+    >
+      <div
+        class="aboutProducImageWrapper"
+      >
+        <div
+          class="imageSideWrapper"
+        >
+          <div
+            class="imageWrapper"
+          >
+            <div
+              class="slick-slider slick-initialized"
+            >
+              <div
+                class="slick-list"
+              >
+                <div
+                  class="slick-track"
+                  style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="aboutProductTextWrapper"
+      >
+        <div>
+          <h1
+            class="productTitle"
+          >
+             
+          </h1>
+          <p
+            class="productDescription"
+          />
+          <div
+            class="colorsWrapper"
+          />
+          <p
+            class="itemNo"
+          >
+            Article:
+          </p>
+          <p
+            class="contactUsText"
+          >
+            Have a Question? 
+            <a
+              href="/contact-us"
+            >
+              Contact us
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="advantagesWrapper"
+      >
+        <div
+          class="advantagesCard"
+        >
+          <img
+            alt="advantages-icon"
+            class="advantagesIcon"
+            src="account-icon.png"
+          />
+          <h3
+            class="advantagesTitle"
+          >
+            Product Support
+          </h3>
+          <p
+            class="advantagesText"
+          >
+            Up to 3 years on-site warranty available for your peace of mind.
+          </p>
+        </div>
+        <div
+          class="advantagesCard"
+        >
+          <img
+            alt="advantages-icon"
+            class="advantagesIcon"
+            src="support-icon.png"
+          />
+          <h3
+            class="advantagesTitle"
+          >
+            Personal Account
+          </h3>
+          <p
+            class="advantagesText"
+          >
+            With big discounts, free delivery and a dedicated support specialist.
+          </p>
+        </div>
+        <div
+          class="advantagesCard"
+        >
+          <img
+            alt="advantages-icon"
+            class="advantagesIcon"
+            src="saving-icon.png"
+          />
+          <h3
+            class="advantagesTitle"
+          >
+            Amazing Savings
+          </h3>
+          <p
+            class="advantagesText"
+          >
+            Up to 70% off new Products, you can be sure of the best price.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;
