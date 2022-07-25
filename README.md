@@ -1,6 +1,6 @@
 <h1 align='center'>SKVM-ONLINE-SHOP</h1>
 <hr>
-<a align='center' href='https://skvm-online-shop.herokuapp.com'>https://skvm-online-shop.herokuapp.com/</a>
+<a href='https://skvm-online-shop.herokuapp.com'>https://skvm-online-shop.herokuapp.com/</a>
 <hr>
 <h2>Team members:</h2>
 <ul>

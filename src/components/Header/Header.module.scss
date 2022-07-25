@@ -189,10 +189,10 @@ nav {
     width: 46px;
     height: 41px;
     fill: $white;
+    cursor: pointer;
     position: absolute;
     background-color: $blue;
     clip-path: ellipse(50% 59% at 50% 64%);
-    cursor: pointer;
   }
   .adressBur {
     display: none;
@@ -249,11 +249,11 @@ nav {
     top: -6px;
     z-index: 22;
     width: 17px;
+    height: 2px;
     content: ' ';
     color: $white;
     position: absolute;
     border-bottom: 2px solid $white;
-    height: 2px;
   }
   .btnBurger::before {
     top: 6px;

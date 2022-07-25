@@ -1,9 +1,19 @@
-// @import "../../assets/styles/global.module.scss";
+@import "../../assets/styles/global.module.scss";
 
-// @mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
-//     font-family: $font-family, sans-serif;
-//     font-weight: $bold;
-//     font-size: $size;
-//     color: $color;
-// }
+@mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
 
+@mixin circleColors($border, $width: 30px, $height: 30px, $margin: 3px, $margin-bottom: 7px, $border-radius: 50px, $overflow: hidden, $cursor: pointer) {
+    width: $width;
+    height: $height;
+    margin: $margin;
+    margin-bottom: $margin-bottom;
+    border-radius: $border-radius;
+    overflow: $overflow;
+    cursor: $cursor;
+    border: $border;
+}
