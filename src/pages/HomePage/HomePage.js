@@ -19,6 +19,10 @@ function HomePage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
   useEffect(() => {}, [allProducts]);
 

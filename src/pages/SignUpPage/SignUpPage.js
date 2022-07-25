@@ -42,7 +42,7 @@ function SignUpPage() {
     }
   };
 
-  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const phoneRegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
   const validationSchema = yup.object().shape({
     firstName: yup
       .string()
@@ -56,7 +56,7 @@ function SignUpPage() {
       .string()
       .required('Required data')
       .matches(/[A-Za-z ]/gi, 'Use only latin letters'),
-    telephone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+    telephone: yup.string().required('Required data').matches(phoneRegExp, 'Phone number is not valid'),
     email: yup.string().email('Enter correct email').required('Required data'),
     password: yup.string().required('Enter password').min(7, 'Password shouldn`t be less than 7 symbols'),
     repeatPassword: yup.string().required('Repeat password').min(7, 'Password shouldn`t be less than 7 symbols'),

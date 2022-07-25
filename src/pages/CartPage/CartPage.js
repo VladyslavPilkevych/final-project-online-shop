@@ -40,12 +40,24 @@ function CartPage() {
                 <p>Subtotal</p>
               </div>
             </div>
-            <CartItem />
+            {dataCart.map((item) => (
+              <ul key={item?.model || item?.model}>
+                <CartItem data={item} key={item?._id || item?.id} />
+              </ul>
+            ))}
+            ;
             <div className={styles.CartButtonWrapper}>
               <button className={styles.CartButtonShopping} type="button" onClick={() => navigate({ pathname: '/' })}>
                 Continue Shopping
               </button>
-              <button className={styles.CartButtonClearCart} type="button" onClick={() => { dispatch(deleteAllCart()); window.scrollTo(0, 0); }}>
+              <button
+                className={styles.CartButtonClearCart}
+                type="button"
+                onClick={() => {
+                  dispatch(deleteAllCart());
+                  window.scrollTo(0, 0);
+                }}
+              >
                 Clear Shopping Cart
               </button>
             </div>
