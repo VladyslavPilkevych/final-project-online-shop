@@ -61,13 +61,26 @@
   .productName {
     @include fonts('Poppins', 13px, black, 400);
     color: #39404b;
-    margin: 0;
-    margin-top: 15px;
+    margin: 15px 0 10px 0;
   }
   .productModel {
     @include fonts('Poppins', 12x, black, 400);
     color: #39404b;
-    margin: 0;
+    line-height: 22px;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -ms-line-clamp: 2;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    min-height: 44px;
   }
   .previousPrice {
     @include fonts('Poppins', 14px, #666666, 400);
@@ -189,28 +202,28 @@
       overflow: hidden;
     }
     .productName {
-        @include fonts("Poppins", 13px, black, 400);
-        color: #39404b;
-        margin: 15px 0 10px 0;
+      @include fonts('Poppins', 13px, black, 400);
+      color: #39404b;
+      margin: 15px 0 10px 0;
     }
     .productModel {
-        @include fonts("Poppins", 12x, black, 400);
-        color: #39404b;
-        line-height: 22px;
-        margin: 0 0 10px 0;
-        overflow: hidden;
-        -ms-text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        -ms-line-clamp: 2;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        display: -webkit-box;
-        word-wrap: break-word;
-        -webkit-box-orient: vertical;
-        box-orient: vertical;
-        min-height: 44px;
+      @include fonts('Poppins', 12x, black, 400);
+      color: #39404b;
+      line-height: 22px;
+      margin: 0 0 10px 0;
+      overflow: hidden;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -ms-line-clamp: 2;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      display: -webkit-box;
+      word-wrap: break-word;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+      min-height: 44px;
     }
     .previousPrice {
       font-size: 12px;
