@@ -61,10 +61,6 @@ export function decreaseProductQuantity(productId) {
   return api.delete(`${BASE_URL}/cart/product/${productId}`);
 }
 
-export function createWishList(newCart) {
-  return api.post(`${BASE_URL}/wishlist`, newCart);
-}
-
 export function searchProductsApi(searchPhrases) {
   return api.post(`${BASE_URL}/products/search`, searchPhrases);
 }

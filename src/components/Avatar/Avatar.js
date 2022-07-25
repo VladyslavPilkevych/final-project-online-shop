@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as SignInIcon } from '../../assets/icons/Sign-in.svg';
 import AvatarIcon from '../../assets/avatar/avatar.png';
@@ -10,8 +10,13 @@ import styles from './Avatar.module.scss';
 
 function Avatar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
+  const userLogOut = () => {
+    dispatch(removeUserDataAC());
+    navigate('/sign-in');
+  };
 
   return (
     <div>
@@ -20,7 +25,7 @@ function Avatar() {
           <SignInIcon className={styles.signInIcon} />
         </NavLink>
       ) : (
-        user && <img src={AvatarIcon} alt="AvatarIcon" role="presentation" onClick={() => dispatch(removeUserDataAC())} />
+        user && <img src={AvatarIcon} alt="AvatarIcon" role="presentation" onClick={() => userLogOut()} />
       )}
     </div>
   );

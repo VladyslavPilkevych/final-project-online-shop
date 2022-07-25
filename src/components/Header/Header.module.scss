@@ -1,7 +1,5 @@
 @import '../../assets/styles/global.module.scss';
 header {
-  // position: fixed;
-  // z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
@@ -151,17 +149,17 @@ nav {
 }
 .cartIconIndex {
   width: 16px;
-  height: 16px;
-  background-color: $blue;
-  border-radius: 50%;
-  color: $white;
-  text-align: center;
-  font-weight: 700;
-  font-size: 10px;
-  line-height: 17px;
-  position: absolute;
-  bottom: 24px;
   right: 46px;
+  height: 16px;
+  bottom: 24px;
+  color: $white;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  background-color: $blue;
 }
 
 @media (max-width: 768px) and (min-width: 376px) {
@@ -191,10 +189,10 @@ nav {
     width: 46px;
     height: 41px;
     fill: $white;
+    cursor: pointer;
     position: absolute;
     background-color: $blue;
     clip-path: ellipse(50% 59% at 50% 64%);
-    cursor: pointer;
   }
   .adressBur {
     display: none;
@@ -251,11 +249,11 @@ nav {
     top: -6px;
     z-index: 22;
     width: 17px;
+    height: 2px;
     content: ' ';
     color: $white;
     position: absolute;
     border-bottom: 2px solid $white;
-    height: 2px;
   }
   .btnBurger::before {
     top: 6px;
