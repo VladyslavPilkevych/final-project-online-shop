@@ -47,59 +47,79 @@ export const onHandleCart = (productId, itemData) => async (dispatch, getState) 
 };
 
 export const createCart = (productId) => async (dispatch) => {
-  const cartData = await api.createNewCart(productId);
-  dispatch({ type: CREATE_CART, payload: cartData });
+  try {
+    const cartData = await api.createNewCart(productId);
+    dispatch({ type: CREATE_CART, payload: cartData });
+  } catch (e) {
+    toast.error(e.message);
+  }
 };
 export const getCart = (dataCart) => async (dispatch) => {
-  const cartData = await api.getCart(dataCart);
-  dispatch({ type: GET_CART, payload: cartData.data?.products });
+  try {
+    const cartData = await api.getCart(dataCart);
+    dispatch({ type: GET_CART, payload: cartData.data?.products });
+  } catch (e) {
+    toast.error(e.message);
+  }
 };
 export const addToCart = (productId) => async (dispatch) => {
-  const data = await api.addToCart(productId);
-  dispatch({ type: ADD_TO_CART, payload: data });
+  try {
+    const data = await api.addToCart(productId);
+    dispatch({ type: ADD_TO_CART, payload: data });
+  } catch (e) {
+    toast.error(e.message);
+  }
 };
 export const editCart = (productId, quantity) => async (dispatch, getState) => {
-  const state = getState();
-  if (state.user.token !== null) {
-    const products = state.cart.dataCart.map((elem) => {
-      if (elem.product._id === productId) {
+  try {
+    const state = getState();
+    if (state.user.token !== null) {
+      const products = state.cart.dataCart.map((elem) => {
+        if (elem.product._id === productId) {
+          return {
+            product: elem.product?._id || elem.product?.id,
+            cartQuantity: Number(quantity),
+          };
+        }
         return {
           product: elem.product?._id || elem.product?.id,
-          cartQuantity: Number(quantity),
+          cartQuantity: elem.cartQuantity,
         };
-      }
-      return {
-        product: elem.product?._id || elem.product?.id,
-        cartQuantity: elem.cartQuantity,
+      });
+      const updatedCart = {
+        products,
       };
-    });
-    const updatedCart = {
-      products,
-    };
-    const cartData = await api.editCart(updatedCart);
-    dispatch({ type: EDIT_CART, payload: cartData.data.products });
-  } else {
-    const tempState = state.cart.dataCart.find((item) => item.product.id === productId)?.cartQuantity;
-    const index = state.cart.dataCart.findIndex((elem) => elem.product.id === productId);
-    if (quantity > tempState) {
-      const newLocalData = [...state.cart.dataCart];
-      newLocalData[index].cartQuantity += 1;
-      dispatch({ type: EDIT_CART, payload: newLocalData });
-      localStorage.setItem('cart', JSON.stringify(newLocalData));
+      const cartData = await api.editCart(updatedCart);
+      dispatch({ type: EDIT_CART, payload: cartData.data.products });
     } else {
-      const newLocalData = [...state.cart.dataCart];
-      newLocalData[index].cartQuantity -= 1;
-      dispatch({ type: EDIT_CART, payload: newLocalData });
-      localStorage.setItem('cart', JSON.stringify(newLocalData));
+      const tempState = state.cart.dataCart.find((item) => item.product.id === productId)?.cartQuantity;
+      const index = state.cart.dataCart.findIndex((elem) => elem.product.id === productId);
+      if (quantity > tempState) {
+        const newLocalData = [...state.cart.dataCart];
+        newLocalData[index].cartQuantity += 1;
+        dispatch({ type: EDIT_CART, payload: newLocalData });
+        localStorage.setItem('cart', JSON.stringify(newLocalData));
+      } else {
+        const newLocalData = [...state.cart.dataCart];
+        newLocalData[index].cartQuantity -= 1;
+        dispatch({ type: EDIT_CART, payload: newLocalData });
+        localStorage.setItem('cart', JSON.stringify(newLocalData));
+      }
     }
+  } catch (e) {
+    toast.error(e.message);
   }
 };
 
 export const deleteFromCart = (productId) => async (dispatch, getState) => {
   const state = getState();
   if (state.user.user !== null) {
-    const data = await api.deleteFromCart(productId);
-    dispatch({ type: DELETE_FROM_CART, payload: data });
+    try {
+      const data = await api.deleteFromCart(productId);
+      dispatch({ type: DELETE_FROM_CART, payload: data });
+    } catch (e) {
+      toast.error(e.message);
+    }
   } else {
     const cartData = JSON.parse(localStorage.getItem('cart'));
     const products = cartData.filter((item) => item.product.id !== productId);
@@ -111,10 +131,14 @@ export const deleteFromCart = (productId) => async (dispatch, getState) => {
 export const deleteAllCart = () => async (dispatch, getState) => {
   const state = getState();
   if (state.user.user !== null) {
-    const data = await api.deleteCart();
-    const responseDelete = await data.status;
-    if (responseDelete === 200) {
-      dispatch({ type: CLEAR_CART, payload: data });
+    try {
+      const data = await api.deleteCart();
+      const responseDelete = await data.status;
+      if (responseDelete === 200) {
+        dispatch({ type: CLEAR_CART, payload: data });
+      }
+    } catch (e) {
+      toast.error(e.message);
     }
   } else {
     localStorage.removeItem('cart');
