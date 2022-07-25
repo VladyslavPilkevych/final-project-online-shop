@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot AboutProductDetailsTabText should render Snapshot AboutProductDetailsTabText is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      class="productTitle"
+    >
+       
+    </h1>
+    <ul
+      class="listWrapper"
+    />
+    <p
+      class="itemNo"
+    >
+      Article: 
+    </p>
+    <p
+      class="contactUsText"
+    >
+      Have a Question? 
+      <a
+        href="/contact-us"
+      >
+        Contact us
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
+`;

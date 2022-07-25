@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot NewProductsContainer should render Snapshot NewProductsContainer is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="newProductsWrapper"
+    >
+      <div
+        class="newProductsTitleWrapper"
+      >
+        <h1
+          class="newProductsTitle"
+        >
+          New Products
+        </h1>
+        <a
+          href="/"
+        >
+          <p
+            class="newProductsLink"
+          >
+            See All New Products
+          </p>
+        </a>
+      </div>
+      <div
+        class="slick-slider slick-initialized"
+      >
+        <div
+          class="slick-list"
+        >
+          <div
+            class="slick-track"
+            style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

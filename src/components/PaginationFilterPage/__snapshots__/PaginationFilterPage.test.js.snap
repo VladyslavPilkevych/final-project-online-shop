@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot PaginationFilterPage should render Snapshot PaginationFilterPage is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="filterItem"
+  />
+  <h1
+    class="noItems"
+  >
+    No items
+  </h1>
+  <ul
+    class="paginateContainer"
+  >
+    <li
+      class="previous disabled"
+    >
+      <a
+        aria-disabled="true"
+        aria-label="Previous page"
+        class=" "
+        rel="prev"
+        role="button"
+        tabindex="-1"
+      >
+        ‹
+      </a>
+    </li>
+    <li
+      class="next"
+    >
+      <a
+        aria-disabled="false"
+        aria-label="Next page"
+        class=""
+        rel="next"
+        role="button"
+        tabindex="0"
+      >
+        ›
+      </a>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

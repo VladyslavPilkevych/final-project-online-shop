@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot FilterPriceSlider should render Snapshot FilterPriceSlider is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div
+        style="display: flex; width: 100%; justify-content: space-evenly;"
+      >
+        <p>
+          $
+        </p>
+        <p>
+          -
+        </p>
+        <p>
+          $
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

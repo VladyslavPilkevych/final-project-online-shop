@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Categories should render Snapshot Categories is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="categoriesWrapper"
+  >
+    <div
+      class="categories"
+    >
+      <div
+        class="categorieImg"
+        style="background-image: url();"
+      >
+        <h3 />
+        <div
+          role="button"
+          tabindex="0"
+        >
+          <a
+            class=""
+            href="/filter/"
+          >
+            See All Products
+          </a>
+        </div>
+      </div>
+      <div
+        class="categoriesSliderWrapper"
+      >
+        <div
+          class="slick-slider slick-initialized"
+        >
+          <div
+            class="slick-list"
+          >
+            <div
+              class="slick-track"
+              style="opacity: 1; transform: translate3d(0px, 0px, 0px);"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
