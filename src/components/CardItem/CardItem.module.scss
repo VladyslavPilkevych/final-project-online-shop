@@ -73,14 +73,13 @@
         -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
         overflow: hidden;
-        -ms-line-clamp: 2;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+        -ms-line-clamp: 1;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
         display: -webkit-box;
         word-wrap: break-word;
         -webkit-box-orient: vertical;
         box-orient: vertical;
-        min-height: 44px;
     }
     .previousPrice {
         @include fonts("Poppins", 14px, #666666, 400);
