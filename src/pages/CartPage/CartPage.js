@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,6 +14,7 @@ import styles from './CartPage.module.scss';
 
 function CartPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const dataCart = useSelector((state) => state.cart.dataCart) || [];
 
@@ -39,7 +40,7 @@ function CartPage() {
                 <p>Subtotal</p>
               </div>
             </div>
-            {dataCart.map((item, index) => (
+            {dataCart.map((item) => (
               <ul key={item?.model || item?.model}>
                 <CartItem data={item} key={item?._id || item?.id} />
               </ul>

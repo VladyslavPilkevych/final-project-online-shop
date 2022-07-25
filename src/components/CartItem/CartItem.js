@@ -3,7 +3,6 @@
 import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useDebouncedCallback } from 'use-debounce';
 
 import { deleteFromCart, editCart } from '../../store/actionCreators/cartAC';
 
