@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot companies should render Snapshot companies is rendered 1`] = `
+<DocumentFragment>
+  <div
+    class="companiesLogos"
+  >
+    <img
+      alt="logo-roccat"
+      class="companieImage"
+      src="image-roccat.png"
+    />
+    <img
+      alt="logo-msi"
+      class="companieImage"
+      src="image-msi.png"
+    />
+    <img
+      alt="logo-razer"
+      class="companieImage"
+      src="image-razer.png"
+    />
+    <img
+      alt="logo-thermaltake"
+      class="companieImage"
+      src="image-thermaltake.png"
+    />
+    <img
+      alt="logo-adata"
+      class="companieImage"
+      src="image-adata.png"
+    />
+    <img
+      alt="logo-hp"
+      class="companieImage"
+      src="image-hp.png"
+    />
+    <img
+      alt="logo-gigabyte"
+      class="companieImage"
+      src="image-gigabyte.png"
+    />
+  </div>
+</DocumentFragment>
+`;

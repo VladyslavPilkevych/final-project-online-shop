@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should close Search is closed 1`] = `
+<DocumentFragment>
+  <button>
+    Open
+  </button>
+  <button>
+    Close
+  </button>
+  <button>
+    Search
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Search should open Search is opened 1`] = `
+<DocumentFragment>
+  <div
+    class="searchBox"
+  >
+    <form>
+      <input
+        class="searchInput"
+        placeholder="Search entiere store here..."
+        type="text"
+        value=""
+      />
+    </form>
+  </div>
+  <button>
+    Open
+  </button>
+  <button>
+    Close
+  </button>
+  <button>
+    Search
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Snapshot search with button Should snapshot search with button 1`] = `
+<DocumentFragment>
+  <button>
+    Open
+  </button>
+  <button>
+    Close
+  </button>
+  <button>
+    Search
+  </button>
+</DocumentFragment>
+`;

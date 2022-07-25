@@ -1,0 +1,148 @@
+@import '../../assets/styles/global.module.scss';
+
+.aboutProductWrapper {
+  max-width: 1398px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.line {
+  size: 0.5px;
+  color: $dark-grey-text;
+  width: 100%;
+}
+.goBackBtn {
+  margin: 15px;
+}
+.aboutProductTabMenuWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.costWrapper {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProductTabMenuWrapper {
+    padding: 0;
+  }
+}
+
+.aboutProductTabMenu {
+  color: black;
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 41px;
+  margin-bottom: 38px;
+  display: flex;
+}
+
+.priceWrapper {
+  display: flex;
+}
+
+.priceTitle {
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  margin-right: 15px;
+}
+.priceAmount {
+  font-family: $fonts;
+  font-style: bold;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  margin-right: 20px;
+}
+
+.aboutProductCartBtnWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.aboutProductCartBtn {
+  // margin-top: 30px;
+  background-color: #2e58ff;
+  color: $white;
+  border-radius: 50px;
+  padding: 12px 30px;
+  position: relative;
+  display: inline-block;
+  transition: 0.5s;
+  border: none;
+}
+.aboutProductCartBtn:hover {
+  background-color: darken(#1d4aff, 5%);
+  box-shadow: 2px 2px 15px 5px #7b6aff;
+  color: $white;
+  cursor: pointer;
+}
+
+.aboutProducTextAndImageWrapper {
+  display: flex;
+  justify-content: space-around;
+  max-width: 95%;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProducTextAndImageWrapper {
+    display: block;
+    text-align: center;
+  }
+}
+
+.aboutProductTextWrapper {
+  background-color: $bg-white-color;
+  width: 60%;
+  padding: 37px 60px 25px 60px;
+  order: -1;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProductTextWrapper {
+    order: 2;
+    width: inherit;
+    padding: 10px 20px 10px 20px;
+  }
+}
+
+.aboutProducImageWrapper {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProducImageWrapper {
+    width: 100%;
+  }
+}
+
+.aboutProductTabMenuWrapper ul li {
+  cursor: pointer;
+  // margin-right: 30px;
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $grey;
+  margin-right: 20px;
+}
+.aboutProductTabMenuWrapper ul li.active {
+  color: $black;
+  border-bottom: 2px solid $blue;
+}
+
+.addToCartIconWrapper {
+  cursor: pointer;
+  margin: 150px 10px;
+}

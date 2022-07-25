@@ -1,0 +1,55 @@
+@import '../../../assets/styles/global.module.scss';
+
+.productTitle {
+    margin-top: 83px;
+    color: $black;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+}
+
+@media screen and (max-width: 768px) {
+    .productTitle {
+        margin-top: 20px;
+    }
+  }
+
+ul.listWrapper{
+    list-style-type: disc;
+    // display: block !important;
+    margin-top: 55px;
+    
+    & li {
+        color: $black;
+        font-family: $fonts;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    ul.listWrapper {
+        margin-top: 15px;
+        text-align: left;
+        padding-left: 40px;
+    }
+  }
+
+.itemNo {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.contactUsText {
+    font-family: $fonts;
+    font-style: Bold;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    padding-bottom: 100px;
+    margin-top: 20px;
+}

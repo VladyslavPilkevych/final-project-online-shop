@@ -1,0 +1,89 @@
+@mixin fonts($font-family, $size, $color, $bold) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
+
+.posts {
+    max-width: 1398px;
+    margin: 0 auto;
+}
+
+.postsWrapper {
+    margin-top: 20px;
+    column-gap: 8px;
+    row-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+}
+
+.postsArticle {
+    @include fonts("Poppins", 22px, #000000, 600);
+    line-height: 33px;
+}
+
+
+.postItem {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   max-width: 225px;
+}
+
+.postText {
+    @include fonts("Poppins", 12px, #000000, 400);
+    margin-top: 10px;
+    line-height: 18px;
+}
+
+.postDate {
+    @include fonts("Poppins", 10px, #A2A6B0, 400);
+    margin-top: 10px;
+    line-height: 15px;
+}
+
+@media screen and (min-device-width: 1157px) and (max-device-width: 1393px) {
+    .postsWrapper {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: center;
+    }
+
+    .postsArticle {
+        margin-left: 22px;
+    }
+}
+
+@media screen and (min-device-width: 925px) and (max-device-width: 1156px) {
+    .postsWrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+    }
+
+    .postsArticle {
+        margin-left: 25px;
+    }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 925px) {
+    .postsWrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+
+    .postsArticle {
+        margin-left: 34px;
+    }
+}
+
+@media screen and (max-device-width: 767px) {
+    .posts {
+       display: none;
+    }
+}

@@ -1,0 +1,68 @@
+@import '../../assets/styles/global.module.scss';
+
+.signUpPageWrapper {
+    max-width: 1398px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.mainTitle {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: $fonts;
+    margin-top: 58px;
+}
+
+.signUpBlocksPageWrapper {
+    display: flex;
+    column-gap: 34px;
+    justify-content: center;
+    margin-top: 21px;
+}
+
+.signUpBlockWrapper {
+    background-color: $bg-white-color;
+    width: 35%;
+    padding: 37px 60px 25px 60px;
+}
+
+.customersBlocksTitle {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+}
+
+.customersBlocksSubtitle {
+    font-size: 14px;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.inputLabel {
+    font-size: 12px;
+    font-family: $fonts;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 2px;
+}
+
+.createCustomerButton {
+    margin-top: 30px;
+    background-color: #2e58ff;
+    color: $white;
+    border-radius: 50px;
+    padding: 10px;
+    position: relative;
+	display: inline-block;
+    transition: 0.5s;
+    border: none;
+}
+.createCustomerButton:hover {
+	background-color: darken(#1d4aff, 5%);
+	box-shadow: 2px 2px 15px 5px #7b6aff;
+	color: $white;
+	cursor: pointer;
+}

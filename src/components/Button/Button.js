@@ -1,30 +1,38 @@
 import React, { memo } from 'react';
+
 import PropTypes from 'prop-types';
-import styles from './Button.module.scss';
 
 function Button(props) {
   const {
-    children, handleClick, type, style,
+    children, handleClick, type, style, className,
   } = props;
+
   return (
-    <button type={type} onClick={handleClick} className={`${styles.btn} ${style}`}>{children}</button>
+    <button
+      type={type}
+      onClick={handleClick}
+      className={`${className} ${style}`}
+      style={style}
+    >
+      {children}
+    </button>
   );
 }
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   type: PropTypes.oneOf(['submit', 'button']),
   handleClick: PropTypes.func,
-  style: PropTypes.string,
+  style: PropTypes.object,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
+  children: '',
   type: 'button',
-  handleClick: () => { },
-  style: '',
+  handleClick: () => {},
+  style: {},
+  className: '',
 };
 
 export default memo(Button);

@@ -1,0 +1,94 @@
+@mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
+
+.categoriesWrapper {
+    max-width: 1398px;
+    margin: 0 auto;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.categories{
+    width: 100%;
+}
+.categorieImg {
+    width: 17%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    }
+.categorieImg h3 {
+    text-transform: capitalize;
+    margin-top: 70%;
+    @include fonts("Poppins", 28px, white, 600);
+}
+.categorieImg div {
+    margin-top: 47%;
+    margin-bottom: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.categorieImg div a {
+    @include fonts("Poppins", 13px, white, 400);
+}
+
+.categoriesSliderWrapper {
+    width: 83%;
+}
+
+@media (max-width: 1024px) {
+    .categorieImg {
+        width: 20%;
+    }
+    .categorieImg h3 {
+        font-size: 24px;
+    }
+    .categoriesSliderWrapper {
+        width: 80%;
+    }
+}
+@media (max-width: 768px) {
+    .categorieImg {
+        width: 25%;
+    }
+    .categorieImg h3 {
+        font-size: 20px;
+    }
+    .categoriesSliderWrapper {
+        width: 75%;
+    }
+}
+@media (max-width: 550px) {
+    .categorieImg h3 {
+        font-size: 16px;
+    }
+}
+@media (max-width: 425px) {
+    .categories {
+        display: block;
+        .categorieImg {
+            width: 100%;
+            height: 82px;
+            background-attachment: fixed;
+            h3 {
+                margin: 0;
+                padding-top: 15px;
+            }
+            div a {
+                margin-top: 10px;
+            }
+        }
+        .categoriesSliderWrapper {
+            margin: 0 auto;
+        }
+    }
+}

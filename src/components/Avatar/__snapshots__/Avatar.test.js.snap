@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot avatar should render Snapshot avatar is rendered 1`] = `
+<DocumentFragment>
+  <div>
+    <a
+      class=""
+      href="/sign-in"
+    >
+      <svg
+        class="signInIcon"
+      >
+        Sign-in.svg
+      </svg>
+    </a>
+  </div>
+</DocumentFragment>
+`;

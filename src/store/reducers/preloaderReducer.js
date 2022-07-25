@@ -4,10 +4,10 @@ const initialValues = {
   isLoading: false,
 };
 
-const preloaderReducer = (state = initialValues, action) => {
-  switch (action.type) {
+const preloaderReducer = (state = initialValues, { type, payload } = {}) => {
+  switch (type) {
     case TOGGLE_PRELOADER: {
-      return { isLoading: action.payload };
+      return { isLoading: payload };
     }
     default: return state;
   }

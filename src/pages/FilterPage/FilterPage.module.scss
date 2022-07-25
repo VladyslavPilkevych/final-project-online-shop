@@ -1,0 +1,89 @@
+@import "../../assets/styles/global.module.scss";
+
+@mixin fonts($font-family, $size: 16px, $color, $bold: 700) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
+
+.FilterPage {
+    max-width: 1398px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+.topImg {
+    width: 100%;
+}
+.filterPath {
+    display: flex;
+    margin-top: 20px;
+}
+.filterPathItems {
+    margin-right: 10px;
+    a {
+        @include fonts("Poppins", 12px, $black, 400);
+        text-transform: uppercase;
+    }
+    @include fonts("Poppins", 12px, $black, 400);
+    text-transform: uppercase;
+    &:after {
+        margin-left: 10px;
+        display: inline-block;
+        content: "›";
+        color: $blue;
+    }
+    &:last-child {
+        &:after {
+            content: none;
+        }
+    }
+}
+.h2FilterName {
+    @include fonts("Poppins", 32px, $black, 600);
+    margin: 20px 0;
+}
+.openFilterOnPhone {
+    width: 40%;
+    height: 40px;
+    border: 2px solid $grey-text;
+    background-color: white;
+    @include fonts("Poppins", 11px, $black, 600);
+}
+.filter {
+    display: flex;
+}
+.filterCreator {
+    flex-basis: 17%;
+}
+.filterItem {
+    flex-basis: 83%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .filterCreator {
+        flex-basis: 20%;
+    }
+    .filterItem {
+        flex-basis: 80%;
+    }
+}
+@media (min-width: 550px) and (max-width: 768px) {
+    .filterCreator {
+        flex-basis: 25%;
+    }
+    .filterItem {
+        flex-basis: 75%;
+    }
+}
+@media (max-width: 550px) {
+    .topImg {
+        display: none;
+    }
+    .filter {
+        display: block;
+    }
+    .filterCreator {
+        display: none;
+    }
+}

@@ -1,0 +1,65 @@
+@import '../../assets/styles/global.module.scss';
+
+
+
+.advantagesWrapper {
+    max-width: 1055px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    column-gap: 5px;
+}
+
+.advantagesCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+    justify-items: center;
+    text-align: center;
+    max-width: 260px;
+}
+
+.advantagesTitle {
+    font-family: $fonts;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 132.5%;
+}
+
+.advantagesText {
+    font-family: $fonts;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    opacity: 0.7;
+}
+
+@media screen and (min-device-width: 566px) and (max-device-width: 768px) {
+    .advantagesIcon {
+        height: 46px;
+        width: 45px;
+    }
+
+    .advantagesTitle {
+        font-size: 14px;
+    }
+
+    .advantagesText {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-device-width: 565px) {
+    .advantagesWrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 20px;
+    }
+
+    .advantagesIcon {
+        height: 46px;
+        width: 45px;
+    }
+}

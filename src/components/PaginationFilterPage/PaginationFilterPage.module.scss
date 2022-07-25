@@ -1,0 +1,72 @@
+@import "../../assets/styles/global.module.scss";
+
+@mixin fonts($font-family, $color, $bold: 700, $size: 16px) {
+    font-family: $font-family, sans-serif;
+    font-weight: $bold;
+    font-size: $size;
+    color: $color;
+}
+
+.filterItem {
+    margin-top: 20px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+}
+.gridItemContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.paginateContainer {
+    display: flex;
+    margin: 55px auto;
+    justify-content: center;
+    li {
+        cursor: pointer;
+        margin: 0 5px;
+        a {
+            @include fonts("Poppins", $dark-grey-text, 600);
+            padding: 8px 14px;
+            border: 2px solid $dark-grey-text;
+            border-radius: 50%;
+            width: 15px;
+        }
+    }
+}
+.activeLinkClassName {
+    color: $black !important;
+    border: none !important;
+    background-color: $bg-white-color;
+}
+.noItems {
+    @include fonts("Poppins", $black, 600, 26px);
+    text-align: center;
+    margin-top: 10%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .filterItem {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    .filterItem {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .paginateContainer {
+        li {
+            margin: 5px;
+        }
+    }
+}
+@media (max-width: 426px) {
+    .filterItem {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .paginateContainer {
+        li {
+            margin: 5px;
+        }
+    }
+}

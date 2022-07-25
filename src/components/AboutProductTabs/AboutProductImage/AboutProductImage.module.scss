@@ -1,0 +1,62 @@
+.imageSideWrapper {
+  width: 80%;
+}
+
+.imageMain {
+  max-width: 100%;
+  max-height: 350px !important;
+}
+
+.detailsWrapper {
+  display: flex;
+}
+
+.addToCartIconWrapper {
+  cursor: pointer;
+  margin: 30px 53px 0 23px;
+}
+
+.imgmin {
+  width: 30px;
+}
+
+.imageWrapper ul {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+@media screen and (max-width: 768px) {
+  .imgWrapper {
+  display: flex !important;
+  justify-content: center !important;
+  margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .imageWrapper ul {
+  display: none !important;
+  }
+}
+
+.ftSlickDots {
+  margin: 0 15px;
+}
+
+ul.slick-dots li {
+  height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  ul.slick-dots.slick-thumb {
+    display: none !important;
+  }
+}
+
+.slick-track {
+  display: flex !important;
+  max-height: 350px !important;
+}
+.slick-list {
+  max-height: 350px !important;
+}

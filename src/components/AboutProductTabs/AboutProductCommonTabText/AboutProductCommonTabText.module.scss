@@ -1,0 +1,64 @@
+@import '../../../assets/styles/global.module.scss';
+
+.productTitle {
+  margin-top: 83px;
+  color: $black;
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+@media screen and (max-width: 768px) {
+  .productTitle {
+    margin-top: 35px;
+  }
+}
+
+.productDescription {
+  margin-top: 55px;
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.colorsWrapper {
+  margin-top: 30px;
+  display: flex;
+}
+
+.colorItem {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.itemNo {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.contactUsText {
+  font-family: $fonts;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  padding-bottom: 100px;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .contactUsText {
+    padding-bottom: 10px;
+  }
+}
+
+.activeColor {
+  outline: 2px solid blue;
+  outline-offset: 3px;
+}
